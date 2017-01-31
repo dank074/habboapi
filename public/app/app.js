@@ -1,34 +1,31 @@
 
-	define(['states'], function(states)
+	define(['config'], function(config)
 	{
-		var app = angular.module('app', ['ui.router', 'ngMessages', 'ngStorage', 'ngMaterial']);
+		var app = angular.module('app', ['ui.router', 'ngAnimate', 'ngMessages', 'ngStorage', 'ngMaterial']);
 		
 		app.config([
-			'$httpProvider',
 			'$urlRouterProvider',
 			'$stateProvider',
 			'$mdThemingProvider',
 		
-		function($httpProvider, $urlRouterProvider, $stateProvider, $mdThemingProvider)
+		function($urlRouterProvider, $stateProvider, $mdThemingProvider)
 		{
 			$mdThemingProvider.theme('default').primaryPalette('teal');
+			
+			$urlRouterProvider.otherwise('/login');
 
-			if(states.defaultState != null) $urlRouterProvider.otherwise(states.defaultState);
-
-			if(states.states != undefined && states.states != null)
+			if(config.navigation_list != undefined || null)
 			{
-				angular.forEach(states.states, function(state, path)
+				angular.forEach(config.states, function(value, key)
 				{
-					$stateProvider.state(path,
+					$stateProvider.state(value.name,
 					{
-						abstract: (state.abstract == true) ? true : false,
-						name: state.name,
-						page_name: state.page_name,
-						url: state.url,
-						templateUrl: state.templateUrl,
-						controller: state.controller,
-						login_required: (state.login_required == true || state.page_permission != null) ? true : false,
-						page_permission: state.page_permission
+						abstract: (value.abstract == true) ? true : false,
+						name: value.name,
+						url: value.url,
+						templateUrl: value.templateUrl,
+						controller: value.controller,
+						login_required: (value.login_required == true) ? true : false
 					});
 				});
 			}
@@ -38,52 +35,54 @@
 			'$rootScope',
 			'$state',
 			'$localStorage',
-			'Authenticator',
-			'Permission',
+			'SessionFactory',
+			'UserFactory',
 		
-		function($rootScope, $state, $localStorage, Authenticator, Permission)
+		function($rootScope, $state, $localStorage, SessionFactory, UserFactory)
 		{
+			$rootScope.app_config = config.config;
+			
 			$rootScope.$on('$stateChangeStart', function(event, next, current)
 			{
-				if(next.name == 'login')
-				{
-					if($localStorage.current_user == undefined || null) return next;
-
-					event.preventDefault();
-					return $state.go('app.dashboard');
-				}
-
-				Authenticator.validate_session()
-
+				SessionFactory.validate_session()
+				
 				.then(function(session)
 				{
-					if(next.page_permission == null || Permission.has_permission(next.page_permission) == true) return next;
+					$rootScope.current_user = session;
 
-					event.preventDefault();
-					return $state.go('app.not_found');
+					UserFactory.user_info($localStorage.current_user.user_id)
+
+					.then(function(user_info)
+					{
+						$rootScope.current_user.user_info = user_info;
+					})
+
+					.catch(function(err)
+					{
+						$rootScope.current_user.user_info = null;
+					});
+
+					if(next.name == 'login' || next.name == 'register')
+					{
+						event.preventDefault();
+						return $state.go('me');
+					}
+
+					return next;
 				})
-
+				
 				.catch(function(err)
 				{
-					if(next.name == 'login') return next;
+					$rootScope.current_user = null;
 
-					event.preventDefault();
-					return $state.go('login');
+					if(next.login_required == true)
+					{
+						event.preventDefault();
+						return $state.go('login');
+					}
+
+					return next;
 				});
-			});
-
-			$rootScope.$on('$stateChangeSuccess', function (event, next, current)
-			{
-				$rootScope.page_name = next.page_name;
-			});
-
-			$rootScope.$on('$stateChangeError', function(event, next, current)
-			{
-				event.preventDefault();
-				
-				if($localStorage.current_user == undefined || $localStorage.current_user == null || $localStorage.current_user.login_status == false) return $state.go('login');
-				
-				return $state.go('app.not_found');
 			});
 		}]);
 

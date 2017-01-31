@@ -1,0 +1,19 @@
+<div class="me-page">
+	<div layout="row" layout-xs="column">
+		<md-card class="user-info" flex="66" flex-xs="100">
+			<md-card-content class="no-select">
+				<div class="info-image" style="background-image:url(http://avatar-retro.com/habbo-imaging/avatarimage?figure={{current_user.user_info.look}}&amp;direction=2&amp;head_direction=3&amp;action=wav&amp;size=l&amp;gesture=sml);"></div>
+				<span class="info-username">Welcome <b>{{current_user.user_name}}</b></span><br /><br />
+				<span class="info-motto">Motto: <b>{{current_user.user_info.motto}}</b></span><br />
+				<span class="info-last-login">Last Login: <b>{{current_user.user_info.last_online}}</b></span><br /><br />
+			</md-card-content>
+		</md-card>
+		<md-card flex="33" flex-xs="100">
+			<md-card-content>
+			</md-card-content>
+		</md-card>
+	</div>
+	<div layout="row" layout-xs="column">
+		<app-announcement></app-announcement>
+	</div>
+</div>

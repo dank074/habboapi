@@ -1,20 +1,17 @@
 
 	define(['app'], function(app)
 	{
-		function LoginController($scope, $state, Authenticator, Utilities)
+		function LoginController($scope, $state, AuthenticationFactory, Utilities)
 		{
-			$scope.site_name = 'HabboAPI';
-			
 			$scope.login = function(data)
 			{
-				Authenticator.login({
-					user_name: data.user_name,
-					user_pass: data.user_pass
-				})
+				if(data.user_name == undefined || null || data.user_pass == undefined || null) return;
+				
+				AuthenticationFactory.login(data.user_name, data.user_pass)
 
 				.then(function(session)
 				{
-					$state.go('app.dashboard');
+					return $state.go('me');
 				})
 
 				.catch(function(err)
@@ -30,12 +27,11 @@
 			$scope.clear_login = function()
 			{
 				$scope.login_details.user_name = null;
-				$scope.login_details.user_pass = null;	
-				return;
+				$scope.login_details.user_pass = null;
 			};
 		}
 
-		LoginController.inject = ['$scope', '$state', 'Authenticator', 'Utilities'];
+		LoginController.inject = ['$scope', '$state', 'AuthenticationFactory', 'Utilities'];
 
 		app.controller('LoginController', LoginController)
 	});

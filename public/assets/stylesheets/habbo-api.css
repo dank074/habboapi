@@ -1,14 +1,11 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,300");
+@import url("https://fonts.googleapis.com/css?family=Roboto:500,400,300");
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import url("angular-material.min.css");
-@import url("angular-material-sidenav.css");
-@import url("animate.css");
-@import url("loading-bar.css");
 
 	body.md-default-theme, html, body {
 		font-family: 'Roboto', sans-serif;
 		font-weight: 300;
-		background-color: #F3F3F3 !important;
+		background: #D6D6D6;
 	}
 	
 	[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
@@ -24,218 +21,442 @@
 		user-select: none;
 	}
 
+	/** MAIN HEADER **/
+
 	.app {
 		width: 100%;
 		height: 100%;
 	}
 
-	/** APP-SIDEBAR **/
-	.app .app-sidebar {
-		width: 290px !important;
-		min-width: 290px !important;
-		max-width: 290px !important;
-		background: #009688;
-		box-shadow: 1px 1px 7px 0px rgba(145, 145, 145, 0.5);
-		overflow-x: hidden;
+	.app .app-header {
+		position: fixed;
+		width: 100%;
+		height: 120px;
+		background: #D6D6D6;
+		z-index: 2;
 	}
 
-	.app .app-sidebar .sidebar-logo {
-		height: 70px;
-		font-size: 25px;
+	.app .app-header .header-container {
+		width: 960px;
+		height: 100%;
+		margin: 0 auto;
+	}
+
+	.app .app-header .header-container .header-logo {
+		position: absolute;
+		width: 228px;
+		height: 64px;
+		margin: 28px 0 28px 0;
+		background: url("../images/habfuse-logo.png") no-repeat;
+		z-index: 3;
+	}
+
+	/** /MAIN HEADER **/
+	/** MAIN CONTENT **/
+
+	.app .app-content {
+		position: absolute;
+		width: 100%;
+		margin-top: 120px;
+		z-index: 1;
+	}
+
+	.app .app-content.page-content {
+		margin-top: 180px;
+	}
+
+	.app .app-content .content-container {
+		max-width: 960px;
+		margin: 0 auto;
+	}
+
+	.app .app-content .content-footer {
+		height: 40px;
+		max-width: 960px;
+		margin: 0 auto;
 		text-align: center;
-		line-height: 70px;
-		text-transform: uppercase;
-		letter-spacing: 1px;
-		color: #FFFFFF;
+		font-size: 14px;
+		line-height: 40px;
 		font-weight: 400;
+		color: rgba(0,0,0,.5);
+	}
+	
+	.page-content [ui-view].ng-enter {
+		transition: .5s;
+		opacity: 0;
+	}
+	
+	.page-content [ui-view].ng-enter-active {
 		opacity: 1;
 	}
 
-	.app .app-sidebar .sidebar-user {
-		background-image: url("../images/login-header.png");
-		background-size: cover;
-	}
+	/** /MAIN CONTENT **/
+	/** APP-MENU **/
 
-	.app .app-sidebar .sidebar-user md-fab-toolbar {
-		padding: 15px 0;
-	}
-
-	.app .app-sidebar .sidebar-user md-fab-toolbar md-fab-trigger {
+	.app-menu {
+		position: fixed;
 		width: 100%;
-		text-align: center;
+		height: 40px;
+		margin-top: 120px;
+		background-color: #FFFFFF;
+		z-index: 4;
 	}
 
-	.app .app-sidebar .sidebar-user md-fab-toolbar md-fab-trigger md-button.md-fab,
-	.app .app-sidebar .sidebar-user md-fab-toolbar md-toolbar,
-	.app .app-sidebar .sidebar-user md-fab-toolbar md-toolbar .md-toolbar-tools {
-		height: 56px !important;
-		min-height: 56px !important;
-		max-height: 56px !important;
-		line-height: 56px;
+	.app-menu .menu-container {
+		width: 960px;
+		height: 40px;
+		margin: 0 auto;
 	}
 
-	.app .app-sidebar .sidebar-user .md-button.md-fab,
-	.app .app-sidebar .sidebar-user .md-button.md-fab .material-icons {
-		background-color: #FFFFFF !important;
-		color: #009688 !important;
-	}
-
-	.app .sidebar-user .sidebar-user-info {
-		width: 100%;
-		padding: 0 0 15px;
-		text-align: center;
-	}
-
-	.app .app-sidebar .sidebar-user-info span {
-		width: 100%;
-		letter-spacing: 1px;
-		color: #FFFFFF;
-	}
-
-	.app .app-sidebar .sidebar-user-info span.info-username {
-		font-size: 20px;
-		font-weight: 400;
-	}
-
-	.app .app-sidebar .sidebar-user-info span.info-rank {
-		font-size: 16px;
-		font-weight: 300;
-	}
-
-	.app .app-sidebar .sidebar-navigation {
-		width: 100%;
-		height: 100%;
-
-	}
-
-	.app .app-sidebar .sidebar-navigation ul.navigation-list {
-		width: 100%;
+	.app-menu .menu-container ul.menu-list {
+		display: table;
 		margin: 0;
 		padding: 0;
 		list-style: none;
-		overflow-x: hidden;
 	}
 
-	.app .app-sidebar .sidebar-navigation ul.navigation-list li {
-		display: block;
-		float: left;
-		width: 100%;
-		height: 50px;
-		overflow: hidden;
-	}
-
-	.app .app-sidebar .sidebar-navigation ul.navigation-list li.active {
-		background-color: #00645A;
-	}
-
-	.app .app-sidebar .sidebar-navigation ul.navigation-list li a.md-button {
-		border-radius: 0;
-		height: 50px;
-		max-height: 50px;
-		font-size: 16px;
-		font-weight: 300;
-		letter-spacing: 1px;
-		line-height: 50px;
-		color: #FFFFFF;
-		margin: 0;
-		overflow: hidden;
-    	padding: 0px 16px;
-    	text-align: left;
-    	text-decoration: none;
-    	white-space: normal;
-    	width: 100%;
-	}
-
-	.app .app-sidebar .sidebar-navigation ul.navigation-list li a.md-button md-icon {
-		height: 50px;
-		width: 30px;
-		text-align: center;
-	}
-
-	.app .app-sidebar .sidebar-navigation ul.navigation-list li a.md-button md-icon.material-icons {
-		font-size: 24px;
-		line-height: 50px;
-		color: #FFFFFF;
-	}
-
-	.app .app-sidebar .sidebar-navigation ul.navigation-list li.list-header {
-		height: 35px !important;
-		line-height: 35px !important;
-		padding: 0 16px;
-		font-size: 12px;
-		text-transform: uppercase;
-		letter-spacing: 1px;
-		white-space: nowrap;
-		color: #FFFFFF;
-	}
-	/** /APP-SIDEBAR **/
-
-	.app .app-container {
-		width: calc(100% - 290px);
-		background-color: #F3F3F3;
-		overflow-x: hidden;
-	}
-
-	@media only screen and (max-width : 959px) {
-		.app .app-container,
-		.app .app-container .app-header {
-			width: 100% !important;
-		}
-	}
-
-	.app .app-container .app-header,
-	.app .app-container .app-header .md-toolbar-tools {
-		height: 70px !important;
-		min-height: 70px !important;
-		max-height: 70px !important;
-		z-index: 50;
-	}
-
-	.app .app-container .app-header {
-		position: fixed !important;
-		width: calc(100% - 290px);
-		background-color: #FFFFFF;
-		color: #000000;
-		box-shadow: 1px 1px 7px 0px rgba(145, 145, 145, 0.5);
-	}
-
-	.app .app-container .app-header .md-toolbar-tools {
-		margin: 0;
+	.app-menu .menu-container ul.menu-list li.list-item {
+		display: table-cell;
 		padding: 0 15px;
-		color: #000000;
+		cursor: pointer;
 	}
 
-	.app .app-container .app-header .md-toolbar-tools md-icon.material-icons {
-		color: #000000;
+	.app-menu .menu-container ul.menu-list li.list-item.active,
+	.app-menu .menu-container ul.menu-list li.list-item:hover,
+	.app-menu .menu-container ul.menu-list li.list-item:focus {
+		box-shadow: inset 0 -3px #000000;
+		transition: all .2s ease-in;
 	}
 
-	.app .app-container .app-content {
-		margin-top: 70px;
-		padding: 10px 15px;
-		background-color: #F3F3F3;
-	}
-
-	.app .app-container .app-content md-card md-toolbar {
-		height: 50px;
-		min-height: 50px;
-		max-height: 50px;
-		font-size: 16px;
+	.app-menu .menu-container ul.menu-list li.list-item a {
+		font-size: 18px;
+		font-weight: 300;
 		text-transform: uppercase;
 		letter-spacing: 1px;
-		border-top-right-radius: 2px;
-		border-top-left-radius: 2px;
-		box-shadow: 1px 1px 7px 0px rgba(145, 145, 145, 0.5);
+		text-decoration: none;
+		line-height: 40px;
+		color: #000000;
+	}
+
+	.app-menu .menu-container ul.menu-list li.list-item.active a {
+		font-weight: 400;
+	}
+	/** /APP-MENU **/
+	/** LOGIN PAGE **/
+
+	md-card.login-card {
+		width: 100%;
+		height: 430px;
+		margin: 0 !important;
+		overflow: hidden;
+	}
+
+	md-card.login-card .left-side {
+		position: absolute;
+		width: 600px;
+		height: 430px;
+		background-color: #00AC77;
+		float: left;
+	}
+
+	md-card.login-card .left-side .left-overlay {
+		position: absolute;
+		width: 600px;
+		height: 430px;
+		background: rgba(0,0,0,0.2);
+	}
+
+	md-card.login-card .left-side .left-image {
+		position: absolute;
+		width: 465px;
+		height: 412px;
+		top: 18px;
+		left: 67.5px;
+		opacity: .25;
+		background: url("../images/login-image.png") no-repeat;
+		overflow: hidden;
+	}
+
+	md-card.login-card .left-side .left-content {
+		position: absolute;
+		padding: 60px 30px 0;
+	}
+
+	md-card.login-card .left-side .left-content .left-header {
+		margin-bottom: 5px;
+		font-weight: 300;
+		font-size: 35px;
+		color: #FFFFFF;
+	}
+
+	md-card.login-card .left-side .left-content .left-subheader {
+		margin-bottom: 20px;
+		font-weight: 400;
+		font-size: 15px;
+		color: #FFFFFF;
+	}
+
+	md-card.login-card .left-side .left-content .left-text {
+		font-weight: 300;
+		font-size: 16px;
+		color: #FFFFFF;
+	}
+
+	md-card.login-card .right-side {
+		position: absolute;
+		width: 360px;
+		height: 430px;
+		margin-left: 600px;
+		background-color: #FFFFFF;
+		float: left;
+	}
+
+	md-card.login-card .right-side .login-header {
+		height: 80px;
+		width: 100%;
+		padding: 20px 0 10px;
+		font-size: 30px;
+		font-weight: 400;
+		letter-spacing: 1px;
+		text-align: center;
+		text-transform: uppercase;
+		line-height: 80px;
+		color: rgba(0,0,0,.7);
+	}
+
+	md-card.login-card .right-side form.login-form {
+		padding: 0 30px;
+	}
+
+	md-card.login-card .right-side form.login-form button.clear-button {
+		margin: 0 auto;
+		width: 75px !important;
+		height: 60px !important;
+		float: left;
+	}
+
+	md-card.login-card .right-side form.login-form button.login-button {
+		width: 300px;
+		height: 60px;
+		margin: 0 0 10px;
+		line-height: 60px;
+		font-size: 16px;
+		float: right;
+	}
+
+	md-card.login-card .right-side form.login-form a.register-button {
+		width: 300px;
+		height: 60px;
+		width: 100%;
+		margin: 0 0 10px;
+		line-height: 60px;
+		font-size: 16px;
+	}
+
+	/** /LOGIN PAGE **/
+	/** REGISTER PAGE **/
+
+	md-card.register-card {
+		width: 100%;
+		height: 550px;
+		margin: 0 !important;
+		overflow: hidden;
+	}
+
+	md-card.register-card .left-side {
+		position: absolute;
+		width: 600px;
+		height: 550px;
+		background-color: #00AC77;
+		float: left;
+	}
+
+	md-card.register-card .left-side .left-overlay {
+		position: absolute;
+		width: 600px;
+		height: 550px;
+		background: rgba(0,0,0,0.2);
+	}
+
+	md-card.register-card .left-side .left-image {
+		position: absolute;
+		width: 465px;
+		height: 412px;
+		top: 138px;
+		left: 67.5px;
+		opacity: .25;
+		background: url("../images/login-image.png") no-repeat;
+		overflow: hidden;
+	}
+
+	md-card.register-card .left-side .left-content {
+		position: absolute;
+		padding: 60px 30px 0;
+	}
+
+	md-card.register-card .left-side .left-content .left-header {
+		margin-bottom: 5px;
+		font-weight: 300;
+		font-size: 35px;
+		color: #FFFFFF;
+	}
+
+	md-card.register-card .left-side .left-content .left-subheader {
+		margin-bottom: 20px;
+		font-weight: 400;
+		font-size: 15px;
+		color: #FFFFFF;
+	}
+
+	md-card.register-card .left-side .left-content .left-text {
+		font-weight: 300;
+		font-size: 16px;
+		color: #FFFFFF;
+	}
+
+	md-card.register-card .right-side {
+		position: absolute;
+		width: 360px;
+		height: 430px;
+		margin-left: 600px;
+		background-color: #FFFFFF;
+		float: left;
+	}
+
+	md-card.register-card .right-side .register-header {
+		height: 50px;
+		width: 100%;
+		padding: 20px 0 10px;
+		font-size: 30px;
+		font-weight: 400;
+		letter-spacing: 1px;
+		text-align: center;
+		text-transform: uppercase;
 		line-height: 50px;
+		color: rgba(0,0,0,.7);
+	}
+
+	md-card.register-card .right-side form.register-form {
+		padding: 0 30px;
+	}
+
+	md-card.register-card .right-side form.register-form button.clear-button {
+		margin: 0 auto;
+		width: 75px !important;
+		height: 60px !important;
+		float: left;
+	}
+
+	md-card.register-card .right-side form.register-form button.register-button {
+		width: 300px;
+		height: 60px;
+		margin: 0 0 10px;
+		line-height: 60px;
+		font-size: 16px;
+		float: right;
+	}
+
+	md-card.register-card .right-side form.register-form a.login-button {
+		width: 300px;
+		height: 60px;
+		width: 100%;
+		margin: 0 0 10px;
+		line-height: 60px;
+		font-size: 16px;
+	}
+
+	/** /REGISTER PAGE **/
+	/** ME PAGE **/
+
+	.me-page md-card.user-info {
+		height: 140px;
+		max-height: 140px;
+		background: #007498 url("../images/hotel-background.png") no-repeat center center;
+		overflow: hidden;
+	}
+
+	.me-page md-card.user-info md-card-content {
+		height: 100%;
+		background: rgba(0, 0, 0, .6);
+		color: #FFFFFF;
+	}
+
+	.me-page md-card.user-info md-card-content .info-image {
+		display: block;
+		position: absolute;
+		margin-top: -47px;
+		width: 125px;
+		height: 170px;
+		overflow: hidden;
+	}
+
+	.me-page md-card.user-info md-card-content span.info-username {
+		margin-left: 130px;
+		font-size: 22px;
+		font-weight: 400;
+		color: #FFFFFF;
+	}
+
+	.me-page md-card.user-info md-card-content span.info-motto {
+		margin-left: 130px;
+		font-size: 14px;
+		font-weight: 400;
+		color: #FFFFFF;
+	}
+
+	.me-page md-card.user-info md-card-content span.info-last-login {
+		margin-left: 130px;
+		font-size: 14px;
+		font-weight: 400;
+		color: #FFFFFF;
+	}
+
+	.me-page md-card.user-info md-card-content span.info-currency {
+		margin-left: 130px;
+		font-size: 14px;
+		font-weight: 400;
+		color: #FFFFFF;
+	}
+
+	/** /ME PAGE **/
+	/** CARDS **/
+
+	md-card {
+		box-shadow: 0 1px 5px 0 rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.12);
+	}
+
+	md-card .md-padding {
+		padding: 15px !important;
+	}
+
+	md-card md-card-content.no-padding {
+		padding: 0;
+	}
+
+	md-card md-toolbar,
+	md-card md-toolbar .md-toolbar-tools {
+		height: 50px !important;
+		min-height: 50px !important;
+		max-height: 50px !important;
+		background-color: #FFFFFF !important;
 	}
 
 	md-card md-toolbar .md-toolbar-tools {
-		padding: 15px;
-		height: 50px !important;
-		max-height: 50px !important;
-		color: #FFFFFF;
+		padding: 0 20px !important;
+		line-height: 50px;
+		border-bottom: 1px solid #e4eaec;
 	}
 
+	md-card md-toolbar .md-toolbar-tools h2 {
+		color: #000000;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		font-weight: 300;
+	}
+
+	/** /CARDS **/
 	/** DIALOG **/
+
 	md-dialog {
 		border-radius: 0 !important;
 		background-color: #323232 !important;
@@ -283,63 +504,8 @@
 	md-dialog md-dialog-actions .md-button {
 		color: #FFFFFF !important;
 	}
+
 	/** /DIALOG **/
-
-	/** LOGIN **/
-	.login {
-		width: 100%;
-		height: 100%;
-		background: #F3F3F3;
-		transition: all .4s cubic-bezier(.175,.885,.335,1.05);
-	}
-
-	.login .login-image {
-		position: fixed;
-		width: 100%;
-		height: 300px;
-		background-image: url("../images/login-header.png");
-		background-size: cover;
-		background-repeat: no-repeat;
-		background-position: center center;
-	}
-
-	.login .login-logo {
-		position: relative;
-		display: block;
-		margin: 0 auto;
-		text-transform: uppercase;
-		color: #ffffff;
-		font-size: 27px;
-		letter-spacing: 1px;
-		top: 70px;
-		font-weight: 400;
-		text-align: center;
-	}
-
-	.login .login-logo span.smaller {
-		font-size: 20px;
-		font-weight: 300;
-	}
-
-	.login .form-container {
-    	position: relative;
-		margin: 100px auto;
-		width: 350px;
-    	background: #FFFFFF;
-		box-shadow: 1px 1px 7px 0px rgba(145, 145, 145, 0.5);
-	}
-
-	.login .form-container form {
-		padding: 20px;
-	}
-
-	@media only screen and (max-width : 600px) {
-		.login .form-container {
-			width: 100%;
-		}
-	}
-	/** /LOGIN **/
-
 	/** TOAST **/
 
 	md-toast {

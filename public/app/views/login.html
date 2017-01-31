@@ -1,27 +1,30 @@
-<div class="login">
-	<div class="login-image"></div>
-	<div class="login-logo">
-		<span class="no-select">{{site_name}}</span><br />
-		<span class="no-select smaller">Login</span>
+<md-card class="login-card">
+	<div class="left-side no-select">
+		<div class="left-overlay"></div>
+		<div class="left-image"></div>
+		<div class="left-content">
+			<div class="left-header">Welcome to {{app_config.site_name}},</div>
+			<div class="left-subheader">a strange place with awesome people.</div>
+			<div class="left-text">{{app_config.site_name}} Hotel is a virtual world where you can create your very own character and design your room just the way you like it. You'll meet new friends, chat, organize parties, look after virtual pets, create and play games and complete quests.</div>
+		</div>
 	</div>
-	<div class="form-container">
-		<form name="userLogin" ng-submit="login(login_details)">
+	<div class="right-side">
+		<div class="login-header no-select">Login</div>
+		<form class="login-form" name="userLogin" ng-submit="login(login_details)" novalidate>
 			<md-input-container md-no-float class="md-block">
 				<input type="text" name="userName" ng-model="login_details.user_name" placeholder="Username" required />
 				<div ng-messages="userLogin.userName.$error">
-					<div ng-message="required" class="no-select">Please type your username</div>
+					<div ng-messages-include="app/views/messages.html"></div>
 				</div>
 			</md-input-container>
 			<md-input-container md-no-float class="md-block">
 				<input type="password" name="userPass" ng-model="login_details.user_pass" placeHolder="Password" required />
 				<div ng-messages="userLogin.userPass.$error">
-					<div ng-message="required" class="no-select">Please type your password</div>
+					<div ng-messages-include="app/views/messages.html"></div>
 				</div>
 			</md-input-container>
-			<div style="text-align:center;">
-				<md-button ng-disabled="(login_details.user_name == null) && (login_details.user_pass == null)" ng-click="login_details = null">Clear</md-button>
-				<md-button type="submit" class="md-raised md-primary" ng-disabled="userLogin.$invalid">Login</md-button>
-			</div>
+			<md-button type="submit" class="md-raised md-primary login-button" ng-disabled="userLogin.$invalid">Login</md-button><br />
+			<md-button class="md-raised md-accent register-button" ui-sref="register">Register</md-button>
 		</form>
 	</div>
-</div>
+</md-card>

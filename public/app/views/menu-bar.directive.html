@@ -1,0 +1,10 @@
+<div class="app-menu" ng-hide="navigation_list.length == 0" md-whiteframe="2" ng-cloak>
+    <div class="menu-container">
+        <ul class="menu-list">
+            <li ng-repeat="item in navigation_list | orderBy: 'sort'" class="list-item no-select" ng-class="{active: state.includes(item.state)}">
+                <a ui-sref="{{item.state}}">{{item.name}}</a>
+            </li>
+            <li class="list-item no-select"><a app-logout>Logout</a></li>
+        </ul>
+    </div>
+</div>
