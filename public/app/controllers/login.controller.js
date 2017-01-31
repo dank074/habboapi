@@ -1,18 +1,20 @@
 
 	define(['app'], function(app)
 	{
-		function LoginController($scope, $state, AuthenticationFactory, Utilities)
+		function LoginController($scope, $state, Authenticator, Utilities)
 		{
+			$scope.site_name = 'HabboAPI';
+			
 			$scope.login = function(data)
 			{
-				AuthenticationFactory.login({
+				Authenticator.login({
 					user_name: data.user_name,
 					user_pass: data.user_pass
 				})
 
 				.then(function(session)
 				{
-					return $state.go('me');
+					$state.go('app.dashboard');
 				})
 
 				.catch(function(err)
@@ -21,12 +23,19 @@
 						textContent: 'That login was invalid'
 					});
 
-					return $scope.login_details = null;
+					return $scope.clear_login();
 				});
+			};
+
+			$scope.clear_login = function()
+			{
+				$scope.login_details.user_name = null;
+				$scope.login_details.user_pass = null;	
+				return;
 			};
 		}
 
-		LoginController.inject = ['$scope', '$state', 'AuthenticationFactory', 'Utilities'];
+		LoginController.inject = ['$scope', '$state', 'Authenticator', 'Utilities'];
 
 		app.controller('LoginController', LoginController)
 	});

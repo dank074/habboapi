@@ -1,7 +1,7 @@
 
 	define(['app'], function(app)
 	{
-		function LogoutDirective($state, AuthenticationFactory, Utilities)
+		function LogoutDirective($state, Authenticator, Utilities)
 		{
 			return {
 				restrict: 'A',
@@ -16,7 +16,7 @@
 
 						.then(function()
 						{
-							return AuthenticationFactory.logout();
+							return Authenticator.logout();
 						})
 
 						.then(function()
@@ -29,7 +29,7 @@
 			}
         };
 
-		LogoutDirective.inject = ['$state', 'AuthenticationFactory', 'Utilities'];
+		LogoutDirective.inject = ['$state', 'Authenticator', 'Utilities'];
 
 		app.directive('appLogout', LogoutDirective);
 	});

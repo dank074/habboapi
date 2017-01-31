@@ -1,1 +1,1 @@
-# habboapi-cms
+# habboapi

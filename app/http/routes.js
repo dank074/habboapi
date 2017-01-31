@@ -5,7 +5,7 @@
 	{
 		app.get('/', function(req, res, next)
 		{
-			return res.render('global', {title: 'HabboAPI'});
+			return res.render('global');
 		});
 
 		glob.sync(__base + '/app/http/services/*.js').forEach(function(file)
@@ -15,6 +15,6 @@
 
 		glob.sync(__base + '/app/http/controllers/*.js').forEach(function(file)
 		{
-			require(file)(app, require(__base + '/app/http/middleware'));
+			require(file)(app, passport, require(__base + '/app/http/middleware'));
 		});
 	};

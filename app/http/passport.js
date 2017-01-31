@@ -1,6 +1,6 @@
 
-	var LocalStrategy	        = require('passport-local').Strategy,
-        AuthenticationService	= require(__base + '/app/services/authentication.service');
+	var LocalStrategy   = require('passport-local').Strategy,
+        Authentication	= require(__base + '/app/authentication/authentication');
 
 	module.exports = function(app, passport)
     {
@@ -22,7 +22,7 @@
         
         function(req, user_name, user_pass, done)
         {
-            AuthenticationService.login(req, user_name, user_pass)
+            Authentication.login(req, user_name, user_pass)
 
             .then(function(session)
             {

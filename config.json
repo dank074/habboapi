@@ -13,7 +13,17 @@
 			"port": 3306,
 			"user": "root",
 			"password": "",
-			"database": ""
+			"database": "hotel"
 		}
-    }
+    },
+	"new_user": {
+		"rank": 1,
+		"figure": "hr-115-42.hd-190-1.ch-215-62.lg-285-91.sh-290-62",
+		"gender": "M",
+		"motto": "Welcome to ",
+		"credits": 2000,
+		"pixels": 1000,
+		"points": 3,
+		"home_room": 1
+	}
 }

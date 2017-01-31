@@ -1,0 +1,47 @@
+<div class="app" layout="row" flex>
+	<md-sidenav class="app-sidebar" layout="column" md-is-locked-open="$mdMedia('gt-sm')" md-component-id="left">
+		<span class="no-select sidebar-logo">{{site_name}}</span>
+		<div class="sidebar-user">
+			<md-fab-toolbar md-open="user_menu.is_open" md-direction="right">
+				<md-fab-trigger>
+					<md-button class="md-fab"><md-icon class="material-icons">account_circle</md-icon></md-button>
+				</md-fab-trigger>
+				<md-toolbar>
+					<md-fab-actions class="md-toolbar-tools">
+						<md-button class="md-fab md-raised md-mini" app-logout>
+							<md-icon class="material-icons">vpn_key</md-icon>
+						</md-button>
+					</md-fab-actions>
+				</md-toolbar>
+			</md-fab-toolbar>
+			<div class="sidebar-user-info">
+				<span class="no-select info-username">{{current_user.user_name}}</span><br />
+				<span class="no-select info-rank">{{current_user.user_rank|appRankName}}</span>
+			</div>
+		</div>
+		<div class="sidebar-navigation">
+			<ul class="navigation-list">
+				<li class="list-header no-select">Navigation</li>
+				<li ng-class="{active: state.includes('app.dashboard')}">
+					<a class="md-button" ui-sref="app.dashboard" md-ink-ripple ng-disabled="state.includes('app.dashboard')">Dashboard</a>
+				</li>
+				<li ng-class="{active: state.includes('app.log_logins')}">
+					<a class="md-button" ui-sref="app.log_logins" md-ink-ripple ng-disabled="state.includes('app.log_logins')">Logins Log</a>
+				</li>
+			</ul>
+		</div>
+	</md-sidenav>
+	<md-content class="app-container" layout="column" flex>
+		<md-toolbar class="app-header">
+			<div class="md-toolbar-tools">
+				<md-button class="md-icon-button" ng-click="toggle_navigation()" hide-gt-sm>
+					<md-icon class="material-icons">menu</md-icon>
+				</md-button>
+				<span class="no-select header-page-name">{{page_name}}</span>
+				<span flex></span>
+				<md-button class="md-icon-button"><md-icon class="material-icons">more_vert</md-icon></md-button>
+			</div>
+		</md-toolbar>
+		<div class="app-content" ui-view />
+	</md-content>
+</div>

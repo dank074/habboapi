@@ -6,15 +6,14 @@
 	require(
 	[
 		'app',
+		'factories/authenticator.factory',
+		'factories/permission.factory',
 		'factories/utilities.factory',
-		'factories/authentication.factory',
 		'controllers/login.controller',
-		'controllers/register.controller',
-		'controllers/me.controller',
+		'controllers/main.controller',
+		'controllers/dashboard.controller',
 		'directives/logout.directive',
-		'directives/check-username.directive',
-		'directives/check-email.directive',
-		'directives/menu-bar.directive'
+		'filters/rank_name.filter'
 	],
 	
 	function()
