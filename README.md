@@ -12,7 +12,7 @@ A content management system written in NodeJS with a AngularJS frontend. Designe
 1. NodeJS (v7.6.0)
 2. MySQL Server
 
-#### Packages
+#### Packages / Dependences
 
 1. Angular (with animate, aria, messages)
 2. Angular Material
@@ -28,3 +28,28 @@ A content management system written in NodeJS with a AngularJS frontend. Designe
 12. Passport (with passport-local)
 13. MySQL
 14. Regex
+
+**Required Dev Dependencies**
+
+1. Browserify (with browserify-ngannotate)
+2. Del
+3. Gulp (with angular-templatecache, sourcemaps, uglify)
+4. Vinyl Buffer (with source-stream)
+
+It is recommened that gulp is installed globally, try this:
+
+**npm install --global gulp-cli**
+
+#### Installation
+
+Import **habboapi.sql** to your MySQL database
+
+Use Command Prompt / Terminal to navigate to the directory in which you extracted HabboAPI CMS.
+
+Run **node install**
+
+Open config.json & src/config/app.constants.js and modify the keys to your desired settings.
+
+Run **gulp build** *i would like to note that on my system I for some reason have to run this function twice*
+
+Run **node app.js**
