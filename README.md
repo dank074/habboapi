@@ -42,14 +42,14 @@ It is recommened that gulp is installed globally, try this:
 
 #### Installation
 
-Import **habboapi.sql** to your MySQL database
+Import `habboapi.sql` to your MySQL database
 
 Use Command Prompt / Terminal to navigate to the directory in which you extracted HabboAPI CMS.
 
-Run **node install**
+Run `node install`
 
-Open config.json & src/config/app.constants.js and modify the keys to your desired settings.
+Open `config.json` & `src/config/app.constants.js` and modify the keys to your desired settings.
 
-Run **gulp build** *i would like to note that on my system I for some reason have to run this function twice*
+Run `gulp build` *i would like to note that on my system I for some reason have to run this function twice*
 
-Run **node app.js**
+Run `node app.js`
