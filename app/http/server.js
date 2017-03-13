@@ -9,8 +9,9 @@
     
     app.engine('html', require('ejs').renderFile);
 	app.set('view engine', 'html');
-	app.set('views', __base + '/public/app/views');
-	app.use(express.static(__base + '/public'));
+	app.set('views', __base + '/src/views');
+	app.use(express.static(__base + '/build'));
+	app.use('/assets', express.static(__base + '/assets'));
 	app.use(cookieParser());
 	app.use(bodyParser.urlencoded({ extended: true }));
 	app.use(bodyParser.json());
@@ -19,9 +20,9 @@
 	require(__base + '/app/http/passport')(app, passport);
 	require(__base + '/app/http/routes')(app, passport);
 
-	server.listen(HabboAPI.Config.port, function()
+	server.listen(HabboAPI.Config.port, HabboAPI.Config.ip, function()
 	{
-		console.log('HabboAPI Initialized! Listening on port: ' + HabboAPI.Config.port);
+		console.log('HabboAPI Initialized! ' + HabboAPI.Config.ip + ':' + HabboAPI.Config.port);
 	});
 
     module.exports = app;

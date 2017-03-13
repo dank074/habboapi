@@ -1,29 +1,21 @@
 
-	var Middleware  = {},
-        Session     = require(__base + '/app/authentication/session');
+	var Middleware  = {};
 
 	Middleware.is_authenticated = function(req, res, next)
 	{
-        if(req.user == undefined || null) return res.status(400).send({errors: true, error: 'invalid_session', session: null}).end();
+        if(req.user == undefined || null) return res.status(400).send({errors: true, error: 'invalid_session'}).end();
         
-        var user_id         = (req.user.user_id == undefined || null || typeof req.user.user_id != 'number') ? null : req.user.user_id,
-            user_name       = (req.user.user_name == undefined || null) ? null : req.user.user_name,
-            user_session    = (req.user.user_session == undefined || null) ? null : req.user.user_session;
-            
-        if(user_id == null || user_name == null || user_session == null) return res.status(401).send({errors: true, error: 'invalid_session', session: null}).end();
-
-        Session.validate_session(req, user_id, user_name, user_session)
+        return HabboAPI.Services.Session.validate_session(req.user.user_id, req.user.user_name, req.user.user_session, req.ip, req.headers['user-agent'])
         
-        .then(function(session)
+        .then(function resolve(session)
         {
-            next();
-            return null;
-        })
-
-        .catch(function(err)
+            return next();
+        },
+        
+        function reject(err)
         {
             if(req.isAuthenticated == true) req.logout();
-
+            
             return res.status(401).send({errors: true, error: err.message, session: null}).end();
         });
 	};

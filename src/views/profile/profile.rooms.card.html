@@ -1,0 +1,26 @@
+<md-card class="rooms-card no-select" ng-hide="rooms.length == 0">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2 class="no-select center">Rooms</h2>
+        </div>
+    </md-toolbar>
+    <md-card-content>
+        <ul class="room-list">
+			<li ng-repeat="room in rooms | orderBy: 'score' | limitTo: 5">
+				<a ui-sref="room({id: room.id})">
+					<div class="room-icon">
+						<div class="room-icon-aligner">
+							<img ng-src="{{$root.app_config.site_images.rooms}}/{{room.model}}.png" />
+						</div>
+					</div>
+                    <div class="room-name">{{room.name}}</div>
+				</a>
+			</li>
+		</ul>
+    </md-card-content>
+    <md-toolbar class="footer">
+        <div class="md-toolbar-tools center">
+            <md-button ng-click="showAll()">See All</md-button>
+        </div>
+    </md-toolbar>
+</md-card>

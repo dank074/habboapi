@@ -1,0 +1,452 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:500,400,300");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import url("angular-material.min.css");
+@import url("habbo-api.content.css");
+@import url("habbo-api.menu.css");
+@import url("habbo-api.cards.css");
+@import url("habbo-api.dialog.css");
+@import url("habbo-api.tables.css");
+@import url("habbo-api.header.css");
+
+	body.md-default-theme, html, body {
+		font-family: 'Roboto', sans-serif;
+		font-weight: 300;
+		background: #D6D6D6;
+	}
+	
+	[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+		display: none !important;
+	}
+	
+	.no-select {
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+
+	.app {
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+	}
+
+	/** /MAIN HEADER **/
+	/** LOGIN PAGE **/
+
+	md-card.login-card {
+		width: 100%;
+		height: 430px;
+		margin: 0 !important;
+		overflow: hidden;
+	}
+
+	md-card.login-card .left-side {
+		position: absolute;
+		width: 600px;
+		height: 430px;
+		background-color: #00AC77;
+		float: left;
+	}
+
+	md-card.login-card .left-side .left-overlay {
+		position: absolute;
+		width: 600px;
+		height: 430px;
+		background: rgba(0,0,0,0.2);
+	}
+
+	md-card.login-card .left-side .left-image {
+		position: absolute;
+		width: 465px;
+		height: 412px;
+		top: 18px;
+		left: 67.5px;
+		opacity: .25;
+		background: url("../images/login-image.png") no-repeat;
+		image-rendering: pixelated;
+		overflow: hidden;
+	}
+
+	md-card.login-card .left-side .left-content {
+		position: absolute;
+		padding: 60px 30px 0;
+	}
+
+	md-card.login-card .left-side .left-content .left-header {
+		margin-bottom: 5px;
+		font-weight: 300;
+		font-size: 35px;
+		color: #FFFFFF;
+	}
+
+	md-card.login-card .left-side .left-content .left-subheader {
+		margin-bottom: 20px;
+		font-weight: 400;
+		font-size: 15px;
+		color: #FFFFFF;
+	}
+
+	md-card.login-card .left-side .left-content .left-text {
+		font-weight: 300;
+		font-size: 16px;
+		color: #FFFFFF;
+	}
+
+	md-card.login-card .right-side {
+		position: absolute;
+		width: 360px;
+		height: 430px;
+		margin-left: 600px;
+		background-color: #FFFFFF;
+		float: left;
+	}
+
+	md-card.login-card .right-side .login-header {
+		height: 80px;
+		width: 100%;
+		padding: 20px 0 10px;
+		font-size: 30px;
+		font-weight: 400;
+		letter-spacing: 1px;
+		text-align: center;
+		text-transform: uppercase;
+		line-height: 80px;
+		color: rgba(0,0,0,.7);
+	}
+
+	md-card.login-card .right-side form.login-form {
+		padding: 0 30px;
+	}
+
+	md-card.login-card .right-side form.login-form button.clear-button {
+		margin: 0 auto;
+		width: 75px !important;
+		height: 60px !important;
+		float: left;
+	}
+
+	md-card.login-card .right-side form.login-form button.login-button {
+		width: 300px;
+		height: 60px;
+		margin: 0 0 10px;
+		line-height: 60px;
+		font-size: 16px;
+		float: right;
+	}
+
+	md-card.login-card .right-side form.login-form a.register-button {
+		width: 300px;
+		height: 60px;
+		width: 100%;
+		margin: 0 0 10px;
+		line-height: 60px;
+		font-size: 16px;
+	}
+
+	/** /LOGIN PAGE **/
+	/** REGISTER PAGE **/
+
+	md-card.register-card {
+		width: 100%;
+		height: 550px;
+		margin: 0 !important;
+		overflow: hidden;
+	}
+
+	md-card.register-card .left-side {
+		position: absolute;
+		width: 600px;
+		height: 550px;
+		background-color: #00AC77;
+		float: left;
+	}
+
+	md-card.register-card .left-side .left-overlay {
+		position: absolute;
+		width: 600px;
+		height: 550px;
+		background: rgba(0,0,0,0.2);
+	}
+
+	md-card.register-card .left-side .left-image {
+		position: absolute;
+		width: 465px;
+		height: 412px;
+		top: 138px;
+		left: 67.5px;
+		opacity: .25;
+		background: url("../images/login-image.png") no-repeat;
+		image-rendering: pixelated;
+		overflow: hidden;
+	}
+
+	md-card.register-card .left-side .left-content {
+		position: absolute;
+		padding: 60px 30px 0;
+	}
+
+	md-card.register-card .left-side .left-content .left-header {
+		margin-bottom: 5px;
+		font-weight: 300;
+		font-size: 35px;
+		color: #FFFFFF;
+	}
+
+	md-card.register-card .left-side .left-content .left-subheader {
+		margin-bottom: 20px;
+		font-weight: 400;
+		font-size: 15px;
+		color: #FFFFFF;
+	}
+
+	md-card.register-card .left-side .left-content .left-text {
+		font-weight: 300;
+		font-size: 16px;
+		color: #FFFFFF;
+	}
+
+	md-card.register-card .right-side {
+		position: absolute;
+		width: 360px;
+		height: 430px;
+		margin-left: 600px;
+		background-color: #FFFFFF;
+		float: left;
+	}
+
+	md-card.register-card .right-side .register-header {
+		height: 50px;
+		width: 100%;
+		padding: 20px 0 10px;
+		font-size: 30px;
+		font-weight: 400;
+		letter-spacing: 1px;
+		text-align: center;
+		text-transform: uppercase;
+		line-height: 50px;
+		color: rgba(0,0,0,.7);
+	}
+
+	md-card.register-card .right-side form.register-form {
+		padding: 0 30px;
+	}
+
+	md-card.register-card .right-side form.register-form button.clear-button {
+		margin: 0 auto;
+		width: 75px !important;
+		height: 60px !important;
+		float: left;
+	}
+
+	md-card.register-card .right-side form.register-form button.register-button {
+		width: 300px;
+		height: 60px;
+		margin: 0 0 10px;
+		line-height: 60px;
+		font-size: 16px;
+		float: right;
+	}
+
+	md-card.register-card .right-side form.register-form a.login-button {
+		width: 300px;
+		height: 60px;
+		width: 100%;
+		margin: 0 0 10px;
+		line-height: 60px;
+		font-size: 16px;
+	}
+
+	/** /REGISTER PAGE **/
+	/** ME PAGE **/
+
+	.me-page md-card.user-info {
+		height: 140px;
+		max-height: 140px;
+		background: #007498 url("../images/hotel-background.png") no-repeat center center;
+		overflow: hidden;
+	}
+
+	.me-page md-card.user-info md-card-content {
+		height: 100%;
+		background: rgba(0, 0, 0, .6);
+		color: #FFFFFF;
+	}
+
+	.me-page md-card.user-info md-card-content .info-image {
+		display: block;
+		position: absolute;
+		margin-top: -47px;
+		width: 125px;
+		height: 170px;
+		overflow: hidden;
+	}
+
+	.me-page md-card.user-info md-card-content span.info-username {
+		margin-left: 130px;
+		font-size: 22px;
+		font-weight: 400;
+		color: #FFFFFF;
+	}
+
+	.me-page md-card.user-info md-card-content span.info-motto {
+		margin-left: 130px;
+		font-size: 14px;
+		font-weight: 400;
+		color: #FFFFFF;
+	}
+
+	.me-page md-card.user-info md-card-content span.info-last-login {
+		margin-left: 130px;
+		font-size: 14px;
+		font-weight: 400;
+		color: #FFFFFF;
+	}
+
+	.me-page md-card.user-info md-card-content span.info-credits {
+		margin-left: 130px;
+		font-size: 16px;
+		font-weight: 400;
+		font-style: bold;
+		color: #FFFFFF;
+	}
+
+	.me-page md-card.user-info md-card-content span.info-credits .material-icons {
+		line-height: 21px;
+		color: #FFFFFF;
+	}
+
+	/** /ME PAGE **/
+	/** PROFILE PAGE **/
+
+	/* ROOMS */
+
+	.profile-page md-card.profile-rooms md-card-content md-list md-list-item .md-list-item-text {
+		margin-left: 10px;
+	}
+
+	.profile-page md-card.profile-rooms md-card-content md-list md-list-item._md-button-wrap>.md-button {
+		padding: 5px 16px !important;
+	}
+
+	/* GROUPS */
+
+	.profile-page md-card.profile-groups md-card-content {
+		height: 100%;
+		display: flex;
+  		justify-content: center;
+  		align-items: center;
+	}
+
+	.profile-page md-card.profile-groups md-card-content ul.profile-group-list {
+		width: 100%;
+		padding: 20px 0;
+		margin: 0;
+		list-style: none;
+		display: flex;
+  		justify-content: center;
+  		align-items: center;
+	}
+
+	.profile-page md-card.profile-groups md-card-content ul.profile-group-list li {
+		float: left;
+		width: 15%;
+		margin: 0 5px 0 0;
+	}
+
+	.profile-page md-card.profile-groups md-card-content ul.profile-group-list li a {
+		cursor: pointer;
+		color: #FFFFFF;
+		outline: 0;
+		text-decoration: none;
+	}
+
+	.profile-page md-card.profile-groups md-card-content ul.profile-group-list li a .badge-icon {
+		margin: 0 auto;
+	}
+
+	.profile-page md-card.profile-groups md-card-content ul.profile-group-list li a .group-name {
+		display: block;
+    	overflow: hidden;
+    	text-overflow: ellipsis;
+    	white-space: normal;
+    	color: #000000;
+    	padding: 0 6px;
+    	text-align: center;
+    	margin: 15px 0 0;
+		font-weight: 300;
+		font-size: 14px;
+	}
+
+	/** /PROFILE PAGE **/
+	/** GROUP PAGE **/
+
+	.group-page md-card.group-members md-card-content md-list md-list-item .md-list-item-text {
+		margin-left: 20px;
+	}
+
+	.group-page md-card.group-members md-card-content md-list md-list-item._md-button-wrap>.md-button {
+		padding: 5px 16px !important;
+	}
+
+	/** /GROUP PAGE **/
+	/** BADGE ICON **/
+
+	.badge-icon, .room-icon {
+    	display: flex;
+    	margin: 0 auto;
+    	justify-content: center;
+    	align-items: center;
+	}
+
+	.badge-icon-aligner, .room-icon-aligner {
+		align-items: center;
+    	border: 3px solid #000000;
+		background-color: #0B6395;
+    	border-radius: 50%;
+    	display: -ms-flexbox;
+    	display: flex;
+    	height: 60px;
+    	-ms-flex-pack: center;
+    	justify-content: center;
+    	width: 60px;
+	}
+
+	.room-icon-aligner {
+		border: 0 !important;
+		background-color: transparent !important;
+	}
+
+	.badge-icon-aligner img, .room-icon-aligner img {
+    	-ms-interpolation-mode: bicubic;
+    	image-rendering: pixelated;
+	}
+
+	/** /BADGE ICON **/
+	/** AVATAR **/
+
+	.user-avatar {
+		width: 64px;
+		height: 110px;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	a.user-avatar {
+		display: block;
+	}
+
+	.user-avatar.bottom-padding {
+		padding-bottom: 15px;
+	}
+
+	.user-avatar img {
+		width: 64px;
+		height: 110px;
+		image-rendering: pixelated;
+	}
+
+	/** /AVATAR **/

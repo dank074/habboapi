@@ -1,0 +1,79 @@
+.app .app-content {
+    position: absolute;
+    width: 100%;
+    margin-top: 120px;
+    z-index: 1;
+}
+
+.app.page-content .app-content {
+    margin-top: 160px !important;
+}
+
+.app.page-client .app-content {
+    margin-top: 40px !important;
+    height: calc(100% - 40px);
+}
+
+.app .app-content .content-container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.app.page-content .app-content .content-container {
+    padding-top: 20px;
+}
+
+.app.page-client .app-content .content-container {
+    display: none;
+}
+
+.app .app-content .client-container {
+    width: 0;
+    height: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+.app.page-client .app-content .client-container {
+    height: 100% !important;
+    min-height: 100% !important;
+    max-height: 100% !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+}
+
+.app .app-content .client-container object {
+    visibility: hidden;
+}
+
+.app.page-client .app-content .client-container object {
+    visibility: visible;
+}
+
+.app .app-content .content-footer {
+    height: 40px;
+    max-width: 960px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 14px;
+    line-height: 40px;
+    font-weight: 400;
+    color: rgba(0,0,0,.5);
+}
+
+.app.page-client .app-content .content-footer {
+    display: none;
+}
+
+.app .app-content .content-container[ui-view].ng-enter {
+    transition: .5s;
+    opacity: 0;
+}
+
+.app .app-content .content-container[ui-view].ng-enter-active {
+    opacity: 1;
+}

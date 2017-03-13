@@ -1,0 +1,13 @@
+<div class="profile-page">
+	<div layout="row" layout-xs="column">
+		<user-info-card userid="profile.profile_info.id" userinfo="profile_info" flex="100" flex-xs="100"></user-info-card>
+	</div>
+	<div layout="row" layout-xs="column">
+		<profile-badges flex="50" flex-xs="100" badges="profile_info.badges"></profile-badges>
+		<profile-friends flex="50" flex-xs="100" friends="profile_info.friends"></profile-friends>
+	</div>
+	<div layout="row" layout-xs="column">
+		<profile-rooms flex="50" flex-xs="100" rooms="profile_info.rooms"></profile-rooms>
+		<profile-groups flex="50" flex-xs="100" groups="profile_info.group_memberships"></profile-groups>
+	</div>
+</div>

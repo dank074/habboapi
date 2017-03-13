@@ -1,0 +1,51 @@
+<div class="settings-page">
+	<div layout="row" layout-xs="column">
+		<div layout="column" flex="70" flex-xs="100">
+			<md-card>
+				<md-toolbar>
+					<div class="md-toolbar-tools">
+						<h2 class="no-select">Latest User</h2>
+					</div>
+				</md-toolbar>
+				<md-card-content class="no-padding">
+					<user-info-card style="margin:0;" userid="community_info.latest_user.id" userinfo="community_info.latest_user"></user-info-card>
+				</md-card-content>
+			</md-card>
+		</div>
+		<div layout="column" flex="30" flex-xs="100">
+			<md-card>
+				<md-toolbar>
+					<div class="md-toolbar-tools">
+						<h2 class="no-select center">Latest Statistics</h2>
+					</div>
+				</md-toolbar>
+				<md-card-content class="no-padding">
+					<table class="table table-striped">
+						<tbody>
+							<tr>
+								<th>Furniture</th>
+								<td ng-bind="community_info.statistics.total_items"></td>
+							</tr>
+							<tr>
+								<th>Rooms</th>
+								<td ng-bind="community_info.statistics.total_rooms"></td>
+							</tr>
+							<tr>
+								<th>Users</th>
+								<td ng-bind="community_info.statistics.total_users"></td>
+							</tr>
+							<tr>
+								<th>Groups</th>
+								<td ng-bind="community_info.statistics.total_groups"></td>
+							</tr>
+							<tr>
+								<th>Pets</th>
+								<td ng-bind="community_info.statistics.total_pets"></td>
+							</tr>
+						</tbody>
+					</table>
+				</md-card-content>
+			</md-card>
+		</div>
+	</div>
+</div>

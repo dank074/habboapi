@@ -1,5 +1,9 @@
+var knex		= require('knex'),
+	bookshelf	= require('bookshelf');
 
-	var knex		= require('knex')(HabboAPI.Config.database),
-		bookshelf	= require('bookshelf')(knex);
+const ORM = bookshelf(knex(HabboAPI.Config.database));
+
+ORM.plugin('registry');
+ORM.plugin('pagination');
 		
-	module.exports = bookshelf;
+module.exports = ORM;

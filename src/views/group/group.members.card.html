@@ -1,0 +1,24 @@
+<md-card class="members-card no-select" ng-hide="members.length == 0">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2 class="no-select center">Members</h2>
+        </div>
+    </md-toolbar>
+    <md-card-content>
+        <ul class="member-list">
+            <li ng-repeat="member in members | orderBy: 'member_since' | limitTo: 6">
+                <a ui-sref="profile({username: member.user.username})">
+                    <div class="user-avatar">
+                        <img ng-src="{{$root.app_config.site_images.avatars}}{{member.user.look}}&amp;direction=3&amp;head_direction=3&amp;action=stf&amp;size=n&amp;gesture=std" />
+                    </div>
+                    <div class="user-name">{{member.user.username}}</div>
+                </a>
+            </li>
+        </ul>
+    </md-card-content>
+    <md-toolbar class="footer">
+        <div class="md-toolbar-tools center">
+            <md-button ng-click="showAll()">See All</md-button>
+        </div>
+    </md-toolbar>
+</md-card>

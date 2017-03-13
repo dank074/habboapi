@@ -1,6 +1,5 @@
 
-	var LocalStrategy   = require('passport-local').Strategy,
-        Authentication	= require(__base + '/app/authentication/authentication');
+	var LocalStrategy   = require('passport-local').Strategy;
 
 	module.exports = function(app, passport)
     {
@@ -11,7 +10,19 @@
         
         passport.deserializeUser(function(user, done)
         {
-            return done(null, user);
+            return HabboAPI.Services.User.user_info(user.user_id)
+
+            .then(function resolve(user_info)
+            {
+                user.user_info = user_info;
+
+                return done(null, user);
+            },
+
+            function reject(err)
+            {
+                return done(null, false);
+            });
         });
         
         passport.use('login', new LocalStrategy({
@@ -22,9 +33,9 @@
         
         function(req, user_name, user_pass, done)
         {
-            Authentication.login(req, user_name, user_pass)
+            return HabboAPI.Services.Authentication.login(user_name, user_pass, req.ip, req.headers['user-agent'])
 
-            .then(function(session)
+            .then(function resolve(session)
             {
                 if(session == null) return done(null, false);
 
@@ -33,9 +44,9 @@
                     user_name: session.user_name,
                     user_session: session.user_session
                 });
-            })
-
-            .catch(function(err)
+            },
+            
+            function reject(err)
             {
                 return done(null, false);
             });

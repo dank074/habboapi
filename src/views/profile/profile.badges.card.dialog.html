@@ -1,0 +1,28 @@
+<md-dialog class="no-select">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Badges</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="hide()">
+                <md-icon>close</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <div class="md-dialog-content">
+            <md-list flex>
+                <md-list-item class="md-2-line" ng-repeat="badge in badges | orderBy: '-slot_id'">
+                    <div class="badge-icon">
+                        <div class="badge-icon-aligner">
+                            <img ng-src="{{$root.app_config.site_images.badges}}/{{badge.badge_code}}.gif" />
+                        </div>
+                    </div>
+                    <div class="md-list-item-text" layout="column">
+                        <h3>{{badge.badge_code}}</h3>
+                        <p>{{badge.badge_code}}</p>
+                    </div>
+                </md-list-item>
+            </md-list>
+        </div>
+    </md-dialog-content>
+</md-dialog>

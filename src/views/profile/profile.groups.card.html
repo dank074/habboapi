@@ -1,0 +1,26 @@
+<md-card class="groups-card no-select" ng-hide="groups.length == 0">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2 class="no-select center">Groups</h2>
+        </div>
+    </md-toolbar>
+    <md-card-content>
+        <ul class="group-list">
+            <li ng-repeat="group in groups | orderBy: 'member_since' | limitTo: 5">
+                <a ui-sref="group({id: group.group.id})">
+                    <div class="group-icon">
+                        <div class="badge-icon-aligner">
+                            <img ng-src="{{$root.app_config.site_images.group_badges}}/{{group.group.badge}}.gif" />
+                        </div>
+                    </div>
+                    <div class="group-name">{{group.group.name}}</div>
+                </a>
+            </li>
+        </ul>
+    </md-card-content>
+    <md-toolbar class="footer">
+        <div class="md-toolbar-tools center">
+            <md-button ng-click="showAll()">See All</md-button>
+        </div>
+    </md-toolbar>
+</md-card>

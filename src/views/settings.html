@@ -1,0 +1,124 @@
+<div class="settings-page">
+	<div layout="row" layout-xs="column">
+		<div layout="column" flex="auto" flex-xs="100">
+			<md-card>
+				<md-toolbar>
+					<div class="md-toolbar-tools">
+						<h2 class="no-select center">{{current_user.user_info.username}}</h2>
+					</div>
+				</md-toolbar>
+				<md-card-content class="no-padding scroll-overflow">
+					<a class="user-avatar bottom-padding" ui-sref="profile({username: current_user.user_info.username})">
+						<img ng-src="{{$root.app_config.site_images.avatars}}{{current_user.user_info.look}}&amp;direction=3&amp;head_direction=3&amp;action=stf&amp;size=n&amp;gesture=std" />
+					</a>
+					<table class="table table-striped">
+						<tbody>
+							<tr>
+								<th>Created</th>
+								<td ng-bind="current_user.user_info.account_created * 1000 | date:'mediumDate'"></td>
+							</tr>
+							<tr>
+								<th>Rank</th>
+								<td ng-bind="current_user.user_info.rank | rankName"></td>
+							</tr>
+							<tr>
+								<th>Email</th>
+								<td ng-bind="current_user.user_info.mail"></td>
+							</tr>
+							<tr>
+								<th>Credits</th>
+								<td ng-bind="current_user.user_info.credits"></td>
+							</tr>
+							<tr>
+								<th>Pixels</th>
+								<td ng-bind="current_user.user_info.pixels"></td>
+							</tr>
+							<tr>
+								<th>Diamonds</th>
+								<td ng-bind="current_user.user_info.points"></td>
+							</tr>
+						</tbody>
+					</table>
+				</md-card-content>
+			</md-card>
+		</div>
+		<div layout="column" flex="70" flex-xs="100">
+			<md-card>
+				<md-card-content class="no-padding">
+					<md-tabs md-dynamic-height md-border-bottom>
+						<md-tab label="password">
+							<md-content class="md-padding">
+								<form name="password_form" ng-submit="update_password()" validate>
+									<md-input-container md-no-float class="md-block">
+										<input type="password" name="new_password" ng-model="password_details.new_password" placeholder="New Password" required />
+										<ng-messages for="password_form.new_password.$error" include="messages.html" />
+									</md-input-container>
+									<md-input-container md-no-float class="md-block">
+										<input type="password" name="new_cpassword" ng-model="password_details.new_cpassword" placeholder="Confirm Password" required />
+										<ng-messages for="password_form.new_cpassword.$error" include="messages.html" />
+									</md-input-container>
+									<md-input-container md-no-float class="md-block">
+										<input type="password" name="password" ng-model="password_details.password" placeholder="Current Password" required />
+										<ng-messages for="password_form.password.$error" include="messages.html" />
+									</md-input-container>
+									<md-button type="submit" class="md-raised md-primary" ng-disabled="(password_form.$invalid) || (password_details.new_password != password_details.new_cpassword)">Save</md-button>
+								</form>
+							</md-content>
+						</md-tab>
+						<md-tab label="email">
+							<md-content class="md-padding">
+								<form name="email_form" ng-submit="update_email()" validate>
+									<md-input-container md-no-float class="md-block">
+										<input type="email" name="new_email" ng-model="email_details.new_email" placeholder="New Email" required check-email />
+										<ng-messages for="email_form.new_email.$error" include="messages.html" />
+									</md-input-container>
+									<md-input-container md-no-float class="md-block">
+										<input type="email" name="new_cemail" ng-model="email_details.new_cemail" placeholder="Confirm Email" required />
+										<ng-messages for="email_form.new_cemail.$error" include="messages.html" />
+									</md-input-container>
+									<md-input-container md-no-float class="md-block">
+										<input type="password" name="password" ng-model="email_details.password" placeholder="Password" required />
+										<ng-messages for="email_form.password.$error" include="messages.html" />
+									</md-input-container>
+									<md-button type="submit" class="md-raised md-primary" ng-disabled="(email_form.$invalid) || (email_details.new_email != email_details.new_cemail)">Save</md-button>
+								</form>
+							</md-content>
+						</md-tab>
+						<md-tab label="client">
+							<md-content class="md-padding">
+								<form name="client_form" ng-submit="update_client()" novalidate>
+									<md-list>
+										<md-list-item>
+											<p>Block Following</p>
+											<md-switch class="md-secondary" name="block_following" ng-model="current_user.user_info.settings.block_following" ng-change="update_client()"></md-switch>
+										</md-list-item>
+										<md-list-item>
+											<p>Block Friend Requests</p>
+											<md-switch class="md-secondary" name="block_friendrequests" ng-model="current_user.user_info.settings.block_friendrequests" ng-change="update_client()"></md-switch>
+										</md-list-item>
+										<md-list-item>
+											<p>Block Room Invites</p>
+											<md-switch class="md-secondary" name="block_roominvites" ng-model="current_user.user_info.settings.block_roominvites" ng-change="update_client()"></md-switch>
+										</md-list-item>
+										<md-list-item>
+											<p>Old Chat</p>
+											<md-switch class="md-secondary" name="old_chat" ng-model="current_user.user_info.settings.old_chat" ng-change="update_client()"></md-switch>
+										</md-list-item>
+										<md-list-item>
+											<p>Ignore Bots</p>
+											<md-switch class="md-secondary" name="ignore_bots" ng-model="current_user.user_info.settings.ignore_bots" ng-change="update_client()"></md-switch>
+										</md-list-item>
+										<md-list-item>
+											<p>Ignore Pets</p>
+											<md-switch class="md-secondary" name="ignore_pets" ng-model="current_user.user_info.settings.ignore_pets" ng-change="update_client()"></md-switch>
+										</md-list-item>
+									</md-list>
+								</form>
+							</md-content>
+						</md-tab>
+					</md-tabs>
+				</md-card-content>
+			</md-card>
+		</div>
+	</div>
+</div>

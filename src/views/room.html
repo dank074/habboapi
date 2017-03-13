@@ -1,0 +1,69 @@
+<div class="room-page no-select">
+	<div layout="row" layout-xs="column">
+		<div layout="column" flex="70" flex-xs="100">
+			<md-card>
+				<md-card-title>
+					<div class="room-icon">
+						<div class="room-icon-aligner">
+							<img ng-src="{{app_config.site_images.rooms}}/{{room_info.model}}.png" />
+						</div>
+					</div>
+					<md-card-title-text>
+						<span class="md-headline">{{room_info.name}}</span>
+						<span class="md-subhead description">{{room_info.description}}</span>
+					</md-card-title-text>
+					<a class="group-room" ng-hide="room_info.guild_id == 0" ui-sref="group({id: room_info.group.id})">
+						<div class="badge-icon">
+							<div class="badge-icon-aligner">
+								<img ng-src="{{app_config.site_images.group_badges}}/{{room_info.group.badge}}.gif" />
+							</div>
+						</div>
+					</a>
+				</md-card-title>
+			</md-card>
+			<user-info-card userid="room_info.owner.id" userinfo="room_info.owner"></user-info-card>
+		</div>
+		<div layout="column" flex="30" flex-xs="100">
+			<md-card>
+				<md-toolbar>
+					<div class="md-toolbar-tools">
+						<h2 class="no-select center">Details</h2>
+					</div>
+				</md-toolbar>
+				<md-card-content class="no-padding">
+					<table class="table table-striped">
+						<tbody>
+							<tr>
+								<th>Type</th>
+								<td ng-if="room_info.is_public == 1">Public</td>
+								<td ng-if="room_info.is_public == 0">Private</td>
+							</tr>
+							<tr>
+								<th>State</th>
+								<td ng-if="room_info.state == 'open'">Open</td>
+								<td ng-if="room_info.state == 'locked'">Locked</td>
+								<td ng-if="room_info.state == 'password'">Password</td>
+							</tr>
+							<tr>
+								<th>Owner</th>
+								<td ng-bind="room_info.owner.username"></td>
+							</tr>
+							<tr>
+								<th>Score</th>
+								<td ng-bind="room_info.score"></td>
+							</tr>
+							<tr>
+								<th>Users Now</th>
+								<td ng-bind="room_info.users"></td>
+							</tr>
+							<tr>
+								<th>Max Users</th>
+								<td ng-bind="room_info.users_max"></td>
+							</tr>
+						</tbody>
+					</table>
+				</md-card-content>
+			</md-card>
+		</div>
+	</div>
+</div>

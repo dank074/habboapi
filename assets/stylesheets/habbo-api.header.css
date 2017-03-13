@@ -1,0 +1,37 @@
+.app .app-header {
+    position: fixed;
+    width: 100%;
+    height: 120px;
+    background: #D6D6D6;
+    z-index: 2;
+}
+
+.app.page-client .app-header {
+    display: none;
+}
+
+.app .app-header .header-container {
+    width: 960px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.app .app-header .header-container .header-logo {
+    position: fixed;
+    width: 228px;
+    height: 64px;
+    margin: 28px 0 28px 50px;
+    image-rendering: pixelated;
+    background: url("../images/habfuse-logo.png") no-repeat;
+    z-index: 4;
+}
+
+.app .app-header .header-container .header-image {
+    position: fixed;
+    width: 465px;
+    height: 120px;
+    margin-left: 500px;
+    image-rendering: pixelated;
+    background: url("../images/login-image.png") no-repeat 0 -160px;
+    z-index: 3;
+}

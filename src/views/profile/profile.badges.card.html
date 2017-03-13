@@ -1,0 +1,25 @@
+<md-card class="badges-card no-select" ng-hide="badges.length == 0">
+    <md-toolbar>
+		<div class="md-toolbar-tools">
+			<h2 class="no-select center">Badges</h2>
+		</div>
+	</md-toolbar>
+	<md-card-content>
+		<ul class="badge-list">
+			<li ng-repeat="badge in badges | orderBy: '-slot_id' | limitTo: 5">
+				<a>
+					<div class="badge-icon">
+						<div class="badge-icon-aligner">
+							<img ng-src="{{$root.app_config.site_images.badges}}/{{badge.badge_code}}.gif" />
+						</div>
+					</div>
+				</a>
+			</li>
+		</ul>
+	</md-card-content>
+	<md-toolbar class="footer">
+		<div class="md-toolbar-tools center">
+			<md-button ng-click="showAll()">See All</md-button>
+		</div>
+	</md-toolbar>
+</md-card>
