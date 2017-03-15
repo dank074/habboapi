@@ -1,4 +1,4 @@
-angular.module('app').controller('ClientController', function(AppConstants, SessionService, $window, $mdDialog, $state, $scope)
+angular.module('app').controller('ClientController', function(AppConstants, SessionService, $window, $stickyState, $mdDialog, $state, $scope)
 {
     $window.HabboFlashClient = {
         started: !1,

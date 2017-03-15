@@ -1,46 +1,59 @@
-var gulp 			= require('gulp'),
-    del 			= require('del'),
-    sourcemaps		= require('gulp-sourcemaps'),
-	templateCache 	= require('gulp-angular-templatecache'),
-    browserify		= require('browserify'),
-    source			= require('vinyl-source-stream'),
-    buffer 			= require('vinyl-buffer'),
-    uglify 			= require('gulp-uglify'),
-    gutil 			= require('gulp-util'),
-    ngAnnotate 		= require('browserify-ngannotate');
+var gulp          = require('gulp');
+var notify        = require('gulp-notify');
+var source        = require('vinyl-source-stream');
+var browserify    = require('browserify');
+var babelify      = require('babelify');
+var ngAnnotate    = require('browserify-ngannotate');
+var browserSync   = require('browser-sync').create();
+var rename        = require('gulp-rename');
+var templateCache = require('gulp-angular-templatecache');
+var uglify        = require('gulp-uglify');
+var merge         = require('merge-stream');
 
-gulp.task('clean', function(cb)
+gulp.task('browserify', ['views'], function()
 {
-    return del(['./build'], cb);
+    return browserify('./src/app.js')
+        .transform(babelify, {presets: ["es2015"]})
+        .transform(ngAnnotate)
+        .bundle()
+        .pipe(source('bundle.js'))
+        .pipe(gulp.dest('./build/'));
 });
 
-gulp.task('views', ['clean'], function()
+gulp.task('html', function()
+{
+    return gulp.src('src/views/index.html')
+        .pipe(gulp.dest('./build/'));
+});
+
+gulp.task('views', function()
 {
     return gulp.src(['./src/views/*.html', './src/views/**/*.html'])
         .pipe(templateCache('app.template-cache.js', { module: 'app.templates', standalone: true }))
-        .pipe(gulp.dest('./src/config'));
+        .pipe(gulp.dest('./src/config/'));
 });
 
-gulp.task('scripts', ['clean'], function()
+gulp.task('build', ['html', 'browserify'], function()
 {
-    var scripts = browserify({
-        entries: './src/app.js',
-        paths: ['./src/**/*'],
-        transform: [ngAnnotate]
+    var html    = gulp.src('build/index.html').pipe(gulp.dest('./dist/')),
+        js      = gulp.src("build/bundle.js").pipe(uglify()).pipe(gulp.dest('./dist/'));
+    
+    return merge(html, js);
+});
+
+gulp.task('default', ['html', 'browserify'], function()
+{
+    browserSync.init(['./build/**/**.**'],
+    {
+        server: './build',
+        port: 4000,
+        notify: false,
+        ui: {
+            port: 4001
+        }
     });
-
-    return scripts.bundle()
-        .pipe(source('bundle.js'))
-        .pipe(buffer())
-        .pipe(sourcemaps.init({loadMaps: true}))
-        .pipe(uglify())
-        .on('error', gutil.log)
-        .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest('./build'));
-});
-
-gulp.task('build', ['views', 'scripts'], function()
-{
-    return gulp.src('./src/views/index.html')
-        .pipe(gulp.dest('./build/'));
+    
+    gulp.watch('src/index.html', ['html']);
+    gulp.watch(['./src/views/*.html', './src/views/**/*.html'], ['views']);
+    gulp.watch('./src/js/**/*.js', ['browserify']);
 });
