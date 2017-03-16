@@ -19,4 +19,4 @@ class UserAchievements extends Adapter.Model
 	}
 }
 
-export default UserAchievements;
+export default Adapter.model('UserAchievements', UserAchievements);

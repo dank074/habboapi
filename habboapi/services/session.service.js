@@ -2,7 +2,7 @@ import ApiSession from '../database/models/api/session';
 
 class SessionService
 {
-	create_session(user_id, user_name, user_ip, user_agent)
+	static create_session(user_id, user_name, user_ip, user_agent)
 	{
 		return new Promise((resolve, reject) =>
 		{
@@ -37,7 +37,7 @@ class SessionService
 		});
 	}
 
-	validate_session(user_id, user_name, user_session, user_ip, user_agent)
+	static validate_session(user_id, user_name, user_session, user_ip, user_agent)
 	{
 		return new Promise((resolve, reject) =>
 		{
@@ -72,7 +72,7 @@ class SessionService
 		});
 	}
 
-	destroy_session(user_id)
+	static destroy_session(user_id)
 	{
 		user_id = (user_id == null || user_id == 0 || typeof user_id != 'number') ? null : user_id;
 

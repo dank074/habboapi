@@ -9,7 +9,7 @@
             <md-card-content>
                 <ul class="user-list">
                     <li ng-repeat="user in rank.users">
-                        <a ui-sref="profile({username: member.user.username})">
+                        <a ui-sref="profile({username: user.username})">
                             <div class="user-avatar">
                                 <img ng-src="{{$root.app_config.site_images.avatars}}{{user.look}}&amp;direction=3&amp;head_direction=3&amp;action=stf&amp;size=n&amp;gesture=std" />
                             </div>

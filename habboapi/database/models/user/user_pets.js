@@ -25,4 +25,4 @@ class UserPets extends Adapter.Model
     }
 }
 
-export default UserPets;
+export default Adapter.model('UserPets', UserPets);

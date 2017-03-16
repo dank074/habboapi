@@ -19,4 +19,4 @@ class UserSettings extends Adapter.Model
 	}
 }
 
-export default UserSettings;
+export default Adapter.model('UserSettings', UserSettings);

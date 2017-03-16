@@ -8,7 +8,7 @@ import Permission from '../database/models/permission/permission';
 
 class CommunityController
 {
-    community_info()
+    static community_info()
     {
         return new Promise((resolve, reject) =>
 		{
@@ -44,7 +44,7 @@ class CommunityController
 		});
     }
 
-    latest_user()
+    static latest_user()
     {
         return new Promise((resolve, reject) =>
         {
@@ -68,7 +68,7 @@ class CommunityController
         });
     }
 
-    statistics()
+    static statistics()
     {
         return new Promise((resolve, reject) =>
 		{
@@ -118,7 +118,7 @@ class CommunityController
 		});
     }
 
-    staff_users()
+    static staff_users()
     {
         return new Promise((resolve, reject) =>
         {
@@ -137,7 +137,7 @@ class CommunityController
             {
                 if(result == null) return reject(new Error('no_staff'));
 
-                return resolve(ranks);
+                return resolve(result);
             })
 
             .catch((err) =>
@@ -147,7 +147,7 @@ class CommunityController
         });
     }
 
-    room_promotions()
+    static room_promotions()
     {
         return new Promise((resolve, reject) =>
         {

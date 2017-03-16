@@ -5,7 +5,7 @@ import SessionService from './session.service';
 
 class AuthenticationService
 {
-    login(user_name, user_pass, user_ip, user_agent)
+    static login(user_name, user_pass, user_ip, user_agent)
     {
         return new Promise((resolve, reject) =>
         {
@@ -24,7 +24,7 @@ class AuthenticationService
                     return reject(new Error('invalid_login'));
                 });
 
-                user_info = result.toJSON();
+                let user_info = result.toJSON();
                 
                 if(bcrypt.compareSync(user_pass, user_info.password) == false) return this.log_login(user_info.id, user_info.username, user_ip, user_agent, false)
                 
@@ -67,7 +67,7 @@ class AuthenticationService
         });
     }
 
-    log_login(user_id, user_name, user_ip, user_agent, login_status)
+    static log_login(user_id, user_name, user_ip, user_agent, login_status)
     {
         return new Promise((resolve, reject) =>
         {

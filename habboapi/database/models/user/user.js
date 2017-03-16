@@ -81,4 +81,4 @@ class User extends Adapter.Model
 	}
 }
 
-export default User;
+export default Adapter.model('User', User);

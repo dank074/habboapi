@@ -19,4 +19,4 @@ class UserClothing extends Adapter.Model
 	}
 }
 
-export default UserClothing;
+export default Adapter.model('UserClothing', UserClothing);

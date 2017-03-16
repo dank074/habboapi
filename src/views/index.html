@@ -16,7 +16,7 @@
 			<div class="header-image"></div>
 		</div>
 	</div>
-	<app-menu-bar ng-if="current_user.login_status == true"></app-menu-bar>
+	<menu-bar ng-if="current_user.login_status == true"></menu-bar>
 	<div class="app-content">
 		<div class="content-container" ui-view></div>
 		<div class="client-container" ui-view="client"></div>

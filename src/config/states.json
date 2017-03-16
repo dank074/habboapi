@@ -1,0 +1,94 @@
+{
+	"states":
+	{
+		"login":
+		{
+			"name": "login",
+			"url": "/login",
+			"templateUrl": "login.html",
+			"controller": "Login",
+			"params": {
+				"login_username": null
+			}
+		},
+
+		"register":
+		{
+			"name": "register",
+			"url": "/register",
+			"templateUrl": "register.html",
+			"controller": "Register"
+		},
+
+		"me":
+		{
+			"name": "me",
+			"url": "/me",
+			"templateUrl": "me.html",
+			"login_required": true
+		},
+
+		"profile":
+		{
+			"name": "profile",
+			"url": "/profile/:username",
+			"templateUrl": "profile/profile.html",
+			"controller": "Profile"
+		},
+
+		"room":
+		{
+			"name": "room",
+			"url": "/room/:id",
+			"templateUrl": "room.html",
+			"controller": "Room"
+		},
+
+		"group":
+		{
+			"name": "group",
+			"url": "/group/:id",
+			"templateUrl": "group/group.html",
+			"controller": "Group"
+		},
+
+		"client":
+		{
+			"name": "client",
+			"url": "/client",
+			"sticky": true,
+			"login_required": true,
+			"views": {
+				"client": {
+					"controller": "Client",
+					"templateUrl": "client.html"
+				}
+			}
+		},
+
+		"community":
+		{
+			"name": "community",
+			"url": "/community",
+			"templateUrl": "community.html",
+			"controller": "Community"
+		},
+
+		"staff":
+		{
+			"name": "staff",
+			"url": "/staff",
+			"templateUrl": "staff.html",
+			"controller": "Staff"
+		},
+
+		"settings":
+		{
+			"name": "settings",
+			"url": "/settings",
+			"templateUrl": "settings.html",
+			"controller": "Settings",
+			"login_required": true
+		}
+	}
+}

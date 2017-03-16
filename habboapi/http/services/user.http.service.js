@@ -40,7 +40,7 @@ class UserHttpService
     {
         if(req.body.email_address == undefined || null) return res.status(400).send({errors: true, error: 'invalid_parameters'}).end();
 
-		return UserService.validate_email(req.body.emaiL_address)
+		return UserService.validate_email(req.body.email_address)
 
 		.then(() =>
 		{

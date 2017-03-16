@@ -4,13 +4,13 @@ import UserSettings from '../database/models/user/user_settings';
 
 class UserService
 {
-    validate_username(user_name)
+    static validate_username(user_name)
     {
         return new Promise((resolve, reject) =>
         {
-            let regex = /^[a-zA-Z0-9!@#\$%\^\&*\)\(+=._-]{1,20}$/g;
+            let regex = new RegExp(/^[a-zA-Z0-9!@#\$%\^\&*\)\(+=._-]{1,20}$/g);
             
-            if(user_name == null || regex.text(user_name) == false) return reject(new Error('invalid_paramemters'));
+            if(user_name == null || regex.test(user_name) == false) return reject(new Error('invalid_paramemters'));
 
             return new User({username: user_name}).fetch()
 
@@ -28,13 +28,13 @@ class UserService
         });
     }
 
-    validate_email(email_address)
+    static validate_email(email_address)
     {
         return new Promise((resolve, reject) =>
         {
-            let regex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/g;
+            let regex = new RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/g);
             
-            if(email_address == null || regex.text(email_address) == false) return reject(new Error('invalid_paramemters'));
+            if(email_address == null || regex.test(email_address) == false) return reject(new Error('invalid_paramemters'));
 
             return new User({mail: email_address}).fetch()
 
@@ -52,7 +52,7 @@ class UserService
         });
     }
 
-    user_info(user_id)
+    static user_info(user_id)
     {
         return new Promise((resolve, reject) =>
         {
@@ -83,7 +83,7 @@ class UserService
         });
     }
 
-    update_user(user_id, data)
+    static update_user(user_id, data)
     {
         return new Promise((resolve, reject) =>
         {
@@ -114,7 +114,7 @@ class UserService
         })
     }
 
-    update_user_settings(user_id, data)
+    static update_user_settings(user_id, data)
     {
         return new Promise((resolve, reject) =>
         {
@@ -150,7 +150,7 @@ class UserService
         })
     }
 
-    update_user_password(user_id, new_password, password)
+    static update_user_password(user_id, new_password, password)
     {
         return new Promise((resolve, reject) =>
         {
@@ -183,7 +183,7 @@ class UserService
         });
     }
 
-    update_user_email(user_id, new_email, password)
+    static update_user_email(user_id, new_email, password)
     {
         return new Promise((result, reject) =>
         {
@@ -221,7 +221,7 @@ class UserService
         });
     }
 
-    add_user(user_name, user_email, user_pass, user_ip)
+    static add_user(user_name, user_email, user_pass, user_ip)
     {
         return new Promise((resolve, reject) =>
         {

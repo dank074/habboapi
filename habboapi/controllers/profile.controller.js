@@ -2,7 +2,7 @@ import User from '../database/models/user/user';
 
 class ProfileController
 {
-    profile_info(user_name)
+    static profile_info(user_name)
     {
         return new Promise((resolve, reject) =>
 		{

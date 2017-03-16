@@ -1,14 +1,15 @@
-var gulp          = require('gulp');
-var notify        = require('gulp-notify');
-var source        = require('vinyl-source-stream');
-var browserify    = require('browserify');
-var babelify      = require('babelify');
-var ngAnnotate    = require('browserify-ngannotate');
-var browserSync   = require('browser-sync').create();
-var rename        = require('gulp-rename');
-var templateCache = require('gulp-angular-templatecache');
-var uglify        = require('gulp-uglify');
-var merge         = require('merge-stream');
+var gulp            = require('gulp');
+var notify          = require('gulp-notify');
+var source          = require('vinyl-source-stream');
+var browserify      = require('browserify');
+var babelify        = require('babelify');
+var ngAnnotate      = require('browserify-ngannotate');
+var browserSync     = require('browser-sync').create();
+var rename          = require('gulp-rename');
+var templateCache   = require('gulp-angular-templatecache');
+var uglify          = require('gulp-uglify');
+var sourcemaps      = require('gulp-sourcemaps');
+var merge           = require('merge-stream');
 
 gulp.task('browserify', ['views'], function()
 {
@@ -29,14 +30,20 @@ gulp.task('html', function()
 gulp.task('views', function()
 {
     return gulp.src(['./src/views/*.html', './src/views/**/*.html'])
-        .pipe(templateCache('app.template-cache.js', { module: 'app.templates', standalone: true }))
+        .pipe(templateCache('template-cache.js', { module: 'app.templates', standalone: true }))
         .pipe(gulp.dest('./src/config/'));
 });
 
 gulp.task('build', ['html', 'browserify'], function()
 {
-    var html    = gulp.src('build/index.html').pipe(gulp.dest('./dist/')),
-        js      = gulp.src("build/bundle.js").pipe(uglify()).pipe(gulp.dest('./dist/'));
+    var html    = gulp.src('build/index.html')
+        .pipe(gulp.dest('./dist/'));
+        
+    var js      = gulp.src("build/bundle.js")
+        .pipe(sourcemaps.init({loadMaps: true}))
+        .pipe(uglify())
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest('./dist/'));
     
     return merge(html, js);
 });

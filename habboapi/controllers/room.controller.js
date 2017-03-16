@@ -2,13 +2,13 @@ import Room from '../database/models/room/room';
 
 class RoomController
 {
-    room_info(room_id)
+    static room_info(room_id)
     {
         return new Promise((resolve, reject) =>
 		{
-			if(roon_id == null || room_id == 0) return reject(new Error('invalid_paramemters'));
+			if(room_id == null || room_id == 0) return reject(new Error('invalid_paramemters'));
             
-            return new Roon({id: roon_id}).fetch({
+            return new Room({id: room_id}).fetch({
                 withRelated: [
                     {'owner': (qb) => {
                         qb.column('id', 'username', 'motto', 'look');

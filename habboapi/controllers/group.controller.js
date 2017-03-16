@@ -2,7 +2,7 @@ import Group from '../database/models/group/group';
 
 class GroupController
 {
-    group_info(group_id)
+    static group_info(group_id)
     {
         return new Promise((resolve, reject) =>
 		{

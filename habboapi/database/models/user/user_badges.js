@@ -19,4 +19,4 @@ class UserBadges extends Adapter.Model
 	}
 }
 
-export default UserBadges;
+export default Adapter.model('UserBadges', UserBadges);

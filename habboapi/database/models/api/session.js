@@ -5,7 +5,7 @@ class ApiSession extends Adapter.Model
 {
 	get tableName()
 	{
-		return 'sessions';
+		return 'api_sessions';
 	}
 
 	get hasTimestamps()

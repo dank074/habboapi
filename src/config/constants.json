@@ -1,0 +1,29 @@
+{
+    "constants":
+    {
+        "api": "http://localhost:3000/api",
+        "site_name": "HabFuse",
+        "site_link": "http://localhost:3000",
+		"site_images": {
+			"badges": "http://localhost:3000/assets/c_images/album1584",
+			"group_badges": "http://avatar-retro.com/habbo-imaging/badge",
+			"rooms": "http://localhost:3000/assets/c_images/newroom",
+			"avatars": "http://avatar-retro.com/habbo-imaging/avatarimage?figure="
+		},
+		"client": {
+			"connection.info.host": "127.0.0.1",
+			"connection.info.port": 1242,
+			"url.prefix": "http://localhost:3000",
+			"flash.client.url": "http://localhost:3000/assets/gordon/game/",
+			"flash.client.habbo_swf": "http://localhost:3000/assets/gordon/PRODUCTION-201611291003-338511768/Habbo.swf",
+			"client.starting": "Please wait! HabFuse is starting up",
+			"client.starting.revolving": "We all live in igloos./For science, you monster/Loading funny message... please wait./Would you like fries with that?/Follow the yellow duck./Time is just an illusion./Are we there yet?!/I like your t-shirt./Look left. Look right. Blink twice. Ta da!/It's not you, it's me./Shhh! I'm trying to think here./Loading pixel universe.",
+			"external.texts.txt": "http://localhost:3000/assets/gamedata/external_flash_texts.txt",
+			"external.variables.txt": "http://localhost:3000/assets/gamedata/external_variables.txt",
+			"external.figurepartlist.txt": "http://localhost:3000/assets/gamedata/figuredata.xml",
+			"furnidata.load.url": "http://localhost:3000/assets/gamedata/furnidata.xml",
+			"productdata.load.url": "http://localhost:3000/assets/gamedata/productdata.txt",
+			"avatareditor.promohabbos": "http://localhost:3000/assets/gamedata/habblet/xml/promo_habbos.xml"
+		}
+    }
+}
