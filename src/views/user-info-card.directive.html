@@ -1,9 +1,0 @@
-<md-card class="user-info-card no-select" ng-hide="userinfo.length == 0">
-    <md-card-content>
-        <a class="user-avatar" ui-sref="profile({username: userinfo.username})" style="background-image:url(http://avatar-retro.com/habbo-imaging/avatarimage?figure={{userinfo.look}}&amp;direction=2&amp;head_direction=3&amp;action=wav&amp;size=l&amp;gesture=sml);"></a>
-		<span class="user-name" ng-bind="userinfo.username"></span><br />
-		<span class="user-motto" ng-hide="userinfo.motto == undefined || null" ng-bind="userinfo.motto"></span><br />
-		<span class="user-last-login" ng-hide="userinfo.last_login[0] == undefined || null">Last Login: {{userinfo.last_login[0].created_at | date:'medium'}}</span><br /><br />
-		<span class="user-credits" ng-hide="userinfo.credits == undefined || null"><md-icon>monetization_on</md-icon> {{userinfo.credits}}</span>
-	</md-card-content>
-</md-card>

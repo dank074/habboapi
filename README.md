@@ -3,7 +3,7 @@
 A content management system written in NodeJS with a AngularJS frontend. Designed for use with Arcturus Emulator.
 
 <hr>
-### About
+#### About
 
 **HabboAPI CMS** is an advanced AngularJS application using a solid NodeJS backend which communicates via RESTful JSON calls.
 
