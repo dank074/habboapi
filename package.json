@@ -1,6 +1,10 @@
 {
   "name": "habboapi-cms",
+<<<<<<< Updated upstream
   "version": "0.1.0",
+=======
+  "version": "0.1.1",
+>>>>>>> Stashed changes
   "description": "HabboAPI CMS",
   "main": "main.js",
   "scripts": {
