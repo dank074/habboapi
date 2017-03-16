@@ -1,6 +1,6 @@
 {
   "name": "habboapi-cms",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "HabboAPI CMS",
   "main": "main.js",
   "scripts": {
