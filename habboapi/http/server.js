@@ -18,7 +18,7 @@ class HttpServer
         app.use(bodyParser.json());
         app.use(session(__config.session));
         app.use(passport.initialize());
-	    app.use(passport.session());
+        app.use(passport.session());
 
         app.use(express.static(__base + '/dist'));
         app.use('/assets', express.static(__base + '/assets'));
@@ -27,6 +27,8 @@ class HttpServer
 
         app.get('/*', (req, res, next) =>
         {
+            if (req.url === '/api') return next();
+            
             return res.sendFile(__base + '/src/views/index.html');
         });
 

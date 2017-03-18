@@ -8,6 +8,7 @@ assets/games
 assets/gordon
 assets/habbo-imaging
 assets/web-gallery
+src/config/template-cache.js
 build
 dist
 node_modules

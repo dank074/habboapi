@@ -1,12 +1,13 @@
 class Settings
 {
-    constructor(Utility, User, $localStorage, $scope)
+    constructor(Utility, User, $localStorage, $stickyState, $scope)
     {
         'ngInject';
 
 		this._Utility 		= Utility;
         this._User 			= User;
         this._$localStorage = $localStorage;
+		this._$stickyState 	= $stickyState;
         this._$scope 		= $scope;
 
 		this._$scope.password_details = {
@@ -71,6 +72,7 @@ class Settings
 
 			.then(() =>
 			{
+				this._$stickyState.reset('client');
 				this._Utility.alert('Your client settings have been updated! You must reload the client for the changes to take effect.');
 			})
 
