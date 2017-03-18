@@ -30,6 +30,3 @@ HabboAPI is a powerful open source content management system for use with Arctur
 * how do I make modifications to angularjs & the templates?
   * all code for the frontend can be found in the `src` folder. it is not recommended to make any changes to any of the modules contained here. instead, create a new module and require it into the main app module in `app.js`. all templates are located in `src/views`
   * if you make any changes to the `src` folder you must rebuild the project for your changes to take effect. to do this just open command prompt / terminal and navigate to the folder where habboapi is located and run `gulp build`. also be sure to restart habboapi.
-
-#### bugs
-* you must manually set your habbo client swf link in `src/views/client.html` remember to run `gulp build` to save these changes
