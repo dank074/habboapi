@@ -1,14 +1,13 @@
 class Settings
 {
-    constructor(Utility, User, $localStorage, $stickyState, $scope)
+    constructor(Utility, User, $localStorage, $scope)
     {
         'ngInject';
 
-		this._Utility = Utility;
-        this._User = User;
+		this._Utility 		= Utility;
+        this._User 			= User;
         this._$localStorage = $localStorage;
-        this._$stickyState = $stickyState;
-        this._$scope = $scope;
+        this._$scope 		= $scope;
 
 		this._$scope.password_details = {
 			new_password: null,
@@ -51,6 +50,8 @@ class Settings
 
 			.then(() =>
 			{
+				this._$localStorage.current_user.user_info.mail = this._$scope.email_details.new_email;
+
 				this._$scope.email_details.new_email = null;
 				this._$scope.email_details.new_cemail = null;
 				this._$scope.email_details.password = null;
@@ -70,8 +71,6 @@ class Settings
 
 			.then(() =>
 			{
-				this._$stickyState.reset('client');
-
 				this._Utility.alert('Your client settings have been updated! You must reload the client for the changes to take effect.');
 			})
 

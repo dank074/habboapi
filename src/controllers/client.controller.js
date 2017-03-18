@@ -1,3 +1,5 @@
+import angular from 'angular';
+
 class Client
 {
     constructor(AppConstants, Session, $window, $stickyState, $mdDialog, $state, $scope)
@@ -16,7 +18,7 @@ class Client
             started: !1,
             init: function(n)
             {
-                console.log('Client loading...');
+                console.log('[HABBOAPI] Client Loading');
             }
         };
 
@@ -43,6 +45,11 @@ class Client
                 {
                     return this._$state.go('login');
                 });
+            })
+
+            .catch(() =>
+            {
+                return;
             });
         };
         

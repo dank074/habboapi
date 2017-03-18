@@ -1,27 +1,35 @@
-![](https://habbox.com/cache/scripts/fontgenerator/functions/events.php?font=glass_two&str=HabboAPI)
+## HabboAPI CMS
+a content management system written in node & angular using es6
 
-A content management system written in NodeJS with a AngularJS frontend. Designed for use with Arcturus Emulator.
+#### about
+HabboAPI is a powerful open source content management system for use with Arcturus Emulator. The backend is powered by nodejs using express to have REST services. The frontend is powered by angularjs & angular material to create a seamless experience between the two.
 
-<hr>
-#### About
+#### requirements
+* Nodejs v7.x
+* NPM
+* MySQL Server
 
-**HabboAPI CMS** is an advanced AngularJS application using a solid NodeJS backend which communicates via RESTful JSON calls.
+#### installation
+* [download](https://github.com/billsonnn/habboapi-cms/archive/master.zip) the latest zip
+* create a new folder and extract the zip to it
+* Open `config.json` & `src/config/constants.js` and modify the keys to your desired settings.
+* open command prompt / terminal in root / sudo mode and navigate to the folder you extracted the zip to
+* run `npm install -g babel-cli@6.24.0 gulp@3.9.1` 
+* run `npm install`
+* import `habboapi.sql` to your mysql database
+* run `gulp build`
+* finally to start the server, run `npm start`
 
-#### Requirements
+#### faqs
+* what emulator does HabboAPI CMS support?
+  * habboapi is made for the arcturus emulator database. although with some modifications to the database models this system could be coded for other databases.
 
-1. NodeJS (v7.6.0)
-2. MySQL Server
+* what password encryption does HabboAPI CMS use?
+  * habboapi uses bcrypt with salts to hash passwords. therefore md5, sha1 etc do not work. modifications to habboapi that change the algorithm is not officially supported, but could easily be done if needed.
 
-#### Installation
+* how do I make modifications to angularjs & the templates?
+  * all code for the frontend can be found in the `src` folder. it is not recommended to make any changes to any of the modules contained here. instead, create a new module and require it into the main app module in `app.js`. all templates are located in `src/views`
+  * if you make any changes to the `src` folder you must rebuild the project for your changes to take effect. to do this just open command prompt / terminal and navigate to the folder where habboapi is located and run `gulp build`. also be sure to restart habboapi.
 
-Import `habboapi.sql` to your MySQL database
-
-Use Command Prompt / Terminal to navigate to the directory in which you extracted HabboAPI CMS.
-
-Run `node install`
-
-Open `config.json` & `src/config/app.constants.js` and modify the keys to your desired settings.
-
-Run `gulp build`
-
-Run `node main.js`
+#### bugs
+* you must manually set your habbo client swf link in `src/views/client.html` remember to run `gulp build` to save these changes

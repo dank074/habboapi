@@ -1,8 +1,11 @@
 import states from './states.json';
 
-function Config($urlRouterProvider, $stateProvider, $stickyStateProvider, $mdThemingProvider)
+function Config($urlRouterProvider, $stateProvider, $locationProvider, $stickyStateProvider, $mdThemingProvider)
 {
 	'ngInject';
+
+	$locationProvider.html5Mode(true);
+	$locationProvider.hashPrefix('');
 	
 	$mdThemingProvider.theme('default').primaryPalette('teal');
 

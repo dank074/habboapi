@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt-nodejs';
+import bcrypt from 'bcrypt';
 import User from '../database/models/user/user';
 import LoginLog from '../database/models/api/login_log';
 import SessionService from './session.service';

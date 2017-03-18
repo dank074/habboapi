@@ -20,18 +20,15 @@ class HttpServer
         app.use(passport.initialize());
 	    app.use(passport.session());
 
-        app.engine('html', require('ejs').renderFile);
-        app.set('view engine', 'html');
-        app.set('views', __base + '/src/views');
         app.use(express.static(__base + '/dist'));
         app.use('/assets', express.static(__base + '/assets'));
 
-        app.get('/', (req, res, next) =>
-        {
-            return res.render('index');
-        });
-
         app.use('/api', new MainRouter);
+
+        app.get('/*', (req, res, next) =>
+        {
+            return res.sendFile(__base + '/src/views/index.html');
+        });
 
         return app;
     }

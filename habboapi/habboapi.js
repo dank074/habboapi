@@ -19,7 +19,7 @@ class HabboAPI
 
         web.listen(port, ip, () =>
         {
-            console.log('Habbo API Started');
+            console.log('[HABBOAPI] Started ' + ip + ':' + port);
         });
     }
 }

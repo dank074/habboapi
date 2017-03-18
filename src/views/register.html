@@ -5,7 +5,7 @@
 		<div class="left-content">
 			<div class="left-header">This is where the fun begins,</div>
 			<div class="left-subheader">create your very own {{app_config.site_name}} character!</div>
-			<div class="left-text">info here</div>
+			<div class="left-text"></div>
 		</div>
 	</div>
 	<div class="right-side">
@@ -13,19 +13,27 @@
 		<form class="register-form" name="user_register" ng-submit="register()" novalidate>
 			<md-input-container md-no-float class="md-block">
 				<input type="text" name="user_name" ng-model="register_details.user_name" ng-maxlength="20" placeholder="Username" required check-username />
-				<ng-messages for="user_register.user_name.$error" include="messages.html" />
+				<div ng-messages="user_register.user_name.$error" md-auto-hide="false" ng-show="user_register.user_name.$touched">
+					<div ng-messages-include="messages.html"></div>
+				</div>
 			</md-input-container>
 			<md-input-container md-no-float class="md-block">
 				<input type="email" name="user_email" ng-model="register_details.user_email" placeholder="Email" required check-email />
-				<ng-messages for="user_register.user_email.$error" include="messages.html" />
+				<div ng-messages="user_register.user_email.$error" md-auto-hide="false" ng-show="user_register.user_email.$touched">
+					<div ng-messages-include="messages.html"></div>
+				</div>
 			</md-input-container>
 			<md-input-container md-no-float class="md-block">
 				<input type="password" name="user_pass" ng-model="register_details.user_pass" placeholder="Password" required />
-				<ng-messages for="user_register.user_pass.$error" include="messages.html" />
+				<div ng-messages="user_register.user_pass.$error" md-auto-hide="false" ng-show="user_register.user_pass.$touched">
+					<div ng-messages-include="messages.html"></div>
+				</div>
 			</md-input-container>
 			<md-input-container md-no-float class="md-block">
 				<input type="password" name="user_cpass" ng-model="register_details.user_cpass" placeholder="Confirm Password" required />
-				<ng-messages for="user_register.user_cpass.$error" include="messages.html" />
+				<div ng-messages="user_register.user_cpass.$error" md-auto-hide="false" ng-show="user_register.user_cpass.$touched">
+					<div ng-messages-include="messages.html"></div>
+				</div>
 			</md-input-container>
 			<md-button type="submit" class="md-raised md-primary register-button" ng-disabled="(user_register.$invalid) || (register_details.user_pass != register_details.user_cpass)">Register</md-button><br />
 			<md-button class="md-raised md-accent login-button" ui-sref="login">Login</md-button>

@@ -6,21 +6,21 @@ class Logout
         this.replace = true;
     }
 
-    controller(Session, $window, $state, $mdDialog, $scope)
+    controller(Session, $localStorage, $state, $mdDialog, $scope)
     {
         'ngInject';
         
-        $scope.service  = Session;
-        $scope.window   = $window;
-        $scope.state    = $state;
-        $scope.mdDialog = $mdDialog;
+        $scope.service          = Session;
+        $scope.localStorage     = $localStorage;
+        $scope.state            = $state;
+        $scope.mdDialog         = $mdDialog;
     }
 
     link(scope, element, attrs)
     {
         element.on('click', (event) =>
         {
-            if(this._$window.localStorage['current_user'] == undefined || null) return;
+            if(scope.localStorage.current_user == undefined || null) return;
 
             scope.mdDialog.show(
                 scope.mdDialog.confirm({
@@ -40,6 +40,11 @@ class Logout
                     event.preventDefault();
                     return scope.state.go('login');
                 });
+            })
+
+            .catch(() =>
+            {
+                return;
             });
         });
     }

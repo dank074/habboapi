@@ -49,17 +49,23 @@
 						<md-tab label="password">
 							<md-content class="md-padding">
 								<form name="password_form" ng-submit="update_password()" validate>
-									<md-input-container md-no-float class="md-block">
+									<md-input-container md-no-float class="md-block" md-auto-hide="false">
 										<input type="password" name="new_password" ng-model="password_details.new_password" placeholder="New Password" required />
-										<ng-messages for="password_form.new_password.$error" include="messages.html" />
+										<div ng-messages="password_form.new_password.$error" md-auto-hide="false" ng-show="password_form.new_password.$touched">
+											<div ng-messages-include="messages.html"></div>
+										</div>
 									</md-input-container>
 									<md-input-container md-no-float class="md-block">
 										<input type="password" name="new_cpassword" ng-model="password_details.new_cpassword" placeholder="Confirm Password" required />
-										<ng-messages for="password_form.new_cpassword.$error" include="messages.html" />
+										<div ng-messages="password_form.new_cpassword.$error" md-auto-hide="false" ng-show="password_form.new_cpassword.$touched">
+											<div ng-messages-include="messages.html"></div>
+										</div>
 									</md-input-container>
 									<md-input-container md-no-float class="md-block">
 										<input type="password" name="password" ng-model="password_details.password" placeholder="Current Password" required />
-										<ng-messages for="password_form.password.$error" include="messages.html" />
+										<div ng-messages="password_form.password.$error" md-auto-hide="false" ng-show="password_form.password.$touched">
+											<div ng-messages-include="messages.html"></div>
+										</div>
 									</md-input-container>
 									<md-button type="submit" class="md-raised md-primary" ng-disabled="(password_form.$invalid) || (password_details.new_password != password_details.new_cpassword)">Save</md-button>
 								</form>
@@ -70,15 +76,21 @@
 								<form name="email_form" ng-submit="update_email()" validate>
 									<md-input-container md-no-float class="md-block">
 										<input type="email" name="new_email" ng-model="email_details.new_email" placeholder="New Email" required check-email />
-										<ng-messages for="email_form.new_email.$error" include="messages.html" />
+										<div ng-messages="email_form.new_email.$error" md-auto-hide="false" ng-show="email_form.new_email.$touched">
+											<div ng-messages-include="messages.html"></div>
+										</div>
 									</md-input-container>
 									<md-input-container md-no-float class="md-block">
 										<input type="email" name="new_cemail" ng-model="email_details.new_cemail" placeholder="Confirm Email" required />
-										<ng-messages for="email_form.new_cemail.$error" include="messages.html" />
+										<div ng-messages="email_form.new_cemail.$error" md-auto-hide="false" ng-show="email_form.new_cemail.$touched">
+											<div ng-messages-include="messages.html"></div>
+										</div>
 									</md-input-container>
 									<md-input-container md-no-float class="md-block">
 										<input type="password" name="password" ng-model="email_details.password" placeholder="Password" required />
-										<ng-messages for="email_form.password.$error" include="messages.html" />
+										<div ng-messages="email_form.password.$error" md-auto-hide="false" ng-show="email_form.password.$touched">
+											<div ng-messages-include="messages.html"></div>
+										</div>
 									</md-input-container>
 									<md-button type="submit" class="md-raised md-primary" ng-disabled="(email_form.$invalid) || (email_details.new_email != email_details.new_cemail)">Save</md-button>
 								</form>
