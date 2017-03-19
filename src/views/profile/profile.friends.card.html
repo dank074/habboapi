@@ -1,11 +1,12 @@
-<md-card class="friends-card no-select" ng-hide="friends.length == 0">
+<md-card class="friends-card no-select">
     <md-toolbar>
         <div class="md-toolbar-tools">
             <h2 class="no-select center">Friends</h2>
         </div>
     </md-toolbar>
     <md-card-content>
-        <ul class="friend-list">
+        <div ng-if="friends.length == 0">This user has no friends!</div>
+        <ul class="friend-list" ng-if="friends.length > 0">
             <li ng-repeat="friend in friends | orderBy: 'friends_since' | limitTo: 5">
                 <a ui-sref="profile({username: friend.user.username})">
                     <div class="user-avatar">
@@ -16,7 +17,7 @@
             </li>
         </ul>
     </md-card-content>
-    <md-toolbar class="footer">
+    <md-toolbar class="footer" ng-if="friends.length > 0">
         <div class="md-toolbar-tools center">
             <md-button ng-click="showAll()">See All</md-button>
         </div>

@@ -1,11 +1,12 @@
-<md-card class="badges-card no-select" ng-hide="badges.length == 0">
+<md-card class="badges-card no-select">
     <md-toolbar>
 		<div class="md-toolbar-tools">
 			<h2 class="no-select center">Badges</h2>
 		</div>
 	</md-toolbar>
 	<md-card-content>
-		<ul class="badge-list">
+		<div ng-if="badges.length == 0">This user has no badges!</div>
+		<ul class="badge-list" ng-if="badges.length > 0">
 			<li ng-repeat="badge in badges | orderBy: '-slot_id' | limitTo: 5">
 				<a>
 					<div class="badge-icon">
@@ -17,7 +18,7 @@
 			</li>
 		</ul>
 	</md-card-content>
-	<md-toolbar class="footer">
+	<md-toolbar class="footer" ng-if="badges.length > 0">
 		<div class="md-toolbar-tools center">
 			<md-button ng-click="showAll()">See All</md-button>
 		</div>

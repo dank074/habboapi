@@ -5,7 +5,8 @@
         </div>
     </md-toolbar>
     <md-card-content>
-        <ul class="room-list">
+        <div ng-if="rooms.length == 0">This user has no rooms!</div>
+        <ul class="room-list" ng-if="rooms.length > 0">
 			<li ng-repeat="room in rooms | orderBy: 'score' | limitTo: 5">
 				<a ui-sref="room({id: room.id})">
 					<div class="room-icon">
@@ -18,7 +19,7 @@
 			</li>
 		</ul>
     </md-card-content>
-    <md-toolbar class="footer">
+    <md-toolbar class="footer" ng-if="rooms.length > 0">
         <div class="md-toolbar-tools center">
             <md-button ng-click="showAll()">See All</md-button>
         </div>

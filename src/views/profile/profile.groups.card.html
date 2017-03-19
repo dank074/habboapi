@@ -1,11 +1,12 @@
-<md-card class="groups-card no-select" ng-hide="groups.length == 0">
+<md-card class="groups-card no-select">
     <md-toolbar>
         <div class="md-toolbar-tools">
             <h2 class="no-select center">Groups</h2>
         </div>
     </md-toolbar>
     <md-card-content>
-        <ul class="group-list">
+        <div ng-if="groups.length == 0">This user doesn't belong to any groups!</div>
+        <ul class="group-list" ng-if="groups.length > 0">
             <li ng-repeat="group in groups | orderBy: 'member_since' | limitTo: 5">
                 <a ui-sref="group({id: group.group.id})">
                     <div class="group-icon">
@@ -18,7 +19,7 @@
             </li>
         </ul>
     </md-card-content>
-    <md-toolbar class="footer">
+    <md-toolbar class="footer" ng-if="groups.length > 0">
         <div class="md-toolbar-tools center">
             <md-button ng-click="showAll()">See All</md-button>
         </div>
