@@ -1,7 +1,7 @@
-<div class="settings-page">
+<div class="community-page">
 	<div layout="row" layout-xs="column">
 		<div layout="column" flex="70" flex-xs="100">
-			<md-card>
+			<md-card ng-if="community_info.latest_user != null">
 				<md-toolbar>
 					<div class="md-toolbar-tools">
 						<h2 class="no-select">Latest User</h2>
@@ -11,6 +11,46 @@
 					<user-card style="margin:0;" userid="community_info.latest_user.id" userinfo="community_info.latest_user"></user-card>
 				</md-card-content>
 			</md-card>
+			<div layout="row">
+				<md-card class="no-select" flex>
+					<md-toolbar>
+						<div class="md-toolbar-tools">
+							<h2 class="no-select center">Top Rooms</h2>
+						</div>
+					</md-toolbar>
+					<md-card-content class="no-padding">
+						<div ng-if="community_info.top_rooms.length == 0">There are currently no top rooms</div>
+						<md-list class="rooms-list" flex ng-if="community_info.top_rooms.length > 0">
+							<md-list-item class="md-2-line" ng-repeat="room in community_info.top_rooms | limitTo: 7" ui-sref="room({id: room.id})">
+								<img ng-src="{{$root.app_config.site_images.rooms}}/{{room.model}}.png" />
+								<div class="md-list-item-text">
+									<h3>{{room.name}}</h3>
+									<p>{{room.description}}</p>
+								</div>
+							</md-list-item>
+						</md-list>
+					</md-card-content>
+				</md-card>
+				<md-card class="no-select" flex>
+					<md-toolbar>
+						<div class="md-toolbar-tools">
+							<h2 class="no-select center">Promotions</h2>
+						</div>
+					</md-toolbar>
+					<md-card-content class="no-padding">
+						<div ng-if="community_info.room_promotions.length == 0">There are currently no trending rooms</div>
+						<md-list class="rooms-list" flex ng-if="community_info.room_promotions.length > 0">
+							<md-list-item class="md-2-line" ng-repeat="promotion in community_info.room_promotions | limitTo: 7" ui-sref="room({id: promotion.room.id})">
+								<img ng-src="{{$root.app_config.site_images.rooms}}/{{promotion.room.model}}.png" />
+								<div class="md-list-item-text">
+									<h3>{{promotion.title}}</h3>
+									<p>{{promotion.description}}</p>
+								</div>
+							</md-list-item>
+						</md-list>
+					</md-card-content>
+				</md-card>
+			</div>
 		</div>
 		<div layout="column" flex="30" flex-xs="100">
 			<md-card>

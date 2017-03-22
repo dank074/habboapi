@@ -27,15 +27,22 @@ class CommunityController
 			{
 				community_info.statistics = result;
 
-				return this.room_promotions();
+				return this.top_rooms();
 			})
 
 			.then((result) =>
 			{
-				community_info.room_promotions = result;
+				community_info.top_rooms = result;
 				
-				return resolve(community_info);
+				return this.room_promotions();
 			})
+
+            .then((result) =>
+            {
+                community_info.room_promotions = result;
+
+                return resolve(community_info);
+            })
 
 			.catch(function(err)
 			{
@@ -56,8 +63,6 @@ class CommunityController
             
             .then((result) =>
             {
-                if(result == null) return reject(new Error('no_users'));
-                
                 return resolve(result.toJSON());
             })
 
@@ -135,9 +140,29 @@ class CommunityController
             
             .then((result) =>
             {
-                if(result == null) return reject(new Error('no_staff'));
-
                 return resolve(result);
+            })
+
+            .catch((err) =>
+            {
+                return reject(err);
+            });
+        });
+    }
+
+    static top_rooms()
+    {
+        return new Promise((resolve, reject) =>
+        {
+            return new Room().query((qb) => {
+                qb.whereNot('score', 0).orderBy('score', 'DESC').limit(7);
+            }).fetchAll({
+                columns: ['id', 'name', 'description', 'model', 'users']
+            })
+            
+            .then((result) =>
+            {
+                return resolve(result.toJSON());
             })
 
             .catch((err) =>
@@ -151,7 +176,9 @@ class CommunityController
     {
         return new Promise((resolve, reject) =>
         {
-            return new RoomPromotion().fetchAll({
+            return new RoomPromotion().query((qb) => {
+                qb.limit(10);
+            }).fetchAll({
                 withRelated: [
                     {'room': (qb) => {
                         qb.column('id', 'name', 'model');
@@ -162,9 +189,7 @@ class CommunityController
             
             .then((result) =>
             {
-			    if(result == null) return reject(new Error('no_staff'));
-                
-                return resolve(result.toJSON());
+			    return resolve(result.toJSON());
             })
 
             .catch((err) =>

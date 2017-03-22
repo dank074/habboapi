@@ -1,9 +1,9 @@
 .app-menu {
     position: fixed;
     width: 100%;
-    height: 40px;
+    height: 70px;
     margin-top: 120px;
-    background-color: #FFFFFF;
+    background-color: rgba(255,255,255,.9);
     z-index: 4;
 }
 
@@ -13,7 +13,7 @@ body.app.page-client .app-menu {
 
 .app-menu .menu-container {
     width: 960px;
-    height: 40px;
+    height: 70px;
     margin: 0 auto;
 }
 
@@ -21,7 +21,17 @@ body.app.page-client .app-menu {
     display: table;
     margin: 0;
     padding: 0;
+    height: 70px;
     list-style: none;
+    float: left;
+}
+
+.app-menu .menu-container ul.menu-list.right {
+    float: right;
+}
+
+.app-menu .menu-container ul.menu-list.right li {
+    padding: 7.7275px 0;
 }
 
 .app-menu .menu-container ul.menu-list li.list-item {
@@ -30,21 +40,47 @@ body.app.page-client .app-menu {
     cursor: pointer;
 }
 
-.app-menu .menu-container ul.menu-list li.list-item.active,
-.app-menu .menu-container ul.menu-list li.list-item:hover,
-.app-menu .menu-container ul.menu-list li.list-item:focus {
-    box-shadow: inset 0 -3px #000000;
-    transition: all .2s ease-in;
+.app-menu .menu-container ul.menu-list li.item-right {
+    float: right;
+}
+
+.app-menu .menu-container ul.menu-list li.list-item:after {
+    display: block;
+    margin: -2px auto auto;
+	content: '';
+	height: 2px;
+	width: 0px;
+	background: transparent;
+	transition: width .3s ease, background-color .3s ease;
+}
+
+.app-menu .menu-container ul.menu-list li.list-item:hover:after {
+	width: 100%;
+	background: #001726;
+}
+
+.app-menu .menu-container ul.menu-list li.list-item.active:after {
+    display: block;
+    margin: -2px auto auto;
+	content: '';
+	height: 2px;
+	width: 100%;
+	background: #001726;
+}
+
+.app-menu .menu-container ul.menu-list li.list-item:hover a,
+.app-menu .menu-container ul.menu-list li.list-item:focus a {
+    color: #999999;
 }
 
 .app-menu .menu-container ul.menu-list li.list-item a {
-    font-size: 18px;
+    font-size: 24px;
     font-weight: 300;
     text-transform: uppercase;
-    letter-spacing: 1px;
     text-decoration: none;
-    line-height: 40px;
-    color: #000000;
+    line-height: 70px;
+    white-space: nowrap;
+    color: rgba(0,0,0,.7);
 }
 
 .app-menu .menu-container ul.menu-list li.list-item.active a {

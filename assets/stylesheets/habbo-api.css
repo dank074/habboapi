@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:500,400,300");
+@import url("https://fonts.googleapis.com/css?family=Ubuntu+Condensed:500,400,300");
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import url("angular-material.min.css");
 @import url("habbo-api.content.css");
@@ -7,9 +7,10 @@
 @import url("habbo-api.dialog.css");
 @import url("habbo-api.tables.css");
 @import url("habbo-api.header.css");
+@import url("habbo-api.lists.css");
 
 	body.md-default-theme, html, body {
-		font-family: 'Roboto', sans-serif;
+		font-family: "Ubuntu Condensed", sans-serif;
 		font-weight: 300;
 		background: #D6D6D6;
 	}
@@ -34,7 +35,6 @@
 		padding: 0;
 	}
 
-	/** /MAIN HEADER **/
 	/** LOGIN PAGE **/
 
 	md-card.login-card {
@@ -450,3 +450,37 @@
 	}
 
 	/** /AVATAR **/
+
+	/** BUTTONS **/
+
+	.md-button.hotel-button {
+		display: inline-block;
+		background-color: #FFB900 !important;
+		border-color: #FFEA00 !important;
+		border-radius: 5px;
+		border-width: 2px;
+		filter: drop-shadow(-1px 4px 0 rgba(0, 0, 0, .3));
+		border-style: solid;
+	}
+
+	.md-button.hotel-button.return-web {
+		position: fixed;
+		top: 10px;
+		left: 10px;
+		z-index: 2;
+	}
+
+	.md-button.hotel-button:hover {
+		background-color: #FFD400 !important;
+		border-color: #FFFD70 !important;
+		border-bottom-width: 2px !important;
+	}
+
+	.md-button.hotel-button:active {
+		transform: translate(0,2px);
+		filter: drop-shadow(0px 2px 0 rgba(0, 0, 0, .3));
+		box-shadow: none;
+		border-bottom-width: 2px;
+	}
+
+/** /BUTTONS */

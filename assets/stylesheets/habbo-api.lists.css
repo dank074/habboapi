@@ -1,0 +1,11 @@
+md-list.rooms-list {
+    padding: 0;
+}
+
+md-list.rooms-list md-list-item {
+    cursor: pointer;
+}
+
+md-list.rooms-list .md-list-item-text {
+    padding-left: 10px;
+}

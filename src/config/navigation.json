@@ -7,33 +7,27 @@
 			"disabled": false
 		},
         {
-            "name": "Client",
-			"state": "client",
-		    "sort": 2,
-			"disabled": false
-		},
-        {
             "name": "Community",
 			"state": "community",
-            "sort": 3,
+            "sort": 2,
 			"disabled": false
 		},
 		{
 			"name": "Staff",
 			"state": "staff",
-			"sort": 4,
+			"sort": 3,
 			"disabled": false
 		},
         {
             "name": "News",
 			"state": "news",
-			"sort": 5,
+			"sort": 4,
 			"disabled": false
 		},
         {
 		    "name": "Settings",
 		    "state": "settings",
-			"sort": 6,
+			"sort": 5,
 			"disabled": false
 		}
 	]

@@ -6,12 +6,12 @@
 }
 
 .app.page-content .app-content {
-    margin-top: 160px !important;
+    margin-top: 190px !important;
 }
 
 .app.page-client .app-content {
-    margin-top: 40px !important;
-    height: calc(100% - 40px);
+    margin-top: 0 !important;
+    height: 100%;
 }
 
 .app .app-content .content-container {
@@ -24,6 +24,10 @@
 }
 
 .app.page-client .app-content .content-container {
+    display: none;
+}
+
+.app.page-client .app-menu {
     display: none;
 }
 
@@ -46,7 +50,8 @@
     max-width: 100% !important;
 }
 
-.app .app-content .client-container object {
+.app .app-content .client-container object,
+.app:not(.page-client) .app-content .client-container a.return-web {
     visibility: hidden;
 }
 
