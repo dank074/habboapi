@@ -10,7 +10,7 @@ HabboAPI is a powerful open source content management system for use with Arctur
 * MySQL Server
 
 #### installation
-* [download](https://github.com/billsonnn/habboapi-cms/archive/master.zip) the latest zip
+* [download](https://github.com/billsonnn/habboapi/archive/master.zip) the latest zip
 * create a new folder and extract the zip to it
 * Open `config.json` & `src/config/constants.js` and modify the keys to your desired settings.
 * open command prompt / terminal in root / sudo mode and navigate to the folder you extracted the zip to
