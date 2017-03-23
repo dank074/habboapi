@@ -1,27 +1,30 @@
-<md-card class="rooms-card no-select">
-    <md-toolbar>
-        <div class="md-toolbar-tools">
-            <h2 class="no-select center">Rooms</h2>
-        </div>
-    </md-toolbar>
-    <md-card-content>
-        <div ng-if="rooms.length == 0">This user has no rooms!</div>
-        <ul class="room-list" ng-if="rooms.length > 0">
-			<li ng-repeat="room in rooms | orderBy: 'score' | limitTo: 5">
-				<a ui-sref="room({id: room.id})">
-					<div class="room-icon">
-						<div class="room-icon-aligner">
-							<img ng-src="{{$root.app_config.site_images.rooms}}/{{room.model}}.png" />
-						</div>
-					</div>
-                    <div class="room-name">{{room.name}}</div>
-				</a>
-			</li>
-		</ul>
-    </md-card-content>
-    <md-toolbar class="footer" ng-if="rooms.length > 0">
-        <div class="md-toolbar-tools center">
-            <md-button ng-click="showAll()">See All</md-button>
-        </div>
-    </md-toolbar>
-</md-card>
+<section class="profile-room-card-container">
+	<div class="profile-room-card-header"></div>
+	<md-card class="no-select">
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h2 class="center">{{'profile.rooms.header' | translate}} <span class="number" ng-if="rooms.length > 0" ng-bind="rooms.length"></span></h2>
+			</div>
+		</md-toolbar>
+		<md-card-content class="no-padding center">
+			<div class="md-padding" ng-if="rooms.length == 0" translate="profile.room.no_rooms"></div>
+			<ul class="vertical-list room-list no-margin" ng-if="rooms.length > 0">
+				<li ng-repeat="room in rooms | orderBy: 'score' | limitTo: 5">
+					<a ui-sref="room({id: room.id})">
+                        <div class="room-icon">
+                            <div class="room-icon-aligner">
+                                <img ng-src="{{$root.app_config.site_images.rooms}}/{{room.model}}.png" />
+                            </div>
+                        </div>
+                        <div class="room-name">{{room.name}}</div>
+                    </a>
+				</li>
+			</ul>
+		</md-card-content>
+		<md-toolbar class="footer" ng-if="rooms.length > 0">
+			<div class="md-toolbar-tools center">
+				<md-button ng-click="showAll()" translate="profile.rooms.see_all"></md-button>
+			</div>
+		</md-toolbar>
+	</md-card>
+</section>

@@ -1,27 +1,30 @@
-<md-card class="groups-card no-select">
-    <md-toolbar>
-        <div class="md-toolbar-tools">
-            <h2 class="no-select center">Groups</h2>
-        </div>
-    </md-toolbar>
-    <md-card-content>
-        <div ng-if="groups.length == 0">This user doesn't belong to any groups!</div>
-        <ul class="group-list" ng-if="groups.length > 0">
-            <li ng-repeat="group in groups | orderBy: 'member_since' | limitTo: 5">
-                <a ui-sref="group({id: group.group.id})">
-                    <div class="group-icon">
-                        <div class="badge-icon-aligner">
-                            <img ng-src="{{$root.app_config.site_images.group_badges}}/{{group.group.badge}}.gif" />
+<section class="profile-group-card-container">
+	<div class="profile-group-card-header"></div>
+	<md-card class="no-select">
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h2 class="center">{{'profile.groups.header' | translate}} <span class="number" ng-if="groups.length > 0" ng-bind="groups.length"></span></h2>
+			</div>
+		</md-toolbar>
+		<md-card-content class="no-padding center">
+			<div class="md-padding" ng-if="groups.length == 0" translate="profile.groups.no_groups">T</div>
+			<ul class="vertical-list badge-list no-margin" ng-if="groups.length > 0">
+                <li ng-repeat="group in groups | orderBy: 'member_since' | limitTo: 5">
+                    <a ui-sref="group({id: group.group.id})">
+                        <div class="badge-icon">
+                            <div class="badge-icon-aligner">
+                                <img ng-src="{{$root.app_config.site_images.group_badges}}/{{group.group.badge}}.gif" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="group-name">{{group.group.name}}</div>
-                </a>
-            </li>
-        </ul>
-    </md-card-content>
-    <md-toolbar class="footer" ng-if="groups.length > 0">
-        <div class="md-toolbar-tools center">
-            <md-button ng-click="showAll()">See All</md-button>
-        </div>
-    </md-toolbar>
-</md-card>
+                        <div class="badge-name">{{group.group.name}}</div>
+                    </a>
+                </li>
+			</ul>
+		</md-card-content>
+		<md-toolbar class="footer" ng-if="groups.length > 0">
+			<div class="md-toolbar-tools center">
+				<md-button ng-click="showAll()" translate="profile.groups.see_all"></md-button>
+			</div>
+		</md-toolbar>
+	</md-card>
+</section>

@@ -9,3 +9,109 @@ md-list.rooms-list md-list-item {
 md-list.rooms-list .md-list-item-text {
     padding-left: 10px;
 }
+
+ul {
+    list-style: none;
+}
+
+ul.no-margin {
+    margin: 0 !important;
+}
+
+ul.no-padding {
+    padding: 0 !important;
+}
+
+ul.vertical-list li {
+    float: left;
+}
+
+md-card md-card-content ul.avatar-list {
+    padding: 0 0 10px;
+}
+
+md-card md-card-content ul.avatar-list li {
+    margin: 0 5px 0 0;
+}
+
+md-card md-card-content ul.avatar-list li:last-child {
+    margin: 0;
+}
+
+md-card md-card-content ul.avatar-list li a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+md-card md-card-content ul.avatar-list li a .user-name {
+    display: block;
+    margin: 6.2px 0;
+    padding: 0 6px;
+    font-size: 16px;
+    font-weight: 300;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    color: #000000;
+    text-align: center;
+}
+
+md-card md-card-content ul.badge-list {
+    padding: 20px 0;
+}
+
+md-card md-card-content ul.badge-list li {
+    margin: 0 5px 0 0;
+}
+
+md-card md-card-content ul.badge-list li:last-child {
+    margin: 0;
+}
+
+md-card md-card-content ul.badge-list li a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+md-card md-card-content ul.badge-list li a .badge-name {
+    display: block;
+    margin: 15px 0 0;
+    padding: 0 6px;
+    font-size: 16px;
+    font-weight: 300;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    color: #000000;
+    text-align: center;
+}
+
+md-card md-card-content ul.room-list {
+    padding: 20px 0;
+}
+
+md-card md-card-content ul.room-list li {
+    margin: 0 5px 0 0;
+}
+
+md-card md-card-content ul.room-list li:last-child {
+    margin: 0;
+}
+
+md-card md-card-content ul.room-list li a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+md-card md-card-content ul.room-list li a .room-name {
+    display: block;
+    margin: 15px 0 0;
+    padding: 0 6px;
+    font-size: 16px;
+    font-weight: 300;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    color: #000000;
+    text-align: center;
+}

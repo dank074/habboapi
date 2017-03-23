@@ -1,42 +1,46 @@
-<md-card class="register-card">
-	<div class="left-side no-select">
-		<div class="left-overlay"></div>
+<div class="register-card-container" layout="row" layout-xs="column">
+	<md-card class="register-card-left no-select" flex="60" hide-xs>
 		<div class="left-image"></div>
-		<div class="left-content">
-			<div class="left-header">This is where the fun begins,</div>
-			<div class="left-subheader">create your very own {{app_config.site_name}} character!</div>
-			<div class="left-text"></div>
-		</div>
-	</div>
-	<div class="right-side">
-		<div class="register-header no-select">Register</div>
-		<form class="register-form" name="user_register" ng-submit="register()" novalidate>
-			<md-input-container md-no-float class="md-block">
-				<input type="text" name="user_name" ng-model="register_details.user_name" ng-maxlength="20" placeholder="Username" required check-username />
-				<div ng-messages="user_register.user_name.$error" md-auto-hide="false" ng-show="user_register.user_name.$touched">
-					<div ng-messages-include="messages.html"></div>
-				</div>
-			</md-input-container>
-			<md-input-container md-no-float class="md-block">
-				<input type="email" name="user_email" ng-model="register_details.user_email" placeholder="Email" required check-email />
-				<div ng-messages="user_register.user_email.$error" md-auto-hide="false" ng-show="user_register.user_email.$touched">
-					<div ng-messages-include="messages.html"></div>
-				</div>
-			</md-input-container>
-			<md-input-container md-no-float class="md-block">
-				<input type="password" name="user_pass" ng-model="register_details.user_pass" placeholder="Password" required />
-				<div ng-messages="user_register.user_pass.$error" md-auto-hide="false" ng-show="user_register.user_pass.$touched">
-					<div ng-messages-include="messages.html"></div>
-				</div>
-			</md-input-container>
-			<md-input-container md-no-float class="md-block">
-				<input type="password" name="user_cpass" ng-model="register_details.user_cpass" placeholder="Confirm Password" required />
-				<div ng-messages="user_register.user_cpass.$error" md-auto-hide="false" ng-show="user_register.user_cpass.$touched">
-					<div ng-messages-include="messages.html"></div>
-				</div>
-			</md-input-container>
-			<md-button type="submit" class="md-raised md-primary register-button" ng-disabled="(user_register.$invalid) || (register_details.user_pass != register_details.user_cpass)">Register</md-button><br />
-			<md-button class="md-raised md-accent login-button" ui-sref="login">Login</md-button>
-		</form>
-	</div>
-</md-card>
+		<md-card-content>
+			<h2 translate="register.register_header"></h2>
+			<h3 translate="register.register_description" translate-values="{site_name: app_config.site_name}"></h3>
+		</md-card-content>
+	</md-card>
+	<md-card class="register-card-right no-select" flex="40" flex-xs="100">
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h2 class="center" translate="register.register_card_header"></h2>
+			</div>
+		</md-toolbar>
+		<md-card-content>
+			<form name="user_register" ng-submit="register()" novalidate>
+				<md-input-container md-no-float class="md-block">
+					<input type="text" name="user_name" ng-model="register_details.user_name" ng-maxlength="20" translate translate-attr-placeholder="forms.username" required check-username />
+					<div ng-messages="user_register.user_name.$error" md-auto-hide="false" ng-show="user_register.user_name.$touched">
+						<div ng-messages-include="messages.html"></div>
+					</div>
+				</md-input-container>
+				<md-input-container md-no-float class="md-block">
+					<input type="email" name="user_email" ng-model="register_details.user_email" translate translate-attr-placeholder="forms.email" required check-email />
+					<div ng-messages="user_register.user_email.$error" md-auto-hide="false" ng-show="user_register.user_email.$touched">
+						<div ng-messages-include="messages.html"></div>
+					</div>
+				</md-input-container>
+				<md-input-container md-no-float class="md-block">
+					<input type="password" name="user_pass" ng-model="register_details.user_pass" translate translate-attr-placeholder="forms.password" required />
+					<div ng-messages="user_register.user_pass.$error" md-auto-hide="false" ng-show="user_register.user_pass.$touched">
+						<div ng-messages-include="messages.html"></div>
+					</div>
+				</md-input-container>
+				<md-input-container md-no-float class="md-block" style="margin:18px 0 0;">
+					<input type="password" name="user_cpass" ng-model="register_details.user_cpass" translate translate-attr-placeholder="forms.confirm_password" required />
+					<div ng-messages="user_register.user_cpass.$error" md-auto-hide="false" ng-show="user_register.user_cpass.$touched">
+						<div ng-messages-include="messages.html"></div>
+					</div>
+				</md-input-container>
+				<md-button type="submit" class="md-raised md-primary register-button" ng-disabled="(user_register.$invalid) || (register_details.user_pass != register_details.user_cpass)" translate="buttons.register"></md-button><br />
+				<md-button class="md-raised md-accent login-button" ui-sref="login" translate="buttons.login"></md-button>
+			</form>
+		</md-card-content>
+	</md-card>
+</div>

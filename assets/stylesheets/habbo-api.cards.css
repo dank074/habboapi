@@ -1,13 +1,5 @@
 /** MAIN CARD STYLE **/
 
-md-card {
-    box-shadow: 0 1px 5px 0 rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.12);
-}
-
-md-card .md-padding {
-    padding: 15px !important;
-}
-
 md-card md-toolbar,
 md-card md-toolbar .md-toolbar-tools {
     height: 50px !important;
@@ -39,6 +31,14 @@ md-card md-toolbar .md-toolbar-tools h2.center {
     margin: 0 auto;
 }
 
+md-card md-toolbar .md-toolbar-tools h2 span.number {
+    padding-left: 10px;
+    color: rgba(0,0,0,.3);
+    font-size: 14px;
+    font-weight: 300;
+    float: right;
+}
+
 md-card md-toolbar .md-toolbar-tools .md-button {
     color: #000000;
 }
@@ -52,7 +52,8 @@ md-card md-toolbar.footer .md-toolbar-tools {
     border-bottom: 0;
 }
 
-md-card md-card-title .badge-icon, md-card md-card-title .room-icon {
+md-card md-card-title .badge-icon,
+md-card md-card-title .room-icon {
     margin-top: -8px;
 }
 
@@ -66,6 +67,13 @@ md-card md-card-content.scroll-overflow {
 
 md-card md-card-content.no-padding {
     padding: 0;
+}
+
+md-card md-card-content.center {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
 }
 
 /** /MAIN CARD STYLE **/
@@ -134,367 +142,3 @@ md-card.user-info-card md-card-content span.user-credits .material-icons {
 }
 
 /** /USER-INFO CARD STYLE **/
-
-/** BADGES CARD STYLE **/
-
-md-card.badges-card md-card-content {
-    display: flex;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-}
-
-md-card.badges-card md-card-content ul.badge-list {
-    display: flex;
-    width: 100%;
-    margin: 0;
-    padding: 20px 0;
-    list-style: none;
-    justify-content: center;
-    align-items: center;
-}
-
-md-card.badges-card md-card-content ul.badge-list li {
-    width: 20%;
-    margin: 0 5px 0 0;
-    float: left;
-}
-
-md-card.badges-card md-card-content ul.badge-list li:last-child {
-    margin: 0;
-}
-
-md-card.badges-card md-card-content ul.badge-list li a {
-    cursor: pointer;
-    color: #FFFFFF;
-    outline: 0;
-    text-decoration: none;
-}
-
-md-card.badges-card md-card-content ul.badge-list li a .badge-icon {
-    display: flex;
-    margin: 0 auto;
-    justify-content: center;
-    align-items: center;
-}
-
-md-card.badges-card md-card-content ul.badge-list li a .badge-name {
-    display: block;
-    margin: 15px 0 0;
-    padding: 0 6px;
-    font-size: 14px;
-    font-weight: 300;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal;
-    color: #000000;
-    text-align: center;
-}
-
-/** /BADGES CARD STYLE **/
-
-/** FRIENDS CARD STYLE **/
-
-md-card.friends-card md-card-content {
-    display: flex;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-}
-
-md-card.friends-card md-card-content ul.friend-list {
-    display: flex;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    justify-content: center;
-    align-items: center;
-}
-
-md-card.friends-card md-card-content ul.friend-list li {
-    width: 20%;
-    margin: 0 5px 0 0;
-    float: left;
-}
-
-md-card.friends-card md-card-content ul.friend-list li:last-child {
-    margin: 0;
-}
-
-md-card.friends-card md-card-content ul.friend-list li a {
-    cursor: pointer;
-    color: #FFFFFF;
-    outline: 0;
-    text-decoration: none;
-}
-
-md-card.friends-card md-card-content ul.friend-list li a .user-avatar {
-    width: 64px;
-    height: 110px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-md-card.friends-card md-card-content ul.friend-list li a .user-avatar img {
-    width: 64px;
-    height: 110px;
-    image-rendering: pixelated;
-}
-
-md-card.friends-card md-card-content ul.friend-list li a .user-name {
-    display: block;
-    margin: 6.2px 0;
-    padding: 0 6px;
-    font-size: 14px;
-    font-weight: 300;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal;
-    color: #000000;
-    text-align: center;
-}
-
-/** /FRIENDS CARD STYLE **/
-
-/** ROOMS CARD STYLE **/
-
-md-card.rooms-card md-card-content {
-    display: flex;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-}
-
-md-card.rooms-card md-card-content ul.room-list {
-    display: flex;
-    width: 100%;
-    margin: 0;
-    padding: 20px 0;
-    list-style: none;
-    justify-content: center;
-    align-items: center;
-}
-
-md-card.rooms-card md-card-content ul.room-list li {
-    width: 20%;
-    margin: 0 5px 0 0;
-    float: left;
-}
-
-md-card.rooms-card md-card-content ul.room-list li:last-child {
-    margin: 0;
-}
-
-md-card.rooms-card md-card-content ul.room-list li a {
-    cursor: pointer;
-    color: #FFFFFF;
-    outline: 0;
-    text-decoration: none;
-}
-
-md-card.rooms-card md-card-content ul.room-list li a .room-icon {
-    display: flex;
-    margin: 0 auto;
-    justify-content: center;
-    align-items: center;
-}
-
-md-card.rooms-card md-card-content ul.room-list li a .room-name {
-    display: block;
-    margin: 15px 0 0;
-    padding: 0 6px;
-    font-size: 14px;
-    font-weight: 300;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal;
-    color: #000000;
-    text-align: center;
-}
-
-/** /ROOMS CARD STYLE **/
-
-/** GROUPS CARD STYLE **/
-
-md-card.groups-card md-card-content {
-    display: flex;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-}
-
-md-card.groups-card md-card-content ul.group-list {
-    display: flex;
-    width: 100%;
-    margin: 0;
-    padding: 20px 0;
-    list-style: none;
-    justify-content: center;
-    align-items: center;
-}
-
-md-card.groups-card md-card-content ul.group-list li {
-    width: 20%;
-    margin: 0 5px 0 0;
-    float: left;
-}
-
-md-card.groups-card md-card-content ul.group-list li:last-child {
-    margin: 0;
-}
-
-md-card.groups-card md-card-content ul.group-list li a {
-    cursor: pointer;
-    color: #FFFFFF;
-    outline: 0;
-    text-decoration: none;
-}
-
-md-card.groups-card md-card-content ul.group-list li a .group-icon {
-    display: flex;
-    margin: 0 auto;
-    justify-content: center;
-    align-items: center;
-}
-
-md-card.groups-card md-card-content ul.group-list li a .group-name {
-    display: block;
-    margin: 15px 0 0;
-    padding: 0 6px;
-    font-size: 14px;
-    font-weight: 300;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal;
-    color: #000000;
-    text-align: center;
-}
-
-/** /GROUPS CARD STYLE **/
-
-/** MEMBERS CARD STYLE **/
-
-md-card.members-card md-card-content {
-    display: flex;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-}
-
-md-card.members-card md-card-content ul.member-list {
-    display: flex;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    justify-content: center;
-    align-items: center;
-}
-
-md-card.members-card md-card-content ul.member-list li {
-    width: 20%;
-    margin: 0 5px 0 0;
-    float: left;
-}
-
-md-card.members-card md-card-content ul.member-list li:last-child {
-    margin: 0;
-}
-
-md-card.members-card md-card-content ul.member-list li a {
-    cursor: pointer;
-    color: #FFFFFF;
-    outline: 0;
-    text-decoration: none;
-}
-
-md-card.members-card md-card-content ul.member-list li a .user-avatar {
-    width: 64px;
-    height: 110px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-md-card.members-card md-card-content ul.member-list li a .user-avatar img {
-    width: 64px;
-    height: 110px;
-    image-rendering: pixelated;
-}
-
-md-card.members-card md-card-content ul.member-list li a .user-name {
-    display: block;
-    margin: 6.2px 0;
-    padding: 0 6px;
-    font-size: 14px;
-    font-weight: 300;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal;
-    color: #000000;
-    text-align: center;
-}
-
-/** /MEMBERS CARD STYLE **/
-
-/** RANK CARD STYLE **/
-
-md-card.rank-card md-card-content {
-    display: flex;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-}
-
-md-card.rank-card md-card-content ul.user-list {
-    display: flex;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    justify-content: center;
-    align-items: center;
-}
-
-md-card.rank-card md-card-content ul.user-list li {
-    width: 20%;
-    margin: 0 5px 0 0;
-    float: left;
-}
-
-md-card.rank-card md-card-content ul.user-list li:last-child {
-    margin: 0;
-}
-
-md-card.rank-card md-card-content ul.user-list li a {
-    cursor: pointer;
-    color: #FFFFFF;
-    outline: 0;
-    text-decoration: none;
-}
-
-md-card.rank-card md-card-content ul.user-list li a .user-avatar {
-    width: 64px;
-    height: 110px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-md-card.rank-card md-card-content ul.user-list li a .user-avatar img {
-    width: 64px;
-    height: 110px;
-    image-rendering: pixelated;
-}
-
-md-card.rank-card md-card-content ul.user-list li a .user-name {
-    display: block;
-    margin: 6.2px 0;
-    padding: 0 6px;
-    font-size: 14px;
-    font-weight: 300;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal;
-    color: #000000;
-    text-align: center;
-}

@@ -1,26 +1,29 @@
-<md-card class="badges-card no-select">
-    <md-toolbar>
-		<div class="md-toolbar-tools">
-			<h2 class="no-select center">Badges</h2>
-		</div>
-	</md-toolbar>
-	<md-card-content>
-		<div ng-if="badges.length == 0">This user has no badges!</div>
-		<ul class="badge-list" ng-if="badges.length > 0">
-			<li ng-repeat="badge in badges | orderBy: '-slot_id' | limitTo: 5">
-				<a>
-					<div class="badge-icon">
-						<div class="badge-icon-aligner">
-							<img ng-src="{{$root.app_config.site_images.badges}}/{{badge.badge_code}}.gif" />
+<section class="profile-badge-card-container">
+	<div class="profile-badge-card-header"></div>
+	<md-card class="no-select">
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h2 class="center">{{'profile.badges.header' | translate}} <span class="number" ng-if="badges.length > 0" ng-bind="badges.length"></span></h2>
+			</div>
+		</md-toolbar>
+		<md-card-content class="no-padding center">
+			<div class="md-padding" ng-if="badges.length == 0" translate="profile.badges.no_badges"></div>
+			<ul class="vertical-list badge-list no-margin" ng-if="badges.length > 0">
+				<li ng-repeat="badge in badges | orderBy: '-slot_id' | limitTo: 5">
+					<a>
+						<div class="badge-icon">
+							<div class="badge-icon-aligner">
+								<img ng-src="{{$root.app_config.site_images.badges}}/{{badge.badge_code}}.gif" />
+							</div>
 						</div>
-					</div>
-				</a>
-			</li>
-		</ul>
-	</md-card-content>
-	<md-toolbar class="footer" ng-if="badges.length > 0">
-		<div class="md-toolbar-tools center">
-			<md-button ng-click="showAll()">See All</md-button>
-		</div>
-	</md-toolbar>
-</md-card>
+					</a>
+				</li>
+			</ul>
+		</md-card-content>
+		<md-toolbar class="footer" ng-if="badges.length > 0">
+			<div class="md-toolbar-tools center">
+				<md-button ng-click="showAll()" translate="profile.badges.see_all"></md-button>
+			</div>
+		</md-toolbar>
+	</md-card>
+</section>

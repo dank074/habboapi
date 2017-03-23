@@ -2,12 +2,12 @@
     <div class="menu-container">
         <ul class="menu-list left" flex>
             <li ng-repeat="item in navigation_list | orderBy: 'sort'" class="list-item no-select" ng-class="{active: state.includes(item.state)}" ui-sref="{{item.state}}">
-                <a>{{item.name}}</a>
+                {{item.name}}
             </li>
-            <li class="list-item no-select"><a app-logout>Logout</a></li>
+            <li class="list-item no-select" translate="buttons.logout" app-logout>Logout</li>
         </ul>
         <ul class="menu-list right" flex>
-            <li><md-button class="hotel-button md-raised" ui-sref="client">Client</md-button></li>
+            <li><md-button class="hotel-button md-raised" ui-sref="client" translate="buttons.client"></md-button></li>
         </ul>
     </div>
 </div>

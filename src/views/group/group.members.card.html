@@ -1,11 +1,12 @@
-<md-card class="members-card no-select" ng-hide="members.length == 0">
+<md-card class="group-members-card no-select">
     <md-toolbar>
         <div class="md-toolbar-tools">
-            <h2 class="no-select center">Members</h2>
+            <h2 class="center">{{'groups.members_card.header' | translate}} <span class="number" ng-if="members.length > 0" ng-bind="members.length"></span></h2>
         </div>
     </md-toolbar>
-    <md-card-content>
-        <ul class="member-list">
+    <md-card-content class="no-padding center">
+        <div class="md-padding" ng-if="members.length == 0" translate="groups.members_card.no_members"></div>
+        <ul class="vertical-list avatar-list no-margin" ng-if="members.length > 0">
             <li ng-repeat="member in members | orderBy: 'member_since' | limitTo: 6">
                 <a ui-sref="profile({username: member.user.username})">
                     <div class="user-avatar">
@@ -16,9 +17,9 @@
             </li>
         </ul>
     </md-card-content>
-    <md-toolbar class="footer">
+    <md-toolbar class="footer" ng-if="members.length > 0">
         <div class="md-toolbar-tools center">
-            <md-button ng-click="showAll()">See All</md-button>
+            <md-button ng-click="showAll()" translate="groups.members_card.see_all"></md-button>
         </div>
     </md-toolbar>
 </md-card>

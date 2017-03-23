@@ -5,6 +5,8 @@
     margin-top: 120px;
     background-color: rgba(255,255,255,.9);
     z-index: 4;
+    overflow-x: scroll;
+    overflow-y: hidden;
 }
 
 body.app.page-client .app-menu {
@@ -12,7 +14,9 @@ body.app.page-client .app-menu {
 }
 
 .app-menu .menu-container {
-    width: 960px;
+    position: relative;
+    max-width: 960px;
+    width: auto;
     height: 70px;
     margin: 0 auto;
 }
@@ -31,17 +35,20 @@ body.app.page-client .app-menu {
 }
 
 .app-menu .menu-container ul.menu-list.right li {
-    padding: 7.7275px 0;
+    padding: 9px 0;
 }
 
 .app-menu .menu-container ul.menu-list li.list-item {
     display: table-cell;
     padding: 0 15px;
+    font-size: 24px;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-decoration: none;
+    line-height: 70px;
+    white-space: nowrap;
+    color: rgba(0,0,0,.7);
     cursor: pointer;
-}
-
-.app-menu .menu-container ul.menu-list li.item-right {
-    float: right;
 }
 
 .app-menu .menu-container ul.menu-list li.list-item:after {
@@ -68,21 +75,11 @@ body.app.page-client .app-menu {
 	background: #001726;
 }
 
-.app-menu .menu-container ul.menu-list li.list-item:hover a,
-.app-menu .menu-container ul.menu-list li.list-item:focus a {
+.app-menu .menu-container ul.menu-list li.list-item:hover,
+.app-menu .menu-container ul.menu-list li.list-item:focus {
     color: #999999;
 }
 
-.app-menu .menu-container ul.menu-list li.list-item a {
-    font-size: 24px;
-    font-weight: 300;
-    text-transform: uppercase;
-    text-decoration: none;
-    line-height: 70px;
-    white-space: nowrap;
-    color: rgba(0,0,0,.7);
-}
-
-.app-menu .menu-container ul.menu-list li.list-item.active a {
+.app-menu .menu-container ul.menu-list li.list-item.active {
     font-weight: 400;
 }

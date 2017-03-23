@@ -2,16 +2,17 @@ class Logout
 {
     constructor()
     {
-        this.restrict = 'A';
-        this.replace = true;
+        this.restrict   = 'A';
+        this.replace    = true;
     }
 
-    controller(Session, $localStorage, $state, $mdDialog, $scope)
+    controller(Session, $localStorage, $translate, $state, $mdDialog, $scope)
     {
         'ngInject';
         
         $scope.service          = Session;
         $scope.localStorage     = $localStorage;
+        $scope.translate        = $translate,
         $scope.state            = $state;
         $scope.mdDialog         = $mdDialog;
     }
@@ -22,24 +23,27 @@ class Logout
         {
             if(scope.localStorage.current_user == undefined || null) return;
 
-            scope.mdDialog.show(
-                scope.mdDialog.confirm({
-                    title: 'HabboAPI',
-                            textContent: 'Are you sure you would like to logout?',
-                            ok: 'Logout',
-                            cancel: 'Close'
-                })
-            )
+            return scope.translate(['dialogs.title', 'dialogs.logout', 'dialogs.ok_logout', 'dialogs.cancel'])
+            
+            .then((text) =>
+            {
+                return scope.mdDialog.show(
+                    scope.mdDialog.confirm({
+                        title: text['dialogs.title'],
+                        textContent: text['dialogs.logout'],
+                        ok: text['dialogs.ok_logout'],
+                        cancel: text['dialogs.cancel']
+                    }));
+            })
             
             .then(() =>
             {
-                scope.service.destroy_session()
-                
-                .then(() =>
-                {
-                    event.preventDefault();
-                    return scope.state.go('login');
-                });
+                return scope.service.destroy_session();
+            })
+
+            .then(() =>
+            {
+                return scope.state.go('login');
             })
 
             .catch(() =>

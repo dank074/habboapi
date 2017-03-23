@@ -1,30 +1,35 @@
-<md-card class="login-card">
-	<div class="left-side no-select">
-		<div class="left-overlay"></div>
+<div class="login-card-container" layout="row" layout-xs="column">
+	<md-card class="login-card-left no-select" flex="60" hide-xs>
 		<div class="left-image"></div>
-		<div class="left-content">
-			<div class="left-header">Welcome to {{app_config.site_name}},</div>
-			<div class="left-subheader">a strange place with awesome people.</div>
-			<div class="left-text">{{app_config.site_name}} Hotel is a virtual world where you can create your very own character and design your room just the way you like it. You'll meet new friends, chat, organize parties, look after virtual pets, create and play games and complete quests.</div>
-		</div>
-	</div>
-	<div class="right-side">
-		<div class="login-header no-select">Login</div>
-		<form class="login-form" name="user_login" ng-submit="login()" novalidate>
-			<md-input-container md-no-float class="md-block">
-				<input type="text" name="user_name" ng-model="login_details.user_name" placeholder="Username" required />
-				<div ng-messages="user_login.user_name.$error" md-auto-hide="false" ng-show="user_login.user_name.$touched">
-					<div ng-messages-include="messages.html"></div>
-				</div>
-			</md-input-container>
-			<md-input-container md-no-float class="md-block">
-				<input type="password" name="user_pass" ng-model="login_details.user_pass" placeHolder="Password" required />
-				<div ng-messages="user_login.user_pass.$error" md-auto-hide="false" ng-show="user_login.user_pass.$touched">
-					<div ng-messages-include="messages.html"></div>
-				</div>
-			</md-input-container>
-			<md-button type="submit" class="md-raised md-primary login-button" ng-disabled="user_login.$invalid">Login</md-button><br />
-			<md-button class="md-raised md-accent register-button" ui-sref="register">Register</md-button>
-		</form>
-	</div>
-</md-card>
+		<md-card-content>
+			<h2 translate="login.login_header" translate-values="{site_name: app_config.site_name}"></h2>
+			<h3 translate="login.login_description">a strange place with awesome people</h3>
+			<h4 translate="login.login_info" translate-values="{site_name: app_config.site_name}"></h4>
+		</md-card-content>
+	</md-card>
+	<md-card class="login-card-right no-select" flex="40" flex-xs="100">
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h2 class="center" translate="login.login_card_header"></h2>
+			</div>
+		</md-toolbar>
+		<md-card-content>
+			<form name="user_login" ng-submit="login()" novalidate>
+				<md-input-container md-no-float class="md-block">
+					<input type="text" name="user_name" ng-model="login_details.user_name" translate translate-attr-placeholder="forms.username" required />
+					<div ng-messages="user_login.user_name.$error" md-auto-hide="false" ng-show="user_login.user_name.$touched">
+						<div ng-messages-include="messages.html"></div>
+					</div>
+				</md-input-container>
+				<md-input-container md-no-float class="md-block">
+					<input type="password" name="user_pass" ng-model="login_details.user_pass" translate translate-attr-placeholder="forms.password" required />
+					<div ng-messages="user_login.user_pass.$error" md-auto-hide="false" ng-show="user_login.user_pass.$touched">
+						<div ng-messages-include="messages.html"></div>
+					</div>
+				</md-input-container>
+				<md-button type="submit" class="md-raised md-primary login-button" ng-disabled="user_login.$invalid" translate="buttons.login"></md-button><br />
+				<md-button class="md-raised md-accent register-button" ui-sref="register" translate="buttons.register"></md-button>
+			</form>
+		</md-card-content>
+	</md-card>
+</div>

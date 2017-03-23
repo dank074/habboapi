@@ -50,9 +50,12 @@
     max-width: 100% !important;
 }
 
-.app .app-content .client-container object,
-.app:not(.page-client) .app-content .client-container a.return-web {
+.app .app-content .client-container object {
     visibility: hidden;
+}
+
+.app:not(.page-client) .app-content .client-container button.return-web {
+    display: none;
 }
 
 .app.page-client .app-content .client-container object {
@@ -60,14 +63,15 @@
 }
 
 .app .app-content .content-footer {
-    height: 40px;
+    height: 30px;
     max-width: 960px;
     margin: 0 auto;
     text-align: center;
     font-size: 14px;
-    line-height: 40px;
+    line-height: 30px;
     font-weight: 400;
     color: rgba(0,0,0,.5);
+    overflow: hidden;
 }
 
 .app.page-client .app-content .content-footer {

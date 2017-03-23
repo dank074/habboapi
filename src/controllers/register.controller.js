@@ -19,19 +19,23 @@ class Register
 
         this._$scope.register = () =>
         {
-            if(this._$scope.register_details == undefined || this._$scope.register_details.length == 0) return this._Utility.alert('Something is missing, please try again.');
+            if(this._$scope.register_details.user_name == null || this._$scope.register_details.user_email == null || this._$scope.register_details.user_pass == null || this._$scope.register_details.user_cpass == null) return;
 
             return User.add_user(this._$scope.register_details.user_name, this._$scope.register_details.user_email, this._$scope.register_details.user_pass)
 
             .then((user) =>
             {
-                this._Utility.alert('Account Created! You may now login.');
-                return this._$state.go('login', {login_username: $scope.register_details.user_name});
+                return this._Authentication.login(this._$scope.register_details.user_name, this._$scope.register_details.user_pass)
+            })
+
+            .then((session) =>
+            {
+                return this._$state.go('me');
             })
 
             .catch((err) =>
             {
-                return Utility.alert('Something went wrong, please try again.');
+                return this._Utility.alert('dialogs.something_wrong');
             });
         }
     }

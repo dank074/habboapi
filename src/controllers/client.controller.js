@@ -2,23 +2,24 @@ import angular from 'angular';
 
 class Client
 {
-    constructor(AppConstants, Session, $localStorage, $window, $stickyState, $mdDialog, $state, $scope)
+    constructor(AppConstants, Session, $translate, $localStorage, $window, $stickyState, $mdDialog, $state, $rootScope, $scope)
     {
         'ngInject';
 
-        this._AppConstants = AppConstants;
-        this._Session = Session;
+        this._AppConstants  = AppConstants;
+        this._Session       = Session;
+        this._$translate    = $translate;
         this._$localStorage = $localStorage;
-        this._$window = $window;
-        this._$stickyState = $stickyState;
-        this._$mdDialog = $mdDialog;
-        this._$state = $state;
-        this._$scope = $scope;
+        this._$window       = $window;
+        this._$stickyState  = $stickyState;
+        this._$mdDialog     = $mdDialog;
+        this._$state        = $state;
+        this._$rootScope    = $rootScope;
+        this._$scope        = $scope;
 
-        this._$scope.client_swf = this._AppConstants.client.client_swf;
-        this._$scope.client_base = this._AppConstants.client.client_base;
-
-        this._$scope.flashvars_string = '';
+        this._$scope.client_swf         = this._AppConstants.client.client_swf;
+        this._$scope.client_base        = this._AppConstants.client.client_base;
+        this._$scope.flashvars_string   = '';
 
         this._$scope.flash_vars = {
             "connection.info.host": this._AppConstants.client.client_host,
@@ -31,8 +32,8 @@ class Client
             "avatareditor.promohabbos": this._AppConstants.client.client_promohabbos,
             "client.allow.cross.domain": 1,
             "client.notify.cross.domain": 0,
-            "client.starting": "Loading " + this._AppConstants.site_name,
-            "client.starting.revolving": "We all live in igloos./For science, you monster/Loading funny message... please wait./Would you like fries with that?/Follow the yellow duck./Time is just an illusion./Are we there yet?!/I like your t-shirt./Look left. Look right. Blink twice. Ta da!/It's not you, it's me./Shhh! I'm trying to think here./Loading pixel universe.",
+            "client.starting": this._AppConstants.site_name,
+            "client.starting.revolving": this._$translate.instant('client.revolving'),
             "flash.client.url": this._AppConstants.client.client_base,
             "flash.client.origin": "popup",
             "url.prefix": this._AppConstants.site_link + '/',
@@ -49,12 +50,21 @@ class Client
             this._$scope.flashvars_string += key + '=' + value + '&amp;';
 		});
 
+        this._$scope.go_back = () =>
+        {
+            if(this._$rootScope.previous_state.name == 'client') return this._$state.go('login');
+
+            return this._$state.go(this._$rootScope.previous_state.name);
+        }
+
+        this._$scope.reload_client = () =>
+        {
+            this._$stickyState.reset('client');
+        }
+
         this._$window.HabboFlashClient = {
             started: !1,
-            init: function(n)
-            {
-                console.log('[HABBOAPI] Client Loading');
-            }
+            init: function(n) {}
         };
 
         this._$window.addEventListener("load", this._$window.HabboFlashClient.init(document.getElementById('flash-container')));
@@ -63,46 +73,57 @@ class Client
 
         this._$window.FlashExternalInterface.logout = () =>
         {
-            this._$mdDialog.show(
-                this._$mdDialog.confirm({
-                    title: 'HabboAPI',
-                    textContent: 'Are you sure you would like to logout?',
-                    ok: 'Logout',
-                    cancel: 'Close'
-                })
-            )
+            return this._$translate(['dialogs.title', 'dialogs.logout', 'dialogs.ok_logout', 'dialogs.cancel'])
+            
+            .then((text) =>
+            {
+                return this._$mdDialog.show(
+                    this._$mdDialog.confirm({
+                        title: text['dialogs.title'],
+                        textContent: text['dialogs.logout'],
+                        ok: text['dialogs.ok_logout'],
+                        cancel: text['dialogs.cancel']
+                    }));
+            })
             
             .then(() =>
             {
-                this._Session.destroy_session()
-                
-                .then(() =>
-                {
-                    return this._$state.go('login');
-                });
+                return this._Session.destroy_session();
+            })
+
+            .then(() =>
+            {
+                return this._$state.go('login');
             })
 
             .catch(() =>
             {
                 return;
-            });
+            })
         };
         
         this._$window.FlashExternalInterface.disconnect = () =>
         {
-            this._$mdDialog.show(
-                this._$mdDialog.alert({
-                    clickOutsideToClose: false,
-                    title: 'HabboAPI',
-                    textContent: 'You have been disconnected!',
-                    ok: 'Reload'
-                })
-            )
+            return this._$translate(['dialogs.title', 'dialogs.disconnected', 'dialogs.ok_reload', 'dialogs.close'])
             
+            .then((text) =>
+            {
+                return this._$mdDialog.show(
+                    this._$mdDialog.alert({
+                        clickOutsideToClose: false,
+                        title: text['dialogs.title'],
+                        textContent: text['dialogs.disconnected'],
+                        ok: text['dialogs.ok_reload']
+                    }));
+            })
+
             .then(() =>
             {
                 this._$stickyState.reset('client');
-                return this._$state.reload();
+
+                if(this._$state.includes('client')) return this._$state.reload();
+
+                return this._$state.go('client');
             });
         };
         

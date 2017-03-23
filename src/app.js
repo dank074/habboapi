@@ -3,6 +3,7 @@ import 'angular-animate';
 import 'angular-aria';
 import 'angular-messages';
 import 'angular-material';
+import 'angular-translate';
 import 'angular-ui-router';
 import 'ui-router-extras';
 import 'ngstorage';
@@ -21,6 +22,7 @@ const requires = [
 	'ngAria',
 	'ngMessages',
 	'ngMaterial',
+	'pascalprecht.translate',
 	'ui.router',
 	'ct.ui.router.extras',
 	'ngStorage',
@@ -35,8 +37,5 @@ window.app = angular.module('app', requires);
 angular.module('app').constant('AppConstants', Constants.constants);
 angular.module('app').config(Config);
 angular.module('app').run(Run);
-
-require('./filters/app.badge-name.filter');
-require('./filters/app.rank-name.filter');
 
 angular.bootstrap(document, ['app'], { strictDi: true });

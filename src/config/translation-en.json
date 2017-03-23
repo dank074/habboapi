@@ -1,0 +1,151 @@
+{
+    "forms": {
+        "username": "Username",
+        "email": "Email",
+        "new_email": "New Email",
+        "confirm_email": "Confirm Email",
+        "password": "Password",
+        "new_password": "New Password",
+        "confirm_password": "Confirm Password",
+        "current_password": "Current Password"
+    },
+    "buttons": {
+        "login": "Login",
+        "register": "Register",
+        "client": "Client",
+        "logout": "Logout",
+        "return_web": "Web"
+    },
+    "dialogs": {
+        "title": "HabboAPI",
+        "ok": "Close",
+        "ok_logout": "Logout",
+        "ok_reload": "Reload",
+        "cancel": "Cancel",
+        "close": "Close",
+        "invalid_login": "That login was invalid, please try again.",
+        "something_wrong": "Something went wrong, please try again.",
+        "disconnected": "Your client has been disconnected.",
+        "logout": "Are you sure you would like to logout?",
+        "password_updated": "Your password has been updated!",
+        "email_updated": "Your email address has been updated!",
+        "client_updated": "Your client settings have been updated! You must reload the client for the changes to take effect."
+    },
+    "messages": {
+        "required": "This field is required",
+        "maxlength": "This field has exceeded the maximum length",
+        "email": "Please enter a valid email address",
+        "username_unavailable": "That username is not available",
+        "email_unavailable": "That email address is already registered"
+    },
+    "login": {
+        "login_header": "Welcome to {{site_name}},",
+        "login_description": "a strange place with awesome people",
+        "login_info": "{{site_name}} Hotel is a virtual world where you can create your very own character and design your room just the way you like it. You'll meet new friends, chat, organize parties, look after virtual pets, create and play games and complete quests.",
+        "login_card_header": "Login"
+    },
+    "register": {
+        "register_header": "This is where the fun begins,",
+        "register_description": "create your very own {{site_name}} character!",
+        "register_card_header": "Register"
+    },
+    "community": {
+        "latest_user_header": "Latest User",
+        "top_rooms": {
+            "header": "Top Rooms",
+            "empty": "There are currently no top rooms"
+        },
+        "room_promotions": {
+            "header": "Room Promotions",
+            "empty": "There are currently no top rooms"
+        },
+        "latest_statistics": {
+            "header": "Latest Statistics",
+            "furniture": "Furniture",
+            "rooms": "Rooms",
+            "users": "Users",
+            "groups": "Groups",
+            "pets": "Pets"
+        }
+    },
+    "groups": {
+        "details_card": {
+            "header": "Details",
+            "owner": "Owner",
+            "created": "Created",
+            "total_members": "Total Members"
+        },
+        "room_card": {
+            "header": "Room",
+            "name": "Name",
+            "owner": "Owner"
+        },
+        "members_card": {
+            "header": "Members",
+            "see_all": "See All",
+            "no_members": "This group has no members!"
+        }
+    },
+    "rooms": {
+        "details_card": {
+            "header": "Details",
+            "type": "Type",
+            "type_private": "Private",
+            "type_public": "Public",
+            "state": "State",
+            "state_open": "Open",
+            "state_locked": "Locked",
+            "state_password": "Password",
+            "owner": "Owner",
+            "score": "Score",
+            "users_now": "Users Now",
+            "users_max": "Max Users"
+        }
+    },
+    "settings": {
+        "password": "Password",
+        "email": "Email",
+        "client": {
+            "header": "Client",
+            "block_following": "Block Following",
+            "block_friend_requests": "Block Friend Requests",
+            "block_room_invites": "Block Room Invites",
+            "old_chat": "Old Chat",
+            "ignore_bots": "Ignore Bots",
+            "ignore_pets": "Ignore Pets"
+        },
+        "user_info": {
+            "created": "Created",
+            "rank": "Rank",
+            "email": "Email",
+            "credits": "Credits",
+            "pixels": "Pixels",
+            "diamonds": "Diamonds"
+        }
+    },
+    "client": {
+        "revolving": "We all live in igloos./For science, you monster/Loading funny message... please wait./Would you like fries with that?/Follow the yellow duck./Time is just an illusion./Are we there yet?!/I like your t-shirt./Look left. Look right. Blink twice. Ta da!/It's not you, it's me./Shhh! I'm trying to think here./Loading pixel universe."
+    },
+    "profile": {
+        "badges": {
+            "header": "Badges",
+            "see_all": "See All",
+            "no_badges": "This user doesn't have any badges!"
+        },
+        "friends": {
+            "header": "Friends",
+            "see_all": "See All",
+            "no_friends": "This user doesn't have any friends!"
+        },
+        "rooms": {
+            "header": "Rooms",
+            "see_all": "See All",
+            "no_rooms": "This user doesn't have any rooms!"
+        },
+        "groups": {
+            "header": "Group Memberships",
+            "see_all": "See All",
+            "no_groups": "This user doesn't belong to any groups!"
+        }
+    }
+}

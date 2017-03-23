@@ -1,0 +1,59 @@
+/** BADGES **/
+
+section.profile-badge-card-container .profile-badge-card-header {
+    width: 100%;
+    height: 140px;
+    background: url('../images/cards/card_badges_header.png') no-repeat;
+    image-rendering: pixelated;
+}
+
+section.profile-badge-card-container md-card {
+    margin: 0 8px 8px;
+}
+
+/** /BADGES **/
+
+/** FRIENDS **/
+
+section.profile-friend-card-container .profile-friend-card-header {
+    width: 100%;
+    height: 140px;
+    background: url('../images/cards/card_friends_header.png') no-repeat;
+    image-rendering: pixelated;
+}
+
+section.profile-friend-card-container md-card {
+    margin: 0 8px 8px;
+}
+
+/** /FRIENDS **/
+
+/** ROOMS **/
+
+section.profile-room-card-container .profile-room-card-header {
+    width: 100%;
+    height: 140px;
+    background: url('../images/cards/card_rooms_header.png') no-repeat;
+    image-rendering: pixelated;
+}
+
+section.profile-room-card-container md-card {
+    margin: 0 8px 8px;
+}
+
+/** /ROOMS **/
+
+/** GROUPS **/
+
+section.profile-group-card-container .profile-group-card-header {
+    width: 468px;
+    height: 140px;
+    background: url('../images/cards/card_groups_header.png') no-repeat;
+    image-rendering: pixelated;
+}
+
+section.profile-group-card-container md-card {
+    margin: 0 8px 8px;
+}
+
+/** /GROUPS **/

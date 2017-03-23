@@ -20,6 +20,16 @@ HabboAPI is a powerful open source content management system for use with Arctur
 * run `gulp build`
 * finally to start the server, run `npm start`
 
+#### features
+* me page
+  * currently just shows a user card, currently thinking of more things to put here
+* community page
+  * latest user, top rooms, promotions, & statistics
+* staff page
+  * lists all ranks defined in the config `staff_page_ranks`
+* settings
+  * shows some basic user info along with the ability to update your password, email & client settings.
+
 #### faqs
 * what emulator does HabboAPI CMS support?
   * habboapi is made for the arcturus emulator database. although with some modifications to the database models this system could be coded for other databases.

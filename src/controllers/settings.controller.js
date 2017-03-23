@@ -24,7 +24,7 @@ class Settings
 
 		this._$scope.update_password = () =>
 		{
-			if(this._$scope.password_details == undefined || this._$scope.password_details.length == 0 || this._$scope.password_details.new_password != this._$scope.password_details.new_cpassword) return this._Utility.alert('Something went wrong, please try again');
+			if(this._$scope.password_details == undefined || this._$scope.password_details.length == 0 || this._$scope.password_details.new_password != this._$scope.password_details.new_cpassword) return this._Utility.alert('dialogs.something_wrong');
 
 			return User.update_user_password(this._$scope.password_details.new_password, this._$scope.password_details.password)
 
@@ -34,18 +34,18 @@ class Settings
 				this._$scope.password_details.new_cpassword = null;
 				this._$scope.password_details.password = null;
 
-				this._Utility.alert('Your password has been updated!');
+				this._Utility.alert('dialogs.password_updated');
 			})
 
 			.catch((err) =>
 			{
-				return this._Utility.alert('Something went wrong, please try again');
+				return this._Utility.alert('dialogs.something_wrong');
 			});
 		}
 
 		this._$scope.update_email = () =>
 		{
-			if(this._$scope.email_details == undefined || this._$scope.email_details.length == 0 || this._$scope.email_details.new_email != this._$scope.email_details.new_cemail) return this._Utility.alert('Something went wrong, please try again');
+			if(this._$scope.email_details == undefined || this._$scope.email_details.length == 0 || this._$scope.email_details.new_email != this._$scope.email_details.new_cemail) return this._Utility.alert('dialogs.something_wrong');
 
 			return User.update_user_email(this._$scope.email_details.new_email, this._$scope.email_details.password)
 
@@ -57,12 +57,12 @@ class Settings
 				this._$scope.email_details.new_cemail = null;
 				this._$scope.email_details.password = null;
 
-				this._Utility.alert('Your emaill address has been updated!');
+				this._Utility.alert('dialogs.email_updated');
 			})
 
 			.catch((err) =>
 			{
-				return this._Utility.alert('Something went wrong, please try again');
+				return this._Utility.alert('dialogs.something_wrong');
 			});
 		}
 
@@ -73,12 +73,12 @@ class Settings
 			.then(() =>
 			{
 				this._$stickyState.reset('client');
-				this._Utility.alert('Your client settings have been updated! You must reload the client for the changes to take effect.');
+				this._Utility.alert('dialogs.client_updated');
 			})
 
 			.catch((err) =>
 			{
-				return this._Utility.alert('Something went wrong, please try again');
+				return this._Utility.alert('dialogs.something_wrong');
 			});
 		}
     }
