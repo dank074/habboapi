@@ -1,7 +1,8 @@
+import angular from 'angular';
 import states from './states.json';
 import translationEnglish from './translation-en.json';
 
-function Config($urlRouterProvider, $stateProvider, $locationProvider, $translateProvider, $stickyStateProvider, $mdThemingProvider, $mdAriaProvider)
+function Config($urlRouterProvider, $urlMatcherFactoryProvider, $stateProvider, $locationProvider, $translateProvider, $stickyStateProvider, $mdThemingProvider, $mdAriaProvider)
 {
 	'ngInject';
 
@@ -14,6 +15,15 @@ function Config($urlRouterProvider, $stateProvider, $locationProvider, $translat
 	$translateProvider.preferredLanguage('en');
 	$translateProvider.useSanitizeValueStrategy('escape');
 	$translateProvider.usePostCompiling(true);
+
+	var forum_rename = {
+		encode: (str) => { return str && str.replace(/ /g, "-"); },
+		decode: (str) => { return str && str.replace(/-/g, " "); },
+		is: angular.isString,
+		pattern: /[^/]+/
+	};
+	
+	$urlMatcherFactoryProvider.type('forumRename', forum_rename);
 	
 	$mdThemingProvider.theme('default').primaryPalette('teal');
 

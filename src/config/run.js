@@ -1,13 +1,13 @@
-function Run(AppConstants, Session, User, $localStorage, $stickyState, $state, $rootScope)
+function Run(AppConstants, SessionService, $localStorage, $stickyState, $state, $rootScope)
 {
 	'ngInject';
 	
-	$rootScope.app_config	= AppConstants;
-	$rootScope.state		= $state;
+	$rootScope.app_config		= AppConstants;
+	$rootScope.state			= $state;
 
 	$rootScope.$on('$stateChangeStart', (event, next, current) =>
 	{
-		return Session.validate_session()
+		return SessionService.validate_session()
 		
 		.then((session) =>
 		{
@@ -24,11 +24,12 @@ function Run(AppConstants, Session, User, $localStorage, $stickyState, $state, $
 
 		.catch((err) =>
 		{
+			event.preventDefault();
+
 			$rootScope.current_user = null;
 			
 			if(next.login_required == true)
 			{
-				event.preventDefault();
 				return $state.go('login');
 			}
 
@@ -40,7 +41,8 @@ function Run(AppConstants, Session, User, $localStorage, $stickyState, $state, $
 	{
 		if($rootScope.current_user == null) $stickyState.reset('client');
 
-		$rootScope.previous_state = (prev.name == undefined || prev.name == '' || null) ? $state.get('login') : prev;
+		$rootScope.previous_state 	= (prev.name == undefined || prev.name == '' || null) ? $state.get('login') : prev;
+		$rootScope.previous_params 	= prevParams;
 	});
 }
 

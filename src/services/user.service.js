@@ -1,6 +1,6 @@
 import angular from 'angular';
 
-class User
+class UserService
 {
 	constructor(AppConstants, $http, $q)
 	{
@@ -15,9 +15,7 @@ class User
 	{
 		if(user_name == '' || null) return this._$q.reject('invalid_parameters');
 
-		return this._$http.post(this._AppConstants.api + '/service/user/validate_username', {
-			user_name: user_name
-		})
+		return this._$http.post(this._AppConstants.api + '/service/user/validate_username', {user_name: user_name})
 
 		.then((res) =>
 		{
@@ -34,9 +32,7 @@ class User
 	{
 		if(email_address == '' || null) return this._$q.reject('invalid_parameters');
 
-		return this._$http.post(this._AppConstants.api + '/service/user/validate_email', {
-			email_address: email_address
-		})
+		return this._$http.post(this._AppConstants.api + '/service/user/validate_email', {email_address: email_address})
 
 		.then((res) =>
 		{
@@ -53,14 +49,12 @@ class User
 	{
 		if(user_name == '' || null || user_email == '' || null || user_pass == '' || null) return this._$q.reject('invalid_parameters');
 
-		return this._$http.post(this._AppConstants.api + '/service/user/add_user', {
-			user_name: user_name,
-			user_email: user_email,
-			user_pass: user_pass
-		})
+		return this._$http.post(this._AppConstants.api + '/service/user/add_user', {user_name: user_name, user_email: user_email, user_pass: user_pass})
 
 		.then((res) =>
 		{
+			if(res.data.user == undefined || res.data.user.length == 0) return this._$q.reject('invalid_user');
+
 			return this._$q.resolve(res.data.user);
 		})
 
@@ -74,10 +68,7 @@ class User
 	{
 		if(new_email == '' || null || password == '' || null) return this._$q.reject('invalid_parameters');
 
-		return this._$http.post(this._AppConstants.api + '/service/user/update_user_email', {
-			new_email: new_email,
-			password: password
-		})
+		return this._$http.post(this._AppConstants.api + '/service/user/update_user_email', {new_email: new_email, password: password})
 
 		.then((res) =>
 		{
@@ -94,9 +85,7 @@ class User
 	{
 		if(data == '' || null) return this._$q.reject('invalid_parameters');
 
-		return this._$http.post(this._AppConstants.api + '/service/user/update_user', {
-			data: data
-		})
+		return this._$http.post(this._AppConstants.api + '/service/user/update_user', {data: data})
 
 		.then((res) =>
 		{
@@ -113,10 +102,7 @@ class User
 	{
 		if(new_password == '' || null || password == '' || null) return this._$q.reject('invalid_parameters');
 
-		return this._$http.post(this._AppConstants.api + '/service/user/update_user_password', {
-			new_password: new_password,
-			password: password
-		})
+		return this._$http.post(this._AppConstants.api + '/service/user/update_user_password', {new_password: new_password, password: password})
 
 		.then((res) =>
 		{
@@ -133,9 +119,7 @@ class User
 	{
 		if(data == '' || null) return this._$q.reject('invalid_parameters');
 
-		return this._$http.post(this._AppConstants.api + '/service/user/update_user_settings', {
-			data: data
-		})
+		return this._$http.post(this._AppConstants.api + '/service/user/update_user_settings', {data: data})
 
 		.then((res) =>
 		{
@@ -149,4 +133,4 @@ class User
 	}
 }
 
-export default User;
+export default UserService;

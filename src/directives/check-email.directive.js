@@ -6,11 +6,11 @@ class CheckEmail
         this.require    = 'ngModel';
     }
 
-    controller(User, $scope)
+    controller(UserService, $scope)
     {
         'ngInject';
         
-        $scope.service = User;
+        $scope.UserService = UserService;
     }
 
     link(scope, element, attrs, ngModel)
@@ -19,7 +19,7 @@ class CheckEmail
         {
             if(element.val() == undefined || null || element.val() == '') return;
 
-            return scope.service.validate_email(element.val())
+            return scope.UserService.validate_email(element.val())
 
             .then(() =>
             {

@@ -11,16 +11,25 @@
 					<span class="md-headline">{{room_info.name}}</span>
 					<span class="md-subhead description" ng-hide="room_info.description == null">{{room_info.description}}</span>
 				</md-card-title-text>
-				<a class="group-room" ng-hide="room_info.guild_id == 0" ui-sref="group({id: room_info.group.id})">
+				<a class="group-room" ng-if="room_info.guild_id != 0" ui-sref="group({id: room_info.group.id})">
 					<div class="badge-icon">
 						<div class="badge-icon-aligner">
-							<img ng-src="{{app_config.site_images.group_badges}}/{{room_info.group.badge}}.gif" />
+							<img ng-src="{{$root.app_config.site_images.group_badges}}/{{room_info.group.badge}}.gif" />
 						</div>
 					</div>
 				</a>
 			</md-card-title>
 		</md-card>
-		<user-card userid="room_info.owner.id" userinfo="room_info.owner"></user-card>
+		<md-card class="no-select">
+			<md-toolbar>
+				<div class="md-toolbar-tools">
+					<h2 translate="rooms.room_owner"></h2>
+				</div>
+			</md-toolbar>
+			<md-card-content class="no-padding">
+				<user-card userid="room_info.owner.id" userinfo="room_info.owner" style="margin:0;"></user-card>
+			</md-card-content>
+		</md-card>
 	</div>
 	<div layout="column" flex="30" flex-xs="100">
 		<md-card class="no-select">
@@ -42,10 +51,6 @@
 							<td ng-if="room_info.state == 'open'" translate="rooms.details_card.state_open"></td>
 							<td ng-if="room_info.state == 'locked'" translate="rooms.details_card.state_locked"></td>
 							<td ng-if="room_info.state == 'password'" translate="rooms.details_card.state_password"></td>
-						</tr>
-						<tr>
-							<th translate="rooms.details_card.owner"></th>
-							<td ng-bind="room_info.owner.username"></td>
 						</tr>
 						<tr>
 							<th translate="rooms.details_card.score"></th>

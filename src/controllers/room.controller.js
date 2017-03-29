@@ -1,35 +1,30 @@
-class Room
+class RoomController
 {
-    constructor(AppConstants, $window, $stateParams, $http, $scope)
+    constructor(AppConstants, $state, $stateParams, $http, $rootScope, $scope)
     {
         'ngInject';
 
-        this._AppConstants = AppConstants;
-        this._$window = $window;
-        this._$stateParams = $stateParams;
-        this._$http = $http;
-        this._$scope = $scope;
+        this._AppConstants  = AppConstants;
+        this._$state        = $state;
+        this._$stateParams  = $stateParams;
+        this._$http         = $http;
+        this._$rootScope    = $rootScope;
+        this._$scope        = $scope;
 
         this._$scope.room_id = (this._$stateParams.id == undefined || null) ? null : this._$stateParams.id;
+
+        this._$http.post(this._AppConstants.api + '/controller/room/room_info', {room_id: this._$scope.room_id})
         
-        if(this._$scope.room_id == '' || this._$scope.room_id == '0' || null) return this._$window.history.back();
-
-        this._$http.post(this._AppConstants.api + '/controller/room/room_info', {
-            room_id: this._$scope.room_id
-        })
-
         .then((res) =>
         {
-            if(res.data.room_info == undefined || null) this._$scope.room_info = null;
-
             this._$scope.room_info = res.data.room_info;
         })
-
+        
         .catch((res) =>
         {
-            return this._$window.history.back();
-        })
+            return this._$state.go(this._$rootScope.previous_state.name, this._$rootScope.previous_params);
+        });
     }
 }
 
-export default Room;
+export default RoomController;

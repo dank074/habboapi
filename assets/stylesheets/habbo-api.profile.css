@@ -1,5 +1,10 @@
 /** BADGES **/
 
+section.profile-badge-card-container {
+    width: 100%;
+    height: 100%;
+}
+
 section.profile-badge-card-container .profile-badge-card-header {
     width: 100%;
     height: 140px;
@@ -14,6 +19,11 @@ section.profile-badge-card-container md-card {
 /** /BADGES **/
 
 /** FRIENDS **/
+
+section.profile-friend-card-container {
+    width: 100%;
+    height: 100%;
+}
 
 section.profile-friend-card-container .profile-friend-card-header {
     width: 100%;

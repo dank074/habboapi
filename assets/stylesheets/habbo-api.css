@@ -37,16 +37,37 @@
 		padding: 0;
 	}
 
-	/** BADGE ICON **/
+	.center-middle {
+		display: flex;
+		height: 100%;
+		justify-content: center;
+		align-items: center;
+	}
 
-	.badge-icon, .room-icon {
+	.no-margin {
+		margin: 0 !important;
+	}
+
+	.no-padding{
+		padding: 0 !important;
+	}
+
+	.pixel-image {
+		image-rendering: pixelated;
+	}
+
+	/** BADGE / ROOM ICON **/
+
+	.badge-icon,
+	.room-icon {
     	display: flex;
     	margin: 0 auto;
     	justify-content: center;
     	align-items: center;
 	}
 
-	.badge-icon-aligner, .room-icon-aligner {
+	.badge-icon-aligner,
+	.room-icon-aligner {
 		align-items: center;
     	border: 3px solid #000000;
 		background-color: #0B6395;
@@ -64,12 +85,12 @@
 		background-color: transparent !important;
 	}
 
-	.badge-icon-aligner img, .room-icon-aligner img {
-    	-ms-interpolation-mode: bicubic;
+	.badge-icon-aligner img,
+	.room-icon-aligner img {
     	image-rendering: pixelated;
 	}
 
-	/** /BADGE ICON **/
+	/** /BADGE / ROOM ICON **/
 	/** AVATAR **/
 
 	.user-avatar {
@@ -86,6 +107,7 @@
 	}
 
 	/** /AVATAR **/
+	/** 
 
 	/** BUTTONS **/
 
@@ -118,3 +140,7 @@
 	}
 
 /** /BUTTONS */
+
+.app.page-client .app-header {
+    display: none;
+}

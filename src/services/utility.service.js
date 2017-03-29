@@ -1,4 +1,4 @@
-class Utility
+class UtilityService
 {
 	constructor($mdToast, $mdDialog, $translate)
 	{
@@ -43,4 +43,4 @@ class Utility
 	}
 }
 
-export default Utility;
+export default UtilityService;

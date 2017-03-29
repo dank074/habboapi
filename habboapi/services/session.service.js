@@ -78,8 +78,10 @@ class SessionService
 
 		if(user_id == null) return false;
 
-		return new ApiSession({user_id: user_id}).fetchAll({
-			columns: ['id']
+		return new ApiSession().query((qb) => {
+            qb.where('user_id', user_id);
+		}).fetchAll({
+			columns: ['id', 'user_id', 'user_name']
 		})
 
 		.then((result) =>

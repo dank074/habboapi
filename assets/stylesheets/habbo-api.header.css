@@ -6,32 +6,31 @@
     z-index: 2;
 }
 
-.app.page-client .app-header {
-    display: none;
-}
-
 .app .app-header .header-container {
-    width: 960px;
+    display: flex;
+    max-width: 960px;
     height: 100%;
     margin: 0 auto;
+    justify-content: center;
+	align-items: center;
+    z-index: 3;
 }
 
 .app .app-header .header-container .header-logo {
-    position: fixed;
+    position: relative;
     width: 228px;
     height: 64px;
-    margin: 28px 0 28px 50px;
     image-rendering: pixelated;
     background: url("../images/habfuse-logo.png") no-repeat;
-    z-index: 4;
+    z-index: 5;
 }
 
 .app .app-header .header-container .header-image {
-    position: fixed;
+    position: absolute;
     width: 465px;
     height: 120px;
-    margin-left: 500px;
     image-rendering: pixelated;
     background: url("../images/login-image.png") no-repeat 0 -160px;
-    z-index: 3;
+    float: right;
+    z-index: 4;
 }

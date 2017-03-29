@@ -1,13 +1,13 @@
-class Login
+class LoginController
 {
-	constructor(Utility, Authentication, $state, $scope)
+	constructor(UtilityService, AuthenticationService, $state, $scope)
 	{
 		'ngInject';
 		
-		this._Utility = Utility;
-		this._Authentication = Authentication;
-		this._$state = $state;
-		this._$scope = $scope;
+		this._UtilityService 		= UtilityService;
+		this._AuthenticationService = AuthenticationService;
+		this._$state 				= $state;
+		this._$scope 				= $scope;
 
 		this._$scope.login_details = {
 			user_name: null,
@@ -16,9 +16,9 @@ class Login
 
 		this._$scope.login = () =>
 		{
-			if(this._$scope.login_details.user_name == undefined || null || this._$scope.login_details.user_pass == undefined || null) return;
+			if(this._$scope.login_details.user_name == null || this._$scope.login_details.user_pass == null) return;
 
-			return this._Authentication.login(this._$scope.login_details.user_name, this._$scope.login_details.user_pass)
+			return this._AuthenticationService.login(this._$scope.login_details.user_name, this._$scope.login_details.user_pass)
 
 			.then((session) =>
 			{
@@ -29,10 +29,10 @@ class Login
 			{
 				this._$scope.login_details.user_name, this._$scope.login_details.user_pass = null;
 
-				return this._Utility.alert('dialogs.invalid_login');
+				return this._UtilityService.alert('dialogs.invalid_login');
 			});
 		}
 	}
 }
 
-export default Login;
+export default LoginController;

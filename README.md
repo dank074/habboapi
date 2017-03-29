@@ -29,6 +29,12 @@ HabboAPI is a powerful open source content management system for use with Arctur
   * lists all ranks defined in the config `staff_page_ranks`
 * settings
   * shows some basic user info along with the ability to update your password, email & client settings.
+* profiles
+  * shows a user card(which can be seen on the me page) along with badges, friends, rooms & groups
+* groups
+  * shows the group name, description, badge, owner, date created, group room & list of all members
+* rooms
+  * shows the room name, description, model image, group badge (if group homeroom), type, state, score/likes, users now & max users
 
 #### faqs
 * what emulator does HabboAPI CMS support?

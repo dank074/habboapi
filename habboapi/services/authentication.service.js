@@ -45,7 +45,7 @@ class AuthenticationService
 
                     .then((result) =>
                     {
-                        return this.log_login(user_info.id, user_info.username, user_ip, user_agent, false)
+                        return this.log_login(user_info.id, user_info.username, user_ip, user_agent, true)
 
                         .then((result) =>
                         {

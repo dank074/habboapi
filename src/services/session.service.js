@@ -1,14 +1,13 @@
 import angular from 'angular';
 
-class Session
+class SessionService
 {
-    constructor(AppConstants, $localStorage, $window, $http, $q)
+    constructor(AppConstants, $localStorage, $http, $q)
     {
         'ngInject';
 
         this._AppConstants	= AppConstants;
         this._$localStorage = $localStorage;
-        this._$window		= $window;
         this._$http			= $http;
         this._$q			= $q;
     }
@@ -31,13 +30,13 @@ class Session
 
     validate_session()
     {
-        if(this._$localStorage.current_user == undefined || null) return this._$q.reject('invalid_session');
+        if(this._$localStorage.current_user == undefined || this._$localStorage.current_user.length == 0 || null) return this._$q.reject('invalid_session');
 
         return this._$http.get(this._AppConstants.api + '/service/session/get_session')
 
         .then((res) =>
         {
-            if(res.data.session == undefined || null || res.data.session.user_info == undefined || null) return this._$q.reject('invalid_session');
+            if(res.data.session == undefined || res.data.session.length == 0 || null || res.data.session.user_info == undefined || res.data.session.user_info.length == 0 || null) return this._$q.reject('invalid_session');
 
             if(res.data.session.user_session != this._$localStorage.current_user.user_session) return this._$q.reject('invalid_session');
 
@@ -79,4 +78,4 @@ class Session
     }
 }
 
-export default Session;
+export default SessionService;

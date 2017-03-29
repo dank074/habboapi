@@ -6,11 +6,11 @@ class Logout
         this.replace    = true;
     }
 
-    controller(Session, $localStorage, $translate, $state, $mdDialog, $scope)
+    controller(SessionService, $localStorage, $translate, $state, $mdDialog, $scope)
     {
         'ngInject';
         
-        $scope.service          = Session;
+        $scope.SessionService   = SessionService;
         $scope.localStorage     = $localStorage;
         $scope.translate        = $translate,
         $scope.state            = $state;
@@ -38,7 +38,7 @@ class Logout
             
             .then(() =>
             {
-                return scope.service.destroy_session();
+                return scope.SessionService.destroy_session();
             })
 
             .then(() =>

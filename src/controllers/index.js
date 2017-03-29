@@ -1,24 +1,24 @@
 import angular from 'angular';
-import Client from './client.controller';
-import Community from './community.controller';
-import Group from './group.controller';
-import Login from './login.controller';
-import Profile from './profile.controller';
-import Register from './register.controller';
-import Room from './room.controller';
-import Settings from './settings.controller';
-import Staff from './staff.controller';
+import ClientController from './client.controller';
+import CommunityController from './community.controller';
+import GroupController from './group.controller';
+import LoginController from './login.controller';
+import ProfileController from './profile.controller';
+import RegisterController from './register.controller';
+import RoomController from './room.controller';
+import SettingsController from './settings.controller';
+import StaffController from './staff.controller';
 
 let controllers = angular.module('habboapi.controllers', []);
 
-controllers.controller('Client', Client);
-controllers.controller('Community', Community);
-controllers.controller('Group', Group);
-controllers.controller('Login', Login);
-controllers.controller('Profile', Profile);
-controllers.controller('Register', Register);
-controllers.controller('Room', Room);
-controllers.controller('Settings', Settings);
-controllers.controller('Staff', Staff);
+controllers.controller('ClientController', ClientController);
+controllers.controller('CommunityController', CommunityController);
+controllers.controller('GroupController', GroupController);
+controllers.controller('LoginController', LoginController);
+controllers.controller('ProfileController', ProfileController);
+controllers.controller('RegisterController', RegisterController);
+controllers.controller('RoomController', RoomController);
+controllers.controller('SettingsController', SettingsController);
+controllers.controller('StaffController', StaffController);
 
 export default controllers;

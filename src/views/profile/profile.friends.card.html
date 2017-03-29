@@ -1,6 +1,6 @@
 <section class="profile-friend-card-container">
 	<div class="profile-friend-card-header"></div>
-	<md-card class="no-select">
+	<md-card class="no-select" style="height:250.38px;">
 		<md-toolbar>
 			<div class="md-toolbar-tools">
 				<h2 class="center">{{'profile.friends.header' | translate}} <span class="number" ng-if="friends.length > 0" ng-bind="friends.length"></span></h2>
@@ -10,7 +10,7 @@
 			<div class="md-padding" ng-if="friends.length == 0" translate="profile.friends.no_friends"></div>
 			<ul class="vertical-list avatar-list no-margin" ng-if="friends.length > 0">
 				<li ng-repeat="friend in friends | orderBy: 'friends_since' | limitTo: 5">
-					<a ui-sref="profile({username: member.user.username})">
+					<a ui-sref="profile({username: friend.user.username})">
 						<div class="user-avatar">
 							<img ng-src="{{$root.app_config.site_images.avatars}}{{friend.user.look}}&amp;direction=3&amp;head_direction=3&amp;action=stf&amp;size=n&amp;gesture=std" />
 						</div>

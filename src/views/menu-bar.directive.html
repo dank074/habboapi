@@ -1,7 +1,7 @@
-<div class="app-menu" ng-hide="navigation_list.length == 0" md-whiteframe="2" ng-cloak>
+<div class="app-menu" ng-if="$root.current_user.login_status == true" ng-hide="$root.state.includes('client') || navigation_list.length == 0" md-whiteframe="2" ng-cloak>
     <div class="menu-container">
         <ul class="menu-list left" flex>
-            <li ng-repeat="item in navigation_list | orderBy: 'sort'" class="list-item no-select" ng-class="{active: state.includes(item.state)}" ui-sref="{{item.state}}">
+            <li ng-repeat="item in navigation_list | orderBy: 'sort'" class="list-item no-select" ng-class="{active: $root.state.includes(item.state)}" ui-sref="{{item.state}}">
                 {{item.name}}
             </li>
             <li class="list-item no-select" translate="buttons.logout" app-logout>Logout</li>

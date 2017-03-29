@@ -18,11 +18,11 @@
 			<div class="header-image"></div>
 		</div>
 	</div>
-	<menu-bar ng-if="current_user.login_status == true"></menu-bar>
+	<menu-bar></menu-bar>
 	<div class="app-content">
 		<div class="content-container" ui-view></div>
 		<div class="client-container" ui-view="client"></div>
-		<div class="content-footer no-select">&copy; 2017 HabFuse Hotel</div>
+		<div class="content-footer no-select">&copy; 2017 {{$root.app_config.site_name}} Hotel</div>
 	</div>
 	<script type="text/javascript" src="bundle.js"></script>
 </body>

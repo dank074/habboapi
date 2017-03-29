@@ -6,16 +6,15 @@
             </div>
         </md-toolbar>
         <md-card-content class="no-padding center">
-            <ul class="vertical-list avatar-list no-margin">
-                <li ng-repeat="user in rank.users">
-                    <a ui-sref="profile({username: user.username})">
-                        <div class="user-avatar">
-                            <img ng-src="{{$root.app_config.site_images.avatars}}{{user.look}}&amp;direction=3&amp;head_direction=3&amp;action=stf&amp;size=n&amp;gesture=std" />
-                        </div>
-                        <div class="user-name">{{user.username}}</div>
-                    </a>
-                </li>
-            </ul>
+            <md-list class="avatar-list" flex>
+				<md-list-item class="md-2-line" ng-repeat="user in rank.users" ui-sref="profile({username: user.username})">
+					<img class="pixel-image" ng-src="{{$root.app_config.site_images.avatars}}{{user.look}}&amp;action=std&amp;gesture=sml&amp;direction=2&amp;head_direction=2&amp;size=n&amp;headonly=1&amp;img_format=png" />
+					<div class="md-list-item-text">
+						<h3>{{user.username}}</h3>
+						<p ng-if="user.motto != null">{{user.motto}}</p>
+					</div>
+				</md-list-item>
+			</md-list>
         </md-card-content>
     </md-card>
 </div>

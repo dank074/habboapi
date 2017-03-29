@@ -6,11 +6,11 @@ class CheckUsername
         this.require    = 'ngModel';
     }
 
-    controller(User, $scope)
+    controller(UserService, $scope)
     {
         'ngInject';
 
-        $scope.service = User;
+        $scope.UserService = UserService;
     }
 
     link(scope, element, attrs, ngModel)
@@ -19,7 +19,7 @@ class CheckUsername
         {
             if(element.val() == undefined || null || element.val() == '') return;
 
-            return scope.service.validate_username(element.val())
+            return scope.UserService.validate_username(element.val())
 
             .then(() =>
             {

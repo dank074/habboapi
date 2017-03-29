@@ -47,17 +47,21 @@
     "register": {
         "register_header": "This is where the fun begins,",
         "register_description": "create your very own {{site_name}} character!",
+        "register_info": "",
         "register_card_header": "Register"
     },
     "community": {
-        "latest_user_header": "Latest User",
+        "latest_user": {
+            "header": "Latest User",
+            "no_users": "There are currently no registered users"
+        },
         "top_rooms": {
             "header": "Top Rooms",
-            "empty": "There are currently no top rooms"
+            "no_rooms": "There are currently no top rooms"
         },
         "room_promotions": {
             "header": "Room Promotions",
-            "empty": "There are currently no top rooms"
+            "no_rooms": "There are currently no top rooms"
         },
         "latest_statistics": {
             "header": "Latest Statistics",
@@ -87,6 +91,7 @@
         }
     },
     "rooms": {
+        "room_owner": "Room Owner",
         "details_card": {
             "header": "Details",
             "type": "Type",
@@ -96,7 +101,6 @@
             "state_open": "Open",
             "state_locked": "Locked",
             "state_password": "Password",
-            "owner": "Owner",
             "score": "Score",
             "users_now": "Users Now",
             "users_max": "Max Users"
@@ -147,5 +151,11 @@
             "see_all": "See All",
             "no_groups": "This user doesn't belong to any groups!"
         }
+    },
+    "user_info_card": {
+        "last_login": "Last Login"
+    },
+    "forums": {
+        "forum_threads": "Threads"
     }
 }

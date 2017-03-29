@@ -1,35 +1,30 @@
-class Profile
+class ProfileController
 {
-    constructor(AppConstants, $window, $stateParams, $http, $scope)
+    constructor(AppConstants, $state, $stateParams, $http, $rootScope, $scope)
     {
         'ngInject';
 
-        this._AppConstants = AppConstants;
-        this._$window = $window;
-        this._$stateParams = $stateParams;
-        this._$http = $http;
-        this._$scope = $scope;
+        this._AppConstants  = AppConstants;
+        this._$state        = $state;
+        this._$stateParams  = $stateParams;
+        this._$http         = $http;
+        this._$rootScope    = $rootScope;
+        this._$scope        = $scope;
 
         this._$scope.profile_username = (this._$stateParams.username == undefined || null) ? null : this._$stateParams.username;
+
+        this._$http.post(this._AppConstants.api + '/controller/profile/profile_info', {user_name: this._$scope.profile_username})
         
-        if(this._$scope.user_name == '' || null) return this._$window.history.back();
-
-        this._$http.post(this._AppConstants.api + '/controller/profile/profile_info', {
-            user_name: this._$scope.profile_username
-        })
-
         .then((res) =>
         {
-            if(res.data.profile_info == undefined || null) this._$scope.profile_info = null;
-
             this._$scope.profile_info = res.data.profile_info;
         })
-
+        
         .catch((res) =>
         {
-            return this._$window.history.back();
-        })
+            return this._$state.go(this._$rootScope.previous_state.name, this._$rootScope.previous_params);
+        });
     }
 }
 
-export default Profile;
+export default ProfileController;

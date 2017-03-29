@@ -1,21 +1,21 @@
 import angular from 'angular';
 
-class Client
+class ClientController
 {
-    constructor(AppConstants, Session, $translate, $localStorage, $window, $stickyState, $mdDialog, $state, $rootScope, $scope)
+    constructor(AppConstants, SessionService, $translate, $localStorage, $window, $stickyState, $mdDialog, $state, $rootScope, $scope)
     {
         'ngInject';
 
-        this._AppConstants  = AppConstants;
-        this._Session       = Session;
-        this._$translate    = $translate;
-        this._$localStorage = $localStorage;
-        this._$window       = $window;
-        this._$stickyState  = $stickyState;
-        this._$mdDialog     = $mdDialog;
-        this._$state        = $state;
-        this._$rootScope    = $rootScope;
-        this._$scope        = $scope;
+        this._AppConstants      = AppConstants;
+        this._SessionService    = SessionService;
+        this._$translate        = $translate;
+        this._$localStorage     = $localStorage;
+        this._$window           = $window;
+        this._$stickyState      = $stickyState;
+        this._$mdDialog         = $mdDialog;
+        this._$state            = $state;
+        this._$rootScope        = $rootScope;
+        this._$scope            = $scope;
 
         this._$scope.client_swf         = this._AppConstants.client.client_swf;
         this._$scope.client_base        = this._AppConstants.client.client_base;
@@ -54,7 +54,7 @@ class Client
         {
             if(this._$rootScope.previous_state.name == 'client') return this._$state.go('login');
 
-            return this._$state.go(this._$rootScope.previous_state.name);
+            return this._$state.go(this._$rootScope.previous_state.name, this._$rootScope.previous_params);
         }
 
         this._$scope.reload_client = () =>
@@ -64,10 +64,16 @@ class Client
 
         this._$window.HabboFlashClient = {
             started: !1,
-            init: function(n) {}
+            init: () =>
+            {
+                setTimeout(() =>
+                {
+                    this._$window.HabboFlashClient.flashInterface = document.getElementById('flash-container');
+                }, 1000);
+            }
         };
 
-        this._$window.addEventListener("load", this._$window.HabboFlashClient.init(document.getElementById('flash-container')));
+        this._$window.addEventListener("load", this._$window.HabboFlashClient.init());
 
         this._$window.FlashExternalInterface = {};
 
@@ -88,7 +94,7 @@ class Client
             
             .then(() =>
             {
-                return this._Session.destroy_session();
+                return this._SessionService.destroy_session();
             })
 
             .then(() =>
@@ -149,4 +155,4 @@ class Client
     }
 }
 
-export default Client;
+export default ClientController;

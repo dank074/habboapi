@@ -1,14 +1,14 @@
-class Register
+class RegisterController
 {
-    constructor(Utility, User, Authentication, $state, $scope)
+    constructor(UtilityService, UserService, AuthenticationService, $state, $scope)
     {
         'ngInject';
         
-        this._Utility = Utility;
-        this._User = User;
-        this._Authentication = Authentication;
-        this._$state = $state;
-        this._$scope = $scope;
+        this._UtilityService        = UtilityService;
+        this._UserService           = UserService;
+        this._AuthenticationService = AuthenticationService;
+        this._$state                = $state;
+        this._$scope                = $scope;
 
         this._$scope.register_details = {
             user_name: null,
@@ -21,11 +21,11 @@ class Register
         {
             if(this._$scope.register_details.user_name == null || this._$scope.register_details.user_email == null || this._$scope.register_details.user_pass == null || this._$scope.register_details.user_cpass == null) return;
 
-            return User.add_user(this._$scope.register_details.user_name, this._$scope.register_details.user_email, this._$scope.register_details.user_pass)
+            return UserService.add_user(this._$scope.register_details.user_name, this._$scope.register_details.user_email, this._$scope.register_details.user_pass)
 
             .then((user) =>
             {
-                return this._Authentication.login(this._$scope.register_details.user_name, this._$scope.register_details.user_pass)
+                return this._AuthenticationService.login(this._$scope.register_details.user_name, this._$scope.register_details.user_pass)
             })
 
             .then((session) =>
@@ -35,10 +35,10 @@ class Register
 
             .catch((err) =>
             {
-                return this._Utility.alert('dialogs.something_wrong');
+                return this._UtilityService.alert('dialogs.something_wrong');
             });
         }
     }
 }
 
-export default Register;
+export default RegisterController;

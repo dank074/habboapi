@@ -1,24 +1,24 @@
 import angular from 'angular';
 
-class Staff
+class StaffController
 {
-    constructor(AppConstants, $http, $scope)
+    constructor(AppConstants, $state, $http, $rootScope, $scope)
     {
         'ngInject';
 
-        this._AppConstants = AppConstants;
-        this._$http = $http;
-        this._$scope = $scope;
+        this._AppConstants  = AppConstants;
+        this._$state        = $state;
+        this._$http         = $http;
+        this._$rootScope    = $rootScope;
+        this._$scope        = $scope;
 
         this._$http.get(this._AppConstants.api + '/controller/community/staff_users')
 
         .then((res) =>
         {
-            if(res.data.staff_users == undefined || null) this._$scope.staff_users = null;
-
             angular.forEach(res.data.staff_users, (rank) =>
             {
-                if(rank == undefined || null) delete res.data.staff_users[rank];
+                if(rank == undefined || null) res.data.staff_users[rank] = undefined;
             });
 
             this._$scope.staff_users = res.data.staff_users;
@@ -26,9 +26,9 @@ class Staff
 
         .catch((res) =>
         {
-            this._$scope.staff_users = null;
+            return this._$state.go(this._$rootScope.previous_state.name, this._$rootScope.previous_params);
         });
     }
 }
 
-export default Staff;
+export default StaffController;

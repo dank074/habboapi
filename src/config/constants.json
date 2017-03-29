@@ -1,26 +1,26 @@
 {
     "constants":
     {
-        "api": "http://localhost:3000/api",
+        "api": "http://habboapi.com/api",
         "site_name": "HabFuse",
-        "site_link": "http://localhost:3000",
+        "site_link": "http://habboapi.com",
 		"site_images": {
-			"badges": "http://localhost:3000/assets/c_images/album1584",
+			"badges": "http://habboapi.com/assets/c_images/album1584",
 			"group_badges": "http://avatar-retro.com/habbo-imaging/badge",
-			"rooms": "http://localhost:3000/assets/c_images/newroom",
+			"rooms": "http://habboapi.com/assets/c_images/newroom",
 			"avatars": "http://avatar-retro.com/habbo-imaging/avatarimage?figure="
 		},
 		"client": {
 			"client_host": "127.0.0.1",
 			"client_port": 1242,
-			"client_texts": "http://localhost:3000/assets/gamedata/external_flash_texts.txt",
-			"client_vars": "http://localhost:3000/assets/gamedata/external_variables.txt",
-			"client_figurelist": "http://localhost:3000/assets/gamedata/figuredata.xml",
-			"client_furnidata": "http://localhost:3000/assets/gamedata/furnidata.xml",
-			"client_productdata": "http://localhost:3000/assets/gamedata/productdata.txt",
-			"client_promohabbos": "http://localhost:3000/assets/gamedata/habblet/xml/promo_habbos.xml",
-			"client_base": "http://localhost:3000/assets/gordon/game/",
-			"client_swf": "http://localhost:3000/assets/gordon/PRODUCTION-201611291003-338511768/Habbo.swf"
+			"client_texts": "http://habboapi.com/assets/gamedata/external_flash_texts.txt",
+			"client_vars": "http://habboapi.com/assets/gamedata/external_variables.txt",
+			"client_figurelist": "http://habboapi.com/assets/gamedata/figuredata.xml",
+			"client_furnidata": "http://habboapi.com/assets/gamedata/furnidata.xml",
+			"client_productdata": "http://habboapi.com/assets/gamedata/productdata.txt",
+			"client_promohabbos": "http://habboapi.com/assets/gamedata/habblet/xml/promo_habbos.xml",
+			"client_base": "http://habboapi.com/assets/gordon/game/",
+			"client_swf": "http://habboapi.com/assets/gordon/PRODUCTION-201611291003-338511768/Habbo.swf"
 		}
     }
 }
