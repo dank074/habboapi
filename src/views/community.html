@@ -1,50 +1,51 @@
 <div layout="row" layout-xs="column">
 	<div layout="column" flex="70" flex-xs="100">
-		<md-card class="no-select">
+		<md-card class="no-select" ng-if="community_info.latest_user != null">
 			<md-toolbar>
 				<div class="md-toolbar-tools">
 					<h2 translate="community.latest_user.header"></h2>
 				</div>
 			</md-toolbar>
 			<md-card-content class="no-padding">
-				<div ng-if="community_info.latest_user == null" translate="community.latest_user.no_users"></div>
-				<user-card class="no-margin" layout="row" userid="community_info.latest_user.id" userinfo="community_info.latest_user" ng-if="community_info.latest_user != null"></user-card>
+				<user-card class="no-margin" userinfo="community_info.latest_user" flex="100"></user-card>
 			</md-card-content>
 		</md-card>
 		<div layout="row" layout-xs="column">
-			<md-card class="no-select" flex>
+			<md-card class="no-select" flex ng-if="community_info.top_rooms.length > 0">
 				<md-toolbar>
 					<div class="md-toolbar-tools">
 						<h2 class="center" translate="community.top_rooms.header"></h2>
 					</div>
 				</md-toolbar>
-				<md-card-content class="no-padding center-middle" style="height:100%;">
-					<div class="md-padding" ng-if="community_info.top_rooms.length == 0" translate="community.top_rooms.no_rooms"></div>
-					<md-list class="rooms-list" flex ng-if="community_info.top_rooms.length > 0">
-						<md-list-item class="md-2-line" ng-repeat="room in community_info.top_rooms | limitTo: 7" ui-sref="room({id: room.id})">
-							<img ng-src="{{$root.app_config.site_images.rooms}}/{{room.model}}.png" />
+				<md-card-content class="no-padding center-middle">
+					<md-list class="rooms-list" flex>
+						<md-list-item class="md-2-line" ng-repeat="room in community_info.top_rooms" ui-sref="room({id: room.id})">
+							<habbo-room-icon class="room-icon no-select">
+								<div class="room-icon"></div>
+							</habbo-room-icon>
 							<div class="md-list-item-text">
-								<h3>{{room.name}}</h3>
-								<p ng-if="room.description != null">{{room.description}}</p>
+								<h3 ng-bind="room.name"></h3>
+								<p ng-if="room.description" ng-bind="room.description"></p>
 							</div>
 						</md-list-item>
 					</md-list>
 				</md-card-content>
 			</md-card>
-			<md-card class="no-select" flex>
+			<md-card class="no-select" flex ng-if="community_info.room_promotions.length > 0">
 				<md-toolbar>
 					<div class="md-toolbar-tools">
 						<h2 class="center" translate="community.room_promotions.header"></h2>
 					</div>
 				</md-toolbar>
-				<md-card-content class="no-padding center-middle" style="height:100%;">
-					<div class="md-padding" ng-if="community_info.room_promotions.length == 0" translate="community.room_promotions.no_rooms"></div>
-					<md-list class="rooms-list" flex ng-if="community_info.room_promotions.length > 0">
-						<md-list-item class="md-2-line" ng-repeat="promotion in community_info.room_promotions | limitTo: 7" ui-sref="room({id: promotion.room.id})">
-							<img ng-src="{{$root.app_config.site_images.rooms}}/{{promotion.room.model}}.png" />
+				<md-card-content class="no-padding center-middle">
+					<md-list class="rooms-list" flex>
+						<md-list-item class="md-2-line" ng-repeat="promotion in community_info.room_promotions" ui-sref="room({id: promotion.room.id})">
+							<habbo-room-icon class="room-icon no-select">
+								<div class="room-icon"></div>
+							</habbo-room-icon>
 							<div class="md-list-item-text">
-								<h3>{{promotion.title}}</h3>
-								<p>{{promotion.description}}</p>
+								<h3 ng-bind="promotion.title"></h3>
+								<p ng-if="promotion.description" ng-bind="promotion.description"></p>
 							</div>
 						</md-list-item>
 					</md-list>

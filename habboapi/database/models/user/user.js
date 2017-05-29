@@ -8,7 +8,7 @@ import Friends from '../messenger/messenger_friendships';
 import Room from '../room/room';
 import Group from '../group/group';
 import GroupMemberships from '../group/group_members';
-import LoginLog from '../api/login_log';
+import ApiLoginLog from '../api/login_log';
 
 class User extends Adapter.Model
 {
@@ -68,17 +68,17 @@ class User extends Adapter.Model
 	}
 
 	logins()
-	{
-		return this.hasMany('LoginLog', 'user_id', 'id');
-	}
+    {
+        return this.hasMany('ApiLoginLog', 'user_id', 'id');
+    }
 
-	last_login()
-	{
-		return this.logins().query((qb) =>
-		{
-			qb.orderBy('id', 'DESC').offset(1).limit(1);
-		});
-	}
+    last_login()
+    {
+        return this.logins().query((qb) =>
+        {
+            qb.column('user_id', 'created_at').where('login_status', '1').orderBy('id', 'DESC').offset(1).limit(1);
+        });
+    }
 }
 
 export default Adapter.model('User', User);

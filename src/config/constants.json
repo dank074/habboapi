@@ -2,16 +2,16 @@
     "constants":
     {
         "api": "http://habboapi.com/api",
-        "site_name": "HabFuse",
+        "site_name": "HabboAPI",
         "site_link": "http://habboapi.com",
 		"site_images": {
+			"images": "http://habboapi.com/assets/images",
 			"badges": "http://habboapi.com/assets/c_images/album1584",
 			"group_badges": "http://avatar-retro.com/habbo-imaging/badge",
-			"rooms": "http://habboapi.com/assets/c_images/newroom",
 			"avatars": "http://avatar-retro.com/habbo-imaging/avatarimage?figure="
 		},
-		"client": {
-			"client_host": "127.0.0.1",
+        "client": {
+			"client_host": "habboapi.com",
 			"client_port": 1242,
 			"client_texts": "http://habboapi.com/assets/gamedata/external_flash_texts.txt",
 			"client_vars": "http://habboapi.com/assets/gamedata/external_variables.txt",

@@ -1,4 +1,5 @@
-import SessionService from '../services/session.service';
+import Session from '../authentication/session';
+import Permission from '../authentication/permission';
 
 class HttpMiddleware
 {
@@ -6,7 +7,7 @@ class HttpMiddleware
     {
         if(req.user == undefined || null) return res.status(400).send({errors: true, error: 'invalid_session'}).end();
         
-        return SessionService.validate_session(req.user.user_id, req.user.user_name, req.user.user_session, req.ip, req.headers['user-agent'])
+        return Session.validate_session(req.user.user_id, req.user.user_name, req.user.user_session, req.ip, req.headers['user-agent'])
         
         .then((session) =>
         {
@@ -19,6 +20,26 @@ class HttpMiddleware
 
             return res.status(401).send({errors: true, error: err.message, session: null}).end();
         });
+    }
+
+    static has_permission(permission)
+    {
+        return (req, res, next) =>
+        {
+            if(req.user == undefined || null) return res.status(400).send({errors: true, error: 'invalid_session'}).end();
+            
+            return Permission.has_permission(req.user.user_info.rank, permission)
+
+            .then(() =>
+            {
+                return next();
+            })
+
+            .catch((err) =>
+            {
+                return res.status(401).send({errors: true, error: err.message}).end();
+            })
+        }
     }
 }
 

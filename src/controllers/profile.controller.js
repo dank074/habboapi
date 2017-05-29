@@ -13,7 +13,7 @@ class ProfileController
 
         this._$scope.profile_username = (this._$stateParams.username == undefined || null) ? null : this._$stateParams.username;
 
-        this._$http.post(this._AppConstants.api + '/controller/profile/profile_info', {user_name: this._$scope.profile_username})
+        this._$http.post(this._AppConstants.api + '/hotel/profile/profile_info', {user_name: this._$scope.profile_username})
         
         .then((res) =>
         {
@@ -22,7 +22,7 @@ class ProfileController
         
         .catch((res) =>
         {
-            return this._$state.go(this._$rootScope.previous_state.name, this._$rootScope.previous_params);
+            return this._$rootScope.go_back();
         });
     }
 }

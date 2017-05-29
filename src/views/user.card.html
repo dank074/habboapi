@@ -1,0 +1,12 @@
+<md-card class="user-info-card no-select" ng-hide="userinfo.length == 0">
+    <md-card-content>
+        <a class="user-avatar" ui-sref="profile({username: userinfo.username})" style="background-image:url({{$root.app_config.site_images.avatars}}{{userinfo.look}}&amp;direction=2&amp;head_direction=3&amp;action=wav&amp;size=l&amp;gesture=sml);"></a>
+		<div class="user-info">
+			<span class="user-name" ng-bind="userinfo.username"></span>
+			<habbo-icon ng-class="{'online-icon': userinfo.online == 1, 'offline-icon': userinfo.online == 0}"></habbo-icon><div style="height:4px;"></div>
+			<span class="user-motto" ng-if"userinfo.motto"><habbo-icon class="motto-icon"></habbo-icon>{{userinfo.motto}}</span><br />
+			<span class="last-login" ng-hide="userinfo.last_login.length == 0 || userinfo.last_login == null"><habbo-icon class="clock-icon"></habbo-icon>{{userinfo.last_login[0].created_at | date:'MMM d, yyyy h:mm a'}}<br /></span>
+			<span class="last-login" ng-if="userinfo.last_login.length == 0 || userinfo.last_login == null" ng-hide="userinfo.last_online == 0 || null"><habbo-icon class="clock-icon"></habbo-icon>{{userinfo.last_online * 1000 | date:'MMM d, yyyy h:mm a'}}<br /></span>
+		</div>
+	</md-card-content>
+</md-card>

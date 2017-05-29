@@ -3,6 +3,7 @@ import 'angular-animate';
 import 'angular-aria';
 import 'angular-messages';
 import 'angular-material';
+import 'angular-sanitize';
 import 'angular-translate';
 import 'angular-ui-router';
 import 'ui-router-extras';
@@ -12,30 +13,34 @@ import Constants from './config/constants.json';
 import Config from './config/config';
 import Run from './config/run';
 
-import './services';
+import './components';
 import './controllers';
 import './directives';
+import './services';
+
 import './config/template-cache';
 
 const requires = [
-	'ngAnimate',
-	'ngAria',
-	'ngMessages',
-	'ngMaterial',
-	'pascalprecht.translate',
-	'ui.router',
-	'ct.ui.router.extras',
-	'ngStorage',
-	'app.templates',
-	'habboapi.services',
-	'habboapi.controllers',
-	'habboapi.directives'
+    'ngAnimate',
+    'ngAria',
+    'ngMessages',
+    'ngMaterial',
+    'ngSanitize',
+    'pascalprecht.translate',
+    'ui.router',
+    'ct.ui.router.extras',
+    'ngStorage',
+    'app.templates',
+    'habboapi.components',
+    'habboapi.controllers',
+    'habboapi.directives',
+    'habboapi.services'
 ];
 
-window.app = angular.module('app', requires);
+window.app = angular.module('habboapi', requires);
 
-angular.module('app').constant('AppConstants', Constants.constants);
-angular.module('app').config(Config);
-angular.module('app').run(Run);
+angular.module('habboapi').constant('AppConstants', Constants.constants);
+angular.module('habboapi').config(Config);
+angular.module('habboapi').run(Run);
 
-angular.bootstrap(document, ['app'], { strictDi: true });
+angular.bootstrap(document, ['habboapi'], { strictDi: true });

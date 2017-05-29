@@ -14,7 +14,8 @@
         "register": "Register",
         "client": "Client",
         "logout": "Logout",
-        "return_web": "Web"
+        "return_web": "Web",
+        "enter_hotel": "Enter Hotel"
     },
     "dialogs": {
         "title": "HabboAPI",
@@ -50,18 +51,19 @@
         "register_info": "",
         "register_card_header": "Register"
     },
+    "navigation": {
+        "view_profile": "My Profile",
+        "account_settings": "Account Settings"
+    },
     "community": {
         "latest_user": {
-            "header": "Latest User",
-            "no_users": "There are currently no registered users"
+            "header": "Latest User"
         },
         "top_rooms": {
-            "header": "Top Rooms",
-            "no_rooms": "There are currently no top rooms"
+            "header": "Top Rooms"
         },
         "room_promotions": {
-            "header": "Room Promotions",
-            "no_rooms": "There are currently no top rooms"
+            "header": "Room Promotions"
         },
         "latest_statistics": {
             "header": "Latest Statistics",
@@ -72,7 +74,7 @@
             "pets": "Pets"
         }
     },
-    "groups": {
+    "group": {
         "details_card": {
             "header": "Details",
             "owner": "Owner",
@@ -131,6 +133,13 @@
         "revolving": "We all live in igloos./For science, you monster/Loading funny message... please wait./Would you like fries with that?/Follow the yellow duck./Time is just an illusion./Are we there yet?!/I like your t-shirt./Look left. Look right. Blink twice. Ta da!/It's not you, it's me./Shhh! I'm trying to think here./Loading pixel universe."
     },
     "profile": {
+        "about_me": {
+            "header": "About Me",
+            "joined": "Joined",
+            "credits": "Credits",
+            "pixels": "Ducklets",
+            "points": "Diamonds"
+        },
         "badges": {
             "header": "Badges",
             "see_all": "See All",
@@ -153,7 +162,9 @@
         }
     },
     "user_info_card": {
-        "last_login": "Last Login"
+        "last_login": "Last Login",
+        "last_online": "Last Online",
+        "account_created": "Joined"
     },
     "forums": {
         "forum_threads": "Threads"

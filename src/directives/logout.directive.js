@@ -1,4 +1,4 @@
-class Logout
+class LogoutDirective
 {
     constructor()
     {
@@ -54,4 +54,4 @@ class Logout
     }
 }
 
-export default Logout;
+export default LogoutDirective;

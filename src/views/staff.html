@@ -1,20 +1,23 @@
-<div layout="row" layout-xs="column" ng-repeat="rank in staff_users track by $index" ng-hide="rank.users.length == 0">
-    <md-card class="staff-members-card no-select" flex="100">
+<div class="column" flex="70" flex-xs="100" ng-repeat="rank in staff_users" ng-hide="rank.users.length == 0">
+    <md-card no-select flex>
         <md-toolbar>
             <div class="md-toolbar-tools">
-                <h2 class="center" ng-bind="rank.rank_name"></h2>
+                <h2 class="center" ng-bind="rank.rank_name">
             </div>
         </md-toolbar>
-        <md-card-content class="no-padding center">
+        <md-card-content class="no-padding">
             <md-list class="avatar-list" flex>
-				<md-list-item class="md-2-line" ng-repeat="user in rank.users" ui-sref="profile({username: user.username})">
-					<img class="pixel-image" ng-src="{{$root.app_config.site_images.avatars}}{{user.look}}&amp;action=std&amp;gesture=sml&amp;direction=2&amp;head_direction=2&amp;size=n&amp;headonly=1&amp;img_format=png" />
-					<div class="md-list-item-text">
-						<h3>{{user.username}}</h3>
-						<p ng-if="user.motto != null">{{user.motto}}</p>
-					</div>
-				</md-list-item>
-			</md-list>
+                <md-list-item class="md-3-line" ng-repeat="user in rank.users" ui-sref="profile({username: user.username})">
+                    <img class="pixel-image" ng-src="{{$root.app_config.site_images.avatars}}{{user.look}}&amp;action=std&amp;gesture=sml&amp;direction=2&amp;head_direction=2&amp;size=n&amp;headonly=1&amp;img_format=png" />
+                    <div class="md-list-item-text">
+                        <span class="user-name" ng-bind="user.username"></span><habbo-icon ng-class="{'online-icon': user.online == 1, 'offline-icon': user.online == 0}"></habbo-icon><br />
+                        <span class="user-motto" ng-if="user.motto"><habbo-icon class="motto-icon"></habbo-icon>{{user.motto}}</span><br />
+                        <span class="last-login" ng-if="user.last_online"><habbo-icon class="clock-icon"></habbo-icon>{{user.last_online * 1000 | date:'MMM d, yyyy h:mm a'}}</span>
+                    </div>
+                </md-list-item>
+            </md-list>
         </md-card-content>
     </md-card>
+</div>
+<div layout="column" flex="30" flex-xs="100">
 </div>

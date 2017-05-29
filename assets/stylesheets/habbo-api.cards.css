@@ -1,16 +1,14 @@
-/** MAIN CARD STYLE **/
+md-card {
+    overflow: hidden;
+}
 
 md-card md-toolbar,
 md-card md-toolbar .md-toolbar-tools {
-    height: 50px !important;
-    min-height: 50px !important;
-    max-height: 50px !important;
-    background-color: #FFFFFF !important;
+    background-color: #FFFFFF;
 }
 
 md-card md-toolbar .md-toolbar-tools {
     padding: 0 20px !important;
-    line-height: 50px;
     border-bottom: 1px solid #e4eaec;
 }
 
@@ -27,16 +25,21 @@ md-card md-toolbar .md-toolbar-tools h2 {
     font-weight: 400;
 }
 
+md-card md-toolbar .md-toolbar-tools h2 span.number,
+md-toolbar .md-toolbar-tools h2 span.number {
+    padding-left: 10px;
+    color: rgba(0,0,0,.3);
+    font-weight: 300;
+    float: right;
+}
+
 md-card md-toolbar .md-toolbar-tools h2.center {
     margin: 0 auto;
 }
 
-md-card md-toolbar .md-toolbar-tools h2 span.number {
-    padding-left: 10px;
-    color: rgba(0,0,0,.3);
-    font-size: 14px;
-    font-weight: 300;
-    float: right;
+md-card md-toolbar.footer .md-toolbar-tools {
+    border-top: 1px solid #e4eaec;
+    border-bottom: 0;
 }
 
 md-card md-toolbar .md-toolbar-tools .md-button {
@@ -47,30 +50,8 @@ md-card md-toolbar .md-toolbar-tools .md-icon-button md-icon.material-icons {
     color: #000000;
 }
 
-md-card md-toolbar.footer .md-toolbar-tools {
-    border-top: 1px solid #e4eaec;
-    border-bottom: 0;
-}
-
-md-card md-card-title .badge-icon,
-md-card md-card-title .room-icon {
-    margin-top: -8px;
-}
-
-md-card md-card-title md-card-title-text {
-    padding-left: 15px;
-}
-
-md-card md-card-content.scroll-overflow {
-    overflow: scroll;
-}
-
-md-card md-card-content.hide-overflow {
-    overflow: hidden;
-}
-
-md-card md-card-content.no-padding {
-    padding: 0;
+md-card md-card-content {
+    background-color: #FFFFFF;
 }
 
 md-card md-card-content.center {
@@ -80,21 +61,19 @@ md-card md-card-content.center {
     align-items: center;
 }
 
-/** /MAIN CARD STYLE **/
-
-/** USER-INFO CARD STYLE **/
-
 md-card.user-info-card {
     height: 140px;
     max-height: 140px;
     background: #007498 url("../images/hotel-background.png") no-repeat center center;
     overflow: hidden;
     image-rendering: pixelated;
+    overflow: hidden;
 }
 
 md-card.user-info-card md-card-content {
     height: 100%;
     width: 100%;
+    padding: 0;
     background: rgba(0, 0, 0, .6);
     color: #FFFFFF;
 }
@@ -104,46 +83,39 @@ md-card.user-info-card md-card-content a.user-avatar {
     position: absolute;
     width: 125px;
     height: 170px;
-    margin-top: -47px;
+    margin-top: -30px;
     overflow: hidden;
 }
 
-md-card.user-info-card md-card-content span.user-name {
-    margin-left: 130px;
-    padding-top: 26px;
+md-card.user-info-card md-card-content .user-info {
+    padding: 15px 0 0 125px;
+    color: #FFFFFF;
+}
+
+md-card.user-info-card md-card-content .user-info span habbo-icon.motto-icon {
+    display: inline-block;
+    margin-bottom: -2.7px;
+    margin-right: 4px;
+}
+
+md-card.user-info-card md-card-content .user-info span habbo-icon.clock-icon {
+    display: inline-block;
+    margin-bottom: -1px;
+    margin-right: 4px;
+}
+
+md-card.user-info-card md-card-content .user-info span.user-name {
     font-size: 30px;
     font-weight: 400;
-    font-style: bold;
-    color: #FFFFFF;
 }
 
-md-card.user-info-card md-card-content span.user-motto {
-    margin-left: 130px;
-    font-size: 14px;
+md-card.user-info-card md-card-content .user-info span.user-motto,
+md-card.user-info-card md-card-content .user-info span.last-login {
+    padding: 0;
+    text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 12px;
     font-weight: 400;
-    font-style: italic;
-    color: #FFFFFF;
 }
-
-md-card.user-info-card md-card-content span.user-last-login {
-    margin-left: 130px;
-    padding-top: 50px;
-    font-size: 14px;
-    font-weight: 400;
-    color: #FFFFFF;
-}
-
-md-card.user-info-card md-card-content span.user-credits {
-    margin-left: 130px;
-    font-size: 16px;
-    font-weight: 400;
-    font-style: bold;
-    color: #FFFFFF;
-}
-
-md-card.user-info-card md-card-content span.user-credits .material-icons {
-    line-height: 21px;
-    color: #FFFFFF;
-}
-
-/** /USER-INFO CARD STYLE **/

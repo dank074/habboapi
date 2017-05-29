@@ -1,8 +1,6 @@
-import angular from 'angular';
-
 class SessionService
 {
-    constructor(AppConstants, $localStorage, $http, $q)
+    constructor(AppConstants, $localStorage, $http, $q, $rootScope)
     {
         'ngInject';
 
@@ -10,34 +8,42 @@ class SessionService
         this._$localStorage = $localStorage;
         this._$http			= $http;
         this._$q			= $q;
+        this._$rootScope    = $rootScope;
     }
 
-    create_session(user_id, user_name, user_session)
+    create_session()
     {
-        if(user_id == '' || user_id == '0' || null || user_name == '' || null || user_session == '' || null) return this._$q.reject('invalid_parameters');
+        return this._$http.get(this._AppConstants.api + '/authentication/session/get_session')
 
-        this._$localStorage.$reset();
+        .then((res) =>
+        {
+            this._$localStorage.$reset();
 
-        this._$localStorage.current_user = {
-            login_status: true,
-            user_id: user_id,
-            user_name: user_name,
-            user_session: user_session
-        };
+            if(res.data.session == undefined || res.data.session.length == 0 || null) return this._$q.reject('invalid_session');
+            
+            this._$localStorage.current_user = res.data.session;
 
-        return this._$q.resolve(this._$localStorage.current_user);
+            return this._$q.resolve(this._$localStorage.current_user);
+        })
+
+        .catch((res) =>
+        {
+            this._$localStorage.$reset();
+
+            return this._$q.reject(res);
+        });
     }
 
     validate_session()
     {
         if(this._$localStorage.current_user == undefined || this._$localStorage.current_user.length == 0 || null) return this._$q.reject('invalid_session');
 
-        return this._$http.get(this._AppConstants.api + '/service/session/get_session')
+        return this._$http.get(this._AppConstants.api + '/authentication/session/get_session')
 
         .then((res) =>
         {
-            if(res.data.session == undefined || res.data.session.length == 0 || null || res.data.session.user_info == undefined || res.data.session.user_info.length == 0 || null) return this._$q.reject('invalid_session');
-
+            if(res.data.session == undefined || res.data.session.length == 0 || null) return this._$q.reject('invalid_session');
+            
             if(res.data.session.user_session != this._$localStorage.current_user.user_session) return this._$q.reject('invalid_session');
 
             angular.forEach(res.data.session.user_info.settings, (value, key) =>
@@ -47,7 +53,7 @@ class SessionService
                 res.data.session.user_info.settings[key] = (value == '0') ? false : true;
             });
 
-            this._$localStorage.current_user.user_info = res.data.session.user_info;
+            this._$localStorage.current_user = res.data.session;
 
             return this._$q.resolve(this._$localStorage.current_user);
         })
@@ -62,7 +68,7 @@ class SessionService
 
     destroy_session()
     {
-        return this._$http.get(this._AppConstants.api + '/service/session/destroy_session')
+        return this._$http.get(this._AppConstants.api + '/authentication/session/destroy_session')
 
         .then((res) =>
         {

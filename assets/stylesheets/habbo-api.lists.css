@@ -1,13 +1,47 @@
+md-list.avatar-list,
 md-list.rooms-list {
     padding: 0;
 }
 
-md-list.rooms-list md-list-item {
+md-list md-list-item {
     cursor: pointer;
 }
 
-md-list.rooms-list .md-list-item-text {
-    padding-left: 10px;
+md-list md-list-item .md-button {
+    line-height: normal;
+}
+
+md-list md-list-item span habbo-icon.motto-icon {
+    display: inline-block;
+    margin-bottom: -2.7px;
+    margin-right: 4px;
+}
+
+md-list md-list-item span habbo-icon.clock-icon {
+    display: inline-block;
+    margin-bottom: -1px;
+    margin-right: 4px;
+}
+
+md-list md-list-item span.user-name,
+md-list md-list-item span.room-name,
+md-list md-list-item span.group-name {
+    font-size: 22px;
+    font-weight: 400;
+    padding-right: 5px;
+}
+
+md-list md-list-item span.user-motto,
+md-list md-list-item span.last-login,
+md-list md-list-item span.room-description,
+md-list md-list-item span.group-description {
+    padding: 0;
+    text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 12px;
+    font-weight: 400;
 }
 
 ul {
@@ -45,7 +79,7 @@ ul.avatar-list li a {
 
 ul.avatar-list li a .user-name {
     display: block;
-    margin: 6.2px 0;
+    margin: 6px 0;
     padding: 0 6px;
     font-size: 16px;
     font-weight: 300;
@@ -60,8 +94,16 @@ ul.badge-list {
     padding: 20px 0;
 }
 
+ul.badge-list.custom-list {
+    padding: 10px;
+}
+
 ul.badge-list li {
     margin: 0 5px 0 0;
+}
+
+ul.badge-list.custom-list li {
+    margin: 0 5px 5px 0;
 }
 
 ul.badge-list li:last-child {
@@ -92,20 +134,15 @@ ul.room-list {
 
 ul.room-list li {
     margin: 0 5px 0 0;
+    cursor: pointer;
 }
 
 ul.room-list li:last-child {
     margin: 0;
 }
 
-ul.room-list li a {
-    text-decoration: none;
-    cursor: pointer;
-}
-
-ul.room-list li a .room-name {
+ul.room-list li .room-name {
     display: block;
-    margin: 15px 0 0;
     padding: 0 6px;
     font-size: 16px;
     font-weight: 300;
@@ -114,140 +151,4 @@ ul.room-list li a .room-name {
     white-space: normal;
     color: #000000;
     text-align: center;
-}
-
-ul.forum-list li {
-    height: 70px;
-}
-
-ul.forum-list li.list-header {
-    min-height: 50px;
-    height: 50px;
-    max-height: 50px;
-    border-bottom: 1px solid #e4eaec;
-}
-
-ul.forum-list li dl {
-    position: relative;
-    height: 100%;
-}
-
-ul.forum-list li dl dt {
-    width: 100%;
-    margin-right: -440px;
-}
-
-ul.forum-list li.list-header dl dt {
-    line-height: 50px;
-}
-
-ul.forum-list li dl dt,
-ul.forum-list li dl dd {
-    float: left;
-    min-height: 0;
-}
-
-ul.forum-list li dl dt .list-inner {
-    padding-left: 20px;
-    padding-right: 50px;
-    margin-right: 440px;
-}
-
-ul.forum-list li dl dt .list-inner span {
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 18px;
-    font-weight: 400;
-    color: rgba(0,0,0,.7);
-}
-
-ul.forum-list li dl dt .list-inner span.description {
-    text-transform: none;
-    font-size: 14px;
-    font-weight: 300;
-}
-
-ul.forum-list li dl dt .list-inner a {
-    font-size: 20px;
-    font-weight: 300;
-    color: rgba(0,0,0,.7);
-    text-decoration: none;
-}
-
-ul.forum-list li dl dt .list-inner a:hover {
-    color: #999999;
-}
-
-ul.forum-list li dl dd {
-    margin: 0;
-    font-size: 14px;
-}
-
-ul.forum-list li.list-header dl dd {
-    line-height: 50px;
-}
-
-ul.forum-list li dl dd.list-threads,
-ul.forum-list li dl dd.list-views,
-ul.forum-list li dl dd.list-posts,
-ul.forum-list li dl dd.list-latest-post {
-    width: 95px;
-    text-align: center;
-}
-
-ul.forum-list li dl dd.list-latest-post {
-    width: 250px;
-    text-align: left;
-}
-
-
-
-
-
-
-
-
-
-
-md-list.forum-list md-list-item {
-    padding: 10px 16px;
-    border-bottom: 1px solid #e4eaec;
-}
-
-md-list.forum-list md-list-item a.center {
-    margin: auto;
-}
-
-md-list.forum-list md-list-item:last-child {
-    border-bottom: 0;
-}
-
-md-list.forum-list .md-list-item-text {
-    padding-left: 10px;
-}
-
-md-list.forum-list .md-list-item-text h3 a {
-    font-size: 20px;
-    text-decoration: none;
-    color: #000000;
-    cursor: pointer;
-}
-
-md-list.forum-list .md-list-item-text h3 a:hover,
-ul.forum-children-list li a:hover {
-    color: #999999;
-}
-
-ul.forum-children-list {
-    width: 400px;
-    padding: 10px 0;
-    columns: 3;
-    -webkit-columns: 3;
-    -moz-columns: 3;
-}
-
-ul.forum-children-list li a {
-    text-decoration: none;
-    cursor: pointer;
-    color: #000000;
 }

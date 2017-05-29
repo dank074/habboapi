@@ -1,37 +1,47 @@
-.app .app-content {
+.app .main-content {
     position: absolute;
     width: 100%;
-    margin-top: 120px;
-    z-index: 1;
+    height: calc(100% - 140px);
+    margin-top: 140px;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
-.app.page-content .app-content {
-    margin-top: 190px !important;
-}
-
-.app.page-client .app-content {
+.app.show-client .main-content {
+    height: 100% !important;
     margin-top: 0 !important;
-    height: 100%;
 }
 
-.app .app-content .content-container {
+.app .main-content.show-menu {
+    height: calc(100% - 210px);
+    margin-top: 210px;
+}
+
+.app .main-content .content-container {
+    width: 100%;
     max-width: 960px;
     margin: 0 auto;
 }
 
-.app.page-content .app-content .content-container {
-    padding-top: 20px;
-}
-
-.app.page-client .app-content .content-container {
+.app.show-client .main-content .content-container {
     display: none;
 }
 
-.app.page-client .app-menu {
-    display: none;
+.app .main-content.show-menu .content-container {
+    padding-top: 10px;
 }
 
-.app .app-content .client-container {
+[ui-view].ng-enter {
+    transition: .5s;
+    opacity: 0;
+}
+
+[ui-view].ng-enter-active {
+    opacity: 1;
+}
+
+.app .main-content .client-container {
+    position: absolute;
     width: 0;
     height: 0;
     left: 0;
@@ -41,7 +51,7 @@
     overflow: hidden;
 }
 
-.app.page-client .app-content .client-container {
+.app.show-client .main-content .client-container {
     height: 100% !important;
     min-height: 100% !important;
     max-height: 100% !important;
@@ -50,39 +60,15 @@
     max-width: 100% !important;
 }
 
-.app .app-content .client-container object {
+.app .main-content .client-container object {
     visibility: hidden;
 }
 
-.app:not(.page-client) .app-content .client-container button.return-web {
+.app:not(.show-client) .main-content .client-container button.return-web {
     display: none;
 }
 
-.app.page-client .app-content .client-container object {
+.app.show-client .main-content .client-container object {
     visibility: visible;
-}
-
-.app .app-content .content-footer {
-    height: 30px;
-    max-width: 960px;
-    margin: 0 auto;
-    text-align: center;
-    font-size: 14px;
-    line-height: 30px;
-    font-weight: 400;
-    color: rgba(0,0,0,.5);
-    overflow: hidden;
-}
-
-.app.page-client .app-content .content-footer {
-    display: none;
-}
-
-.app .app-content .content-container[ui-view].ng-enter {
-    transition: .5s;
-    opacity: 0;
-}
-
-.app .app-content .content-container[ui-view].ng-enter-active {
-    opacity: 1;
+    background: transparent !important;
 }

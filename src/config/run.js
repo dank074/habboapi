@@ -1,49 +1,75 @@
-function Run(AppConstants, SessionService, $localStorage, $stickyState, $state, $rootScope)
+function Run(AppConstants, SessionService, StatisticsService, $localStorage, $state, $stickyState, $interval, $rootScope)
 {
-	'ngInject';
-	
-	$rootScope.app_config		= AppConstants;
-	$rootScope.state			= $state;
+    'ngInject';
+    
+    $rootScope.app_config   = AppConstants;
+    $rootScope.state		= $state;
 
-	$rootScope.$on('$stateChangeStart', (event, next, current) =>
-	{
-		return SessionService.validate_session()
-		
-		.then((session) =>
-		{
-			$rootScope.current_user = $localStorage.current_user;
-			
-			if(next.name == 'login' || next.name == 'register')
-			{
-				event.preventDefault();
-				return $state.go('me');
-			}
-			
-			return next;
-		})
+    $rootScope.get_online_count = () =>
+    {
+        StatisticsService.users_online()
 
-		.catch((err) =>
-		{
-			event.preventDefault();
+        .then((count) =>
+        {
+            $rootScope.users_online = count;
+        });
+    };
 
-			$rootScope.current_user = null;
-			
-			if(next.login_required == true)
-			{
-				return $state.go('login');
-			}
+    $rootScope.get_online_count();
 
-			return next;
-		});
-	});
+    $interval(() => { $rootScope.get_online_count(); }, 60000);
 
-	$rootScope.$on('$stateChangeSuccess', (event, to, toParams, prev, prevParams) =>
-	{
-		if($rootScope.current_user == null) $stickyState.reset('client');
+    $rootScope.$on('$stateChangeStart', (event, next, current) =>
+    {
+        return SessionService.validate_session()
+        
+        .then((session) =>
+        {
+            $rootScope.current_user = $localStorage.current_user;
+            
+            if(next.name == 'login')
+            {
+                event.preventDefault();
+                return $state.go('me');
+            }
 
-		$rootScope.previous_state 	= (prev.name == undefined || prev.name == '' || null) ? $state.get('login') : prev;
-		$rootScope.previous_params 	= prevParams;
-	});
+            if(next.permission != undefined || null && $localStorage.current_user.user_permissions[next.permission] == undefined || $localStorage.current_user.user_permissions[next.permission] == '0')
+            {
+                event.preventDefault();
+                return $state.go('not_found');
+            }
+            
+            return next;
+        })
+        
+        .catch((err) =>
+        {
+            $rootScope.current_user = null;
+            
+            if(next.login_required == true)
+            {
+                event.preventDefault();
+                return $state.go('login');
+            }
+
+            return next;
+        });
+    });
+
+    $rootScope.$on('$stateChangeSuccess', (event, to, toParams, prev, prevParams) =>
+    {
+        if($rootScope.current_user == null) $stickyState.reset('client');
+        
+        $rootScope.previous_state 	= (prev.name == undefined || prev.name == '' || null) ? $state.get('login') : prev;
+        $rootScope.previous_params 	= prevParams;
+
+        $rootScope.current_state 	= to;
+
+        $rootScope.go_back = () =>
+        {
+            return $state.go($rootScope.previous_state.name, $rootScope.previous_params);
+        };
+    });
 }
 
 export default Run;

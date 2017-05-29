@@ -23,7 +23,7 @@ gulp.task('browserify', ['views'], function()
 
 gulp.task('views', function()
 {
-    return gulp.src(['./src/views/*.html', './src/views/**/*.html'])
+    return gulp.src(['./src/**/*.html'])
         .pipe(templateCache('template-cache.js', { module: 'app.templates', standalone: true }))
         .pipe(gulp.dest('./src/config/'));
 });
@@ -37,20 +37,4 @@ gulp.task('build', ['browserify'], function()
         .pipe(gulp.dest('./dist/'));
     
     return js;
-});
-
-gulp.task('default', ['browserify'], function()
-{
-    browserSync.init(['./build/**/**.**'],
-    {
-        server: './build',
-        port: 4000,
-        notify: false,
-        ui: {
-            port: 4001
-        }
-    });
-    
-    gulp.watch(['./src/views/*.html', './src/views/**/*.html'], ['views']);
-    gulp.watch('./src/**/*.js', ['browserify']);
 });

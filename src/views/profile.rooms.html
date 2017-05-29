@@ -1,0 +1,51 @@
+<section class="profile-rooms-card-container">
+	<div class="profile-rooms-card-header"></div>
+	<md-card class="no-select" style="height:210px;">
+		<md-toolbar>
+			<div class="md-toolbar-tools center">
+				<h2>{{'profile.rooms.header' | translate}}<span class="number" ng-if="$ctrl.rooms.length > 0" ng-bind="$ctrl.rooms.length"></span></h2>
+				<span flex></span>
+				<md-button class="md-icon-button" ng-if="$ctrl.rooms.length > 0" ng-click="show_all()"><md-icon>view_list</md-icon></md-button>
+			</div>
+		</md-toolbar>
+		<md-card-content class="no-padding center">
+			<div class="md-padding" ng-if="$ctrl.rooms.length == 0" translate="profile.rooms.no_rooms"></div>
+			<ul class="vertical-list room-list no-margin" ng-if="$ctrl.rooms.length > 0">
+				<li ng-repeat="room in $ctrl.rooms | orderBy: 'score' | limitTo: 5" ui-sref="room({id: room.id})">
+					<habbo-room-icon class="room-icon no-select">
+						<div class="room-icon"></div>
+					</habbo-room-icon>
+					<div class="room-name" ng-bind="room.name"></div>
+				</li>
+			</ul>
+		</md-card-content>
+	</md-card>
+	<div style="visibility:hidden;">
+		<div class="md-dialog-container" id="rooms-dialog">
+			<md-dialog class="no-select">
+				<md-toolbar>
+					<div class="md-toolbar-tools">
+						<h2>{{'profile.rooms.header' | translate}} <span class="number" ng-if="$ctrl.rooms.length > 0" ng-bind="$ctrl.rooms.length"></span></h2>
+						<span flex></span>
+						<md-button class="md-icon-button" ng-click="hide()"><md-icon>close</md-icon></md-button>
+					</div>
+				</md-toolbar>
+				<md-dialog-content>
+					<div class="md-dialog-content">
+						<md-list class="avatar-list" flex>
+							<md-list-item class="md-2-line" ng-repeat="room in $ctrl.rooms | orderBy: '-score'" ui-sref="room({id: room.id})">
+								<habbo-room-icon class="room-icon no-select">
+									<div class="room-icon"></div>
+								</habbo-room-icon>
+								<div class="md-list-item-text">
+									<span class="room-name" ng-bind="room.name"></span><br />
+									<span class="room-description" ng-if="room.description"><habbo-icon class="motto-icon"></habbo-icon>{{room.description}}</span>
+								</div>
+							</md-list-item>
+						</md-list>
+					</div>
+				</md-dialog-content>
+			</md-dialog>
+		</div>
+	</div>
+</section>

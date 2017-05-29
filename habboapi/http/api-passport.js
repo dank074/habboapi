@@ -1,8 +1,8 @@
 import passport from 'passport';
 import passportLocal from 'passport-local';
-import User from '../database/models/user/user';
-import UserService from '../services/user.service';
-import AuthenticationService from '../services/authentication.service';
+import Authentication from '../authentication/authentication';
+import Permission from '../authentication/permission';
+import HotelUser from '../hotel/user';
 
 const LocalStrategy = passportLocal.Strategy;
 
@@ -13,12 +13,19 @@ passport.serializeUser((user, done) =>
 
 passport.deserializeUser((user, done) =>
 {
-    return UserService.user_info(user.user_id)
+    return HotelUser.user_info(user.user_id)
 
     .then((user_info) =>
     {
         user.user_info = user_info;
 
+        return Permission.permission_list(user_info.rank);
+    })
+
+    .then((permission_list) =>
+    {
+        user.user_permissions = permission_list;
+        
         return done(null, user);
     })
 
@@ -36,13 +43,14 @@ passport.use('login', new LocalStrategy({
 
 (req, user_name, user_pass, done) =>
 {
-    return AuthenticationService.login(user_name, user_pass, req.ip, req.headers['user-agent'])
+    return Authentication.login(user_name, user_pass, req.ip, req.headers['user-agent'])
     
     .then((session) =>
     {
         if(session == null) return done(null, false);
         
         return done(null, {
+            login_status: true,
             user_id: session.user_id,
             user_name: session.user_name,
             user_session: session.user_session

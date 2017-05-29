@@ -1,14 +1,16 @@
 class SettingsController
 {
-    constructor(UtilityService, UserService, $localStorage, $stickyState, $scope)
+    constructor(AppConstants, UserService, UtilityService, $localStorage, $stickyState, $rootScope, $scope)
     {
         'ngInject';
 
-		this._UtilityService 	= UtilityService;
-        this._UserService		= UserService;
-        this._$localStorage 	= $localStorage;
-		this._$stickyState 		= $stickyState;
-        this._$scope 			= $scope;
+        this._AppConstants      = AppConstants;
+        this._UserService       = UserService;
+        this._UtilityService    = UtilityService;
+        this._$localStorage     = $localStorage;
+        this._$stickyState      = $stickyState;
+        this._$rootScope        = $rootScope;
+        this._$scope            = $scope;
 
 		this._$scope.password_details = {
 			new_password: null,
@@ -24,9 +26,9 @@ class SettingsController
 
 		this._$scope.update_password = () =>
 		{
-			if(this._$scope.password_details == undefined || this._$scope.password_details.length == 0 || this._$scope.password_details.new_password != this._$scope.password_details.new_cpassword) return this._Utility.alert('dialogs.something_wrong');
+			if(this._$scope.password_details == undefined || this._$scope.password_details.length == 0 || this._$scope.password_details.new_password != this._$scope.password_details.new_cpassword) return this._UtilityService.alert('dialogs.something_wrong');
 
-			return UserService.update_user_password(this._$scope.password_details.new_password, this._$scope.password_details.password)
+			return this._UserService.update_password(this._$scope.password_details.new_password, this._$scope.password_details.password)
 
 			.then(() =>
 			{
@@ -45,9 +47,9 @@ class SettingsController
 
 		this._$scope.update_email = () =>
 		{
-			if(this._$scope.email_details == undefined || this._$scope.email_details.length == 0 || this._$scope.email_details.new_email != this._$scope.email_details.new_cemail) return this._Utility.alert('dialogs.something_wrong');
+			if(this._$scope.email_details == undefined || this._$scope.email_details.length == 0 || this._$scope.email_details.new_email != this._$scope.email_details.new_cemail) return this._UtilityService.alert('dialogs.something_wrong');
 
-			return UserService.update_user_email(this._$scope.email_details.new_email, this._$scope.email_details.password)
+			return this._UserService.update_email(this._$scope.email_details.new_email, this._$scope.email_details.password)
 
 			.then(() =>
 			{
@@ -68,7 +70,7 @@ class SettingsController
 
 		this._$scope.update_client = () =>
 		{
-			return UserService.update_user_settings(this._$localStorage.current_user.user_info.settings)
+			return this._UserService.update_settings(this._$localStorage.current_user.user_info.settings)
 
 			.then(() =>
 			{

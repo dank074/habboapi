@@ -1,5 +1,3 @@
-import angular from 'angular';
-
 class ClientController
 {
     constructor(AppConstants, SessionService, $translate, $localStorage, $window, $stickyState, $mdDialog, $state, $rootScope, $scope)
@@ -17,8 +15,6 @@ class ClientController
         this._$rootScope        = $rootScope;
         this._$scope            = $scope;
 
-        this._$scope.client_swf         = this._AppConstants.client.client_swf;
-        this._$scope.client_base        = this._AppConstants.client.client_base;
         this._$scope.flashvars_string   = '';
 
         this._$scope.flash_vars = {

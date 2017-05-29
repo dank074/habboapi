@@ -3,26 +3,6 @@ md-toast {
     width: auto !important;
 }
 
-.app.page-content.md-toast-open-bottom {
-	height: calc(100% + 160px) !important;
-    overflow: hidden;
-}
-
-@media only screen and (min-width: 960px) {
-    md-toast {
-        left: auto !important;
-        top: 6% !important;
-        right: 5% !important;
-    }
-}
-
-@media (max-width: 599px) {
-    md-toast {
-        left: 0 !important;
-        bottom: 0 !important;
-    }
-}
-
 md-toast .md-toast-content {
     background-color: #323232 !important;
     padding: 5px 10px !important;
@@ -34,20 +14,12 @@ md-toast .md-toast-content {
 
 md-dialog {
     border-radius: 0 !important;
-    background-color: #323232 !important;
-}
-
-md-dialog md-toolbar,
-md-dialog md-toolbar .md-toolbar-tools {
-    height: 50px !important;
-    min-height: 50px !important;
-    max-height: 50px !important;
-    background-color: #323232 !important;
+    width: 350px;
 }
 
 md-dialog md-toolbar .md-toolbar-tools {
     padding: 0 20px !important;
-    line-height: 50px;
+    background-color: #FFFFFF;
     border-bottom: 1px solid rgba(160,160,160,0.3);
 }
 
@@ -58,29 +30,33 @@ md-dialog md-toolbar .md-toolbar-tools.center {
 }
 
 md-dialog md-toolbar .md-toolbar-tools h2 {
-    color: #FFFFFF;
+    color: rgba(0,0,0,.7);
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 400;
 }
 
-md-card md-toolbar .md-toolbar-tools h2.center {
-    margin: 0 auto;
+md-dialog md-toolbar .md-toolbar-tools md-icon {
+    color: rgba(0,0,0,.7);
 }
 
 md-dialog .md-dialog-content {
-    padding: 0 !important;
-    color: #FFFFFF;
+    padding: 0;
+    color: #000000;
 }
 
-md-dialog .md-dialog-content h2.md-title {
+md-dialog .md-dialog-content.md-padding {
+    padding: 10px;
+}
+
+md-dialog .md-dialog-content h2 {
     margin: 0 !important;
     padding: 15px 0;
     text-transform: uppercase;
     text-align: center;
     letter-spacing: 1px;
     border-bottom: 1px solid rgba(160,160,160,0.3);
-    color: #FFFFFF;
+    color: rgba(0,0,0,.7);
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -92,7 +68,7 @@ md-dialog .md-dialog-content h2.md-title {
 md-dialog .md-dialog-content p {
     padding: 10px 25px;
     text-align: center;
-    color: #FFFFFF;
+    color: #000000;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -101,25 +77,10 @@ md-dialog .md-dialog-content p {
     user-select: none;
 }
 
-md-dialog .md-dialog-content md-list md-list-item .badge-icon {
-    margin-right: 10px;
-}
-
-md-dialog .md-dialog-content md-list md-list-item .room-icon {
-    margin-right: 15px;
-}
-
-md-dialog .md-dialog-content md-list md-list-item h3 {
-    color: #FFFFFF !important;
-}
-
-md-dialog .md-dialog-content md-list md-list-item p {
-    padding: 0 !important;
-    font-weight: 300 !important;
-    text-align: left !important;
-    color: #FFFFFF !important;
+md-dialog md-dialog-actions {
+    border-top: 1px solid rgba(160,160,160,0.3);
 }
 
 md-dialog md-dialog-actions .md-button {
-    color: #FFFFFF !important;
+    color: #000000 !important;
 }

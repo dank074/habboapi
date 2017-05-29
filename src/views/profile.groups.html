@@ -1,0 +1,57 @@
+<section class="profile-groups-card-container">
+	<div class="profile-groups-card-header"></div>
+	<md-card class="no-select" style="height:210px;">
+		<md-toolbar>
+			<div class="md-toolbar-tools center">
+				<h2>{{'profile.groups.header' | translate}}<span class="number" ng-if="$ctrl.groups.length > 0" ng-bind="$ctrl.groups.length"></span></h2>
+				<span flex></span>
+				<md-button class="md-icon-button" ng-if="$ctrl.groups.length > 0" ng-click="show_all()"><md-icon>view_list</md-icon></md-button>
+			</div>
+		</md-toolbar>
+		<md-card-content class="no-padding center">
+			<div class="md-padding" ng-if="$ctrl.groups.length == 0" translate="profile.groups.no_groups"></div>
+			<ul class="vertical-list badge-list no-margin" ng-if="$ctrl.groups.length > 0">
+                <li ng-repeat="group in $ctrl.groups | orderBy: 'member_since' | limitTo: 5">
+					<a ui-sref="group({id: group.group.id})">
+						<div class="badge-icon">
+							<div class="badge-icon-aligner">
+								<img ng-src="{{$root.app_config.site_images.group_badges}}/{{group.group.badge}}.gif" />
+							</div>
+						</div>
+                        <div class="badge-name" ng-bind="group.group.name"></div>
+					</a>
+				</li>
+			</ul>
+		</md-card-content>
+	</md-card>
+	<div style="visibility:hidden;">
+		<div class="md-dialog-container" id="groups-dialog">
+			<md-dialog class="no-select">
+				<md-toolbar>
+					<div class="md-toolbar-tools">
+						<h2>{{'profile.groups.header' | translate}} <span class="number" ng-if="$ctrl.groups.length > 0" ng-bind="$ctrl.groups.length"></span></h2>
+						<span flex></span>
+						<md-button class="md-icon-button" ng-click="hide()"><md-icon>close</md-icon></md-button>
+					</div>
+				</md-toolbar>
+				<md-dialog-content>
+					<div class="md-dialog-content">
+						<md-list class="avatar-list" flex>
+							<md-list-item class="md-2-line" ng-repeat="group in $ctrl.groups | orderBy: 'member_since'" ui-sref="group({id: group.group.id})">
+								<div class="badge-icon" style="padding:7px 0;">
+									<div class="badge-icon-aligner">
+                                        <img ng-src="{{$root.app_config.site_images.group_badges}}/{{group.group.badge}}.gif" />
+                                    </div>
+								</div>
+								<div class="md-list-item-text" style="padding-left:15px;">
+									<span class="group-name" ng-bind="group.group.name"></span><br />
+									<span class="group-description" ng-if="group.group.description"><habbo-icon class="motto-icon"></habbo-icon>{{group.group.description}}</span>
+								</div>
+							</md-list-item>
+						</md-list>
+					</div>
+				</md-dialog-content>
+			</md-dialog>
+		</div>
+	</div>
+</section>

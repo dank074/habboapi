@@ -1,48 +1,48 @@
 <div layout="row" layout-xs="column">
 	<div layout="column" flex="auto" flex-xs="100">
-		<md-card class="no-select">
+        <md-card class="no-select">
 			<md-toolbar>
 				<div class="md-toolbar-tools">
-					<h2 class="center">{{current_user.user_info.username}}</h2>
+					<h2 class="center" ng-bind="$root.current_user.user_info.username"></h2>
 				</div>
 			</md-toolbar>
 			<md-card-content class="no-padding hide-overflow">
-				<div class="user-avatar" ui-sref="profile({username: current_user.user_info.username})" style="padding-bottom:15px;">
+                <div class="user-avatar" ui-sref="profile({username: $root.current_user.user_info.username})" style="padding-bottom:15px;">
 					<img ng-src="{{$root.app_config.site_images.avatars}}{{current_user.user_info.look}}&amp;direction=3&amp;head_direction=3&amp;action=wave&amp;size=n&amp;gesture=std" />
 				</div>
 				<table class="table table-striped">
 					<tbody>
 						<tr>
-							<th translate="settings.user_info.created"</th>
-							<td ng-bind="current_user.user_info.account_created * 1000 | date:'mediumDate'"></td>
+							<th translate="settings.user_info.created"></th>
+							<td ng-bind="$root.current_user.user_info.account_created * 1000 | date:'MMM d, yyyy'"></td>
 						</tr>
 						<tr>
 							<th translate="settings.user_info.rank"></th>
-							<td ng-bind="current_user.user_info.rank"></td>
+							<td ng-bind="$root.current_user.user_permissions.rank_name"></td>
 						</tr>
-						<tr>
+                        <tr>
 							<th translate="settings.user_info.email"></th>
-							<td ng-bind="current_user.user_info.mail"></td>
+							<td ng-bind="$root.current_user.user_info.mail"></td>
 						</tr>
 						<tr>
 							<th translate="settings.user_info.credits"></th>
-							<td ng-bind="current_user.user_info.credits"></td>
+							<td ng-bind="$root.current_user.user_info.credits"></td>
 						</tr>
 						<tr>
 							<th translate="settings.user_info.pixels"></th>
-							<td ng-bind="current_user.user_info.pixels"></td>
+							<td ng-bind="$root.current_user.user_info.pixels"></td>
 						</tr>
 						<tr>
-							<th translate="settings.user_info.diamonds">Diamonds</th>
-							<td ng-bind="current_user.user_info.points"></td>
+							<th translate="settings.user_info.diamonds"></th>
+							<td ng-bind="$root.current_user.user_info.points"></td>
 						</tr>
 					</tbody>
 				</table>
 			</md-card-content>
 		</md-card>
 	</div>
-	<div layout="column" flex="70" flex-xs="100">
-		<md-card class="no-select">
+    <div layout="column" flex="70" flex-xs="100">
+        <md-card class="no-select">
 			<md-card-content class="no-padding">
 				<md-tabs class="no-select" md-dynamic-height md-border-bottom>
 					<md-tab label="{{'settings.password' | translate}}">
@@ -51,19 +51,19 @@
 								<md-input-container md-no-float class="md-block" md-auto-hide="false">
 									<input type="password" name="new_password" ng-model="password_details.new_password" translate translate-attr-placeholder="forms.new_password" required />
 									<div ng-messages="password_form.new_password.$error" md-auto-hide="false" ng-show="password_form.new_password.$touched">
-										<div ng-messages-include="messages.html"></div>
+										<div ng-messages-include="views/messages.html"></div>
 									</div>
 								</md-input-container>
 								<md-input-container md-no-float class="md-block">
 									<input type="password" name="new_cpassword" ng-model="password_details.new_cpassword" translate translate-attr-placeholder="forms.confirm_password" required />
 									<div ng-messages="password_form.new_cpassword.$error" md-auto-hide="false" ng-show="password_form.new_cpassword.$touched">
-										<div ng-messages-include="messages.html"></div>
+										<div ng-messages-include="views/messages.html"></div>
 									</div>
 								</md-input-container>
 								<md-input-container md-no-float class="md-block">
 									<input type="password" name="password" ng-model="password_details.password" translate translate-attr-placeholder="forms.current_password" required />
 									<div ng-messages="password_form.password.$error" md-auto-hide="false" ng-show="password_form.password.$touched">
-										<div ng-messages-include="messages.html"></div>
+										<div ng-messages-include="views/messages.html"></div>
 									</div>
 								</md-input-container>
 								<md-button type="submit" class="md-raised md-primary" ng-disabled="(password_form.$invalid) || (password_details.new_password != password_details.new_cpassword)">Save</md-button>
@@ -76,19 +76,19 @@
 								<md-input-container md-no-float class="md-block">
 									<input type="email" name="new_email" ng-model="email_details.new_email" translate translate-attr-placeholder="forms.new_email" required check-email />
 									<div ng-messages="email_form.new_email.$error" md-auto-hide="false" ng-show="email_form.new_email.$touched">
-										<div ng-messages-include="messages.html"></div>
+										<div ng-messages-include="views/messages.html"></div>
 									</div>
 								</md-input-container>
 								<md-input-container md-no-float class="md-block">
 									<input type="email" name="new_cemail" ng-model="email_details.new_cemail" translate translate-attr-placeholder="forms.confirm_email" required />
 									<div ng-messages="email_form.new_cemail.$error" md-auto-hide="false" ng-show="email_form.new_cemail.$touched">
-										<div ng-messages-include="messages.html"></div>
+										<div ng-messages-include="views/messages.html"></div>
 									</div>
 								</md-input-container>
 								<md-input-container md-no-float class="md-block">
 									<input type="password" name="password" ng-model="email_details.password" translate translate-attr-placeholder="forms.password" required />
 									<div ng-messages="email_form.password.$error" md-auto-hide="false" ng-show="email_form.password.$touched">
-										<div ng-messages-include="messages.html"></div>
+										<div ng-messages-include="views/messages.html"></div>
 									</div>
 								</md-input-container>
 								<md-button type="submit" class="md-raised md-primary" ng-disabled="(email_form.$invalid) || (email_details.new_email != email_details.new_cemail)">Save</md-button>
@@ -101,27 +101,27 @@
 								<md-list>
 									<md-list-item>
 										<p translate="settings.client.block_following"></p>
-										<md-switch class="md-secondary" name="block_following" ng-model="current_user.user_info.settings.block_following" ng-change="update_client()"></md-switch>
+										<md-switch class="md-secondary" name="block_following" ng-model="$root.current_user.user_info.settings.block_following" ng-change="update_client()"></md-switch>
 									</md-list-item>
 									<md-list-item>
 										<p translate="settings.client.block_friend_requests"></p>
-										<md-switch class="md-secondary" name="block_friendrequests" ng-model="current_user.user_info.settings.block_friendrequests" ng-change="update_client()"></md-switch>
+										<md-switch class="md-secondary" name="block_friendrequests" ng-model="$root.current_user.user_info.settings.block_friendrequests" ng-change="update_client()"></md-switch>
 									</md-list-item>
 									<md-list-item>
 										<p translate="settings.client.block_room_invites"></p>
-										<md-switch class="md-secondary" name="block_roominvites" ng-model="current_user.user_info.settings.block_roominvites" ng-change="update_client()"></md-switch>
+										<md-switch class="md-secondary" name="block_roominvites" ng-model="$root.current_user.user_info.settings.block_roominvites" ng-change="update_client()"></md-switch>
 									</md-list-item>
 									<md-list-item>
 										<p translate="settings.client.old_chat"></p>
-										<md-switch class="md-secondary" name="old_chat" ng-model="current_user.user_info.settings.old_chat" ng-change="update_client()"></md-switch>
+										<md-switch class="md-secondary" name="old_chat" ng-model="$root.current_user.user_info.settings.old_chat" ng-change="update_client()"></md-switch>
 									</md-list-item>
 									<md-list-item>
 										<p translate="settings.client.ignore_bots"></p>
-										<md-switch class="md-secondary" name="ignore_bots" ng-model="current_user.user_info.settings.ignore_bots" ng-change="update_client()"></md-switch>
+										<md-switch class="md-secondary" name="ignore_bots" ng-model="$root.current_user.user_info.settings.ignore_bots" ng-change="update_client()"></md-switch>
 									</md-list-item>
 									<md-list-item>
 										<p translate="settings.client.ignore_pets"></p>
-										<md-switch class="md-secondary" name="ignore_pets" ng-model="current_user.user_info.settings.ignore_pets" ng-change="update_client()"></md-switch>
+										<md-switch class="md-secondary" name="ignore_pets" ng-model="$root.current_user.user_info.settings.ignore_pets" ng-change="update_client()"></md-switch>
 									</md-list-item>
 								</md-list>
 							</form>
@@ -130,5 +130,5 @@
 				</md-tabs>
 			</md-card-content>
 		</md-card>
-	</div>
+    </div>
 </div>

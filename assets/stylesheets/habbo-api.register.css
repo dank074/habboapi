@@ -1,0 +1,64 @@
+.register-card-left {
+    position: relative;
+    margin: 0 !important;
+    background-color: #008A5F;
+    overflow: hidden;
+}
+
+.register-card-left .left-image {
+    position: absolute;
+    width: 500px;
+	height: 700px;
+    bottom: 0;
+    right: 0;
+	opacity: .25;
+    background: url("../images/register-image.png") no-repeat;
+	image-rendering: pixelated;
+}
+
+.register-card-left md-card-content {
+    position: absolute;
+    padding: 30px 60px 0;
+    background: transparent;
+}
+
+.register-card-left md-card-content h2 {
+    margin: 10px 0 0;
+    font-weight: 300;
+	font-size: 35px;
+	color: #FFFFFF;
+}
+
+.register-card-left md-card-content h3 {
+    margin: 0 0 30px;
+    font-weight: 400;
+	font-size: 16px;
+	color: #FFFFFF;
+}
+
+.register-card-left md-card-content h4 {
+    font-weight: 300;
+	font-size: 16px;
+	color: #FFFFFF;
+}
+
+.register-card-right {
+    margin: 0 !important;
+}
+
+.register-card-right md-toolbar .md-toolbar-tools h2 {
+    font-size: 26px;
+}
+
+.register-card-right md-card-content form {
+    padding: 0 30px;
+}
+
+.register-card-right md-card-content form button.register-button,
+.register-card-right md-card-content form a.login-button {
+    width: 100%;
+    height: 60px;
+    margin: 6px 0;
+    font-size: 18px;
+    line-height: 60px;
+}

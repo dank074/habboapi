@@ -13,7 +13,7 @@ class RoomController
 
         this._$scope.room_id = (this._$stateParams.id == undefined || null) ? null : this._$stateParams.id;
 
-        this._$http.post(this._AppConstants.api + '/controller/room/room_info', {room_id: this._$scope.room_id})
+        this._$http.post(this._AppConstants.api + '/hotel/room/room_info', {room_id: this._$scope.room_id})
         
         .then((res) =>
         {
@@ -22,7 +22,7 @@ class RoomController
         
         .catch((res) =>
         {
-            return this._$state.go(this._$rootScope.previous_state.name, this._$rootScope.previous_params);
+            return this._$rootScope.go_back();
         });
     }
 }

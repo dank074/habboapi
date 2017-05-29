@@ -20,19 +20,19 @@ section.profile-badge-card-container md-card {
 
 /** FRIENDS **/
 
-section.profile-friend-card-container {
+section.profile-friends-card-container {
     width: 100%;
     height: 100%;
 }
 
-section.profile-friend-card-container .profile-friend-card-header {
+section.profile-friends-card-container .profile-friends-card-header {
     width: 100%;
     height: 140px;
     background: url('../images/cards/card_friends_header.png') no-repeat;
     image-rendering: pixelated;
 }
 
-section.profile-friend-card-container md-card {
+section.profile-friends-card-container md-card {
     margin: 0 8px 8px;
 }
 
@@ -40,14 +40,14 @@ section.profile-friend-card-container md-card {
 
 /** ROOMS **/
 
-section.profile-room-card-container .profile-room-card-header {
+section.profile-rooms-card-container .profile-rooms-card-header {
     width: 100%;
     height: 140px;
     background: url('../images/cards/card_rooms_header.png') no-repeat;
     image-rendering: pixelated;
 }
 
-section.profile-room-card-container md-card {
+section.profile-rooms-card-container md-card {
     margin: 0 8px 8px;
 }
 
@@ -55,14 +55,14 @@ section.profile-room-card-container md-card {
 
 /** GROUPS **/
 
-section.profile-group-card-container .profile-group-card-header {
+section.profile-groups-card-container .profile-groups-card-header {
     width: 468px;
     height: 140px;
     background: url('../images/cards/card_groups_header.png') no-repeat;
     image-rendering: pixelated;
 }
 
-section.profile-group-card-container md-card {
+section.profile-groups-card-container md-card {
     margin: 0 8px 8px;
 }
 

@@ -2,16 +2,14 @@
 	<div layout="column" flex="70" flex-xs="100">
 		<md-card class="no-select">
 			<md-card-title>
-				<div class="room-icon">
-					<div class="room-icon-aligner">
-						<img ng-src="{{$root.app_config.site_images.rooms}}/{{room_info.model}}.png" />
-					</div>
-				</div>
-				<md-card-title-text>
-					<span class="md-headline">{{room_info.name}}</span>
-					<span class="md-subhead description" ng-hide="room_info.description == null">{{room_info.description}}</span>
+				<habbo-room-icon class="room-icon no-select">
+                    <div class="room-icon"></div>
+                </habbo-room-icon>
+				<md-card-title-text style="justify-content:center;padding-left:10px;">
+					<span class="md-headline" ng-bind="room_info.name"></span>
+					<span class="md-subhead description" ng-if="room_info.description != null" ng-bind="room_info.description"></span>
 				</md-card-title-text>
-				<a class="group-room" ng-if="room_info.guild_id != 0" ui-sref="group({id: room_info.group.id})">
+				<a class="group-room" ng-if="room_info.guild_id != 0" ui-sref="group({id: room_info.group.id})" style="display:flex;justify-content:center;padding-right:10px;">
 					<div class="badge-icon">
 						<div class="badge-icon-aligner">
 							<img ng-src="{{$root.app_config.site_images.group_badges}}/{{room_info.group.badge}}.gif" />
@@ -35,7 +33,7 @@
 		<md-card class="no-select">
 			<md-toolbar>
 				<div class="md-toolbar-tools">
-					<h2 class="center" translate="rooms.details_card.header">Details</h2>
+					<h2 class="center" translate="rooms.details_card.header"></h2>
 				</div>
 			</md-toolbar>
 			<md-card-content class="no-padding">

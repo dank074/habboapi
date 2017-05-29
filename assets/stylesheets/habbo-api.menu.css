@@ -2,23 +2,32 @@
     position: fixed;
     width: 100%;
     height: 70px;
-    margin-top: 120px;
-    background-color: rgba(255,255,255,.9);
+    max-width: 960px;
+    left: 0;
+    right: 0;
+    margin: 140px auto 0;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 5px 0 rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12);
+    border-radius: 4px;
     z-index: 4;
     overflow: hidden;
 }
 
+.app.show-client .app-menu {
+    display: none;
+}
+
 .app-menu .menu-container {
-    max-width: 960px;
-    height: 70px;
+    max-width: 100%;
+    height: 100%;
     margin: 0 auto;
 }
 
 .app-menu .menu-container ul.menu-list {
     display: table;
     margin: 0;
-    padding: 0;
-    height: 70px;
+    padding: 0 15px;
+    height: 100%;
     list-style: none;
     float: left;
 }
@@ -27,11 +36,8 @@
     float: right;
 }
 
-.app-menu .menu-container ul.menu-list.right li {
-    padding: 9px 0;
-}
-
-.app-menu .menu-container ul.menu-list li.list-item {
+.app-menu .menu-container ul.menu-list li.list-item,
+.app-menu .menu-container ul.menu-list li.list-item-no-hover {
     display: table-cell;
     padding: 0 15px;
     font-size: 24px;
@@ -41,7 +47,21 @@
     line-height: 70px;
     white-space: nowrap;
     color: rgba(0,0,0,.7);
+    outline: 0;
     cursor: pointer;
+}
+
+.app-menu .menu-container ul.menu-list li.list-item-no-hover.users-online {
+    font-size: 18px;
+}
+
+.app-menu .menu-container ul.menu-list li.list-item.avatar-image {
+    padding-right: 60px;
+    background-repeat: no-repeat;
+    background-position: right;
+    font-size: 20px;
+    font-weight: 400;
+    image-rendering: pixelated;
 }
 
 .app-menu .menu-container ul.menu-list li.list-item:after {

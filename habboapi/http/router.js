@@ -1,6 +1,7 @@
 import { Router } from 'express';
-import HttpServices from './services/index';
-import HttpControllers from './controllers/index';
+import HttpAuthentication from './authentication';
+import HttpHotel from './hotel';
+import HttpServices from './services';
 
 class MainRouter
 {
@@ -8,8 +9,9 @@ class MainRouter
     {
         let router = Router();
 
+        router.use('/authentication', new HttpAuthentication);
+        router.use('/hotel', new HttpHotel);
         router.use('/service', new HttpServices);
-        router.use('/controller', new HttpControllers);
 
         return router;
     }

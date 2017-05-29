@@ -1,146 +1,143 @@
-@import url("https://fonts.googleapis.com/css?family=Ubuntu+Condensed:500,400,300");
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300');
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import url("angular-material.min.css");
 @import url("habbo-api.cards.css");
 @import url("habbo-api.content.css");
 @import url("habbo-api.dialog.css");
 @import url("habbo-api.header.css");
+@import url("habbo-api.icons.css");
 @import url("habbo-api.lists.css");
 @import url("habbo-api.login.css");
 @import url("habbo-api.menu.css");
 @import url("habbo-api.profile.css");
+@import url("habbo-api.register.css");
 @import url("habbo-api.tables.css");
 
-	body.md-default-theme, html, body {
-		font-family: "Ubuntu Condensed", sans-serif;
-		font-weight: 300;
-		background: #D6D6D6;
-	}
-	
-	[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-		display: none !important;
-	}
-	
-	.no-select {
-		-webkit-touch-callout: none;
-		-webkit-user-select: none;
-		-khtml-user-select: none;
-		-moz-user-select: none;
-		-ms-user-select: none;
-		user-select: none;
-	}
+html, body {
+    font-family: 'Roboto Condensed', sans-serif !important;
+    font-weight: 300 !important;
+    background: #c9dbe9 !important;
+    background: -webkit-linear-gradient(top, #c9dbe9 0%, #fff 100%) !important;
+    background: -linear-gradient(top, #c9dbe9 0%, #fff 100%) !important;
+    background: -moz-linear-gradient(top, #c9dbe9 0%, #fff 100%) !important;
+}
 
-	.app {
-		width: 100%;
-		height: 100%;
-		margin: 0;
-		padding: 0;
-	}
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
 
-	.center-middle {
-		display: flex;
-		height: 100%;
-		justify-content: center;
-		align-items: center;
-	}
+.no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 
-	.no-margin {
-		margin: 0 !important;
-	}
+.app {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
 
-	.no-padding{
-		padding: 0 !important;
-	}
+.no-margin {
+    margin: 0 !important;
+}
 
-	.pixel-image {
-		image-rendering: pixelated;
-	}
+.no-padding {
+    padding: 0 !important;
+}
 
-	/** BADGE / ROOM ICON **/
+.pixel-image {
+    image-rendering: pixelated;
+}
 
-	.badge-icon,
-	.room-icon {
-    	display: flex;
-    	margin: 0 auto;
-    	justify-content: center;
-    	align-items: center;
-	}
+.avatar-icon,
+.badge-icon,
+.room-icon {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+}
 
-	.badge-icon-aligner,
-	.room-icon-aligner {
-		align-items: center;
-    	border: 3px solid #000000;
-		background-color: #0B6395;
-    	border-radius: 50%;
-    	display: -ms-flexbox;
-    	display: flex;
-    	height: 60px;
-    	-ms-flex-pack: center;
-    	justify-content: center;
-    	width: 60px;
-	}
+.badge-icon-aligner,
+.room-icon-aligner {
+    align-items: center;
+    border: 3px solid #000000;
+    background-color: #0B6395;
+    border-radius: 50%;
+    display: -ms-flexbox;
+    display: flex;
+    height: 60px;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 60px;
+}
 
-	.room-icon-aligner {
-		border: 0 !important;
-		background-color: transparent !important;
-	}
+.avatar-icon-aligner {
+    align-items: center;
+    display: -ms-flexbox;
+    display: flex;
+    height: 60px;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 60px;
+}
 
-	.badge-icon-aligner img,
-	.room-icon-aligner img {
-    	image-rendering: pixelated;
-	}
+.room-icon-aligner {
+    border: 0 !important;
+    background-color: transparent !important;
+}
 
-	/** /BADGE / ROOM ICON **/
-	/** AVATAR **/
+.avatar-icon-aligner img,
+.badge-icon-aligner img,
+.room-icon-aligner img {
+    image-rendering: pixelated;
+}
 
-	.user-avatar {
-		width: 64px;
-		height: 110px;
-		margin: 0 auto;
-		text-align: center;
-	}
+/** /BADGE / ROOM ICON **/
+/** AVATAR **/
 
-	.user-avatar img {
-		width: 64px;
-		height: 110px;
-		image-rendering: pixelated;
-	}
+.user-avatar {
+    width: 64px;
+    height: 110px;
+    margin: 0 auto;
+    text-align: center;
+}
 
-	/** /AVATAR **/
-	/** 
+.user-avatar img {
+    width: 64px;
+    height: 110px;
+    image-rendering: pixelated;
+}
 
-	/** BUTTONS **/
+.md-button.hotel-button {
+    display: inline-block;
+    background-color: #FFB900 !important;
+    border-color: #FFEA00 !important;
+    border-radius: 5px;
+    border-width: 2px;
+    box-shadow: 0 0 1px 1px #000000 !important;
+    border-style: solid;
+}
 
-	.md-button.hotel-button {
-		display: inline-block;
-		background-color: #FFB900 !important;
-		border-color: #FFEA00 !important;
-		border-radius: 5px;
-		border-width: 2px;
-		box-shadow: 0 0 1px 1px #000000 !important;
-		border-style: solid;
-	}
+.md-button.hotel-button.return-web {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 2;
+}
 
-	.md-button.hotel-button.return-web {
-		position: fixed;
-		top: 10px;
-		left: 10px;
-		z-index: 2;
-	}
+.md-button.hotel-button:hover {
+    background-color: #FFD400 !important;
+    border-color: #FFFD70 !important;
+    border-bottom-width: 2px !important;
+}
 
-	.md-button.hotel-button:hover {
-		background-color: #FFD400 !important;
-		border-color: #FFFD70 !important;
-		border-bottom-width: 2px !important;
-	}
-
-	.md-button.hotel-button:active {
-		transform: translate(0,2px);
-		
-	}
-
-/** /BUTTONS */
-
-.app.page-client .app-header {
-    display: none;
+.md-button.hotel-button:active {
+    transform: translate(0,2px);
+    
 }

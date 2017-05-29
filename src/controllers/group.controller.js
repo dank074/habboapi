@@ -13,7 +13,7 @@ class GroupController
 
         this._$scope.group_id = (this._$stateParams.id == undefined || null) ? null : this._$stateParams.id;
 
-        this._$http.post(this._AppConstants.api + '/controller/group/group_info', {group_id: this._$scope.group_id})
+        this._$http.post(this._AppConstants.api + '/hotel/group/group_info', {group_id: this._$scope.group_id})
         
         .then((res) =>
         {
@@ -22,7 +22,7 @@ class GroupController
         
         .catch((res) =>
         {
-            return this._$state.go(this._$rootScope.previous_state.name, this._$rootScope.previous_params);
+            return this._$rootScope.go_back();
         });
     }
 }

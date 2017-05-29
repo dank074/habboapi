@@ -1,7 +1,6 @@
 import { Router } from 'express';
-import AuthenticationHttpService from './authentication.http.service';
-import SessionHttpService from './session.http.service';
-import UserHttpService from './user.http.service';
+import AnnouncementHttp from './announcement.http';
+import CommunityHttp from './community.http';
 
 class HttpServices
 {
@@ -9,9 +8,8 @@ class HttpServices
     {
         let router = Router();
 
-        router.use('/authentication', new AuthenticationHttpService);
-        router.use('/session', new SessionHttpService);
-        router.use('/user', new UserHttpService);
+        router.use('/announcement', new AnnouncementHttp);
+        router.use('/community', new CommunityHttp);
 
         return router;
     }

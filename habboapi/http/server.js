@@ -1,6 +1,5 @@
 import express from 'express';
 import passport from 'passport';
-import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import session from 'express-session';
 import glob from 'glob';
@@ -13,7 +12,6 @@ class HttpServer
     {
         const app = express();
 
-        app.use(cookieParser());
         app.use(bodyParser.urlencoded({ extended: true }));
         app.use(bodyParser.json());
         app.use(session(__config.session));

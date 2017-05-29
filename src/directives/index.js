@@ -1,28 +1,17 @@
-import angular from 'angular';
-import CheckEmail from './check-email.directive';
-import CheckUsername from './check-username.directive';
-import GroupMembers from './group-members.directive';
-import HabboClient from './habbo-client.directive';
-import Logout from './logout.directive';
-import MenuBar from './menu-bar.directive';
-import ProfileRooms from './profile-rooms.directive';
-import ProfileBadges from './profile-badges.directive';
-import ProfileFriends from './profile-friends.directive';
-import ProfileGroups from './profile-groups.directive';
-import UserCard from './user-card.directive';
+import ClientDirective from './client.directive';
+import LogoutDirective from './logout.directive';
+import NavigationDirective from './navigation.directive';
+import UserCardDirective from './user.card.directive';
+import ValidateUsernameDirective from './validate_username.directive';
+import ValidateEmailDirective from './validate_email.directive';
 
-let directives = angular.module('habboapi.directives', []);
+let directivesModule = angular.module('habboapi.directives', []);
 
-directives.directive('checkEmail', () => new CheckEmail);
-directives.directive('checkUsername', () => new CheckUsername);
-directives.directive('groupMembers', () => new GroupMembers);
-directives.directive('habboClient', () => new HabboClient);
-directives.directive('appLogout', () => new Logout);
-directives.directive('menuBar', () => new MenuBar);
-directives.directive('userCard', () => new UserCard);
-directives.directive('profileRooms', () => new ProfileRooms);
-directives.directive('profileBadges', () => new ProfileBadges);
-directives.directive('profileFriends', () => new ProfileFriends);
-directives.directive('profileGroups', () => new ProfileGroups);
+directivesModule.directive('habboClient', () => new ClientDirective);
+directivesModule.directive('appLogout', () => new LogoutDirective);
+directivesModule.directive('appNavigation', () => new NavigationDirective);
+directivesModule.directive('userCard', () => new UserCardDirective);
+directivesModule.directive('validateUsername', () => new ValidateUsernameDirective);
+directivesModule.directive('validateEmail', () => new ValidateEmailDirective);
 
-export default directives;
+export default directivesModule;

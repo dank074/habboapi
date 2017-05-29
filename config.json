@@ -1,28 +1,28 @@
 {
-	"ip": "localhost",
+    "ip": "localhost",
     "port": 80,
-	"password_salt": 10,
-	"session": {
-		"secret": "KcgZogkYj5H2D2o",
-		"resave": "false",
-		"saveUninitialized": "false"
-	},
-    "database": {
-		"client": "mysql",
-		"connection": {
-			"host": "localhost",
-			"port": 3306,
-			"user": "root",
-			"password": "",
-			"database": "arcturus"
-		}
+    "password_salt": 10,
+    "session": {
+        "secret": "KcgZogkYj5H2D2o",
+        "resave": "false",
+        "saveUninitialized": "false"
     },
-	"rCRON": {
-		"socket_ip": "127.0.0.1",
-		"socket_port": "12422"
-	},
-	"staff_page_ranks": [7, 6, 5],
-	"user_settings": {
+    "database": {
+        "client": "mysql",
+        "connection": {
+            "host": "localhost",
+            "port": 3306,
+            "user": "root",
+            "password": "",
+            "database": "arcturus"
+        }
+    },
+    "rCRON": {
+        "socket_ip": "127.0.0.1",
+        "socket_port": "12422"
+    },
+    "staff_page_ranks": [7, 6, 5],
+    "user_settings": {
 		"update_user_keys": ["account_day_of_birth", "motto", "look", "gender", "home_room"],
 		"update_settings_keys": ["block_following", "block_friendrequests", "block_roominvites", "old_chat", "ignore_bots", "ignore_pets"],
 		"new_user": {
