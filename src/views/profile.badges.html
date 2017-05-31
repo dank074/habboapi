@@ -10,7 +10,7 @@
 		</md-toolbar>
 		<md-card-content class="no-padding center">
 			<div class="md-padding" ng-if="$ctrl.badges.length == 0" translate="profile.badges.no_badges"></div>
-			<ul class="vertical-list badge-list no-margin" ng-if="$ctrl.badges.length > 0">
+			<ul class="vertical-list badge-list" ng-if="$ctrl.badges.length > 0">
 				<li ng-repeat="badge in $ctrl.badges | orderBy: '-slot_id' | limitTo: 5">
 					<a>
 						<div class="badge-icon">
@@ -34,8 +34,8 @@
 					</div>
 				</md-toolbar>
 				<md-dialog-content>
-					<div class="md-dialog-content" style="padding:0px 20px;">
-						<ul class="vertical-list badge-list custom-list no-margin" ng-if="$ctrl.badges.length > 0">
+					<div class="md-dialog-content">
+						<ul class="vertical-list badge-list" ng-if="$ctrl.badges.length > 0">
 							<li ng-repeat="badge in $ctrl.badges | orderBy: '-slot_id'">
 								<a>
 									<div class="badge-icon">

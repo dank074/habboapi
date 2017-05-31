@@ -1,5 +1,6 @@
 md-list.avatar-list,
-md-list.rooms-list {
+md-list.rooms-list,
+md-list.forum-list {
     padding: 0;
 }
 
@@ -25,16 +26,25 @@ md-list md-list-item span habbo-icon.clock-icon {
 
 md-list md-list-item span.user-name,
 md-list md-list-item span.room-name,
-md-list md-list-item span.group-name {
+md-list md-list-item span.group-name,
+md-list md-list-item span.thread-name {
     font-size: 22px;
     font-weight: 400;
-    padding-right: 5px;
+    
+}
+
+md-list md-list-item span.thread-owner {
+    font-size: 18px;
+    font-weight: 300;
 }
 
 md-list md-list-item span.user-motto,
 md-list md-list-item span.last-login,
 md-list md-list-item span.room-description,
-md-list md-list-item span.group-description {
+md-list md-list-item span.group-description,
+md-list md-list-item span.thread-message,
+md-list md-list-item span.thread-time,
+md-list md-list-item span.member-since {
     padding: 0;
     text-align: left;
     overflow: hidden;
@@ -91,18 +101,14 @@ ul.avatar-list li a .user-name {
 }
 
 ul.badge-list {
-    padding: 20px 0;
-}
-
-ul.badge-list.custom-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     padding: 10px;
 }
 
 ul.badge-list li {
-    margin: 0 5px 0 0;
-}
-
-ul.badge-list.custom-list li {
     margin: 0 5px 5px 0;
 }
 

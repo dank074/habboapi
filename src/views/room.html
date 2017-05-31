@@ -1,18 +1,15 @@
 <div layout="row" layout-xs="column">
 	<div layout="column" flex="70" flex-xs="100">
 		<md-card class="no-select">
-			<md-card-title>
-				<habbo-room-icon class="room-icon no-select">
-                    <div class="room-icon"></div>
-                </habbo-room-icon>
-				<md-card-title-text style="justify-content:center;padding-left:10px;">
+			<md-card-title class="centered-title">
+				<md-card-title-text>
 					<span class="md-headline" ng-bind="room_info.name"></span>
-					<span class="md-subhead description" ng-if="room_info.description != null" ng-bind="room_info.description"></span>
+					<span class="md-subhead description no-padding" ng-if="room_info.description" ng-bind="room_info.description"></span>
 				</md-card-title-text>
-				<a class="group-room" ng-if="room_info.guild_id != 0" ui-sref="group({id: room_info.group.id})" style="display:flex;justify-content:center;padding-right:10px;">
+				<a class="group-room" ng-if="room_info.guild_id != 0" ui-sref="group({id: room_info.group.id})" >
 					<div class="badge-icon">
 						<div class="badge-icon-aligner">
-							<img ng-src="{{$root.app_config.site_images.group_badges}}/{{room_info.group.badge}}.gif" />
+							<img ng-src="{{$root.app_config.site_images.group_badges}}/{{room_info.group.badge}}.png" />
 						</div>
 					</div>
 				</a>
@@ -21,11 +18,11 @@
 		<md-card class="no-select">
 			<md-toolbar>
 				<div class="md-toolbar-tools">
-					<h2 translate="rooms.room_owner"></h2>
+					<habbo-icon class="star-gold"></habbo-icon><h2 translate="room.room_owner" style="padding-left:7px;"></h2>
 				</div>
 			</md-toolbar>
 			<md-card-content class="no-padding">
-				<user-card userid="room_info.owner.id" userinfo="room_info.owner" style="margin:0;"></user-card>
+				<user-card userinfo="room_info.owner" style="margin:0;"></user-card>
 			</md-card-content>
 		</md-card>
 	</div>
@@ -33,34 +30,33 @@
 		<md-card class="no-select">
 			<md-toolbar>
 				<div class="md-toolbar-tools">
-					<h2 class="center" translate="rooms.details_card.header"></h2>
+					<habbo-icon class="wrench"></habbo-icon><h2 class="center" translate="room.room_details"></h2>
 				</div>
 			</md-toolbar>
 			<md-card-content class="no-padding">
+				<habbo-room-icon class="room-icon no-select">
+                    <div class="room-icon"></div>
+                </habbo-room-icon>
 				<table class="table table-striped">
 					<tbody>
 						<tr>
-							<th translate="rooms.details_card.type"></th>
-							<td ng-if="room_info.is_public == 1" translate="rooms.details_card.type_public"></td>
-							<td ng-if="room_info.is_public == 0" translate="rooms.details_card.type_private"></td>
+							<th translate="room.room_type"></th>
+							<td ng-if="room_info.is_public == 1" translate="room.type_public"></td>
+							<td ng-if="room_info.is_public == 0" translate="room.type_private"></td>
 						</tr>
 						<tr>
-							<th translate="rooms.details_card.state"></th>
-							<td ng-if="room_info.state == 'open'" translate="rooms.details_card.state_open"></td>
-							<td ng-if="room_info.state == 'locked'" translate="rooms.details_card.state_locked"></td>
-							<td ng-if="room_info.state == 'password'" translate="rooms.details_card.state_password"></td>
+							<th translate="room.room_state"></th>
+							<td ng-if="room_info.state == 'open'" translate="room.state_open"></td>
+							<td ng-if="room_info.state == 'locked'" translate="room.state_locked"></td>
+							<td ng-if="room_info.state == 'password'" translate="room.state_password"></td>
 						</tr>
 						<tr>
-							<th translate="rooms.details_card.score"></th>
+							<th translate="room.room_score"></th>
 							<td ng-bind="room_info.score"></td>
 						</tr>
 						<tr>
-							<th translate="rooms.details_card.users_now"></th>
-							<td ng-bind="room_info.users"></td>
-						</tr>
-						<tr>
-							<th translate="rooms.details_card.users_max"></th>
-							<td ng-bind="room_info.users_max"></td>
+							<th translate="room.user_count"></th>
+							<td>{{room_info.users}} / {{room_info.users_max}}</td>
 						</tr>
 					</tbody>
 				</table>

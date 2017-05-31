@@ -1,40 +1,46 @@
 <div layout="row" layout-xs="column">
 	<div layout="column" flex="70" flex-xs="100">
 		<md-card class="no-select">
-			<md-card-title style="padding:20px;">
-				<div class="badge-icon">
-					<div class="badge-icon-aligner">
-						<img ng-src="{{app_config.site_images.group_badges}}/{{group_info.badge}}.gif" />
-					</div>
-				</div>
-				<md-card-title-text style="justify-content:center;padding-left:10px;">
+			<md-card-title class="centered-title">
+				<md-card-title-text>
 					<span class="md-headline" ng-bind="group_info.name"></span>
-					<span class="md-subhead description" ng-if="group_info.description" ng-bind="group_info.description"></span>
+					<span class="md-subhead description no-padding" ng-if="group_info.description" ng-bind="group_info.description"></span>
 				</md-card-title-text>
 			</md-card-title>
 		</md-card>
-		<group-members members="group_info.members"></group-members>
+		<md-card class="no-select">
+			<md-toolbar>
+				<div class="md-toolbar-tools">
+					<habbo-icon class="star-gold"></habbo-icon><h2 translate="group.group_owner" style="padding-left:7px;"></h2>
+				</div>
+			</md-toolbar>
+			<md-card-content class="no-padding">
+				<user-card userinfo="group_info.owner" style="margin:0;"></user-card>
+			</md-card-content>
+		</md-card>
+		<group-members group="group_info" members="group_info.members"></group-members>
 	</div>
 	<div layout="column" flex="30" flex-xs="100">
 		<md-card class="no-select">
 			<md-toolbar>
 				<div class="md-toolbar-tools">
-					<h2 class="center" translate="group.details_card.header">Details</h2>
+					<habbo-icon class="wrench"></habbo-icon><h2 class="center" translate="group.group_details"></h2>
 				</div>
 			</md-toolbar>
 			<md-card-content class="no-padding">
+				<div class="badge-icon" style="padding:15px 0;">
+					<div class="badge-icon-aligner">
+						<img ng-src="{{app_config.site_images.group_badges}}/{{group_info.badge}}.png" />
+					</div>
+				</div>
 				<table class="table table-striped">
 					<tbody>
 						<tr>
-							<th translate="group.details_card.owner"></th>
-							<td ng-bind="group_info.owner.username"></td>
-						</tr>
-						<tr>
-							<th translate="group.details_card.created"></th>
+							<th translate="group.group_created"></th>
 							<td ng-bind="group_info.date_created * 1000 | date:'mediumDate'"></td>
 						</tr>
 						<tr>
-							<th translate="group.details_card.total_members"></th>
+							<th translate="group.total_members"></th>
 							<td ng-bind="group_info.members.length"></td>
 						</tr>
 					</tbody>
@@ -44,7 +50,7 @@
 		<md-card class="no-select">
 			<md-toolbar>
 				<div class="md-toolbar-tools">
-					<h2 class="center" translate="group.room_card.header"></h2>
+					<habbo-icon class="navigator"></habbo-icon><h2 class="center" translate="group.group_room"></h2>
 				</div>
 			</md-toolbar>
 			<md-card-content class="no-padding">
@@ -54,16 +60,41 @@
 				<table class="table table-striped">
 					<tbody>
 						<tr>
-							<th translate="group.room_card.name"></th>
+							<th translate="group.room_name"></th>
 							<td ng-bind="group_info.room.name"></td>
 						</tr>
 						<tr>
-							<th translate="group.room_card.owner"></th>
+							<th translate="group.room_owner"></th>
 							<td ng-bind="group_info.room.owner.username"></td>
+						</tr>
+						<tr>
+							<th translate="group.room_users"></th>
+							<td>{{group_info.room.users}} / {{group_info.room.users_max}}</td>
 						</tr>
 					</tbody>
 				</table>
 			</md-card-content>
 		</md-card>
 	</div>
+</div>
+<div layout="row" layout-xs="column">
+	<md-card class="no-select" flex="100" flex-xs="100">
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<habbo-icon class="conversation"></habbo-icon><h2 translate="group.group_forums" style="padding-left:7px;"></h2>
+			</div>
+		</md-toolbar>
+		<md-card-content class="no-padding">
+			<md-list class="forum-list" flex>
+				<md-list-item class="md-3-line" ng-repeat="thread in group_info.forums" ng-if="group_info.forums.length > 0" ng-click="null">
+					<img class="pixel-image" ng-src="{{$root.app_config.site_images.avatars}}{{thread.owner.look}}&amp;action=std&amp;gesture=sml&amp;direction=2&amp;head_direction=2&amp;size=n&amp;headonly=1&amp;img_format=png" />
+					<div class="md-list-item-text">
+						<span class="thread-name" ng-bind="thread.subject"></span><span class="thread-owner" ui-sref="profile({id: thread.owner.id})">by <habbo-icon class="star-gold" ng-if="group_info.owner.id == thread.owner.id" style="padding-left:5px;"></habbo-icon><b>{{thread.owner.username}}</b></span><br />
+						<span class="thread-message"><habbo-icon class="motto-icon"></habbo-icon>{{thread.message}}</span>
+						<span class="thread-time"><habbo-icon class="clock-icon"></habbo-icon>{{thread.timestamp * 1000 | date:'MMM d, yyyy h:mm a'}}</span>
+					</div>
+				</md-list-item>
+			</md-list>
+        </md-card-content>
+	</md-card>
 </div>

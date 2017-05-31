@@ -146,6 +146,7 @@ class User
                     auth_ticket: '',
                     ip_register: user_ip,
                     ip_current: user_ip,
+                    machine_id: '',
                     home_room: __config.user_settings.new_user.home_room}).save(null, {method: 'insert'});
             })
 

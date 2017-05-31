@@ -27,6 +27,36 @@ habbo-icon.motto-icon {
     background: transparent url("../images/icons/motto.png") no-repeat;
 }
 
+habbo-icon.star-gold {
+    width: 15px;
+    height: 15px;
+    background: transparent url("../images/icons/star-gold.gif") no-repeat;
+}
+
+habbo-icon.conversation {
+    width: 20px;
+    height: 14px;
+    background: transparent url("../images/icons/conversation.png") no-repeat;
+}
+
+habbo-icon.users {
+    width: 19px;
+    height: 20px;
+    background: transparent url("../images/icons/users.gif") no-repeat;
+}
+
+habbo-icon.navigator {
+    width: 35px;
+    height: 35px;
+    background: transparent url("../images/icons/navigator.gif") no-repeat;
+}
+
+habbo-icon.wrench {
+    width: 16px;
+    height: 16px;
+    background: transparent url("../images/icons/wrench.gif") no-repeat;
+}
+
 habbo-room-icon, habbo-room-icon:before {
     display: block;
     height: 90px;

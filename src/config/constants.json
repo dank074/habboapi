@@ -7,11 +7,11 @@
 		"site_images": {
 			"images": "http://habboapi.com/assets/images",
 			"badges": "http://habboapi.com/assets/c_images/album1584",
-			"group_badges": "http://avatar-retro.com/habbo-imaging/badge",
+			"group_badges": "http://habboapi.com/assets/c_images/Badgeparts/generated",
 			"avatars": "http://avatar-retro.com/habbo-imaging/avatarimage?figure="
 		},
         "client": {
-			"client_host": "habboapi.com",
+			"client_host": "localhost",
 			"client_port": 1242,
 			"client_texts": "http://habboapi.com/assets/gamedata/external_flash_texts.txt",
 			"client_vars": "http://habboapi.com/assets/gamedata/external_variables.txt",

@@ -10,7 +10,7 @@
                 <md-list-item class="md-3-line" ng-repeat="user in rank.users" ui-sref="profile({username: user.username})">
                     <img class="pixel-image" ng-src="{{$root.app_config.site_images.avatars}}{{user.look}}&amp;action=std&amp;gesture=sml&amp;direction=2&amp;head_direction=2&amp;size=n&amp;headonly=1&amp;img_format=png" />
                     <div class="md-list-item-text">
-                        <span class="user-name" ng-bind="user.username"></span><habbo-icon ng-class="{'online-icon': user.online == 1, 'offline-icon': user.online == 0}"></habbo-icon><br />
+                        <span class="user-name" ng-bind="user.username" style="padding-right:3px;"></span><habbo-icon ng-class="{'online-icon': user.online == 1, 'offline-icon': user.online == 0}"></habbo-icon><br />
                         <span class="user-motto" ng-if="user.motto"><habbo-icon class="motto-icon"></habbo-icon>{{user.motto}}</span><br />
                         <span class="last-login" ng-if="user.last_online"><habbo-icon class="clock-icon"></habbo-icon>{{user.last_online * 1000 | date:'MMM d, yyyy h:mm a'}}</span>
                     </div>

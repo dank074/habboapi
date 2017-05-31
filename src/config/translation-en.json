@@ -75,38 +75,31 @@
         }
     },
     "group": {
-        "details_card": {
-            "header": "Details",
-            "owner": "Owner",
-            "created": "Created",
-            "total_members": "Total Members"
-        },
-        "room_card": {
-            "header": "Room",
-            "name": "Name",
-            "owner": "Owner"
-        },
-        "members_card": {
-            "header": "Members",
-            "see_all": "See All",
-            "no_members": "This group has no members!"
-        }
+        "group_details": "Group Details",
+        "group_owner": "Group Owner",
+        "group_created": "Created",
+        "total_members": "Total Members",
+        "group_room": "Group Room",
+        "room_name": "Name",
+        "room_owner": "Owner",
+        "room_users": "Users",
+        "group_members": "Group Members",
+        "no_members": "This group has no members!",
+        "group_forums": "Group Forums",
+        "member_since": "Member Since"
     },
-    "rooms": {
+    "room": {
         "room_owner": "Room Owner",
-        "details_card": {
-            "header": "Details",
-            "type": "Type",
-            "type_private": "Private",
-            "type_public": "Public",
-            "state": "State",
-            "state_open": "Open",
-            "state_locked": "Locked",
-            "state_password": "Password",
-            "score": "Score",
-            "users_now": "Users Now",
-            "users_max": "Max Users"
-        }
+        "room_details": "Room Details",
+        "room_type": "Type",
+        "type_public": "Public",
+        "type_private": "Private",
+        "room_state": "State",
+        "state_open": "Open",
+        "state_locked": "Locked",
+        "state_password": "Password",
+        "room_score": "Score",
+        "user_count": "Users",
     },
     "settings": {
         "password": "Password",

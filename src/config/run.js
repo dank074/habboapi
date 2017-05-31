@@ -1,4 +1,4 @@
-function Run(AppConstants, SessionService, StatisticsService, $localStorage, $state, $stickyState, $interval, $rootScope)
+function Run(AppConstants, SessionService, StatisticsService, $localStorage, $state, $stickyState, $interval, $rootScope, $document)
 {
     'ngInject';
     
@@ -21,6 +21,8 @@ function Run(AppConstants, SessionService, StatisticsService, $localStorage, $st
 
     $rootScope.$on('$stateChangeStart', (event, next, current) =>
     {
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+
         return SessionService.validate_session()
         
         .then((session) =>

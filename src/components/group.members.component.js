@@ -26,6 +26,7 @@ class GroupMembersController
 
 let GroupMembersComponent = {
     bindings: {
+        group: '=',
         members: '='
     },
     controller: GroupMembersController,

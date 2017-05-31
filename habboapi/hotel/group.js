@@ -11,7 +11,7 @@ class Group
             return new HotelGroup({id: group_id}).fetch({
                 withRelated: [
                     {'owner': (qb) => {
-                        qb.column('id', 'username', 'look');
+                        qb.column('id', 'username', 'last_online', 'motto', 'look', 'online');
                     }},
                     {'members': (qb) => {
                         qb.column('id', 'guild_id', 'user_id', 'level_id', 'member_since');
@@ -20,10 +20,16 @@ class Group
                         qb.column('id', 'username', 'motto', 'look', 'online');
                     }},
                     {'room': (qb) => {
-                        qb.column('id', 'owner_id', 'name');
+                        qb.column('id', 'owner_id', 'name', 'users', 'users_max');
                     }},
                     {'room.owner': (qb) => {
                         qb.column('id', 'username');
+                    }},
+                    {'forums': (qb) => {
+                        qb.column('id', 'guild_id', 'user_id', 'subject', 'message', 'pinned', 'timestamp');
+                    }},
+                    {'forums.owner': (qb) => {
+                        qb.column('id', 'username', 'look');
                     }}
                 ],
                 columns: ['id', 'user_id', 'name', 'description', 'room_id', 'badge', 'date_created']
