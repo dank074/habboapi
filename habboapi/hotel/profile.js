@@ -20,13 +20,13 @@ class Profile
                         qb.column('id', 'user_id', 'guild_id', 'member_since');
                     }},
                     {'group_memberships.group': (qb) => {
-                        qb.column('id', 'name', 'description', 'badge');
+                        qb.column('id', 'user_id', 'name', 'description', 'badge');
                     }},
                     {'friends': (qb) => {
                         qb.column('user_one_id', 'user_two_id', 'friends_since');
                     }},
                     {'friends.user': (qb) => {
-                        qb.column('id', 'username', 'motto', 'look', 'online');
+                        qb.column('id', 'username', 'last_online', 'motto', 'look', 'online');
                     }}
 			    ],
 			    columns: ['id', 'username', 'account_created', 'last_online', 'motto', 'look', 'online']

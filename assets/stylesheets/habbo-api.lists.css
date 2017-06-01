@@ -1,5 +1,6 @@
 md-list.avatar-list,
 md-list.rooms-list,
+md-list.group-list,
 md-list.forum-list {
     padding: 0;
 }
@@ -30,12 +31,15 @@ md-list md-list-item span.group-name,
 md-list md-list-item span.thread-name {
     font-size: 22px;
     font-weight: 400;
-    
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 md-list md-list-item span.thread-owner {
     font-size: 18px;
     font-weight: 300;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 md-list md-list-item span.user-motto,
@@ -141,6 +145,7 @@ ul.room-list {
 ul.room-list li {
     margin: 0 5px 0 0;
     cursor: pointer;
+    max-width: 109px;
 }
 
 ul.room-list li:last-child {
@@ -154,7 +159,7 @@ ul.room-list li .room-name {
     font-weight: 300;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: normal;
+    white-space: nowrap;
     color: #000000;
     text-align: center;
 }

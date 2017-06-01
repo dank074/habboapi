@@ -36,16 +36,17 @@
 				</md-toolbar>
 				<md-dialog-content>
 					<div class="md-dialog-content">
-						<md-list class="avatar-list" flex>
-							<md-list-item class="md-2-line" ng-repeat="group in $ctrl.groups | orderBy: 'member_since'" ui-sref="group({id: group.group.id})">
+						<md-list class="group-list" flex>
+							<md-list-item class="md-3-line" ng-repeat="group in $ctrl.groups | orderBy: 'member_since'" ui-sref="group({id: group.group.id})">
 								<div class="badge-icon" style="padding:7px 0;">
 									<div class="badge-icon-aligner">
                                         <img ng-src="{{$root.app_config.site_images.group_badges}}/{{group.group.badge}}.png" />
                                     </div>
 								</div>
 								<div class="md-list-item-text" style="padding-left:15px;">
-									<span class="group-name" ng-bind="group.group.name"></span><br />
-									<span class="group-description" ng-if="group.group.description"><habbo-icon class="motto-icon"></habbo-icon>{{group.group.description}}</span>
+									<span class="group-name" ng-bind="group.group.name" style="padding-right:3px;"></span><habbo-icon class="star-gold" ng-if="group.group.user_id == group.user_id" style="padding-left:2px;"></habbo-icon><br />
+									<span class="group-description" ng-if="group.group.description"><habbo-icon class="motto-icon"></habbo-icon>{{group.group.description}}</span><br />
+									<span class="member-since" ng-if="group.member_since"><habbo-icon class="clock-icon"></habbo-icon>{{'group.member_since' | translate}}: {{group.member_since * 1000 | date:'MMM d, yyyy'}}</span>
 								</div>
 							</md-list-item>
 						</md-list>

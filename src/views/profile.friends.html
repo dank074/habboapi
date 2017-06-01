@@ -35,11 +35,12 @@
 				<md-dialog-content>
 					<div class="md-dialog-content">
 						<md-list class="avatar-list" flex>
-							<md-list-item class="md-2-line" ng-repeat="friend in $ctrl.friends | orderBy: 'friends_since'" ui-sref="profile({username: friend.user.username})">
+							<md-list-item class="md-3-line" ng-repeat="friend in $ctrl.friends | orderBy: 'friends_since'" ui-sref="profile({username: friend.user.username})">
 								<img class="pixel-image" ng-src="{{$root.app_config.site_images.avatars}}{{friend.user.look}}&amp;action=std&amp;gesture=sml&amp;direction=2&amp;head_direction=2&amp;size=n&amp;headonly=1&amp;img_format=png" />
 								<div class="md-list-item-text">
 									<span class="user-name" ng-bind="friend.user.username" style="padding-right:3px;"></span><habbo-icon ng-class="{'online-icon': friend.user.online == 1, 'offline-icon': friend.user.online == 0}"></habbo-icon><br />
-									<span class="user-motto" ng-if="friend.user.motto"><habbo-icon class="motto-icon"></habbo-icon>{{friend.user.motto}}</span>
+									<span class="user-motto" ng-if="friend.user.motto"><habbo-icon class="motto-icon"></habbo-icon>{{friend.user.motto}}</span><br />
+									<span class="last-login" ng-if="friend.user.last_online"><habbo-icon class="clock-icon"></habbo-icon>{{friend.user.last_online * 1000 | date:'MMM d, yyyy h:mm a'}}<br /></span>
 								</div>
 							</md-list-item>
 						</md-list>
