@@ -17,7 +17,7 @@ class Room
                         qb.column('id', 'name', 'badge');
                     }}
                 ],
-                columns: ['id', 'owner_id', 'name', 'description', 'model', 'state', 'users', 'users_max', 'guild_id', 'score', 'tags', 'is_public', 'promoted']
+                columns: ['id', 'owner_id', 'name', 'description', 'users', 'users_max', 'guild_id', 'score', 'tags', 'is_public', 'promoted']
             })
             
             .then((result) =>

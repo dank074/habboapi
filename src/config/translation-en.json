@@ -89,17 +89,13 @@
         "member_since": "Member Since"
     },
     "room": {
-        "room_owner": "Room Owner",
-        "room_details": "Room Details",
-        "room_type": "Type",
-        "type_public": "Public",
-        "type_private": "Private",
-        "room_state": "State",
-        "state_open": "Open",
-        "state_locked": "Locked",
-        "state_password": "Password",
+        "room_name": "Name",
+        "room_owner": "Owner",
+        "room_owner_title": "Room Owner",
+        "room_users": "Users",
         "room_score": "Score",
-        "user_count": "Users",
+        "room_details": "Room Details",
+        "group_room": "Group Room"
     },
     "settings": {
         "password": "Password",

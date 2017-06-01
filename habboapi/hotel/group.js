@@ -20,7 +20,7 @@ class Group
                         qb.column('id', 'username', 'motto', 'look', 'online');
                     }},
                     {'room': (qb) => {
-                        qb.column('id', 'owner_id', 'name', 'users', 'users_max');
+                        qb.column('id', 'owner_id', 'name', 'users', 'users_max', 'score');
                     }},
                     {'room.owner': (qb) => {
                         qb.column('id', 'username');

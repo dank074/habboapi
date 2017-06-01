@@ -1,0 +1,32 @@
+<md-card class="no-select">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <habbo-icon class="navigator"></habbo-icon><h2 class="center" translate="room.room_details"></h2>
+        </div>
+    </md-toolbar>
+    <md-card-content class="no-padding">
+        <habbo-room-icon class="room-icon no-select" ui-sref="room({id: $ctrl.roominfo.id})" style="cursor:pointer;">
+            <div class="room-icon"></div>
+        </habbo-room-icon>
+        <table class="table table-striped">
+            <tbody>
+                <tr ng-if="$ctrl.roominfo.name">
+                    <th translate="room.room_name"></th>
+                    <td ng-bind="$ctrl.roominfo.name"></td>
+                </tr>
+                <tr ng-if="$ctrl.roominfo.owner.username">
+                    <th translate="room.room_owner"></th>
+                    <td ng-bind="$ctrl.roominfo.owner.username"></td>
+                </tr>
+                <tr ng-if="$ctrl.roominfo.score">
+                    <th translate="room.room_score"></th>
+                    <td ng-bind="$ctrl.roominfo.score"></td>
+                </tr>
+                <tr ng-if="$ctrl.roominfo.users || $ctrl.roominfo.users_max">
+                    <th translate="room.room_users"></th>
+                    <td>{{$ctrl.roominfo.users}} / {{$ctrl.roominfo.users_max}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </md-card-content>
+</md-card>

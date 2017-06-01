@@ -27,40 +27,6 @@
 		</md-card>
 	</div>
 	<div layout="column" flex="30" flex-xs="100">
-		<md-card class="no-select">
-			<md-toolbar>
-				<div class="md-toolbar-tools">
-					<habbo-icon class="wrench"></habbo-icon><h2 class="center" translate="room.room_details"></h2>
-				</div>
-			</md-toolbar>
-			<md-card-content class="no-padding">
-				<habbo-room-icon class="room-icon no-select">
-                    <div class="room-icon"></div>
-                </habbo-room-icon>
-				<table class="table table-striped">
-					<tbody>
-						<tr>
-							<th translate="room.room_type"></th>
-							<td ng-if="room_info.is_public == 1" translate="room.type_public"></td>
-							<td ng-if="room_info.is_public == 0" translate="room.type_private"></td>
-						</tr>
-						<tr>
-							<th translate="room.room_state"></th>
-							<td ng-if="room_info.state == 'open'" translate="room.state_open"></td>
-							<td ng-if="room_info.state == 'locked'" translate="room.state_locked"></td>
-							<td ng-if="room_info.state == 'password'" translate="room.state_password"></td>
-						</tr>
-						<tr>
-							<th translate="room.room_score"></th>
-							<td ng-bind="room_info.score"></td>
-						</tr>
-						<tr>
-							<th translate="room.user_count"></th>
-							<td>{{room_info.users}} / {{room_info.users_max}}</td>
-						</tr>
-					</tbody>
-				</table>
-			</md-card-content>
-		</md-card>
+		<room-card roominfo="room_info"></room-card>
 	</div>
 </div>

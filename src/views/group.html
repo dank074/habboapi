@@ -47,34 +47,7 @@
 				</table>
 			</md-card-content>
 		</md-card>
-		<md-card class="no-select">
-			<md-toolbar>
-				<div class="md-toolbar-tools">
-					<habbo-icon class="navigator"></habbo-icon><h2 class="center" translate="group.group_room"></h2>
-				</div>
-			</md-toolbar>
-			<md-card-content class="no-padding">
-				<habbo-room-icon class="room-icon no-select" ui-sref="room({id: group_info.room.id})" style="cursor:pointer;">
-                    <div class="room-icon"></div>
-                </habbo-room-icon>
-				<table class="table table-striped">
-					<tbody>
-						<tr>
-							<th translate="group.room_name"></th>
-							<td ng-bind="group_info.room.name"></td>
-						</tr>
-						<tr>
-							<th translate="group.room_owner"></th>
-							<td ng-bind="group_info.room.owner.username"></td>
-						</tr>
-						<tr>
-							<th translate="group.room_users"></th>
-							<td>{{group_info.room.users}} / {{group_info.room.users_max}}</td>
-						</tr>
-					</tbody>
-				</table>
-			</md-card-content>
-		</md-card>
+		<room-card roominfo="group_info.room"></room-card>
 	</div>
 </div>
 <div layout="row" layout-xs="column">
