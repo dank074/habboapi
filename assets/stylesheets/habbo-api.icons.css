@@ -1,6 +1,7 @@
 habbo-icon {
     display: inline-block;
     image-rendering: pixelated;
+    outline: 0;
 }
 
 habbo-icon.online-icon {
@@ -61,6 +62,12 @@ habbo-icon.lock {
     width: 16px;
     height: 16px;
     background: transparent url("../images/icons/lock.gif") no-repeat;
+}
+
+habbo-icon.enter-room {
+    width: 16px;
+    height: 16px;
+    background: transparent url("../images/icons/enter-room.gif") no-repeat;
 }
 
 habbo-room-icon, habbo-room-icon:before {

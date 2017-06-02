@@ -1,10 +1,16 @@
 class RoomCardController
 {
-    constructor($scope)
+    constructor(rCRONService, $scope)
     {
         'ngInject';
 
-        this._$scope    = $scope;
+        this._rCRONService      = rCRONService;
+        this._$scope            = $scope;
+
+        this._$scope.enter_room = (id) =>
+        {
+            this._rCRONService.forward_room(id);
+        };
     }
 }
 

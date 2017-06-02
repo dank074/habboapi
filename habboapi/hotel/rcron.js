@@ -4,27 +4,24 @@ class rCRON
 {
     static send_message(message)
     {
-        return new Promise((resolve, reject) =>
+        if(message == null) return false;
+        
+        let client = new Socket();
+        
+         client.connect(__config.rCRON.socket_port, __config.rCRON.socket_ip, () =>
         {
-            if(message == null) return reject(new Error('invalid_paramemters'));
-
-            let client = new Socket();
-
-            client.connect(__config.rCRON.socket_port, __config.rCRON.socket_ip, () =>
-            {
-                client.write(JSON.stringify(message));
-            });
-            
-            client.on('data', (data) =>
-            {
-                client.destroy();
-                return resolve(null);
-            });
-
-            client.on('error', (data) =>
-            {
-                return reject(new Error(data));
-            })
+            client.write(JSON.stringify(message));
+        });
+        
+        client.on('data', (data) =>
+        {
+            client.destroy();
+            return true;
+        });
+        
+        client.on('error', (data) =>
+        {
+            return false;
         });
     }
 
@@ -55,6 +52,22 @@ class rCRON
                 "data": {
                     "user_id": user_id,
                     "room_id": room_id
+                }
+            });
+        });
+    }
+
+    static follow_user(current_id, user_id)
+    {
+        return new Promise((resolve, reject) =>
+        {
+            if(user_id == null || room_id == null) return reject(new Error('invalid_paramemters'));
+
+            return this.send_message({
+                "key": "executecmd",
+                "data": {
+                    "user_id": current_id,
+                    "command": "stalk " + user_id
                 }
             });
         });

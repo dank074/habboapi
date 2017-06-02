@@ -12,3 +12,4 @@ src/config/template-cache.js
 build
 dist
 node_modules
+npm-debug.log

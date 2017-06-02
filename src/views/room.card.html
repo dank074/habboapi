@@ -26,6 +26,10 @@
                     <th translate="room.room_users"></th>
                     <td>{{$ctrl.roominfo.users}} / {{$ctrl.roominfo.users_max}}</td>
                 </tr>
+                <tr>
+                    <th translate="room.enter_room"></th>
+                    <td><habbo-icon class="enter-room" ng-click="enter_room($ctrl.roominfo.id);"></habbo-icon></td>
+                </tr>
             </tbody>
         </table>
     </md-card-content>

@@ -1,4 +1,6 @@
 import { Router } from 'express';
+import HttpMiddleware from '../middleware';
+import rCRON from '../../hotel/rcron';
 import Room from '../../hotel/room';
 
 class RoomHttp
