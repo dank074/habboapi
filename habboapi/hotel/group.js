@@ -1,12 +1,12 @@
-import HotelGroup from '../database/models/group/group';
+import HotelGroup from '../database/models/hotel/group/group';
 
 class Group
 {
     static group_info(group_id)
     {
         return new Promise((resolve, reject) =>
-		{
-			if(group_id == null || group_id == 0) return reject(new Error('invalid_paramemters'));
+        {
+            if(group_id == null || group_id == 0) return reject(new Error('invalid_paramemters'));
             
             return new HotelGroup({id: group_id}).fetch({
                 withRelated: [
@@ -32,12 +32,12 @@ class Group
                         qb.column('id', 'username', 'look');
                     }}
                 ],
-                columns: ['id', 'user_id', 'name', 'description', 'room_id', 'badge', 'date_created']
+                columns: ['id', 'user_id', 'name', 'description', 'room_id', 'badge', 'date_created', 'forum']
             })
             
             .then((result) =>
             {
-			    if(result == null) return reject(new Error('invalid_group'));
+                if(result == null) return reject(new Error('invalid_group'));
                 
                 return resolve(result.toJSON());
             })

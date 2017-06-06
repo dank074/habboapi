@@ -1,7 +1,7 @@
 {
   "name": "habboapi",
-  "version": "0.1.0",
-  "description": "HabboAPI CMS",
+  "version": "0.1.1",
+  "description": "HabboAPI",
   "main": "main.js",
   "scripts": {
     "start": "babel-node main.js --presets es2015,stage-2"
@@ -53,6 +53,7 @@
     "browserify-ngannotate": "^2.0.0",
     "gulp": "^3.9.1",
     "gulp-angular-templatecache": "^2.0.0",
+    "gulp-clean-css": "^3.4.1",
     "gulp-notify": "^3.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^2.4.1",

@@ -2,14 +2,14 @@
 	<div class="profile-friends-card-header"></div>
 	<md-card class="no-select" style="height:210px;">
 		<md-toolbar>
-			<div class="md-toolbar-tools center">
-				<h2>{{'profile.friends.header' | translate}}<span class="number" ng-if="$ctrl.friends.length > 0" ng-bind="$ctrl.friends.length"></span></h2>
+			<div class="md-toolbar-tools">
+				<h2>{{'profile.user_friends' | translate}}<span class="number" ng-if="$ctrl.friends.length > 0" ng-bind="$ctrl.friends.length"></span></h2>
 				<span flex></span>
 				<md-button class="md-icon-button" ng-if="$ctrl.friends.length > 0" ng-click="show_all()"><md-icon>view_list</md-icon></md-button>
 			</div>
 		</md-toolbar>
 		<md-card-content class="no-padding center">
-			<div class="md-padding" ng-if="$ctrl.friends.length == 0" translate="profile.friends.no_friends"></div>
+			<div class="md-padding" ng-if="$ctrl.friends.length == 0" translate="profile.no_friends" translate-values="{user_name: $ctrl.username}"></div>
 			<ul class="vertical-list avatar-list no-margin" ng-if="$ctrl.friends.length > 0">
 				<li ng-repeat="friend in $ctrl.friends | orderBy: 'friends_since' | limitTo: 5">
 					<a ui-sref="profile({username: friend.user.username})">
@@ -27,7 +27,7 @@
 			<md-dialog class="no-select">
 				<md-toolbar>
 					<div class="md-toolbar-tools">
-						<h2>{{'profile.friends.header' | translate}} <span class="number" ng-if="$ctrl.friends.length > 0" ng-bind="$ctrl.friends.length"></span></h2>
+						<h2>{{'profile.user_friends' | translate}} <span class="number" ng-if="$ctrl.friends.length > 0" ng-bind="$ctrl.friends.length"></span></h2>
 						<span flex></span>
 						<md-button class="md-icon-button" ng-click="hide()"><md-icon>close</md-icon></md-button>
 					</div>

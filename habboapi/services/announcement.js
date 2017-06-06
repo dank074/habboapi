@@ -5,7 +5,7 @@ class Announcement
     static announcement_list()
     {
         return new Promise((resolve, reject) =>
-		{
+        {
             return new ApiAnnouncement().query((qb) => {
                 qb.where('is_hidden', '0').orderBy('id', 'DESC').limit(5);
             }).fetchAll({
@@ -19,7 +19,7 @@ class Announcement
             
             .then((result) =>
             {
-			    if(result == null) return reject(new Error('no_announcements'));
+                if(result == null) return reject(new Error('no_announcements'));
                 
                 return resolve(result.toJSON());
             })

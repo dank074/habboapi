@@ -26,6 +26,7 @@ class ProfileGroupsController
 
 let ProfileGroupsComponent = {
     bindings: {
+        username: '=',
         groups: '='
     },
     controller: ProfileGroupsController,

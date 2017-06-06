@@ -1,8 +1,8 @@
 <md-card class="no-select">
     <md-toolbar>
-        <div class="md-toolbar-tools">
-            <habbo-icon class="navigator"></habbo-icon><h2 class="center" translate="room.room_details"></h2>
-        </div>
+        <div class="md-toolbar-tools center">
+			<habbo-icon class="navigator space-right"></habbo-icon><h2 ng-bind="$ctrl.title"></h2>
+		</div>
     </md-toolbar>
     <md-card-content class="no-padding">
         <habbo-room-icon class="room-icon no-select" ui-sref="room({id: $ctrl.roominfo.id})" style="cursor:pointer;">

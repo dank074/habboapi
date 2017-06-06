@@ -1,5 +1,5 @@
 import Adapter from '../../adapter';
-import User from '../user/user';
+import HotelUser from '../hotel/user/user';
 
 class ApiPermission extends Adapter.Model
 {
@@ -15,7 +15,7 @@ class ApiPermission extends Adapter.Model
 
     users()
     {
-        return this.hasMany('User', 'rank', 'rank_id');
+        return this.hasMany('HotelUser', 'rank', 'rank_id');
     }
 }
 

@@ -19,7 +19,7 @@
     position: absolute;
     width: 228px;
     height: 64px;
-    background: url("../images/habfuse-logo.png") no-repeat;
+    background: url("assets/images/habfuse-logo.png") no-repeat;
     z-index: 5;
 }
 
@@ -32,7 +32,7 @@
     position: absolute;
     width: 465px;
     height: 140px;
-    background: url("../images/login-image.png") no-repeat 0 -160px;
+    background: url("assets/images/login-image.png") no-repeat 0 -160px;
     z-index: 4;
 }
 

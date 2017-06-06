@@ -1,91 +1,35 @@
 <div layout="row" layout-xs="column">
+	<md-card class="statistic-card no-select" flex="25" flex-xs="100">
+		<span class="statistic-name" translate="community.statistic_users"></span>
+		<span class="statistic-value" ng-bind="community_info.total_users"></span>
+	</md-card>
+	<md-card class="statistic-card no-select" flex="25" flex-xs="100">
+		<span class="statistic-name" translate="community.statistic_rooms"></span>
+		<span class="statistic-value" ng-bind="community_info.total_rooms"></span>
+	</md-card>
+	<md-card class="statistic-card no-select" flex="25" flex-xs="100">
+		<span class="statistic-name" translate="community.statistic_groups"></span>
+		<span class="statistic-value" ng-bind="community_info.total_groups"></span>
+	</md-card>
+	<md-card class="statistic-card no-select" flex="25" flex-xs="100">
+		<span class="statistic-name" translate="community.statistic_furniture"></span>
+		<span class="statistic-value" ng-bind="community_info.total_items"></span>
+	</md-card>
+</div>
+<div layout="row" layout-xs="column">
 	<div layout="column" flex="70" flex-xs="100">
-		<md-card class="no-select" ng-if="community_info.latest_user != null">
+		<md-card class="no-select" ng-if="community_info.latest_user">
 			<md-toolbar>
 				<div class="md-toolbar-tools">
-					<h2 translate="community.latest_user.header"></h2>
+					<habbo-icon class="users space-right"></habbo-icon><h2 translate="community.latest_user"></h2>
 				</div>
 			</md-toolbar>
 			<md-card-content class="no-padding">
 				<user-card class="no-margin" userinfo="community_info.latest_user" flex="100"></user-card>
 			</md-card-content>
 		</md-card>
-		<div layout="row" layout-xs="column">
-			<md-card class="no-select" flex ng-if="community_info.top_rooms.length > 0">
-				<md-toolbar>
-					<div class="md-toolbar-tools">
-						<h2 class="center" translate="community.top_rooms.header"></h2>
-					</div>
-				</md-toolbar>
-				<md-card-content class="no-padding center-middle">
-					<md-list class="rooms-list" flex>
-						<md-list-item class="md-2-line" ng-repeat="room in community_info.top_rooms" ui-sref="room({id: room.id})">
-							<habbo-room-icon class="room-icon no-select">
-								<div class="room-icon"></div>
-							</habbo-room-icon>
-							<div class="md-list-item-text">
-								<h3 ng-bind="room.name"></h3>
-								<p ng-if="room.description" ng-bind="room.description"></p>
-							</div>
-						</md-list-item>
-					</md-list>
-				</md-card-content>
-			</md-card>
-			<md-card class="no-select" flex ng-if="community_info.room_promotions.length > 0">
-				<md-toolbar>
-					<div class="md-toolbar-tools">
-						<h2 class="center" translate="community.room_promotions.header"></h2>
-					</div>
-				</md-toolbar>
-				<md-card-content class="no-padding center-middle">
-					<md-list class="rooms-list" flex>
-						<md-list-item class="md-2-line" ng-repeat="promotion in community_info.room_promotions" ui-sref="room({id: promotion.room.id})">
-							<habbo-room-icon class="room-icon no-select">
-								<div class="room-icon"></div>
-							</habbo-room-icon>
-							<div class="md-list-item-text">
-								<h3 ng-bind="promotion.title"></h3>
-								<p ng-if="promotion.description" ng-bind="promotion.description"></p>
-							</div>
-						</md-list-item>
-					</md-list>
-				</md-card-content>
-			</md-card>
-		</div>
 	</div>
-	<div layout="column" flex="30" flex-xs="100">
-		<md-card class="no-select">
-			<md-toolbar>
-				<div class="md-toolbar-tools">
-					<h2 class="center" translate="community.latest_statistics.header"></h2>
-				</div>
-			</md-toolbar>
-			<md-card-content class="no-padding">
-				<table class="table table-striped">
-					<tbody>
-						<tr>
-							<th translate="community.latest_statistics.furniture"></th>
-							<td ng-bind="community_info.statistics.total_items"></td>
-						</tr>
-						<tr>
-							<th translate="community.latest_statistics.rooms"></th>
-							<td ng-bind="community_info.statistics.total_rooms"></td>
-						</tr>
-						<tr>
-							<th translate="community.latest_statistics.users"></th>
-							<td ng-bind="community_info.statistics.total_users"></td>
-						</tr>
-						<tr>
-							<th translate="community.latest_statistics.groups"></th>
-							<td ng-bind="community_info.statistics.total_groups"></td>
-						</tr>
-						<tr>
-							<th translate="community.latest_statistics.pets"></th>
-							<td ng-bind="community_info.statistics.total_pets"></td>
-						</tr>
-					</tbody>
-				</table>
-			</md-card-content>
-		</md-card>
+	<div layout="column" flex="30" flex-xs="100" ng-if="community_info.latest_room">
+		<room-card title="'community.latest_room' | translate" roominfo="community_info.latest_room"></room-card>
 	</div>
 </div>

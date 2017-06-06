@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import Session from './session';
-import HotelUser from '../database/models/user/user';
+import HotelUser from '../database/models/hotel/user/user';
 import ApiLoginLog from '../database/models/api/login_log';
 
 class Authentication

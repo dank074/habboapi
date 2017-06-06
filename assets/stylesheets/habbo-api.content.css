@@ -74,12 +74,12 @@
 }
 
 .app .main-content .content-footer {
-    height: 30px;
+    height: 40px;
     max-width: 960px;
     margin: 0 auto;
     text-align: center;
     font-size: 14px;
-    line-height: 30px;
+    line-height: 40px;
     font-weight: 400;
     color: rgba(0,0,0,.5);
     overflow: hidden;

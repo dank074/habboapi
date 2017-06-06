@@ -2,7 +2,7 @@
 a content management system written in node & angular using es6
 
 #### about
-HabboAPI is a powerful open source content management system for use with Arcturus Emulator. The backend is powered by nodejs using express to have REST services. The frontend is powered by angularjs & angular material to create a seamless experience between the two.
+HabboAPI is a powerful open source content management system for Arcturus Emulator. The system is created on top of NodeJS & AngularJS. The backend "HabboAPI Server" handles various REST calls to return JSON data. This server handles all server side functions including authentication, session management, hotel services for groups, profiles, rooms, statistics, & users. Included is also compatibility with Arcturus Emulators rCRON system. With this we can include features like friend request, follow user, enter room, and various other tasks. The frontend "HabboAPI CMS" is built on top of AngularJS. Angular is the template engine for this system and no HTML is handled on the server. Everything is compiled and bundled for the CMS into two files (habbo-api.css & bundle.js) which we get from using gulp. HabboAPI CMS has tons of unique features. Most notably being the ability to run the client right within the CMS. The client will continue to run in the same browser window even while navigating to other pages throughout the CMS. HabboAPI is the next generation in Habbo CMS.
 
 #### requirements
 * Nodejs v7.x
@@ -20,21 +20,18 @@ HabboAPI is a powerful open source content management system for use with Arctur
 * run `gulp build`
 * finally to start the server, run `npm start`
 
+#### demo
+* You can view a demo by visiting [habboapi.com](http://habboapi.com)
+* This demo does have a working hotel. Test out all the features!
+
 #### features
 * me page
-  * currently just shows a user card, currently thinking of more things to put here
 * community page
-  * latest user, top rooms, promotions, & statistics
 * staff page
-  * lists all ranks defined in the config `staff_page_ranks`
-* settings
-  * shows some basic user info along with the ability to update your password, email & client settings.
-* profiles
-  * shows a user card(which can be seen on the me page) along with badges, friends, rooms & groups
-* groups
-  * shows the group name, description, badge, owner, date created, group room & list of all members
-* rooms
-  * shows the room name, description, model image, group badge (if group homeroom), type, state, score/likes, users now & max users
+* settings page
+* profile page
+* group page
+* room page
 
 #### faqs
 * what emulator does HabboAPI CMS support?

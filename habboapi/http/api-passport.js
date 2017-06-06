@@ -2,7 +2,7 @@ import passport from 'passport';
 import passportLocal from 'passport-local';
 import Authentication from '../authentication/authentication';
 import Permission from '../authentication/permission';
-import HotelUser from '../hotel/user';
+import User from '../hotel/user';
 
 const LocalStrategy = passportLocal.Strategy;
 
@@ -13,7 +13,7 @@ passport.serializeUser((user, done) =>
 
 passport.deserializeUser((user, done) =>
 {
-    return HotelUser.user_info(user.user_id)
+    return User.user_info(user.user_id)
 
     .then((user_info) =>
     {

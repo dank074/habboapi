@@ -26,6 +26,7 @@ class ProfileFriendsController
 
 let ProfileFriendsComponent = {
     bindings: {
+        username: '=',
         friends: '='
     },
     controller: ProfileFriendsController,

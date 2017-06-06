@@ -1,5 +1,5 @@
 import Adapter from '../../adapter';
-import User from '../user/user';
+import HotelUser from '../hotel/user/user';
 
 class ApiAnnouncement extends Adapter.Model
 {
@@ -15,7 +15,7 @@ class ApiAnnouncement extends Adapter.Model
 
     owner()
     {
-        return this.belongsTo('User', 'user_id');
+        return this.belongsTo('HotelUser', 'user_id');
     }
 }
 

@@ -12,7 +12,7 @@
     bottom: 0;
     right: 0;
 	opacity: .25;
-    background: url("../images/register-image.png") no-repeat;
+    background: url("assets/images/register-image.png") no-repeat;
 	image-rendering: pixelated;
 }
 

@@ -16,6 +16,7 @@ class RoomCardController
 
 let RoomCardComponent = {
     bindings: {
+        title: '=',
         roominfo: '='
     },
     controller: RoomCardController,

@@ -26,6 +26,7 @@ class ProfileRoomsController
 
 let ProfileRoomsComponent = {
     bindings: {
+        username: '=',
         rooms: '='
     },
     controller: ProfileRoomsController,

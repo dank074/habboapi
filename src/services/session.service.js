@@ -1,6 +1,6 @@
 class SessionService
 {
-    constructor(AppConstants, $localStorage, $http, $q, $rootScope)
+    constructor(AppConstants, $localStorage, $http, $q, $stickyState, $rootScope)
     {
         'ngInject';
 
@@ -8,6 +8,7 @@ class SessionService
         this._$localStorage = $localStorage;
         this._$http			= $http;
         this._$q			= $q;
+        this._$stickyState  = $stickyState;
         this._$rootScope    = $rootScope;
     }
 
@@ -60,6 +61,8 @@ class SessionService
 
         .catch((res) =>
         {
+            this._$stickyState.reset('client');
+
             this._$localStorage.$reset();
 
             return this._$q.reject(res);
@@ -72,13 +75,19 @@ class SessionService
 
         .then((res) =>
         {
+            this._$stickyState.reset('client');
+
             this._$localStorage.$reset();
+
             return this._$q.resolve(null);
         })
 
         .catch((res) =>
         {
+            this._$stickyState.reset('client');
+
             this._$localStorage.$reset();
+            
             return this._$q.resolve(null);
         });
     }

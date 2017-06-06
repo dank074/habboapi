@@ -56,23 +56,12 @@
         "account_settings": "Account Settings"
     },
     "community": {
-        "latest_user": {
-            "header": "Latest User"
-        },
-        "top_rooms": {
-            "header": "Top Rooms"
-        },
-        "room_promotions": {
-            "header": "Room Promotions"
-        },
-        "latest_statistics": {
-            "header": "Latest Statistics",
-            "furniture": "Furniture",
-            "rooms": "Rooms",
-            "users": "Users",
-            "groups": "Groups",
-            "pets": "Pets"
-        }
+        "latest_user": "Latest User",
+        "latest_room": "Latest Room",
+        "statistic_users": "Total Users",
+        "statistic_rooms": "Total Rooms",
+        "statistic_groups": "Total Groups",
+        "statistic_furniture": "Total Furniture"
     },
     "group": {
         "group_details": "Group Details",
@@ -84,7 +73,7 @@
         "room_owner": "Owner",
         "room_users": "Users",
         "group_members": "Group Members",
-        "no_members": "This group has no members!",
+        "no_members": "{{group_name}} has no members!",
         "group_forums": "Group Forums",
         "member_since": "Member Since"
     },
@@ -122,33 +111,14 @@
         "revolving": "We all live in igloos./For science, you monster/Loading funny message... please wait./Would you like fries with that?/Follow the yellow duck./Time is just an illusion./Are we there yet?!/I like your t-shirt./Look left. Look right. Blink twice. Ta da!/It's not you, it's me./Shhh! I'm trying to think here./Loading pixel universe."
     },
     "profile": {
-        "about_me": {
-            "header": "About Me",
-            "joined": "Joined",
-            "credits": "Credits",
-            "pixels": "Ducklets",
-            "points": "Diamonds"
-        },
-        "badges": {
-            "header": "Badges",
-            "see_all": "See All",
-            "no_badges": "This user doesn't have any badges!"
-        },
-        "friends": {
-            "header": "Friends",
-            "see_all": "See All",
-            "no_friends": "This user doesn't have any friends!"
-        },
-        "rooms": {
-            "header": "Rooms",
-            "see_all": "See All",
-            "no_rooms": "This user doesn't have any rooms!"
-        },
-        "groups": {
-            "header": "Group Memberships",
-            "see_all": "See All",
-            "no_groups": "This user doesn't belong to any groups!"
-        }
+        "user_badges": "Badges",
+        "no_badges": "{{user_name}} doesn't own any badges!",
+        "user_friends": "Friends",
+        "no_friends": "{{user_name}} doesn't have any friends!",
+        "user_rooms": "Rooms",
+        "no_rooms": "{{user_name}} doesn't own any rooms!",
+        "user_groups": "Group Memberships",
+        "no_groups": "{{user_name}} doesn't belong to any groups!"
     },
     "user_info_card": {
         "last_login": "Last Login",

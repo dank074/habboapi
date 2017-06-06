@@ -21,41 +21,41 @@ class UserHttp
     {
         if(req.body.user_name == undefined || null) return res.status(400).send({errors: true, error: 'invalid_parameters'}).end();
 
-		return User.validate_username(req.body.user_name)
+        return User.validate_username(req.body.user_name)
 
-		.then(() =>
-		{
-			return res.status(200).send({errors: false, error: null}).end();
-		})
+        .then(() =>
+        {
+            return res.status(200).send({errors: false, error: null}).end();
+        })
 
-		.catch((err) =>
-		{
-			return res.status(400).send({errors: true, error: err.message}).end();
-		});
+        .catch((err) =>
+        {
+            return res.status(400).send({errors: true, error: err.message}).end();
+        });
     }
 
     validate_email(req, res, next)
     {
         if(req.body.email_address == undefined || null) return res.status(400).send({errors: true, error: 'invalid_parameters'}).end();
 
-		return User.validate_email(req.body.email_address)
+        return User.validate_email(req.body.email_address)
 
-		.then(() =>
-		{
-			return res.status(200).send({errors: false, error: null}).end();
-		})
+        .then(() =>
+        {
+            return res.status(200).send({errors: false, error: null}).end();
+        })
 
-		.catch((err) =>
-		{
-			return res.status(400).send({errors: true, error: err.message}).end();
-		});
+        .catch((err) =>
+        {
+            return res.status(400).send({errors: true, error: err.message}).end();
+        });
     }
 
     add_user(req, res, next)
     {
         if(req.body.user_name == undefined || null || req.body.user_email == undefined || null || req.body.user_pass == undefined || null || req.ip == undefined || null) return res.status(400).send({errors: true, error: 'invalid_parameters'}).end();
 
-		return User.add_user(req.body.user_name, req.body.user_email, req.body.user_pass, req.ip)
+        return User.add_user(req.body.user_name, req.body.user_email, req.body.user_pass, req.ip)
 
         .then(() =>
         {
@@ -72,51 +72,51 @@ class UserHttp
     {
         if(req.body.new_password == undefined || null || req.body.password == undefined || null) return res.status(400).send({errors: true, error: 'invalid_paramemters'}).end();
 
-		return User.update_password(req.user.user_id, req.body.new_password, req.body.password)
+        return User.update_password(req.user.user_id, req.body.new_password, req.body.password)
 
-		.then(() =>
-		{
-			return res.status(200).send({errors: false, error: null}).end();
-		})
+        .then(() =>
+        {
+            return res.status(200).send({errors: false, error: null}).end();
+        })
 
-		.catch((err) =>
-		{
-			return res.status(400).send({errors: true, error: err.message}).end();
-		});
+        .catch((err) =>
+        {
+            return res.status(400).send({errors: true, error: err.message}).end();
+        });
     }
 
     update_email(req, res, next)
     {
         if(req.body.new_email == undefined || null || req.body.password == undefined || null) return res.status(400).send({errors: true, error: 'invalid_paramemters'}).end();
 
-		return User.update_email(req.user.user_id, req.body.new_email, req.body.password)
+        return User.update_email(req.user.user_id, req.body.new_email, req.body.password)
 
-		.then(() =>
-		{
-			return res.status(200).send({errors: false, error: null}).end();
-		})
+        .then(() =>
+        {
+            return res.status(200).send({errors: false, error: null}).end();
+        })
 
-		.catch((err) =>
-		{
-			return res.status(400).send({errors: true, error: err.message}).end();
-		});
+        .catch((err) =>
+        {
+            return res.status(400).send({errors: true, error: err.message}).end();
+        });
     }
 
     update_settings(req, res, next)
     {
         if(req.body.data == undefined || null) return res.status(400).send({errors: true, error: 'invalid_parameters'}).end();
 
-		return User.update_settings(req.user.user_id, req.body.data)
+        return User.update_settings(req.user.user_id, req.body.data)
 
-		.then(() =>
-		{
-			return res.status(200).send({errors: false, error: null}).end();
-		})
+        .then(() =>
+        {
+            return res.status(200).send({errors: false, error: null}).end();
+        })
 
-		.catch((err) =>
-		{
-			return res.status(400).send({errors: true, error: err.message}).end();
-		});
+        .catch((err) =>
+        {
+            return res.status(400).send({errors: true, error: err.message}).end();
+        });
     }
 }
 

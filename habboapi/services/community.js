@@ -1,9 +1,4 @@
-import Item from '../database/models/furniture/item';
-import Room from '../database/models/room/room';
-import RoomPromotion from '../database/models/room/room_promotion';
-import HotelUser from '../database/models/user/user';
-import UserPets from '../database/models/user/user_pets';
-import Group from '../database/models/group/group';
+import HotelStatistics from '../hotel/statistics';
 import ApiPermission from '../database/models/api/permission';
 
 class Community
@@ -11,116 +6,58 @@ class Community
     static community_info()
     {
         return new Promise((resolve, reject) =>
-		{
-			let community_info = {};
-
-			return this.latest_user()
-
-			.then((result) =>
-			{
-				community_info.latest_user = result;
-
-				return this.statistics();
-			})
-
-			.then((result) =>
-			{
-				community_info.statistics = result;
-
-				return this.top_rooms();
-			})
-
-			.then((result) =>
-			{
-				community_info.top_rooms = result;
-				
-				return this.room_promotions();
-			})
-
-            .then((result) =>
-            {
-                community_info.room_promotions = result;
-
-                return resolve(community_info);
-            })
-
-			.catch(function(err)
-			{
-				return reject(err);
-			});
-		});
-    }
-
-    static latest_user()
-    {
-        return new Promise((resolve, reject) =>
         {
-            return new HotelUser().query((qb) => {
-                qb.orderBy('id', 'DESC').limit(1);
-            }).fetch({
-                columns: ['id', 'username', 'account_created', 'last_online', 'motto', 'look', 'online']
-            })
-            
-            .then((result) =>
+            let community_info = {};
+
+            HotelStatistics.total_users()
+
+            .then((count) =>
             {
-                return resolve(result.toJSON());
+                community_info.total_users = count;
+
+                return HotelStatistics.total_rooms();
+            })
+
+            .then((count) =>
+            {
+                community_info.total_rooms = count;
+
+                return HotelStatistics.total_groups();
+            })
+
+            .then((count) =>
+            {
+                community_info.total_groups = count;
+
+                return HotelStatistics.total_items();
+            })
+
+            .then((count) =>
+            {
+                community_info.total_items = count;
+
+                return HotelStatistics.latest_user();
+            })
+
+            .then((user) =>
+            {
+                community_info.latest_user = user;
+
+                return HotelStatistics.latest_room();
+            })
+
+            .then((room) =>
+            {
+                community_info.latest_room = room;
+                
+                return resolve(community_info);
             })
 
             .catch((err) =>
             {
                 return reject(err);
-            });
+            })
         });
-    }
-
-    static statistics()
-    {
-        return new Promise((resolve, reject) =>
-		{
-			let hotel_statistics = {};
-
-			return new Item().count()
-
-			.then((result) =>
-			{
-				hotel_statistics.total_items = result;
-
-				return new Room().count();
-			})
-
-			.then((result) =>
-			{
-				hotel_statistics.total_rooms = result;
-
-				return new HotelUser().count();
-			})
-
-			.then((result) =>
-			{
-				hotel_statistics.total_users = result;
-
-				return new Group().count();
-			})
-
-			.then((result) =>
-			{
-				hotel_statistics.total_groups = result;
-
-				return new UserPets().count();
-			})
-
-			.then((result) =>
-			{
-				hotel_statistics.total_pets = result;
-
-				return resolve(hotel_statistics);
-			})
-
-			.catch((err) =>
-			{
-				return reject(err);
-			});
-		});
     }
 
     static staff_users()
@@ -141,55 +78,6 @@ class Community
             .then((result) =>
             {
                 return resolve(result);
-            })
-
-            .catch((err) =>
-            {
-                return reject(err);
-            });
-        });
-    }
-
-    static top_rooms()
-    {
-        return new Promise((resolve, reject) =>
-        {
-            return new Room().query((qb) => {
-                qb.whereNot('score', 0).orderBy('score', 'DESC').limit(7);
-            }).fetchAll({
-                columns: ['id', 'name', 'description', 'model', 'users']
-            })
-            
-            .then((result) =>
-            {
-                return resolve(result.toJSON());
-            })
-
-            .catch((err) =>
-            {
-                return reject(err);
-            });
-        });
-    }
-
-    static room_promotions()
-    {
-        return new Promise((resolve, reject) =>
-        {
-            return new RoomPromotion().query((qb) => {
-                qb.limit(10);
-            }).fetchAll({
-                withRelated: [
-                    {'room': (qb) => {
-                        qb.column('id', 'name', 'model');
-                    }}
-                ],
-                columns: ['room_id', 'title', 'description', 'end_timestamp']
-            })
-            
-            .then((result) =>
-            {
-			    return resolve(result.toJSON());
             })
 
             .catch((err) =>

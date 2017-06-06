@@ -59,12 +59,9 @@ function Run(AppConstants, SessionService, StatisticsService, $localStorage, $st
     });
 
     $rootScope.$on('$stateChangeSuccess', (event, to, toParams, prev, prevParams) =>
-    {
-        if($rootScope.current_user == null) $stickyState.reset('client');
-        
+    {        
         $rootScope.previous_state 	= (prev.name == undefined || prev.name == '' || null) ? $state.get('login') : prev;
         $rootScope.previous_params 	= prevParams;
-
         $rootScope.current_state 	= to;
 
         $rootScope.go_back = () =>

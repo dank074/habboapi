@@ -26,6 +26,7 @@ class ProfileBadgesController
 
 let ProfileBadgesComponent = {
     bindings: {
+        username: '=',
         badges: '='
     },
     controller: ProfileBadgesController,

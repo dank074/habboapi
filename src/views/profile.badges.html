@@ -3,13 +3,13 @@
 	<md-card class="no-select" style="height:210px;">
 		<md-toolbar>
 			<div class="md-toolbar-tools">
-				<h2>{{'profile.badges.header' | translate}}<span class="number" ng-if="$ctrl.badges.length > 0" ng-bind="$ctrl.badges.length"></span></h2>
+				<h2>{{'profile.user_badges' | translate}} <span class="number" ng-if="$ctrl.badges.length > 0" ng-bind="$ctrl.badges.length"></span></h2>
 				<span flex></span>
 				<md-button class="md-icon-button" ng-if="$ctrl.badges.length > 0" ng-click="show_all()"><md-icon>view_list</md-icon></md-button>
 			</div>
 		</md-toolbar>
 		<md-card-content class="no-padding center">
-			<div class="md-padding" ng-if="$ctrl.badges.length == 0" translate="profile.badges.no_badges"></div>
+			<div class="md-padding" ng-if="$ctrl.badges.length == 0" translate="profile.no_badges" translate-values="{user_name: $ctrl.username}"></div>
 			<ul class="vertical-list badge-list" ng-if="$ctrl.badges.length > 0">
 				<li ng-repeat="badge in $ctrl.badges | orderBy: '-slot_id' | limitTo: 5">
 					<a>
@@ -28,7 +28,7 @@
 			<md-dialog class="no-select">
 				<md-toolbar>
 					<div class="md-toolbar-tools">
-						<h2>{{'profile.badges.header' | translate}} <span class="number" ng-if="$ctrl.badges.length > 0" ng-bind="$ctrl.badges.length"></span></h2>
+						<h2>{{'profile.user_badges' | translate}} <span class="number" ng-if="$ctrl.badges.length > 0" ng-bind="$ctrl.badges.length"></span></h2>
 						<span flex></span>
 						<md-button class="md-icon-button" ng-click="hide()"><md-icon>close</md-icon></md-button>
 					</div>

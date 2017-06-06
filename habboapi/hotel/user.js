@@ -1,7 +1,6 @@
 import bcrypt from 'bcrypt';
-import HotelUser from '../database/models/user/user';
-import UserCollection from '../database/collections/user/user';
-import UserSettings from '../database/models/user/user_settings';
+import HotelUser from '../database/models/hotel/user/user';
+import HotelUserSettings from '../database/models/hotel/user/user_settings';
 
 class User
 {
@@ -12,6 +11,11 @@ class User
             let regex = new RegExp(/^[a-zA-Z0-9!@#\$%\^\&*\)\(+=._-]{1,20}$/g);
             
             if(user_name == null || regex.test(user_name) == false) return reject(new Error('invalid_paramemters'));
+
+            __config.hotel.prohibited_usernames.forEach((username) =>
+            {
+                if(user_name.indexOf(username) != -1) return reject(new Error('username_unavailable'));
+            });
 
             return new HotelUser({username: user_name}).fetch()
 
@@ -53,32 +57,6 @@ class User
         });
     }
 
-    static user_list(page)
-    {
-        return new Promise((resolve, reject) =>
-        {
-            if(page == null) page = 1;
-
-            return new UserCollection.fetchPage({
-                pageSize: 15,
-                page: page,
-                columns: ['id', 'username']
-            })
-
-            .then((results) =>
-            {
-                if(results == null) return reject(new Error('no_users'));
-
-                return resolve(results.toJSON());
-            })
-
-            .catch((err) =>
-            {
-                return reject(err);
-            });
-        });
-    }
-
     static user_info(user_id)
     {
         return new Promise((resolve, reject) =>
@@ -89,10 +67,10 @@ class User
                 withRelated: [
                     'last_login',
                     {'settings': (qb) => {
-                        qb.column('id', 'user_id', 'block_following', 'block_friendrequests', 'block_roominvites', 'old_chat', 'ignore_bots', 'ignore_pets');
+                        qb.column(["id", "user_id"].concat(__config.hotel.user_settings));
                     }}
                 ],
-                columns: ['id', 'username', 'mail', 'account_created', 'last_online', 'motto', 'look', 'rank', 'credits', 'pixels', 'points', 'online']
+                columns: ["id", "username"].concat(__config.hotel.user_info)
             })
 
             .then((result) =>
@@ -126,35 +104,35 @@ class User
             {
                 return new HotelUser({
                     id: null,
-				    username: user_name,
+                    username: user_name,
                     real_name: '',
-				    password: bcrypt.hashSync(user_pass, __config.password_salt),
+                    password: bcrypt.hashSync(user_pass, __config.password_salt),
                     mail: user_email,
                     mail_verified: '0',
                     account_created: Math.floor(Date.now() / 1000),
                     account_day_of_birth: '0',
                     last_login: Math.floor(Date.now() / 1000),
                     last_online: Math.floor(Date.now() / 1000),
-                    motto: __config.user_settings.new_user.motto,
-                    look: __config.user_settings.new_user.figure,
-                    gender: __config.user_settings.new_user.gender,
-                    rank: __config.user_settings.new_user.rank,
-                    credits: __config.user_settings.new_user.credits,
-                    pixels: __config.user_settings.new_user.pixels,
-                    points: __config.user_settings.new_user.points,
+                    motto: __config.hotel.new_user.motto,
+                    look: __config.hotel.new_user.figure,
+                    gender: __config.hotel.new_user.gender,
+                    rank: __config.hotel.new_user.rank,
+                    credits: __config.hotel.new_user.credits,
+                    pixels: __config.hotel.new_user.pixels,
+                    points: __config.hotel.new_user.points,
                     online: '0',
                     auth_ticket: '',
                     ip_register: user_ip,
                     ip_current: user_ip,
                     machine_id: '',
-                    home_room: __config.user_settings.new_user.home_room}).save(null, {method: 'insert'});
+                    home_room: __config.hotel.new_user.home_room}).save(null, {method: 'insert'});
             })
 
             .then((result) =>
             {
                 if(result == null) return reject(new Error('invalid_user'));
 
-                return new UserSettings({
+                return new HotelUserSettings({
                     id: null,
                     user_id: result.toJSON().id
                 }).save(null, {method: 'insert'});
@@ -172,37 +150,6 @@ class User
                 return reject(err);
             });
         });
-    }
-
-    static update_user(user_id, data)
-    {
-        return new Promise((resolve, reject) =>
-        {
-            if(user_id == null || user_id == 0 || data == null || data.length == 0) return reject(new Error('invalid_paramemters'));
-
-            return new HotelUser({id: user_id}).fetch({
-                columns: ['account_day_of_birth', 'motto', 'look', 'gender', 'home_room']
-            })
-
-            .then((result) =>
-            {
-                if(result == null) return reject(new Error('invalid_user'));
-
-                result.set(data);
-
-                return result.save();
-            })
-
-            .then((result) =>
-            {
-                return resolve(result.toJSON());
-            })
-
-            .catch((err) =>
-            {
-                return reject(err);
-            })
-        })
     }
 
     static update_password(user_id, new_password, password)
@@ -283,7 +230,7 @@ class User
             if(user_id == null || user_id == 0 || data == null || data.length == 0) return reject(new Error('invalid_paramemters'));
 
             return new UserSettings({user_id: user_id}).fetch({
-                columns: ['block_following', 'block_friendrequests', 'block_roominvites', 'old_chat', 'ignore_bots', 'ignore_pets']
+                columns: __config.hotel.user_settings
             })
 
             .then((result) =>

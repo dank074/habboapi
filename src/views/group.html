@@ -11,7 +11,7 @@
 		<md-card class="no-select">
 			<md-toolbar>
 				<div class="md-toolbar-tools">
-					<habbo-icon class="star-gold"></habbo-icon><h2 translate="group.group_owner" style="padding-left:7px;"></h2>
+					<habbo-icon class="star-gold space-right"></habbo-icon><h2 translate="group.group_owner"></h2>
 				</div>
 			</md-toolbar>
 			<md-card-content class="no-padding">
@@ -23,8 +23,8 @@
 	<div layout="column" flex="30" flex-xs="100">
 		<md-card class="no-select">
 			<md-toolbar>
-				<div class="md-toolbar-tools">
-					<habbo-icon class="wrench"></habbo-icon><h2 class="center" translate="group.group_details"></h2>
+				<div class="md-toolbar-tools center">
+					<habbo-icon class="wrench space-right"></habbo-icon><h2 translate="group.group_details"></h2>
 				</div>
 			</md-toolbar>
 			<md-card-content class="no-padding">
@@ -47,10 +47,10 @@
 				</table>
 			</md-card-content>
 		</md-card>
-		<room-card roominfo="group_info.room"></room-card>
+		<room-card title="'group.group_room' | translate" roominfo="group_info.room"></room-card>
 	</div>
 </div>
-<div layout="row" layout-xs="column">
+<div layout="row" layout-xs="column" ng-if="group_info.forum == 1">
 	<md-card class="no-select" flex="100" flex-xs="100">
 		<md-toolbar>
 			<div class="md-toolbar-tools">

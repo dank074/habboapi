@@ -1,12 +1,12 @@
-import HotelUser from '../database/models/user/user';
+import HotelUser from '../database/models/hotel/user/user';
 
 class Profile
 {
     static profile_info(user_name)
     {
         return new Promise((resolve, reject) =>
-		{
-			if(user_name == null) return reject(new Error('invalid_paramemters'));
+        {
+            if(user_name == null) return reject(new Error('invalid_paramemters'));
             
             return new HotelUser({username: user_name}).fetch({
                 withRelated: [
@@ -14,7 +14,7 @@ class Profile
                         qb.column('user_id', 'slot_id', 'badge_code');
                     }},
                     {'rooms': (qb) => {
-                        qb.column('id', 'owner_id', 'name', 'description', 'model', 'score');
+                        qb.column('id', 'owner_id', 'name', 'description', 'score');
                     }},
                     {'group_memberships': (qb) => {
                         qb.column('id', 'user_id', 'guild_id', 'member_since');
@@ -28,13 +28,13 @@ class Profile
                     {'friends.user': (qb) => {
                         qb.column('id', 'username', 'last_online', 'motto', 'look', 'online');
                     }}
-			    ],
-			    columns: ['id', 'username', 'account_created', 'last_online', 'motto', 'look', 'online']
-		    })
+                ],
+                columns: ['id', 'username', 'account_created', 'last_online', 'motto', 'look', 'online']
+            })
             
             .then((result) =>
             {
-			    if(result == null) return reject(new Error('invalid_user'));
+                if(result == null) return reject(new Error('invalid_user'));
                 
                 return resolve(result.toJSON());
             })

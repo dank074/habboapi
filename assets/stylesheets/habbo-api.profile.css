@@ -8,7 +8,7 @@ section.profile-badge-card-container {
 section.profile-badge-card-container .profile-badge-card-header {
     width: 100%;
     height: 140px;
-    background: url('../images/cards/card_badges_header.png') no-repeat;
+    background: url('assets/images/cards/card_badges_header.png') no-repeat;
     image-rendering: pixelated;
 }
 
@@ -28,7 +28,7 @@ section.profile-friends-card-container {
 section.profile-friends-card-container .profile-friends-card-header {
     width: 100%;
     height: 140px;
-    background: url('../images/cards/card_friends_header.png') no-repeat;
+    background: url('assets/images/cards/card_friends_header.png') no-repeat;
     image-rendering: pixelated;
 }
 
@@ -43,7 +43,7 @@ section.profile-friends-card-container md-card {
 section.profile-rooms-card-container .profile-rooms-card-header {
     width: 100%;
     height: 140px;
-    background: url('../images/cards/card_rooms_header.png') no-repeat;
+    background: url('assets/images/cards/card_rooms_header.png') no-repeat;
     image-rendering: pixelated;
 }
 
@@ -58,7 +58,7 @@ section.profile-rooms-card-container md-card {
 section.profile-groups-card-container .profile-groups-card-header {
     width: 468px;
     height: 140px;
-    background: url('../images/cards/card_groups_header.png') no-repeat;
+    background: url('assets/images/cards/card_groups_header.png') no-repeat;
     image-rendering: pixelated;
 }
 

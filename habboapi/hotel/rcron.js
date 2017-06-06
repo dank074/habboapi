@@ -8,7 +8,7 @@ class rCRON
         
         let client = new Socket();
         
-         client.connect(__config.rCRON.socket_port, __config.rCRON.socket_ip, () =>
+        client.connect(__config.rCRON.socket_port, __config.rCRON.socket_ip, () =>
         {
             client.write(JSON.stringify(message));
         });
@@ -22,22 +22,6 @@ class rCRON
         client.on('error', (data) =>
         {
             return false;
-        });
-    }
-
-    static hotel_alert(message, user_name)
-    {
-        return new Promise((resolve, reject) =>
-        {
-            if(message == null || user_name == null) return reject(new Error('invalid_paramemters'));
-
-            return this.send_message({
-                "key": "hotelalert",
-                "data": {
-                    "message": message,
-                    "username": user_name
-                }
-            });
         });
     }
 
@@ -64,7 +48,7 @@ class rCRON
             if(user_id == null || room_id == null) return reject(new Error('invalid_paramemters'));
 
             return this.send_message({
-                "key": "executecmd",
+                "key": "executecommand",
                 "data": {
                     "user_id": current_id,
                     "command": "stalk " + user_id

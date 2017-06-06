@@ -10,11 +10,12 @@ var templateCache   = require('gulp-angular-templatecache');
 var uglify          = require('gulp-uglify');
 var sourcemaps      = require('gulp-sourcemaps');
 var merge           = require('merge-stream');
+var cleanCSS        = require('gulp-clean-css');
 
 gulp.task('browserify', ['views'], function()
 {
     return browserify('./src/app.js')
-        .transform(babelify, {presets: ["es2015"]})
+        .transform(babelify, {presets: ['es2015']})
         .transform(ngAnnotate)
         .bundle()
         .pipe(source('bundle.js'))
@@ -28,13 +29,25 @@ gulp.task('views', function()
         .pipe(gulp.dest('./src/config/'));
 });
 
-gulp.task('build', ['browserify'], function()
-{        
-    var js = gulp.src("build/bundle.js")
+gulp.task('minify-css', function()
+{
+    return gulp.src(['./assets/stylesheets/habbo-api.css'])
+        .pipe(cleanCSS())
+        .pipe(gulp.dest('./build/'));
+});
+
+gulp.task('build', ['minify-css', 'browserify'], function()
+{
+    var css = gulp.src('build/habbo-api.css')
+        .pipe(sourcemaps.init({loadMaps: true}))
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest('./dist/'));
+
+    var js =  gulp.src('build/bundle.js')
         .pipe(sourcemaps.init({loadMaps: true}))
         .pipe(uglify())
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('./dist/'));
-    
-    return js;
+
+    return css . js;
 });
