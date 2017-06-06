@@ -22,9 +22,13 @@
         "socket_port": "12422"
     },
     "staff_page_ranks": [7, 6, 5],
-    "user_settings": {
-		"update_user_keys": ["account_day_of_birth", "motto", "look", "gender", "home_room"],
-		"update_settings_keys": ["block_following", "block_friendrequests", "block_roominvites", "old_chat", "ignore_bots", "ignore_pets"],
+    "hotel": {
+        "statistics": {
+            "toprooms_limit": 5
+        },
+        "prohibited_usernames": ["ADMIN-", "MOD-", "TRIAL-", "OWNER-", "ADM-"],
+        "user_info": ["mail", "account_created", "last_online", "motto", "look", "rank", "credits", "pixels", "points", "online"],
+		"user_settings": ["block_following", "block_friendrequests", "block_roominvites", "old_chat", "ignore_bots", "ignore_pets"],
 		"new_user": {
 			"rank": 1,
 			"figure": "hr-115-42.hd-190-1.ch-215-62.lg-285-91.sh-290-62",
