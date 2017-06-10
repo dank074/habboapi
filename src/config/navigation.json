@@ -1,22 +1,50 @@
 {
     "navigation": [
 		{
+			"name": "Login",
+			"state": "login",
+			"sort": 1,
+			"disabled": false
+		},
+		{
+			"name": "Register",
+			"state": "register",
+			"sort": 2,
+			"disabled": false
+		},
+		{
 			"name": "Me",
 			"state": "me",
-			"sort": 1,
+			"sort": 3,
 			"disabled": false
 		},
 		{
 			"name": "Community",
 			"state": "community",
-			"sort": 2,
+			"sort": 4,
 			"disabled": false
 		},
 		{
 			"name": "Staff",
 			"state": "staff",
-			"sort": 3,
+			"sort": 5,
 			"disabled": false
+		}
+	],
+
+	"housekeeping": [
+		{
+			"name": "Housekeeping",
+			"sort": 1,
+			"disabled": false,
+			"sub_items": [
+				{
+					"name": "Dashboard",
+					"state": "housekeeping.dashboard",
+					"sort": 1,
+					"disabled": false
+				}
+			]
 		}
 	]
 }

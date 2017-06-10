@@ -1,0 +1,116 @@
+{
+	"main":
+	{
+        "login":
+        {
+            "name": "login",
+			"url": "/login",
+			"templateUrl": "views/login.html",
+            "controller": "LoginController",
+			"guest_only": true
+        },
+
+		"register":
+		{
+			"name": "register",
+			"url": "/register",
+			"templateUrl": "views/register.html",
+			"controller": "RegisterController",
+			"guest_only": true
+		},
+
+		"me":
+		{
+			"name": "me",
+			"url": "/me",
+			"templateUrl": "views/me.html",
+            "controller": "MeController",
+			"login_required": true
+		},
+
+        "community":
+		{
+			"name": "community",
+			"url": "/community",
+			"templateUrl": "views/community.html",
+			"controller": "CommunityController"
+		},
+
+        "staff":
+		{
+			"name": "staff",
+			"url": "/staff",
+			"templateUrl": "views/staff.html",
+			"controller": "StaffController"
+		},
+
+		"profile":
+		{
+			"name": "profile",
+			"url": "/profile/:username",
+			"templateUrl": "views/profile.html",
+			"controller": "ProfileController"
+		},
+
+		"room":
+		{
+			"name": "room",
+			"url": "/room/:id",
+			"templateUrl": "views/room.html",
+			"controller": "RoomController"
+		},
+
+		"group":
+		{
+			"name": "group",
+			"url": "/group/:id",
+			"templateUrl": "views/group.html",
+			"controller": "GroupController"
+		},
+
+		"client":
+		{
+			"name": "client",
+			"url": "/client",
+			"sticky": true,
+			"login_required": true,
+			"views": {
+				"client": {
+					"controller": "ClientController",
+					"templateUrl": "views/client.html"
+				}
+			}
+		},
+
+		"settings":
+		{
+			"name": "settings",
+			"url": "/settings",
+			"templateUrl": "views/settings.html",
+			"controller": "SettingsController",
+			"login_required": true
+		}
+	},
+
+    "housekeeping":
+    {
+        "housekeeping":
+        {
+			"abstract": true,
+            "name": "housekeeping",
+			"url": "/housekeeping",
+			"template": "<div class='housekeeping-content' ui-view></div>",
+            "login_required": true,
+            "permission": "hk_login"
+        },
+
+        "housekeeping.dashboard":
+        {
+            "name": "housekeeping.dashboard",
+			"url": "/dashboard",
+			"templateUrl": "views/housekeeping/dashboard.html",
+            "login_required": true,
+            "permission": "hk_dashboard"
+        }
+    }
+}

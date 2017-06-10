@@ -21,24 +21,20 @@ function Run(AppConstants, SessionService, StatisticsService, $localStorage, $st
 
     $rootScope.$on('$stateChangeStart', (event, next, current) =>
     {
-        document.body.scrollTop = document.documentElement.scrollTop = 0;
-
         return SessionService.validate_session()
         
         .then((session) =>
         {
-            $rootScope.current_user = $localStorage.current_user;
-            
             if(next.name == 'login')
             {
                 event.preventDefault();
                 return $state.go('me');
             }
 
-            if(next.permission != undefined || null && $localStorage.current_user.user_permissions[next.permission] == undefined || $localStorage.current_user.user_permissions[next.permission] == '0')
+            if(next.permission && $localStorage.current_user.user_permissions[next.permission] == 0)
             {
                 event.preventDefault();
-                return $state.go('not_found');
+                return $state.go('me');
             }
             
             return next;
@@ -59,7 +55,9 @@ function Run(AppConstants, SessionService, StatisticsService, $localStorage, $st
     });
 
     $rootScope.$on('$stateChangeSuccess', (event, to, toParams, prev, prevParams) =>
-    {        
+    {
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+
         $rootScope.previous_state 	= (prev.name == undefined || prev.name == '' || null) ? $state.get('login') : prev;
         $rootScope.previous_params 	= prevParams;
         $rootScope.current_state 	= to;

@@ -16,7 +16,7 @@
 		<md-card-content>
             <form name="user_login" ng-submit="login()" novalidate>
                 <md-input-container class="md-block">
-                    <input type="text" name="user_name" ng-model="login_details.user_name" translate translate-attr-placeholder="forms.username" required />
+                    <input type="text" name="user_name" ng-model="login_details.user_name" translate translate-attr-placeholder="forms.username" autofocus="true" required />
                     <div ng-messages="user_login.user_name.$error" md-auto-hide="false" ng-show="user_login.user_name.$touched">
                         <div ng-messages-include="views/messages.html"></div>
                     </div>

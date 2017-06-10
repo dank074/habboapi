@@ -11,7 +11,7 @@
 		<md-card-content class="no-padding center">
 			<div class="md-padding" ng-if="$ctrl.rooms.length == 0" translate="profile.no_rooms" translate-values="{user_name: $ctrl.username}"></div>
 			<ul class="vertical-list room-list no-margin" ng-if="$ctrl.rooms.length > 0">
-				<li ng-repeat="room in $ctrl.rooms | orderBy: 'score' | limitTo: 5" ui-sref="room({id: room.id})">
+				<li ng-repeat="room in $ctrl.rooms | orderBy: 'score' | limitTo: 4" ui-sref="room({id: room.id})">
 					<habbo-room-icon class="room-icon no-select">
 						<div class="room-icon"></div>
 					</habbo-room-icon>

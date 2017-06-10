@@ -1,11 +1,11 @@
-<div class="app-menu" ng-if="$root.current_user.login_status == true" ng-hide="$root.state.includes('client') || navigation_list.length == 0">
+<div class="app-menu">
     <div class="menu-container">
-        <ul class="menu-list left" flex>
-            <li ng-repeat="item in navigation_list | orderBy: 'sort'" class="list-item no-select" ng-class="{active: $root.state.includes(item.state)}" ui-sref="{{item.state}}" ng-bind="item.name"></li>
+        <ul class="menu-list left" ng-if="main_navigation.length > 0" flex>
+            <li class="list-item no-select" ng-repeat="item in main_navigation | orderBy: 'sort'" ng-hide="item.state.guest_only && $root.current_user.login_status || item.state.login_required && $root.current_user == undefined || null" ng-class="{active: $root.state.includes(item.state.name)}" ui-sref="{{item.state.name}}" ng-bind="item.name"></li>
         </ul>
         <ul class="menu-list right" flex>
             <li class="list-item-no-hover users-online no-select">{{$root.users_online}} Users Online</li>
-            <md-menu md-position-mode="target-right target">
+            <md-menu ng-if="$root.current_user.login_status" md-position-mode="target-right target">
                 <li class="list-item avatar-image no-select" ng-click="$mdMenu.open($event)" style="background-image: url('{{$root.app_config.site_images.avatars}}{{$root.current_user.user_info.look}}&action=std&gesture=std&direction=2&head_direction=4&size=n&headonly=1&img_format=png');" ng-bind="$root.current_user.user_name"></li>
                 <md-menu-content width="3">
                     <md-menu-item><md-button ui-sref="profile({username: $root.current_user.user_name})" translate="navigation.view_profile"></md-button></md-menu-item>

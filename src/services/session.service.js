@@ -22,7 +22,8 @@ class SessionService
 
             if(res.data.session == undefined || res.data.session.length == 0 || null) return this._$q.reject('invalid_session');
             
-            this._$localStorage.current_user = res.data.session;
+            this._$localStorage.current_user    = res.data.session;
+            this._$rootScope.current_user       = res.data.session;
 
             return this._$q.resolve(this._$localStorage.current_user);
         })
@@ -30,6 +31,7 @@ class SessionService
         .catch((res) =>
         {
             this._$localStorage.$reset();
+            this._$rootScope.current_user = null;
 
             return this._$q.reject(res);
         });
@@ -54,7 +56,8 @@ class SessionService
                 res.data.session.user_info.settings[key] = (value == '0') ? false : true;
             });
 
-            this._$localStorage.current_user = res.data.session;
+            this._$localStorage.current_user    = res.data.session;
+            this._$rootScope.current_user       = res.data.session;
 
             return this._$q.resolve(this._$localStorage.current_user);
         })
@@ -64,6 +67,7 @@ class SessionService
             this._$stickyState.reset('client');
 
             this._$localStorage.$reset();
+            this._$rootScope.current_user = null;
 
             return this._$q.reject(res);
         });
@@ -78,6 +82,7 @@ class SessionService
             this._$stickyState.reset('client');
 
             this._$localStorage.$reset();
+            this._$rootScope.current_user = null;
 
             return this._$q.resolve(null);
         })
@@ -87,6 +92,7 @@ class SessionService
             this._$stickyState.reset('client');
 
             this._$localStorage.$reset();
+            this._$rootScope.current_user = null;
             
             return this._$q.resolve(null);
         });
