@@ -61,8 +61,8 @@ class Session
                 {
                     return reject(new Error('invalid_session'));
                 });
-                
-                return resolve(session);
+
+                return resolve(result.toJSON());
             })
 
             .catch((err) =>

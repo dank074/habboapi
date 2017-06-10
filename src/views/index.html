@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="habbo-api.css" />
 </head>
 <body class="app" ng-class="{'show-client': $root.state.includes('client')}" ng-cloak>
-    <div class="app-header" ng-hide="$root.state.includes('client')">
+    <div class="app-header">
         <div class="header-logo">
             <div class="logo-image" ui-sref="login"></div>
             <div class="logo-hotel" ui-sref="login"></div>
@@ -26,9 +26,9 @@
         <div class="cloud x4"></div>
         <div class="cloud x5"></div>
     </div>
-    <app-navigation ng-hide="$root.state.includes('client')"></app-navigation>
-    <app-hknavigation ng-hide="$root.state.includes('client')"></app-hknavigation>
-    <div class="main-content" ng-class="{'show-hkmenu': $root.current_user.login_status && $root.current_user.user_permissions.hk_login == 1 && $root.state.includes('client') == false}">
+    <app-navigation></app-navigation>
+    <app-hknavigation></app-hknavigation>
+    <div class="main-content" ng-class="{'show-hkmenu': $root.current_user.login_status && $root.current_user.user_permissions.hk_login == 1}">
         <div class="content-container" ui-view></div>
         <div class="client-container" ui-view="client"></div>
         <div class="content-footer no-select">&copy; 2017 {{$root.app_config.site_name}} Hotel</div>

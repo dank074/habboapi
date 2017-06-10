@@ -1,6 +1,6 @@
 .register-card-left {
     position: relative;
-    margin: 0 !important;
+    margin: 8px 0 0 8px;
     background-color: #008A5F;
     overflow: hidden;
 }
@@ -43,7 +43,7 @@
 }
 
 .register-card-right {
-    margin: 0 !important;
+    margin: 8px 8px 0 0;
 }
 
 .register-card-right md-toolbar .md-toolbar-tools h2 {

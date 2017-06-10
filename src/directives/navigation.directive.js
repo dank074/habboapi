@@ -13,7 +13,8 @@ class NavigationDirective
     {
         'ngInject';
 
-        $scope.main_navigation = [];
+        $scope.main_navigation  = [];
+        $scope.loaded_states    = $state.get();
 
         if(navigation.navigation == null || navigation.navigation.length == 0) return;
 
@@ -21,7 +22,7 @@ class NavigationDirective
         {
             if(item.disabled == true) return;
 
-            angular.forEach($state.get(), (state, key) =>
+            angular.forEach($scope.loaded_states, (state, key) =>
             {
                 if(state.name != item.state) return;
                 

@@ -1,6 +1,6 @@
 .login-card-left {
     position: relative;
-    margin: 0 !important;
+    margin: 8px 0 0 8px;
     background-color: #008A5F;
     overflow: hidden;
 }
@@ -45,7 +45,7 @@
 }
 
 .login-card-right {
-    margin: 0 !important;
+    margin: 8px 8px 0 0;
 }
 
 .login-card-right md-toolbar .md-toolbar-tools h2 {

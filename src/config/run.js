@@ -25,7 +25,7 @@ function Run(AppConstants, SessionService, StatisticsService, $localStorage, $st
         
         .then((session) =>
         {
-            if(next.name == 'login')
+            if(next.guest_only)
             {
                 event.preventDefault();
                 return $state.go('me');

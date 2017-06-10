@@ -13,7 +13,36 @@
     overflow: hidden;
 }
 
-.app.show-client .app-menu {
+.app .housekeeping-menu {
+    position: fixed;
+    width: 100%;
+    height: 40px;
+    max-width: 950px;
+    left: 0;
+    right: 0;
+    margin: 220px auto 0;
+    padding: 0 !important;
+    background-color: #FFFFFF;
+    box-shadow: 0 1px 5px 0 rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12);
+    border-radius: 4px;
+    z-index: 4;
+    overflow: hidden;
+}
+
+.app .housekeeping-menu .md-menu {
+    padding: 0;
+}
+
+.app .housekeeping-menu .md-menu button {
+    padding: 0 10px;
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.app.show-client .app-menu,
+.app.show-client .housekeeping-menu {
     display: none;
 }
 

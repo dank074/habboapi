@@ -13,7 +13,8 @@ class HKNavigationDirective
     {
         'ngInject';
 
-        $scope.housekeeping_navigation = [];
+        $scope.housekeeping_navigation  = [];
+        $scope.loaded_states            = $state.get();
 
         if(navigation.housekeeping == null || navigation.housekeeping.length == 0) return;
 
@@ -21,11 +22,18 @@ class HKNavigationDirective
         {
             if(item.disabled == true || item.sub_items == undefined || item.sub_items.length == 0) return;
 
+            angular.forEach($scope.loaded_states, (state, key) =>
+            {
+                if(state.name != item.state) return;
+
+                item.state = state;
+            });
+
             item.children = [];
 
             angular.forEach(item.sub_items, (sub_item, key) =>
             {
-                angular.forEach($state.get(), (state, key) =>
+                angular.forEach($scope.loaded_states, (state, key) =>
                 {
                     if(state.name != sub_item.state) return;
 

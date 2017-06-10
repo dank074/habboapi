@@ -99,7 +99,7 @@
 			"abstract": true,
             "name": "housekeeping",
 			"url": "/housekeeping",
-			"template": "<div class='housekeeping-content' ui-view></div>",
+			"template": "<div ui-view></div>",
             "login_required": true,
             "permission": "hk_login"
         },
@@ -111,6 +111,25 @@
 			"templateUrl": "views/housekeeping/dashboard.html",
             "login_required": true,
             "permission": "hk_dashboard"
+        },
+
+		"housekeeping.users":
+        {
+			"abstract": true,
+            "name": "housekeeping.users",
+			"url": "/users",
+			"template": "<div ui-view></div>",
+            "login_required": true,
+            "permission": "hk_users"
+        },
+
+		"housekeeping.users.user_list":
+        {
+            "name": "housekeeping.users.user_list",
+			"url": "/user_list",
+			"templateUrl": "views/housekeeping/users/user_list.html",
+            "login_required": true,
+            "permission": "hk_users_list"
         }
     }
 }
