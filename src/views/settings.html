@@ -97,7 +97,8 @@
 					</md-tab>
 					<md-tab label="{{'settings.client.header' | translate}}">
 						<md-content class="md-padding">
-							<form name="client_form" ng-submit="update_client()" novalidate>
+							<div ng-if="$root.current_user.user_info.online == 1">You must be offline!</div>
+							<form name="client_form" ng-submit="update_client()" ng-hide="$root.current_user.user_info.online == 1" novalidate>
 								<md-list>
 									<md-list-item>
 										<p translate="settings.client.block_following"></p>

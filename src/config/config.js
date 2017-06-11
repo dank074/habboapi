@@ -1,5 +1,5 @@
 import states from './states.json';
-import translationEnglish from './translation-en.json';
+import translationEnglish from '../../translation-en.json';
 
 function Config($locationProvider, $translateProvider, $mdThemingProvider, $urlRouterProvider, $stateProvider, $mdAriaProvider)
 {

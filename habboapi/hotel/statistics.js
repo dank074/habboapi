@@ -80,6 +80,28 @@ class Statistics
         });
     }
 
+    static active_rooms()
+    {
+        return new Promise((resolve, reject) =>
+        {
+            return new HotelRoom().query((qb) => {
+                qb.whereNot('users', 0).orderBy('users', 'DESC').limit(5);
+            }).fetchAll({
+                columns: ['id', 'name', 'description', 'users']
+            })
+            
+            .then((result) =>
+            {
+                return resolve(result.toJSON());
+            })
+
+            .catch((err) =>
+            {
+                return reject(err);
+            });
+        });
+    }
+
     static top_rooms()
     {
         return new Promise((resolve, reject) =>

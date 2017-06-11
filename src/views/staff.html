@@ -1,23 +1,33 @@
-<div class="column" flex="70" flex-xs="100" ng-repeat="rank in staff_users" ng-hide="rank.users.length == 0">
-    <md-card no-select flex>
-        <md-toolbar>
-            <div class="md-toolbar-tools">
-                <h2 class="center" ng-bind="rank.rank_name">
-            </div>
-        </md-toolbar>
-        <md-card-content class="no-padding">
-            <md-list class="avatar-list" flex>
-                <md-list-item class="md-3-line" ng-repeat="user in rank.users" ui-sref="profile({username: user.username})">
-                    <img class="pixel-image" ng-src="{{$root.app_config.site_images.avatars}}{{user.look}}&amp;action=std&amp;gesture=sml&amp;direction=2&amp;head_direction=2&amp;size=n&amp;headonly=1&amp;img_format=png" />
-                    <div class="md-list-item-text">
-                        <span class="user-name" ng-bind="user.username" style="padding-right:3px;"></span><habbo-icon ng-class="{'online-icon': user.online == 1, 'offline-icon': user.online == 0}"></habbo-icon><br />
-                        <span class="user-motto" ng-if="user.motto"><habbo-icon class="motto-icon"></habbo-icon>{{user.motto}}</span><br />
-                        <span class="last-login" ng-if="user.last_online"><habbo-icon class="clock-icon"></habbo-icon>{{user.last_online * 1000 | date:'MMM d, yyyy h:mm a'}}</span>
-                    </div>
-                </md-list-item>
-            </md-list>
-        </md-card-content>
-    </md-card>
-</div>
-<div layout="column" flex="30" flex-xs="100">
+<div layout="row" layout-xs="column">
+    <div class="column" flex="70" flex-xs="100">
+        <md-card class="no-select" flex ng-repeat="rank in staff_users" ng-hide="rank.users.length == 0">
+            <md-toolbar>
+                <div class="md-toolbar-tools center">
+                    <h2 class="center" ng-bind="rank.rank_name">
+                </div>
+            </md-toolbar>
+            <md-card-content class="no-padding">
+                <md-list class="avatar-list" flex>
+                    <md-list-item class="md-3-line" ng-repeat="user in rank.users" ui-sref="profile({username: user.username})">
+                        <img class="pixel-image" ng-src="{{$root.app_config.site_images.avatars}}{{user.look}}&amp;action=std&amp;gesture=sml&amp;direction=2&amp;head_direction=2&amp;size=n&amp;headonly=1&amp;img_format=png" />
+                        <div class="md-list-item-text">
+                            <span class="user-name" ng-bind="user.username" style="padding-right:3px;"></span><habbo-icon ng-class="{'online-icon': user.online == 1, 'offline-icon': user.online == 0}"></habbo-icon><br />
+                            <span class="user-motto" ng-if="user.motto"><habbo-icon class="motto-icon"></habbo-icon>{{user.motto}}</span><br />
+                            <span class="last-login" ng-if="user.last_online"><habbo-icon class="clock-icon"></habbo-icon>{{user.last_online * 1000 | date:'MMM d, yyyy h:mm a'}}</span>
+                        </div>
+                    </md-list-item>
+                </md-list>
+            </md-card-content>
+        </md-card>
+    </div>
+    <div layout="column" flex="30" flex-xs="100">
+        <md-card no-select flex>
+            <md-toolbar>
+                <div class="md-toolbar-tools center">
+                    <habbo-icon class="star-gold space-right"></habbo-icon><h2 class="center" translate="staff.about_staff">
+                </div>
+            </md-toolbar>
+            <md-card-content translate="staff.about_desc" translate-values="{site_name: $root.app_config.site_name}"></md-card-content>
+        </md-card>
+    </div>
 </div>

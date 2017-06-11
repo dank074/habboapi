@@ -1,6 +1,6 @@
 {
   "name": "habboapi",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "HabboAPI",
   "main": "main.js",
   "scripts": {

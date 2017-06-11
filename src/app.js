@@ -9,7 +9,7 @@ import 'angular-ui-router';
 import 'ui-router-extras';
 import 'ngstorage';
 
-import Constants from './config/constants.json';
+import Constants from '../constants.json';
 import Config from './config/config';
 import Run from './config/run';
 

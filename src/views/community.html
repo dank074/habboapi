@@ -28,6 +28,28 @@
 				<user-card class="no-margin" userinfo="community_info.latest_user" flex="100"></user-card>
 			</md-card-content>
 		</md-card>
+		<div layout="row" layout-xs="column">
+			<md-card class="no-select" flex ng-if="community_info.active_rooms.length > 0">
+				<md-toolbar>
+					<div class="md-toolbar-tools center">
+						<habbo-icon class="active-room space-right"></habbo-icon><h2 translate="community.active_rooms"></h2>
+					</div>
+				</md-toolbar>
+				<md-card-content class="no-padding center">
+					<md-list class="rooms-list" flex>
+						<md-list-item class="md-2-line" ng-repeat="room in community_info.active_rooms" ui-sref="room({id: room.id})">
+							<habbo-room-icon class="room-icon no-select">
+								<div class="room-icon"></div>
+							</habbo-room-icon>
+							<div class="md-list-item-text">
+								<h3 ng-bind="room.name"></h3>
+								<p ng-if="room.description" ng-bind="room.description"></p>
+							</div>
+						</md-list-item>
+					</md-list>
+				</md-card-content>
+			</md-card>
+		</div>
 	</div>
 	<div layout="column" flex="30" flex-xs="100" ng-if="community_info.latest_room">
 		<room-card title="'community.latest_room' | translate" roominfo="community_info.latest_room"></room-card>

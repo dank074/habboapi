@@ -5,7 +5,10 @@
     "session": {
         "secret": "KcgZogkYj5H2D2o",
         "resave": "false",
-        "saveUninitialized": "false"
+        "saveUninitialized": "false",
+        "cookie": {
+            "maxAge": 604800000
+        }
     },
     "database": {
         "client": "mysql",
@@ -23,9 +26,6 @@
     },
     "staff_page_ranks": [7, 6, 5],
     "hotel": {
-        "statistics": {
-            "toprooms_limit": 5
-        },
         "prohibited_usernames": ["ADMIN-", "MOD-", "TRIAL-", "OWNER-", "ADM-"],
         "user_info": ["mail", "account_created", "last_online", "motto", "look", "rank", "credits", "pixels", "points", "online"],
 		"user_settings": ["block_following", "block_friendrequests", "block_roominvites", "old_chat", "ignore_bots", "ignore_pets"],
@@ -35,8 +35,8 @@
 			"gender": "M",
 			"motto": "Welcome to HabboAPI",
 			"credits": 2000,
-			"pixels": 1000,
-			"points": 3,
+			"ducklets": 1000,
+			"diamonds": 3,
 			"home_room": 1
 		}
 	}

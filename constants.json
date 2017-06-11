@@ -1,0 +1,26 @@
+{
+    "constants":
+    {
+        "api": "http://localhost/api",
+        "site_name": "HabboAPI",
+        "site_link": "http://localhost",
+		"site_images": {
+			"images": "http://localhost/assets/images",
+			"badges": "http://localhost/assets/c_images/album1584",
+			"group_badges": "http://localhost/assets/c_images/Badgeparts/generated",
+			"avatars": "http://avatar-retro.com/habbo-imaging/avatarimage?figure="
+		},
+        "client": {
+			"client_host": "localhost",
+			"client_port": 1242,
+			"client_texts": "http://localhost/assets/gamedata/external_flash_texts.txt",
+			"client_vars": "http://localhost/assets/gamedata/external_variables.txt",
+			"client_figurelist": "http://localhost/assets/gamedata/figuredata.xml",
+			"client_furnidata": "http://localhost/assets/gamedata/furnidata.xml",
+			"client_productdata": "http://localhost/assets/gamedata/productdata.txt",
+			"client_promohabbos": "http://localhost/assets/gamedata/habblet/xml/promo_habbos.xml",
+			"client_base": "http://localhost/assets/gordon/game/",
+			"client_swf": "http://localhost/assets/gordon/PRODUCTION-201611291003-338511768/Habbo.swf"
+		}
+    }
+}

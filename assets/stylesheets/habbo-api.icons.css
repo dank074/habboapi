@@ -87,6 +87,12 @@ habbo-icon.key {
     background: transparent url("assets/images/icons/key.gif") no-repeat;
 }
 
+habbo-icon.active-room {
+    width: 32px;
+    height: 32px;
+    background: transparent url("assets/images/icons/active-room.gif") no-repeat;
+}
+
 habbo-room-icon, habbo-room-icon:before {
     display: block;
     height: 90px;

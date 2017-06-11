@@ -53,15 +53,22 @@
     },
     "navigation": {
         "view_profile": "My Profile",
-        "account_settings": "Account Settings"
+        "account_settings": "Account Settings",
+        "user_online": "User Online",
+        "users_online": "Users Online"
     },
     "community": {
-        "latest_user": "Latest User",
-        "latest_room": "Latest Room",
         "statistic_users": "Total Users",
         "statistic_rooms": "Total Rooms",
         "statistic_groups": "Total Groups",
-        "statistic_furniture": "Total Furniture"
+        "statistic_furniture": "Total Furniture",
+        "latest_user": "Latest User",
+        "latest_room": "Latest Room",
+        "active_rooms": "Active Rooms"
+    },
+    "staff": {
+        "about_staff": "Our Staff",
+        "about_desc": "The {{site_name}} staff team consists of multiple users that each have different roles in the hotel. Most of the management team has been aronud since the start, but we will recruit anyone who sticks out & shows dedication!"
     },
     "group": {
         "group_details": "Group Details",

@@ -49,6 +49,13 @@ class Community
             .then((room) =>
             {
                 community_info.latest_room = room;
+
+                return HotelStatistics.active_rooms();
+            })
+
+            .then((rooms) =>
+            {
+                community_info.active_rooms = rooms;
                 
                 return resolve(community_info);
             })

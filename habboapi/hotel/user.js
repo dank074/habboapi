@@ -1,6 +1,7 @@
 import bcrypt from 'bcrypt';
 import HotelUser from '../database/models/hotel/user/user';
 import HotelUserSettings from '../database/models/hotel/user/user_settings';
+import HotelUserCurrency from '../database/models/hotel/user/user_currency';
 
 class User
 {
@@ -118,8 +119,8 @@ class User
                     gender: __config.hotel.new_user.gender,
                     rank: __config.hotel.new_user.rank,
                     credits: __config.hotel.new_user.credits,
-                    pixels: __config.hotel.new_user.pixels,
-                    points: __config.hotel.new_user.points,
+                    pixels: __config.hotel.new_user.ducklets,
+                    points: __config.hotel.new_user.diamonds,
                     online: '0',
                     auth_ticket: '',
                     ip_register: user_ip,
@@ -140,8 +141,30 @@ class User
 
             .then((result) =>
             {
-                if(result == null) return reject(new Error('invalid_user'));
+                if(result == null) return reject(new Error('invalid_user_settings'));
 
+                return new HotelUserCurrency({
+                    user_id: result.toJSON().user_id,
+                    type: '0',
+                    amount: __config.hotel.new_user.ducklets
+                }).save(null, {method: 'insert'});
+            })
+
+            .then((result) =>
+            {
+                if(result == null) return reject(new Error('invalid_user_currency'));
+
+                return new HotelUserCurrency({
+                    user_id: result.toJSON().user_id,
+                    type: '5',
+                    amount: __config.hotel.new_user.diamonds
+                }).save(null, {method: 'insert'});
+            })
+
+            .then((result) =>
+            {
+                if(result == null) return reject(new Error('invalid_user_currency'));
+                
                 return resolve(null);
             })
 
@@ -229,7 +252,7 @@ class User
         {
             if(user_id == null || user_id == 0 || data == null || data.length == 0) return reject(new Error('invalid_paramemters'));
 
-            return new UserSettings({user_id: user_id}).fetch({
+            return new HotelUserSettings({user_id: user_id}).fetch({
                 columns: __config.hotel.user_settings
             })
 
