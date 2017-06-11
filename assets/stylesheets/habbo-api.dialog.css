@@ -12,6 +12,18 @@ md-toast .md-toast-content {
     color: #FFFFFF !important;
 }
 
+md-dialog.md-transition-in {
+    transition: 0;
+    -webkit-transition: 0;
+    animation: tada .5s;
+}
+
+md-dialog.md-transition-out {
+    transition: 0;
+    -webkit-transition: 0;
+    animation: fadeOut .5s;
+}
+
 md-dialog {
     border-radius: 0 !important;
     width: 350px;

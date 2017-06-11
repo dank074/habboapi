@@ -32,12 +32,7 @@
 }
 
 [ui-view].ng-enter {
-    transition: .5s;
-    opacity: 0;
-}
-
-[ui-view].ng-enter-active {
-    opacity: 1;
+    animation: bounceIn .4s;
 }
 
 .app .main-content .client-container {

@@ -62,6 +62,8 @@ function Run(AppConstants, SessionService, StatisticsService, $localStorage, $st
         $rootScope.previous_params 	= prevParams;
         $rootScope.current_state 	= to;
 
+        if($rootScope.current_user == undefined || null) $stickyState.reset('client');
+
         $rootScope.go_back = () =>
         {
             return $state.go($rootScope.previous_state.name, $rootScope.previous_params);

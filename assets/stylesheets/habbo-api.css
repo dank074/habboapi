@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300');
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import url("angular-material.min.css");
+@import url("animate.css");
 @import url("habbo-api.cards.css");
 @import url("habbo-api.content.css");
 @import url("habbo-api.dialog.css");
