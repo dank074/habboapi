@@ -12,7 +12,7 @@ HabboAPI is a powerful open source content management system for Arcturus Emulat
 #### installation
 * [download](https://github.com/billsonnn/habboapi/archive/master.zip) the latest zip
 * create a new folder and extract the zip to it
-* Open `config.json` & `src/config/constants.js` and modify the keys to your desired settings.
+* Open `config.json` & `constants.js` and modify the keys to your desired settings.
 * open command prompt / terminal in root / sudo mode and navigate to the folder you extracted the zip to
 * run `npm install -g babel-cli@6.24.0 gulp@3.9.1` 
 * run `npm install`
