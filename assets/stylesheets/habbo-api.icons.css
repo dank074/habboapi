@@ -51,6 +51,12 @@ habbo-icon.conversation {
     background: transparent url("assets/images/icons/conversation.png") no-repeat;
 }
 
+habbo-icon.user {
+    width: 10px;
+    height: 16px;
+    background: transparent url("assets/images/icons/user.gif") no-repeat;
+}
+
 habbo-icon.users {
     width: 19px;
     height: 20px;
@@ -91,6 +97,24 @@ habbo-icon.active-room {
     width: 32px;
     height: 32px;
     background: transparent url("assets/images/icons/active-room.gif") no-repeat;
+}
+
+habbo-icon.trash {
+    width: 11px;
+    height: 13px;
+    background: transparent url("assets/images/icons/trash.gif") no-repeat;
+}
+
+habbo-icon.heart {
+    width: 15px;
+    height: 14px;
+    background: transparent url("assets/images/icons/heart.gif") no-repeat;
+}
+
+habbo-icon.groups {
+    width: 18px;
+    height: 18px;
+    background: transparent url("assets/images/icons/groups.gif") no-repeat;
 }
 
 habbo-room-icon, habbo-room-icon:before {

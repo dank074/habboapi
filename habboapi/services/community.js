@@ -50,6 +50,27 @@ class Community
             {
                 community_info.latest_room = room;
 
+                return HotelStatistics.random_users();
+            })
+
+            .then((users) =>
+            {
+                community_info.random_users = users;
+
+                return HotelStatistics.random_rooms();
+            })
+
+            .then((rooms) =>
+            {
+                community_info.random_rooms = rooms;
+
+                return HotelStatistics.random_groups();
+            })
+
+            .then((groups) =>
+            {
+                community_info.random_groups = groups;
+                
                 return HotelStatistics.active_rooms();
             })
 

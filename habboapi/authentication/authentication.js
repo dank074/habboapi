@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt';
 import Session from './session';
+import User from '../hotel/user';
 import HotelUser from '../database/models/hotel/user/user';
 import ApiLoginLog from '../database/models/api/login_log';
 
@@ -12,8 +13,12 @@ class Authentication
             if(user_name == null || user_pass == null || user_ip == null || user_agent == null) return reject(new Error('invalid_parameters'));
 
             return new HotelUser({username: user_name}).fetch({
+                 withRelated: [
+                    'bans'
+                ],
                 columns: ['id', 'username', 'password', 'auth_ticket', 'ip_current']
             })
+            
 
             .then((result) =>
             {
@@ -32,6 +37,8 @@ class Authentication
                 {
                     return reject(new Error('invalid_login'));
                 });
+
+                if(user_info.bans.length > 0) return reject(new Error('user_banned'));
 
                 return Session.create_session(user_info.id, user_info.username, user_ip, user_agent)
                 

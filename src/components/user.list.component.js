@@ -1,4 +1,4 @@
-class ProfileBadgesController
+class UserListController
 {
     constructor($mdDialog, $scope)
     {
@@ -10,7 +10,7 @@ class ProfileBadgesController
         this._$scope.show_all = (event) =>
         {
             $mdDialog.show({
-                contentElement: '#badge-dialog',
+                contentElement: '#userlist-dialog',
                 parent: angular.element(document.body),
                 targetEvent: event,
                 clickOutsideToClose: true
@@ -24,13 +24,13 @@ class ProfileBadgesController
     }
 }
 
-let ProfileBadgesComponent = {
+let UserListComponent = {
     bindings: {
-        username: '=',
-        badges: '='
+        header: '=',
+        userlist: '='
     },
-    controller: ProfileBadgesController,
-    templateUrl: 'views/profile.badges.html'
+    controller: UserListController,
+    templateUrl: 'views/components/user.list.html'
 };
 
-export default ProfileBadgesComponent;
+export default UserListComponent;

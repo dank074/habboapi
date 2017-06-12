@@ -1,6 +1,8 @@
 import Adapter from '../../../adapter';
 import HotelUserAchievements from './user_achievements';
 import HotelUserBadges from './user_badges';
+import HotelUserBan from './user_ban';
+import HotelUserCurrency from './user_currency';
 import HotelUserSettings from './user_settings';
 import HotelFriends from '../messenger/messenger_friendships';
 import HotelRoom from '../room/room';
@@ -28,6 +30,16 @@ class HotelUser extends Adapter.Model
 	badges()
 	{
 		return this.hasMany('HotelUserBadges', 'user_id', 'id');
+	}
+
+	bans()
+	{
+		return this.hasMany('HotelUserBan', 'user_id', 'id');
+	}
+
+	currency()
+	{
+		return this.hasMany('HotelUserCurrency', 'user_id', 'id');
 	}
 
 	settings()

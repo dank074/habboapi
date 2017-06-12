@@ -1,7 +1,7 @@
 <md-card class="no-select">
     <md-toolbar>
         <div class="md-toolbar-tools center">
-			<habbo-icon class="navigator space-right"></habbo-icon><h2 ng-bind="$ctrl.title"></h2>
+			<habbo-icon class="navigator space-right"></habbo-icon><h2 ng-bind="$ctrl.header"></h2>
 		</div>
     </md-toolbar>
     <md-card-content class="no-padding">
@@ -26,7 +26,7 @@
                     <th translate="room.room_users"></th>
                     <td>{{$ctrl.roominfo.users}} / {{$ctrl.roominfo.users_max}}</td>
                 </tr>
-                <tr>
+                <tr ng-if="$root.current_user.login_status && $root.current_user.user_info.online == 1">
                     <th translate="room.enter_room"></th>
                     <td><habbo-icon class="enter-room" ng-click="enter_room($ctrl.roominfo.id);"></habbo-icon></td>
                 </tr>

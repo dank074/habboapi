@@ -1,4 +1,4 @@
-class ProfileGroupsController
+class ProfileRoomsController
 {
     constructor($mdDialog, $scope)
     {
@@ -10,7 +10,7 @@ class ProfileGroupsController
         this._$scope.show_all = (event) =>
         {
             $mdDialog.show({
-                contentElement: '#groups-dialog',
+                contentElement: '#rooms-dialog',
                 parent: angular.element(document.body),
                 targetEvent: event,
                 clickOutsideToClose: true
@@ -24,13 +24,13 @@ class ProfileGroupsController
     }
 }
 
-let ProfileGroupsComponent = {
+let ProfileRoomsComponent = {
     bindings: {
         username: '=',
-        groups: '='
+        rooms: '='
     },
-    controller: ProfileGroupsController,
-    templateUrl: 'views/profile.groups.html'
+    controller: ProfileRoomsController,
+    templateUrl: 'views/components/profile/profile.rooms.html'
 };
 
-export default ProfileGroupsComponent;
+export default ProfileRoomsComponent;

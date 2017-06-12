@@ -16,11 +16,11 @@ class RoomCardController
 
 let RoomCardComponent = {
     bindings: {
-        title: '=',
+        header: '=',
         roominfo: '='
     },
     controller: RoomCardController,
-    templateUrl: 'views/room.card.html'
+    templateUrl: 'views/components/room.card.html'
 };
 
 export default RoomCardComponent;

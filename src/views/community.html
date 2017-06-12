@@ -17,41 +17,28 @@
 	</md-card>
 </div>
 <div layout="row" layout-xs="column">
-	<div layout="column" flex="70" flex-xs="100">
+	<div layout="column" flex flex-xs="100">
 		<md-card class="no-select" ng-if="community_info.latest_user">
 			<md-toolbar>
 				<div class="md-toolbar-tools">
-					<habbo-icon class="users space-right"></habbo-icon><h2 translate="community.latest_user"></h2>
+					<habbo-icon class="user space-right"></habbo-icon><h2 translate="community.latest_user"></h2>
 				</div>
 			</md-toolbar>
 			<md-card-content class="no-padding">
 				<user-card class="no-margin" userinfo="community_info.latest_user" flex="100"></user-card>
 			</md-card-content>
 		</md-card>
-		<div layout="row" layout-xs="column">
-			<md-card class="no-select" flex ng-if="community_info.active_rooms.length > 0">
-				<md-toolbar>
-					<div class="md-toolbar-tools center">
-						<habbo-icon class="active-room space-right"></habbo-icon><h2 translate="community.active_rooms"></h2>
-					</div>
-				</md-toolbar>
-				<md-card-content class="no-padding center">
-					<md-list class="rooms-list" flex>
-						<md-list-item class="md-2-line" ng-repeat="room in community_info.active_rooms" ui-sref="room({id: room.id})">
-							<habbo-room-icon class="room-icon no-select">
-								<div class="room-icon"></div>
-							</habbo-room-icon>
-							<div class="md-list-item-text">
-								<h3 ng-bind="room.name"></h3>
-								<p ng-if="room.description" ng-bind="room.description"></p>
-							</div>
-						</md-list-item>
-					</md-list>
-				</md-card-content>
-			</md-card>
+		<div layout="row" layout-xs="column" ng-if="community_info.random_users.length > 0 || community_info.active_rooms.length > 0">
+			<div layout="column" flex ng-if="community_info.random_users.length > 0">
+				<user-list header="'community.random_users' | translate" userlist="community_info.random_users"></user-list>
+			</div>
+			<div layout="column" flex ng-if="community_info.random_groups.length > 0">
+				<group-list header="'community.random_groups' | translate" grouplist="community_info.random_groups"></group-list>
+			</div>
 		</div>
 	</div>
-	<div layout="column" flex="30" flex-xs="100" ng-if="community_info.latest_room">
-		<room-card title="'community.latest_room' | translate" roominfo="community_info.latest_room"></room-card>
+	<div layout="column" flex="30" flex-xs="100">
+		<room-card header="'community.latest_room' | translate" roominfo="community_info.latest_room"></room-card>
+		<room-list header="'community.active_rooms' | translate" roomlist="community_info.active_rooms"></room-list>
 	</div>
 </div>

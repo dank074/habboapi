@@ -5,6 +5,7 @@ import session from 'express-session';
 import glob from 'glob';
 import MainRouter from './router';
 import ApiPassport from './api-passport';
+import Authentication from '../authentication/authentication';
 
 class HttpServer
 {
@@ -19,8 +20,8 @@ class HttpServer
         app.use(passport.session());
 
         app.use(express.static(__base + '/dist'));
-        app.use('/assets', express.static(__base + '/assets'));
 
+        app.use('/assets', express.static(__base + '/assets'));
         app.use('/api', new MainRouter);
 
         app.get('/*', (req, res, next) =>

@@ -1,14 +1,10 @@
 .app .main-content {
     position: absolute;
     width: 100%;
-    height: calc(100% - 210px);
-    margin-top: 210px;
+    height: calc(100% - 218px);
+    margin-top: 218px;
     overflow-x: hidden;
     overflow-y: scroll;
-}
-
-.app .main-content .content-container .housekeeping-content {
-    padding-top: 10px;
 }
 
 .app.show-client .main-content {
@@ -17,8 +13,8 @@
 }
 
 .app .main-content.show-hkmenu {
-    height: calc(100% - 260px);
-    margin-top: 260px;
+    height: calc(100% - 269px);
+    margin-top: 269px;
 }
 
 .app .main-content .content-container {
@@ -32,7 +28,7 @@
 }
 
 [ui-view].ng-enter {
-    animation: bounceIn .4s;
+    animation: bounceIn .6s;
 }
 
 .app .main-content .client-container {

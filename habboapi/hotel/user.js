@@ -1,7 +1,8 @@
 import bcrypt from 'bcrypt';
 import HotelUser from '../database/models/hotel/user/user';
-import HotelUserSettings from '../database/models/hotel/user/user_settings';
+import HotelUserBan from '../database/models/hotel/user/user_ban';
 import HotelUserCurrency from '../database/models/hotel/user/user_currency';
+import HotelUserSettings from '../database/models/hotel/user/user_settings';
 
 class User
 {
@@ -58,6 +59,34 @@ class User
         });
     }
 
+    static user_list(page)
+    {
+        return new Promise((resolve, reject) =>
+        {
+            if(page == null) page = 1;
+
+            return new HotelUser().fetchPage({
+                pageSize: 15,
+                page: page,
+                columns: ['id', 'username']
+            })
+
+            .then((results) =>
+            {
+                if(results == null) return reject(new Error('no_users'));
+
+                console.log(results.toJSON());
+
+                return resolve(results.toJSON());
+            })
+
+            .catch((err) =>
+            {
+                return reject(err);
+            });
+        });
+    }
+
     static user_info(user_id)
     {
         return new Promise((resolve, reject) =>
@@ -67,6 +96,7 @@ class User
             return new HotelUser({id: user_id}).fetch({
                 withRelated: [
                     'last_login',
+                    'currency',
                     {'settings': (qb) => {
                         qb.column(["id", "user_id"].concat(__config.hotel.user_settings));
                     }}
@@ -78,7 +108,14 @@ class User
             {
                 if(result == null) return reject(new Error('invalid_user'));
 
-                return resolve(result.toJSON());
+                let user_info = result.toJSON();
+
+                user_info.duckets   = user_info.currency[0].amount;
+                user_info.diamonds  = user_info.currency[1].amount;
+
+                delete user_info.currency;
+
+                return resolve(user_info);
             })
 
             .catch((err) =>
@@ -119,7 +156,7 @@ class User
                     gender: __config.hotel.new_user.gender,
                     rank: __config.hotel.new_user.rank,
                     credits: __config.hotel.new_user.credits,
-                    pixels: __config.hotel.new_user.ducklets,
+                    pixels: __config.hotel.new_user.duckets,
                     points: __config.hotel.new_user.diamonds,
                     online: '0',
                     auth_ticket: '',
@@ -146,7 +183,7 @@ class User
                 return new HotelUserCurrency({
                     user_id: result.toJSON().user_id,
                     type: '0',
-                    amount: __config.hotel.new_user.ducklets
+                    amount: __config.hotel.new_user.duckets
                 }).save(null, {method: 'insert'});
             })
 
@@ -164,7 +201,7 @@ class User
             .then((result) =>
             {
                 if(result == null) return reject(new Error('invalid_user_currency'));
-                
+
                 return resolve(null);
             })
 

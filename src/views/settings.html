@@ -3,7 +3,7 @@
         <md-card class="no-select">
 			<md-toolbar>
 				<div class="md-toolbar-tools center">
-					<habbo-icon class="users space-right"></habbo-icon><h2 ng-bind="$root.current_user.user_info.username"></h2>
+					<habbo-icon class="user space-right"></habbo-icon><h2 ng-bind="$root.current_user.user_info.username"></h2>
 				</div>
 			</md-toolbar>
 			<md-card-content class="no-padding hide-overflow">
@@ -13,28 +13,28 @@
 				<table class="table table-striped">
 					<tbody>
 						<tr>
-							<th translate="settings.user_info.created"></th>
+							<th translate="settings.user_created"></th>
 							<td ng-bind="$root.current_user.user_info.account_created * 1000 | date:'MMM d, yyyy'"></td>
 						</tr>
 						<tr>
-							<th translate="settings.user_info.rank"></th>
+							<th translate="settings.user_rank"></th>
 							<td ng-bind="$root.current_user.user_permissions.rank_name"></td>
 						</tr>
                         <tr>
-							<th translate="settings.user_info.email"></th>
+							<th translate="settings.user_email"></th>
 							<td ng-bind="$root.current_user.user_info.mail"></td>
 						</tr>
 						<tr>
-							<th translate="settings.user_info.credits"></th>
+							<th translate="settings.user_credits"></th>
 							<td ng-bind="$root.current_user.user_info.credits"></td>
 						</tr>
 						<tr>
-							<th translate="settings.user_info.pixels"></th>
-							<td ng-bind="$root.current_user.user_info.pixels"></td>
+							<th translate="settings.user_duckets"></th>
+							<td ng-bind="$root.current_user.user_info.duckets"></td>
 						</tr>
 						<tr>
-							<th translate="settings.user_info.diamonds"></th>
-							<td ng-bind="$root.current_user.user_info.points"></td>
+							<th translate="settings.user_diamonds"></th>
+							<td ng-bind="$root.current_user.user_info.diamonds"></td>
 						</tr>
 					</tbody>
 				</table>
@@ -95,33 +95,33 @@
 							</form>
 						</md-content>
 					</md-tab>
-					<md-tab label="{{'settings.client.header' | translate}}">
+					<md-tab label="{{'settings.client' | translate}}">
 						<md-content class="md-padding">
 							<div ng-if="$root.current_user.user_info.online == 1">You must be offline!</div>
 							<form name="client_form" ng-submit="update_client()" ng-hide="$root.current_user.user_info.online == 1" novalidate>
 								<md-list>
 									<md-list-item>
-										<p translate="settings.client.block_following"></p>
+										<p translate="settings.block_following"></p>
 										<md-switch class="md-secondary" name="block_following" ng-model="$root.current_user.user_info.settings.block_following" ng-change="update_client()"></md-switch>
 									</md-list-item>
 									<md-list-item>
-										<p translate="settings.client.block_friend_requests"></p>
+										<p translate="settings.block_friend_requests"></p>
 										<md-switch class="md-secondary" name="block_friendrequests" ng-model="$root.current_user.user_info.settings.block_friendrequests" ng-change="update_client()"></md-switch>
 									</md-list-item>
 									<md-list-item>
-										<p translate="settings.client.block_room_invites"></p>
+										<p translate="settings.block_room_invites"></p>
 										<md-switch class="md-secondary" name="block_roominvites" ng-model="$root.current_user.user_info.settings.block_roominvites" ng-change="update_client()"></md-switch>
 									</md-list-item>
 									<md-list-item>
-										<p translate="settings.client.old_chat"></p>
+										<p translate="settings.old_chat"></p>
 										<md-switch class="md-secondary" name="old_chat" ng-model="$root.current_user.user_info.settings.old_chat" ng-change="update_client()"></md-switch>
 									</md-list-item>
 									<md-list-item>
-										<p translate="settings.client.ignore_bots"></p>
+										<p translate="settings.ignore_bots"></p>
 										<md-switch class="md-secondary" name="ignore_bots" ng-model="$root.current_user.user_info.settings.ignore_bots" ng-change="update_client()"></md-switch>
 									</md-list-item>
 									<md-list-item>
-										<p translate="settings.client.ignore_pets"></p>
+										<p translate="settings.ignore_pets"></p>
 										<md-switch class="md-secondary" name="ignore_pets" ng-model="$root.current_user.user_info.settings.ignore_pets" ng-change="update_client()"></md-switch>
 									</md-list-item>
 								</md-list>

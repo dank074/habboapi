@@ -1,4 +1,5 @@
 import bcrypt from 'bcrypt';
+import Adapter from '../database/adapter';
 import HotelUser from '../database/models/hotel/user/user';
 import HotelRoom from '../database/models/hotel/room/room';
 import HotelGroup from '../database/models/hotel/group/group';
@@ -78,6 +79,60 @@ class Statistics
                 return reject(err);
             });
         });
+    }
+
+    static random_users()
+    {
+        return new Promise((resolve, reject) =>
+        {
+            return Adapter.knex.raw('SELECT `id`,`username`,`last_online`,`motto`,`look`,`online` FROM `users` ORDER BY RAND() LIMIT 5')
+
+            .then((result) =>
+            {
+                return resolve(result[0]);
+            })
+
+            .catch((err) =>
+            {
+                return reject(err);
+            });
+        })
+    }
+
+    static random_rooms()
+    {
+        return new Promise((resolve, reject) =>
+        {
+            return Adapter.knex.raw('SELECT `id`,`name`,`description` FROM `rooms` ORDER BY RAND() LIMIT 5')
+
+            .then((result) =>
+            {
+                return resolve(result[0]);
+            })
+
+            .catch((err) =>
+            {
+                return reject(err);
+            });
+        })
+    }
+
+    static random_groups()
+    {
+        return new Promise((resolve, reject) =>
+        {
+            return Adapter.knex.raw('SELECT `id`,`name`,`description`,`badge`,`date_created` FROM `guilds` ORDER BY RAND() LIMIT 5')
+
+            .then((result) =>
+            {
+                return resolve(result[0]);
+            })
+
+            .catch((err) =>
+            {
+                return reject(err);
+            });
+        })
     }
 
     static active_rooms()

@@ -1,7 +1,7 @@
 <md-card class="no-select">
     <md-toolbar>
         <div class="md-toolbar-tools center">
-            <habbo-icon class="users"></habbo-icon><h2 style="padding-left:7px;">{{'group.group_members' | translate}} <span class="number" ng-if="$ctrl.members.length > 0" ng-bind="$ctrl.members.length"></span></h2>
+            <habbo-icon class="users space-right"></habbo-icon><h2>{{'group.group_members' | translate}} <span class="number" ng-if="$ctrl.members.length > 0" ng-bind="$ctrl.members.length"></span></h2>
 			<span flex></span>
 			<md-button class="md-icon-button" ng-if="$ctrl.members.length > 0" ng-click="show_all()"><md-icon>view_list</md-icon></md-button>
 		</div>

@@ -27,7 +27,7 @@
     "staff_page_ranks": [7, 6, 5],
     "hotel": {
         "prohibited_usernames": ["ADMIN-", "MOD-", "TRIAL-", "OWNER-", "ADM-"],
-        "user_info": ["mail", "account_created", "last_online", "motto", "look", "rank", "credits", "pixels", "points", "online"],
+        "user_info": ["mail", "account_created", "last_online", "motto", "look", "rank", "credits", "online"],
 		"user_settings": ["block_following", "block_friendrequests", "block_roominvites", "old_chat", "ignore_bots", "ignore_pets"],
 		"new_user": {
 			"rank": 1,
@@ -35,7 +35,7 @@
 			"gender": "M",
 			"motto": "Welcome to HabboAPI",
 			"credits": 2000,
-			"ducklets": 1000,
+			"duckets": 1000,
 			"diamonds": 3,
 			"home_room": 1
 		}

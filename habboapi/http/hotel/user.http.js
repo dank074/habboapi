@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import HttpMiddleware from '../middleware';
 import User from '../../hotel/user';
 
 class UserHttp
@@ -10,9 +11,9 @@ class UserHttp
         router.post('/validate_username', this.validate_username);
         router.post('/validate_email', this.validate_email);
         router.post('/add_user', this.add_user);
-        router.post('/update_password', this.update_password);
-        router.post('/update_email', this.update_email);
-        router.post('/update_settings', this.update_settings);
+        router.post('/update_password', HttpMiddleware.is_authenticated, this.update_password);
+        router.post('/update_email', HttpMiddleware.is_authenticated, this.update_email);
+        router.post('/update_settings', HttpMiddleware.is_authenticated,this.update_settings);
 
         return router;
     }

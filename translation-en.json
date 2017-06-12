@@ -64,6 +64,8 @@
         "statistic_furniture": "Total Furniture",
         "latest_user": "Latest User",
         "latest_room": "Latest Room",
+        "random_users": "Random Users",
+        "random_groups": "Random Groups",
         "active_rooms": "Active Rooms"
     },
     "staff": {
@@ -94,25 +96,21 @@
         "enter_room": "Enter Room"
     },
     "settings": {
+        "user_created": "Created",
+        "user_rank": "Rank",
+        "user_email": "Email",
+        "user_credits": "Credits",
+        "user_duckets": "Duckets",
+        "user_diamonds": "Diamonds",
         "password": "Password",
         "email": "Email",
-        "client": {
-            "header": "Client",
-            "block_following": "Block Following",
-            "block_friend_requests": "Block Friend Requests",
-            "block_room_invites": "Block Room Invites",
-            "old_chat": "Old Chat",
-            "ignore_bots": "Ignore Bots",
-            "ignore_pets": "Ignore Pets"
-        },
-        "user_info": {
-            "created": "Created",
-            "rank": "Rank",
-            "email": "Email",
-            "credits": "Credits",
-            "pixels": "Pixels",
-            "diamonds": "Diamonds"
-        }
+        "client": "Client",
+        "block_following": "Block Following",
+        "block_friend_requests": "Block Friend Requests",
+        "block_room_invites": "Block Room Invites",
+        "old_chat": "Old Chat",
+        "ignore_bots": "Ignore Bots",
+        "ignore_pets": "Ignore Pets"
     },
     "client": {
         "revolving": "We all live in igloos./For science, you monster/Loading funny message... please wait./Would you like fries with that?/Follow the yellow duck./Time is just an illusion./Are we there yet?!/I like your t-shirt./Look left. Look right. Blink twice. Ta da!/It's not you, it's me./Shhh! I'm trying to think here./Loading pixel universe."
@@ -134,5 +132,10 @@
     },
     "forums": {
         "forum_threads": "Threads"
+    },
+    "housekeeping": {
+        "users": {
+            "user_list": "User List"
+        }
     }
 }
