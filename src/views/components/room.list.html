@@ -8,13 +8,14 @@
     </md-toolbar>
     <md-card-content class="no-padding">
         <md-list class="room-list" flex>
-            <md-list-item class="md-2-line" ng-repeat="room in $ctrl.roomlist" ui-sref="room({id: room.id})">
+            <md-list-item class="md-2-line" ng-repeat="room in $ctrl.roomlist" ui-sref="room({id: (room.id == undefined || null) ? room.room.id : room.id})">
                 <habbo-room-icon class="room-icon no-select">
                     <div class="room-icon"></div>
                 </habbo-room-icon>
                 <div class="md-list-item-text">
-                    <h3 ng-bind="room.name"></h3>
-                    <p ng-if="room.description" ng-bind="room.description"></p>
+                    <span class="room-name" ng-bind="(room.id == undefined || null) ? room.room.name : room.name"></span><br />
+                    <span class="room-description" ng-if="(room.id == undefined || null) ? room.room.description : room.description"><habbo-icon class="motto-icon"></habbo-icon>{{(room.id == undefined || null) ? room.room.description : room.description}}</span><br />
+                    <span class="room-visited" ng-if="room.timestamp"><habbo-icon class="clock-icon"></habbo-icon>{{'room.room_visited' | translate}}: {{room.timestamp * 1000 | date:'MMM d, yyyy'}}</span>
                 </div>
             </md-list-item>
         </md-list>
@@ -33,13 +34,14 @@
             <md-dialog-content>
                 <div class="md-dialog-content">
                     <md-list class="room-list" flex>
-                        <md-list-item class="md-2-line" ng-repeat="room in $ctrl.roomlist" ui-sref="room({id: room.id})">
+                        <md-list-item class="md-2-line" ng-repeat="room in $ctrl.roomlist" ui-sref="room({id: (room.id == undefined || null) ? room.room.id : room.id})">
                             <habbo-room-icon class="room-icon no-select">
                                 <div class="room-icon"></div>
                             </habbo-room-icon>
                             <div class="md-list-item-text">
-                                <span class="room-name" ng-bind="room.name"></span><br />
-                                <span class="room-description" ng-if="room.description"><habbo-icon class="motto-icon"></habbo-icon>{{room.description}}</span>
+                               <span class="room-name" ng-bind="(room.id == undefined || null) ? room.room.name : room.name"></span><br />
+                               <span class="room-description" ng-if="(room.id == undefined || null) ? room.room.description : room.description"><habbo-icon class="motto-icon"></habbo-icon>{{(room.id == undefined || null) ? room.room.description : room.description}}</span><br />
+                               <span class="room-visited" ng-if="room.timestamp"><habbo-icon class="clock-icon"></habbo-icon>{{'room.room_visited' | translate}}: {{room.timestamp * 1000 | date:'MMM d, yyyy'}}</span>
                             </div>
                         </md-list-item>
                     </md-list>

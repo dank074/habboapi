@@ -45,10 +45,12 @@ md-list md-list-item span.thread-owner {
 md-list md-list-item span.user-motto,
 md-list md-list-item span.last-login,
 md-list md-list-item span.room-description,
+md-list md-list-item span.room-visited,
 md-list md-list-item span.group-description,
 md-list md-list-item span.thread-message,
 md-list md-list-item span.thread-time,
-md-list md-list-item span.member-since {
+md-list md-list-item span.member-since,
+md-list md-list-item span.group-created {
     padding: 0;
     text-align: left;
     overflow: hidden;

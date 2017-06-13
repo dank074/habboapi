@@ -63,6 +63,9 @@
         "user_online": "User Online",
         "users_online": "Users Online"
     },
+    "me": {
+        "room_visits": "Room Visits"
+    },
     "community": {
         "statistic_users": "Total Users",
         "statistic_rooms": "Total Rooms",
@@ -99,6 +102,7 @@
         "room_users": "Users",
         "room_score": "Score",
         "room_details": "Room Details",
+        "room_visited": "Room Visited",
         "enter_room": "Enter Room"
     },
     "settings": {

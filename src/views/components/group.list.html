@@ -17,6 +17,7 @@
                 <div class="md-list-item-text" style="padding-left:15px;">
                     <span class="group-name" ng-bind="group.name"></span><br />
                     <span class="group-description" ng-if="group.description"><habbo-icon class="motto-icon"></habbo-icon>{{group.description}}</span><br />
+                    <span class="group-created" ng-if="group.date_created"><habbo-icon class="clock-icon"></habbo-icon>{{'group.group_created' | translate}}: {{group.date_created * 1000 | date:'MMM d, yyyy'}}</span>
                 </div>
             </md-list-item>
         </md-list>
@@ -35,7 +36,7 @@
             <md-dialog-content>
                 <div class="md-dialog-content">
                     <md-list class="group-list" flex>
-                        <md-list-item class="md-2-line" ng-repeat="group in $ctrl.grouplist" ui-sref="group({id: group.id})">
+                        <md-list-item class="md-3-line" ng-repeat="group in $ctrl.grouplist" ui-sref="group({id: group.id})">
                             <div class="badge-icon" style="padding:7px 0;">
                                 <div class="badge-icon-aligner">
                                     <img ng-src="{{$root.app_config.site_images.group_badges}}/{{group.badge}}.png" />
@@ -44,6 +45,7 @@
                             <div class="md-list-item-text" style="padding-left:15px;">
                                 <span class="group-name" ng-bind="group.name"></span><br />
                                 <span class="group-description" ng-if="group.description"><habbo-icon class="motto-icon"></habbo-icon>{{group.description}}</span><br />
+                                <span class="group-created" ng-if="group.date_created"><habbo-icon class="clock-icon"></habbo-icon>{{'group.group_created' | translate}}: {{group.date_created * 1000 | date:'MMM d, yyyy'}}</span>
                             </div>
                         </md-list-item>
                     </md-list>

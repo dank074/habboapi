@@ -6,6 +6,7 @@ import HotelUserCurrency from './user_currency';
 import HotelUserSettings from './user_settings';
 import HotelFriends from '../messenger/messenger_friendships';
 import HotelRoom from '../room/room';
+import HotelRoomEnterLog from '../room/room_enter_log';
 import HotelGroup from '../group/group';
 import HotelGroupMemberships from '../group/group_members';
 import ApiLoginLog from '../../api/login_log';
@@ -55,6 +56,11 @@ class HotelUser extends Adapter.Model
 	rooms()
 	{
 		return this.hasMany('HotelRoom', 'owner_id', 'id');
+	}
+
+	room_entries()
+	{
+		return this.hasMany('HotelRoomEnterLog', 'user_id', 'id');
 	}
 
 	groups()

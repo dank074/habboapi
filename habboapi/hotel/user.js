@@ -97,6 +97,12 @@ class User
                 withRelated: [
                     'last_login',
                     'currency',
+                    {'room_entries': (qb) => {
+                        qb.orderBy('timestamp', 'DESC').limit(5);
+                    }},
+                    {'room_entries.room': (qb) => {
+                        qb.column(["id", "name", "description"]);
+                    }},
                     {'settings': (qb) => {
                         qb.column(["id", "user_id"].concat(__config.hotel.user_settings));
                     }}
