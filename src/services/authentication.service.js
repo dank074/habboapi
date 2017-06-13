@@ -25,7 +25,7 @@ class AuthenticationService
 
         .catch((res) =>
         {
-            return this._$q.reject((res.data.error == undefined || null) ? 'invalid_login' : res.data.error);
+            return this._$q.reject((res.data == undefined || null) ? 'invalid_login' : res.data);
         });
     }
 }

@@ -26,7 +26,7 @@
         "close": "Close",
         "invalid_login": "That login was invalid, please try again.",
         "something_wrong": "Something went wrong, please try again.",
-        "disconnected": "Your client has been disconnected.",
+        "disconnected": "Your client has been disconnected! Reloading...",
         "logout": "Are you sure you would like to logout?",
         "password_updated": "Your password has been updated!",
         "email_updated": "Your email address has been updated!",
@@ -50,6 +50,12 @@
         "register_description": "create your very own {{site_name}} character!",
         "register_info": "",
         "register_card_header": "Register"
+    },
+    "banned": {
+        "banned_title": "Sorry {{user_name}},",
+        "banned_description": "You have been banned from {{site_name}} Hotel!",
+        "banned_reason": "Ban Reason",
+        "banned_expires": "Ban Expires"
     },
     "navigation": {
         "view_profile": "My Profile",

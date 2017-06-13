@@ -19,6 +19,17 @@
 			"guest_only": true
 		},
 
+		"banned":
+		{
+			"name": "banned",
+			"url": "/banned",
+			"templateUrl": "views/banned.html",
+			"controller": "BannedController",
+			"params": {
+				"ban": null
+			}
+		},
+
 		"me":
 		{
 			"name": "me",

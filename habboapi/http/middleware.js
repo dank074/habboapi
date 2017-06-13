@@ -1,5 +1,6 @@
 import Session from '../authentication/session';
 import Permission from '../authentication/permission';
+import User from '../hotel/user';
 
 class HttpMiddleware
 {
@@ -11,7 +12,20 @@ class HttpMiddleware
         
         .then((session) =>
         {
-            return next();
+            return User.check_ban(req.user.user_id)
+            
+            .then((ban) =>
+            {
+                Session.destroy_session(req.user.user_id);
+                
+                req.logout();
+                return res.status(401).send({errors: true, error: 'user_banned', ban: ban}).end();
+            })
+            
+            .catch((err) =>
+            {
+                return next();
+            });
         })
 
         .catch((err) =>

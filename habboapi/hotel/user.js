@@ -110,8 +110,16 @@ class User
 
                 let user_info = result.toJSON();
 
-                user_info.duckets   = user_info.currency[0].amount;
-                user_info.diamonds  = user_info.currency[1].amount;
+                if(user_info.currency.length > 0)
+                {
+                    user_info.duckets   = (user_info.currency[0].amount == undefined || null) ? 0 : user_info.currency[0].amount;
+                    user_info.diamonds  = (user_info.currency[1].amount == undefined || null) ? 0 : user_info.currency[1].amount;
+                }
+                else
+                {
+                    user_info.duckets   = 0;
+                    user_info.diamonds  = 0;
+                }
 
                 delete user_info.currency;
 
@@ -317,6 +325,38 @@ class User
                 return reject(err);
             })
         })
+    }
+
+    static check_ban(user_id)
+    {
+        return new Promise((resolve, reject) =>
+        {
+            if(user_id == null || user_id == 0) return reject(new Error('invalid_paramemters'));
+
+            return new HotelUser({id: user_id}).fetch({
+                withRelated: [
+                    'bans'
+                ],
+                columns: ['id', 'username']
+            })
+
+            .then((result) =>
+            {
+                let ban = result.toJSON();
+
+                if(ban.bans.length > 0)
+                {
+                    if(ban.bans[0].ban_expire * 1000 >= new Date().getTime()) return resolve(ban);
+                }
+
+                return reject(null);
+            })
+
+            .catch((err) =>
+            {
+                return reject(null);
+            })
+        });
     }
 }
 

@@ -43,6 +43,15 @@ function Run(AppConstants, SessionService, StatisticsService, $localStorage, $st
         .catch((err) =>
         {
             $rootScope.current_user = null;
+
+            if(err.data != undefined || null)
+            {
+                if(err.data.error == 'user_banned')
+                {
+                    event.preventDefault();
+                    return $state.go('banned', {ban: err.data.ban});
+                }
+            }
             
             if(next.login_required == true)
             {

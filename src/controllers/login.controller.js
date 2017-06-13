@@ -37,6 +37,8 @@ class LoginController
             this._$scope.login_details.user_name = null;
             this._$scope.login_details.user_pass = null;
 
+            if(err.error == 'user_banned') return this._$state.go('banned', {ban: err.ban});
+
             return this._UtilityService.alert('dialogs.invalid_login');
         });
     }

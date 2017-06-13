@@ -1,3 +1,4 @@
+import BannedController from './banned.controller';
 import ClientController from './client.controller';
 import CommunityController from './community.controller';
 import GroupController from './group.controller';
@@ -11,6 +12,7 @@ import StaffController from './staff.controller';
 
 let controllersModule = angular.module('habboapi.controllers', []);
 
+controllersModule.controller('BannedController', BannedController);
 controllersModule.controller('ClientController', ClientController);
 controllersModule.controller('CommunityController', CommunityController);
 controllersModule.controller('GroupController', GroupController);

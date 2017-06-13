@@ -1,6 +1,6 @@
 class ClientController
 {
-    constructor(AppConstants, SessionService, $translate, $localStorage, $window, $stickyState, $mdDialog, $state, $rootScope, $scope)
+    constructor(AppConstants, SessionService, $translate, $localStorage, $window, $stickyState, $mdDialog, $mdToast, $state, $rootScope, $scope)
     {
         'ngInject';
 
@@ -11,6 +11,7 @@ class ClientController
         this._$window           = $window;
         this._$stickyState      = $stickyState;
         this._$mdDialog         = $mdDialog;
+        this._$mdToast          = $mdToast;
         this._$state            = $state;
         this._$rootScope        = $rootScope;
         this._$scope            = $scope;
@@ -110,17 +111,13 @@ class ClientController
             
             .then((text) =>
             {
-                return this._$mdDialog.show(
-                    this._$mdDialog.alert({
-                        clickOutsideToClose: false,
-                        title: text['dialogs.title'],
+                this._$mdToast.show(
+                    $mdToast.simple({
                         textContent: text['dialogs.disconnected'],
-                        ok: text['dialogs.ok_reload']
+                        hideDelay: 3000,
+                        position: 'top right'
                     }));
-            })
-
-            .then(() =>
-            {
+                
                 this._$stickyState.reset('client');
 
                 if(this._$state.includes('client')) return this._$state.reload();
