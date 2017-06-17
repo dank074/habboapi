@@ -66,6 +66,9 @@
     "me": {
         "room_visits": "Room Visits"
     },
+    "news": {
+        "news": "News"
+    },
     "community": {
         "statistic_users": "Total Users",
         "statistic_rooms": "Total Rooms",
@@ -74,6 +77,7 @@
         "latest_user": "Latest User",
         "latest_room": "Latest Room",
         "random_users": "Random Users",
+        "random_rooms": "Random Rooms",
         "random_groups": "Random Groups",
         "active_rooms": "Active Rooms"
     },

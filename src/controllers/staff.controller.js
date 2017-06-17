@@ -1,11 +1,10 @@
 class StaffController
 {
-    constructor(AppConstants, $state, $http, $q, $rootScope, $scope)
+    constructor(AppConstants, $http, $q, $rootScope, $scope)
     {
         'ngInject';
 
         this._AppConstants  = AppConstants;
-        this._$state        = $state;
         this._$http         = $http;
         this._$q            = $q;
         this._$rootScope    = $rootScope;
@@ -15,7 +14,7 @@ class StaffController
 
         .then((staff_users) =>
         {
-            return this._$scope.staff_users = staff_users;
+            return this._$scope.data = staff_users;
         })
 
         .catch((err) =>

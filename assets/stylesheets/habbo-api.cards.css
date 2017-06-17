@@ -54,6 +54,10 @@ md-card md-card-title.centered-title md-card-title-text {
     align-items: center;
 }
 
+md-card md-card-content.no-margin md-card {
+    margin: 0 !important;
+}
+
 md-card md-card-content {
     background-color: #FFFFFF;
 }

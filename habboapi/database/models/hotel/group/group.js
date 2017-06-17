@@ -26,6 +26,11 @@ class HotelGroup extends Adapter.Model
 		return this.hasMany('HotelGroupMembers', 'guild_id', 'id');
 	}
 
+	members_count()
+	{
+		return this.members.count();
+	}
+
 	room()
 	{
 		return this.hasOne('HotelRoom', 'id', 'room_id');

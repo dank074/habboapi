@@ -1,15 +1,17 @@
-import GroupListComponent from './group.list.component';
-import GroupMembersComponent from './group.members.component';
-import RoomCardComponent from './room.card.component';
-import RoomListComponent from './room.list.component';
-import UserListComponent from './user.list.component';
+import './groups';
+import './news';
+import './profiles';
+import './rooms';
+import './users';
 
-let componentsModule = angular.module('habboapi.components', []);
+const requires = [
+    'habboapi.components.groups',
+    'habboapi.components.news',
+    'habboapi.components.profiles',
+    'habboapi.components.rooms',
+    'habboapi.components.users'
+];
 
-componentsModule.component('groupList', GroupListComponent);
-componentsModule.component('groupMembers', GroupMembersComponent);
-componentsModule.component('roomCard', RoomCardComponent);
-componentsModule.component('roomList', RoomListComponent);
-componentsModule.component('userList', UserListComponent);
+let componentsModule = angular.module('habboapi.components', requires);
 
 export default componentsModule;

@@ -1,0 +1,21 @@
+<div layout="row" layout-xs="column" ng-if="group_info.forum == 1">
+	<md-card class="no-select" flex="100" flex-xs="100">
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<habbo-icon class="conversation"></habbo-icon><h2 translate="group.group_forums" style="padding-left:7px;"></h2>
+			</div>
+		</md-toolbar>
+		<md-card-content class="no-padding">
+			<md-list class="forum-list" flex>
+				<md-list-item class="md-3-line" ng-repeat="thread in group_info.forums" ng-if="group_info.forums.length > 0" ng-click="null">
+					<img class="pixel-image" ng-src="{{$root.app_config.site_images.avatars}}{{thread.owner.look}}&amp;action=std&amp;gesture=sml&amp;direction=2&amp;head_direction=2&amp;size=n&amp;headonly=1&amp;img_format=png" />
+					<div class="md-list-item-text">
+						<span class="thread-name" ng-bind="thread.subject"></span><span class="thread-owner" ui-sref="profile({id: thread.owner.id})">by <habbo-icon class="star-gold" ng-if="group_info.owner.id == thread.owner.id" style="padding-left:5px;"></habbo-icon><b>{{thread.owner.username}}</b></span><br />
+						<span class="thread-message"><habbo-icon class="motto-icon"></habbo-icon>{{thread.message}}</span>
+						<span class="thread-time"><habbo-icon class="clock-icon"></habbo-icon>{{thread.timestamp * 1000 | date:'MMM d, yyyy h:mm a'}}</span>
+					</div>
+				</md-list-item>
+			</md-list>
+        </md-card-content>
+	</md-card>
+</div>

@@ -1,4 +1,5 @@
 import AuthenticationService from './authentication.service';
+import NewsService from './news.service';
 import rCRONService from './rcron.service';
 import SessionService from './session.service';
 import StatisticsService from './statistics.service';
@@ -8,6 +9,7 @@ import UtilityService from './utility.service';
 let servicesModule = angular.module('habboapi.services', []);
 
 servicesModule.service('AuthenticationService', AuthenticationService);
+servicesModule.service('NewsService', NewsService);
 servicesModule.service('rCRONService', rCRONService);
 servicesModule.service('SessionService', SessionService);
 servicesModule.service('StatisticsService', StatisticsService);

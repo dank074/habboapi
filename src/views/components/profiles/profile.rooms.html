@@ -1,0 +1,50 @@
+<md-card class="no-select" style="height: 210px;">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <habbo-icon class="active-room space-right"></habbo-icon><h2>{{'profile.user_rooms' | translate}} <span class="number" ng-if="$ctrl.data.length > 0" ng-bind="$ctrl.data.length"></span></h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-if="$ctrl.data.length > 0" ng-click="show_all()"><md-icon>view_list</md-icon></md-button>
+        </div>
+    </md-toolbar>
+    <md-card-content class="no-padding center">
+        <div class="md-padding" ng-if="$ctrl.data.length == 0" translate="profile.no_rooms" translate-values="{user_name: $ctrl.username}"></div>
+		<ul class="vertical-list room-list no-margin" ng-if="$ctrl.data.length > 0">
+            <li ng-repeat="room in $ctrl.data | limitTo: 4">
+                <a ui-sref="room({id: room.id})">
+                    <habbo-room-icon class="room-icon no-select">
+                        <div class="room-icon"></div>
+                    </habbo-room-icon>
+                    <div class="room-name" ng-bind="room.name"></div>
+                </a>
+            </li>
+        </ul>
+    </md-card-content>
+</md-card>
+<div style="visibility:hidden;" ng-if="$ctrl.data.length > 0">
+    <div class="md-dialog-container" id="profileRooms-dialog">
+        <md-dialog class="no-select">
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <habbo-icon class="active-room space-right"></habbo-icon><h2>{{'profile.user_rooms' | translate}} <span class="number" ng-if="$ctrl.data.length > 0" ng-bind="$ctrl.data.length"></span></h2>
+                    <span flex></span>
+                    <md-button class="md-icon-button" ng-click="hide()"><md-icon>close</md-icon></md-button>
+                </div>
+            </md-toolbar>
+            <md-dialog-content>
+                <div class="md-dialog-content">
+                    <md-list flex>
+                        <md-list-item class="md-3-line" ng-repeat="room in $ctrl.data" ui-sref="room({id: room.id})">
+                            <habbo-room-icon class="room-icon no-select">
+                                <div class="room-icon"></div>
+                            </habbo-room-icon>
+                            <div class="md-list-item-text">
+                                <span class="room-name" ng-bind="room.name"></span><br />
+                                <span class="room-description" ng-if="room.description"><habbo-icon class="motto-icon"></habbo-icon>{{room.description}}<br /></span>
+                            </div>
+                        </md-list-item>
+                    </md-list>
+                </div>
+            </md-dialog-content>
+        </md-dialog>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<md-card class="no-select" flex ng-if="$ctrl.data.length > 0">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <habbo-icon class="users space-right"></habbo-icon><h2>{{$ctrl.header}} <span class="number" ng-if="$ctrl.data.length > 0" ng-bind="$ctrl.data.length"></span></h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-if="$ctrl.data.length > 0" ng-hide="$ctrl.type == 'disablePopup'" ng-click="show_all()"><md-icon>view_list</md-icon></md-button>
+        </div>
+    </md-toolbar>
+    <md-card-content class="no-padding">
+        <md-list flex>
+            <md-list-item class="md-3-line" ng-repeat="user in $ctrl.data" ui-sref="profile({username: user.username})">
+                <img class="pixel-image" ng-src="{{$root.app_config.site_images.avatars}}{{user.look}}&amp;action=std&amp;gesture=sml&amp;direction=2&amp;head_direction=2&amp;size=n&amp;headonly=1&amp;img_format=png" />
+                <div class="md-list-item-text">
+                    <span class="user-name" ng-bind="user.username" style="padding-right:3px;"></span><habbo-icon ng-class="{'online-icon': user.online == 1, 'offline-icon': user.online == 0}"></habbo-icon><br />
+                    <span class="user-motto" ng-if="user.motto"><habbo-icon class="motto-icon"></habbo-icon>{{user.motto}}<br /></span>
+                    <span class="last-login" ng-if="user.last_online"><habbo-icon class="clock-icon"></habbo-icon>{{user.last_online * 1000 | date:'MMM d, yyyy h:mm a'}}</span>
+                </div>
+            </md-list-item>
+        </md-list>
+    </md-card-content>
+</md-card>
+<div style="visibility:hidden;" ng-if="$ctrl.data.length > 0" ng-hide="$ctrl.type == 'disablePopup'">
+    <div class="md-dialog-container" id="{{$ctrl.type}}-dialog">
+        <md-dialog class="no-select">
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <habbo-icon class="users space-right"></habbo-icon><h2>{{$ctrl.header}} <span class="number" ng-if="$ctrl.data.length > 0" ng-bind="$ctrl.data.length"></span></h2>
+                    <span flex></span>
+                    <md-button class="md-icon-button" ng-click="hide()"><md-icon>close</md-icon></md-button>
+                </div>
+            </md-toolbar>
+            <md-dialog-content>
+                <div class="md-dialog-content">
+                    <md-list flex>
+                        <md-list-item class="md-3-line" ng-repeat="user in $ctrl.data" ui-sref="profile({username: user.username})">
+                            <img class="pixel-image" ng-src="{{$root.app_config.site_images.avatars}}{{user.look}}&amp;action=std&amp;gesture=sml&amp;direction=2&amp;head_direction=2&amp;size=n&amp;headonly=1&amp;img_format=png" />
+                            <div class="md-list-item-text">
+                                <span class="user-name" ng-bind="user.username" style="padding-right:3px;"></span><habbo-icon ng-class="{'online-icon': user.online == 1, 'offline-icon': user.online == 0}"></habbo-icon><br />
+                                <span class="user-motto" ng-if="user.motto"><habbo-icon class="motto-icon"></habbo-icon>{{user.motto}}<br /></span>
+                                <span class="last-login" ng-if="user.last_online"><habbo-icon class="clock-icon"></habbo-icon>{{user.last_online * 1000 | date:'MMM d, yyyy h:mm a'}}</span>
+                            </div>
+                        </md-list-item>
+                    </md-list>
+                </div>
+            </md-dialog-content>
+        </md-dialog>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+<md-card class="no-select" flex ng-if="$ctrl.data.length > 0">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <habbo-icon class="active-room space-right"></habbo-icon><h2>{{$ctrl.header}} <span class="number" ng-if="$ctrl.data.length > 0" ng-bind="$ctrl.data.length"></span></h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-if="$ctrl.data.length > 0" ng-hide="$ctrl.type == 'disablePopup'" ng-click="show_all()"><md-icon>view_list</md-icon></md-button>
+        </div>
+    </md-toolbar>
+    <md-card-content class="no-padding">
+        <md-list flex>
+            <md-list-item class="md-3-line" ng-repeat="room in $ctrl.data" ui-sref="room({id: (room.room == undefined || null) ? room.id : room.room.id})">
+                <habbo-room-icon class="room-icon no-select">
+                    <div class="room-icon"></div>
+                </habbo-room-icon>
+                <div class="md-list-item-text" ng-if="room.room == undefined || null">
+                    <span class="room-name" ng-bind="room.name"></span><br />
+                    <span class="room-description" ng-if="room.description"><habbo-icon class="motto-icon"></habbo-icon>{{room.description}}<br /></span>
+                </div>
+                <div class="md-list-item-text" ng-if="room.room.id">
+                    <span class="room-name" ng-bind="room.room.name"></span><br />
+                    <span class="room-description" ng-if="room.room.description"><habbo-icon class="motto-icon"></habbo-icon>{{room.room.description}}<br /></span>
+                    <span class="room-visited" ng-if="room.timestamp"><habbo-icon class="clock-icon"></habbo-icon>{{'room.room_visited' | translate}}: {{room.timestamp * 1000 | date:'MMM d, yyyy'}}</span>
+                </div>
+            </md-list-item>
+        </md-list>
+    </md-card-content>
+</md-card>
+<div style="visibility:hidden;" ng-if="$ctrl.data.length > 0" ng-hide="$ctrl.type == 'disablePopup'">
+    <div class="md-dialog-container" id="{{$ctrl.type}}-dialog">
+        <md-dialog class="no-select">
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <habbo-icon class="active-room space-right"></habbo-icon><h2>{{$ctrl.header}} <span class="number" ng-if="$ctrl.data.length > 0" ng-bind="$ctrl.data.length"></span></h2>
+                    <span flex></span>
+                    <md-button class="md-icon-button" ng-click="hide()"><md-icon>close</md-icon></md-button>
+                </div>
+            </md-toolbar>
+            <md-dialog-content>
+                <div class="md-dialog-content">
+                    <md-list flex>
+                        <md-list-item class="md-3-line" ng-repeat="room in $ctrl.data" ui-sref="room({id: (room.id == undefined || null) ? room.room.id : room.id})">
+                            <habbo-room-icon class="room-icon no-select">
+                                <div class="room-icon"></div>
+                            </habbo-room-icon>
+                            <div class="md-list-item-text">
+                                <span class="room-name" ng-bind="(room.id == undefined || null) ? room.room.name : room.name"></span><br />
+                                <span class="room-description" ng-if="(room.id == undefined || null) ? room.room.description : room.description"><habbo-icon class="motto-icon"></habbo-icon>{{(room.id == undefined || null) ? room.room.description : room.description}}<br /></span>
+                                <span class="room-visited" ng-if="room.timestamp"><habbo-icon class="clock-icon"></habbo-icon>{{'room.room_visited' | translate}}: {{room.timestamp * 1000 | date:'MMM d, yyyy'}}</span>
+                            </div>
+                        </md-list-item>
+                    </md-list>
+                </div>
+            </md-dialog-content>
+        </md-dialog>
+    </div>
+</div>

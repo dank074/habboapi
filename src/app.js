@@ -14,7 +14,6 @@ import Config from './config/config';
 import Run from './config/run';
 
 import './components';
-import './components/profile';
 import './controllers';
 import './controllers/housekeeping';
 import './directives';
@@ -35,7 +34,6 @@ const requires = [
     'ngStorage',
     'app.templates',
     'habboapi.components',
-    'habboapi.components.profile',
     'habboapi.controllers',
     'habboapi.controllers.housekeeping',
     'habboapi.directives',

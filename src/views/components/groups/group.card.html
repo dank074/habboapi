@@ -1,0 +1,24 @@
+<md-card class="no-select" flex ng-if="$ctrl.data">
+    <md-toolbar>
+        <div class="md-toolbar-tools center">
+			<habbo-icon class="groups space-right"></habbo-icon><h2 ng-bind="$ctrl.header"></h2>
+		</div>
+    </md-toolbar>
+    <md-card-content class="no-padding">
+        <a ui-sref="group({id: $ctrl.data.id})">
+            <img class="pixel-image group-badge center padding" ng-src="{{$root.app_config.site_images.group_badges}}/{{$ctrl.data.badge}}.png" />
+        </a>
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <th translate="group.group_created"></th>
+                    <td ng-bind="$ctrl.data.date_created * 1000 | date:'mediumDate'"></td>
+                </tr>
+                <tr>
+                    <th translate="group.total_members"></th>
+                    <td ng-bind="$ctrl.data.members.length"></td>
+                </tr>
+            </tbody>
+        </table>
+    </md-card-content>
+</md-card>

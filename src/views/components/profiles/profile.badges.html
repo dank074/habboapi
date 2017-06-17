@@ -1,0 +1,47 @@
+<md-card class="no-select" style="height: 210px;">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <habbo-icon class="achievement space-right"></habbo-icon><h2>{{'profile.user_badges' | translate}} <span class="number" ng-if="$ctrl.data.length > 0" ng-bind="$ctrl.data.length"></span></h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-if="$ctrl.data.length > 0" ng-click="show_all()"><md-icon>view_list</md-icon></md-button>
+        </div>
+    </md-toolbar>
+    <md-card-content class="no-padding center">
+        <div class="md-padding" ng-if="$ctrl.data.length == 0" translate="profile.no_badges" translate-values="{user_name: $ctrl.username}"></div>
+		<ul class="vertical-list badge-list no-margin" ng-if="$ctrl.data.length > 0">
+			<li ng-repeat="badge in $ctrl.data | limitTo: 5">
+				<div class="badge-icon">
+					<div class="badge-icon-aligner">
+						<img ng-src="{{$root.app_config.site_images.badges}}/{{badge.badge_code}}.gif" />
+					</div>
+				</div>
+			</li>
+		</ul>
+    </md-card-content>
+</md-card>
+<div style="visibility:hidden;" ng-if="$ctrl.data.length > 0">
+    <div class="md-dialog-container" id="profileBadges-dialog">
+        <md-dialog class="no-select">
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <habbo-icon class="achievement space-right"></habbo-icon><h2>{{'profile.user_badges' | translate}} <span class="number" ng-if="$ctrl.data.length > 0" ng-bind="$ctrl.data.length"></span></h2>
+                    <span flex></span>
+                    <md-button class="md-icon-button" ng-click="hide()"><md-icon>close</md-icon></md-button>
+                </div>
+            </md-toolbar>
+			<md-dialog-content>
+                <div class="md-dialog-content">
+					<ul class="vertical-list badge-list no-margin">
+						<li ng-repeat="badge in $ctrl.data">
+							<div class="badge-icon">
+								<div class="badge-icon-aligner">
+									<img ng-src="{{$root.app_config.site_images.badges}}/{{badge.badge_code}}.gif" />
+								</div>
+							</div>
+						</li>
+					</ul>
+                </div>
+            </md-dialog-content>
+        </md-dialog>
+    </div>
+</div>

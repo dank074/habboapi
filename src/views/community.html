@@ -24,21 +24,24 @@
 					<habbo-icon class="user space-right"></habbo-icon><h2 translate="community.latest_user"></h2>
 				</div>
 			</md-toolbar>
-			<md-card-content class="no-padding">
-				<user-card class="no-margin" userinfo="community_info.latest_user" flex="100"></user-card>
+			<md-card-content class="no-padding no-margin">
+				<user-card userinfo="community_info.latest_user"></user-card>
 			</md-card-content>
 		</md-card>
-		<div layout="row" layout-xs="column" ng-if="community_info.random_users.length > 0 || community_info.active_rooms.length > 0">
-			<div layout="column" flex ng-if="community_info.random_users.length > 0">
-				<user-list header="'community.random_users' | translate" userlist="community_info.random_users"></user-list>
-			</div>
-			<div layout="column" flex ng-if="community_info.random_groups.length > 0">
-				<group-list header="'community.random_groups' | translate" grouplist="community_info.random_groups"></group-list>
-			</div>
-		</div>
+		<room-list header="'community.active_rooms' | translate" type="activeRooms" data="community_info.active_rooms" ng-if="community_info.active_rooms.length > 0"></room-list>
 	</div>
 	<div layout="column" flex="30" flex-xs="100">
-		<room-card header="'community.latest_room' | translate" roominfo="community_info.latest_room"></room-card>
-		<room-list header="'community.active_rooms' | translate" roomlist="community_info.active_rooms"></room-list>
+		<room-card header="'community.latest_room' | translate" data="community_info.latest_room"></room-card>
+	</div>
+</div>
+<div layout="row" layout-xs="column" ng-if="community_info.random_users.length > 0 || community_info.random_rooms.length > 0 || community_info.active_groups.length > 0">
+	<div layout="column" flex ng-if="community_info.random_users.length > 0">
+		<user-list header="'community.random_users' | translate" type="randomUsers" data="community_info.random_users" ng-if="community_info.random_users.length > 0"></user-list>
+	</div>
+	<div layout="column" flex ng-if="community_info.random_rooms.length > 0">
+		<room-list header="'community.random_rooms' | translate" type="randomRooms" data="community_info.random_rooms" ng-if="community_info.random_rooms.length > 0"></room-list>
+	</div>
+	<div layout="column" flex ng-if="community_info.random_groups.length > 0">
+		<group-list header="'community.random_groups' | translate" type="randomGroups" data="community_info.random_groups" ng-if="community_info.random_groups.length > 0"></group-list>
 	</div>
 </div>

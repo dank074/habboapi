@@ -56,6 +56,22 @@ html, body {
     image-rendering: pixelated;
 }
 
+.pixel-image.center {
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.pixel-image.padding {
+    padding: 10px;
+}
+
+.pixel-image.group-badge {
+    width: 60px;
+    height: 60px;
+}
+
 .avatar-icon,
 .badge-icon,
 .room-icon {

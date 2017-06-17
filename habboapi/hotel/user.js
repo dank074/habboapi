@@ -97,6 +97,10 @@ class User
                 withRelated: [
                     'last_login',
                     'currency',
+                    'friends',
+                    {'friends.user': (qb) => {
+                        qb.column('id', 'username', 'motto', 'look', 'online');
+                    }},
                     {'room_entries': (qb) => {
                         qb.orderBy('timestamp', 'DESC').limit(5);
                     }},

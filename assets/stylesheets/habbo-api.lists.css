@@ -1,7 +1,4 @@
-md-list.avatar-list,
-md-list.room-list,
-md-list.group-list,
-md-list.forum-list {
+md-list {
     padding: 0;
 }
 
@@ -28,7 +25,8 @@ md-list md-list-item span habbo-icon.clock-icon {
 md-list md-list-item span.user-name,
 md-list md-list-item span.room-name,
 md-list md-list-item span.group-name,
-md-list md-list-item span.thread-name {
+md-list md-list-item span.thread-name,
+md-list md-list-item span.article-name {
     font-size: 22px;
     font-weight: 400;
     text-overflow: ellipsis;
@@ -50,7 +48,9 @@ md-list md-list-item span.group-description,
 md-list md-list-item span.thread-message,
 md-list md-list-item span.thread-time,
 md-list md-list-item span.member-since,
-md-list md-list-item span.group-created {
+md-list md-list-item span.group-created,
+md-list md-list-item span.article-description,
+md-list md-list-item span.date-posted {
     padding: 0;
     text-align: left;
     overflow: hidden;
@@ -64,31 +64,11 @@ ul {
     list-style: none;
 }
 
-ul.no-margin {
-    margin: 0 !important;
-}
-
-ul.no-padding {
-    padding: 0 !important;
-}
-
 ul.vertical-list li {
     float: left;
 }
 
-ul.avatar-list {
-    padding: 0 0 10px;
-}
-
-ul.avatar-list li {
-    margin: 0 5px 0 0;
-}
-
-ul.avatar-list li:last-child {
-    margin: 0;
-}
-
-ul.avatar-list li a {
+ul li a {
     text-decoration: none;
     cursor: pointer;
 }
@@ -122,32 +102,48 @@ ul.badge-list li:last-child {
     margin: 0;
 }
 
-ul.badge-list li a {
-    text-decoration: none;
+ul.user-list {
+    display: flex;
+    width: 100%;
+    padding: 0 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+ul.user-list li {
+    margin: 0 5px 0 0;
+    max-width: 20%;
     cursor: pointer;
 }
 
-ul.badge-list li a .badge-name {
+ul.user-list li:last-child {
+    margin: 0;
+}
+
+ul.user-list li .user-name {
     display: block;
-    margin: 15px 0 0;
-    padding: 0 6px;
+    padding: 0 0 7px;
     font-size: 16px;
     font-weight: 300;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: normal;
-    color: #000000;
+    white-space: nowrap;
     text-align: center;
+    color: #000000;
 }
 
 ul.room-list {
-    padding: 20px 0;
+    display: flex;
+    width: 100%;
+    padding: 0 10px;
+    justify-content: center;
+    align-items: center;
 }
 
 ul.room-list li {
-    margin: 0 5px 0 0;
+    margin: 0 10px 0 0;
+    max-width: 20%;
     cursor: pointer;
-    max-width: 109px;
 }
 
 ul.room-list li:last-child {
@@ -156,12 +152,42 @@ ul.room-list li:last-child {
 
 ul.room-list li .room-name {
     display: block;
-    padding: 0 6px;
+    padding: 0;
     font-size: 16px;
     font-weight: 300;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    color: #000000;
     text-align: center;
+    color: #000000;
+}
+
+ul.group-list {
+    display: flex;
+    width: 100%;
+    padding: 0 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+ul.group-list li {
+    margin: 0 15px 0 0;
+    max-width: 20%;
+    cursor: pointer;
+}
+
+ul.group-list li:last-child {
+    margin: 0;
+}
+
+ul.group-list li .group-name {
+    display: block;
+    padding: 6px 0 0;
+    font-size: 16px;
+    font-weight: 300;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+    color: #000000;
 }

@@ -21,12 +21,12 @@
 					<habbo-icon class="star-gold space-right"></habbo-icon><h2 translate="room.room_owner_title"></h2>
 				</div>
 			</md-toolbar>
-			<md-card-content class="no-padding">
-				<user-card userinfo="room_info.owner" style="margin:0;"></user-card>
+			<md-card-content class="no-padding no-margin">
+				<user-card userinfo="room_info.owner"></user-card>
 			</md-card-content>
 		</md-card>
 	</div>
 	<div layout="column" flex="30" flex-xs="100">
-		<room-card header="'room.room_details' | translate" roominfo="room_info"></room-card>
+		<room-card header="'room.room_details' | translate" data="room_info"></room-card>
 	</div>
 </div>

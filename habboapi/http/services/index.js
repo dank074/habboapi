@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import AnnouncementHttp from './announcement.http';
 import CommunityHttp from './community.http';
+import NewsHttp from './news.http';
 
 class HttpServices
 {
@@ -10,6 +11,7 @@ class HttpServices
 
         router.use('/announcement', new AnnouncementHttp);
         router.use('/community', new CommunityHttp);
+        router.use('/news', new NewsHttp);
 
         return router;
     }

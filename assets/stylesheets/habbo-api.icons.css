@@ -117,6 +117,12 @@ habbo-icon.groups {
     background: transparent url("assets/images/icons/groups.gif") no-repeat;
 }
 
+habbo-icon.achievement {
+    width: 18px;
+    height: 18px;
+    background: transparent url("assets/images/icons/achievement.png") no-repeat;
+}
+
 habbo-room-icon, habbo-room-icon:before {
     display: block;
     height: 90px;
@@ -125,18 +131,22 @@ habbo-room-icon, habbo-room-icon:before {
     text-align: center;
 }
 
+habbo-room-icon:before {
+    background-image: url('assets/images/icons/habbo-icon-sprites.png');
+    background-position: -396px -99px;
+    background-size: 494px 475px;
+    content: '';
+    position: absolute;
+}
+
+/*
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
     habbo-room-icon:before {
         background-image: url('assets/images/icons/habbo-icon-sprites.png');
         background-position: -396px -99px;
         background-size: 494px 475px;
     }
-}
-
-habbo-room-icon:before {
-    content: '';
-    position: absolute;
-}
+}*/
 
 habbo-room-icon .room-icon {
     position: relative;

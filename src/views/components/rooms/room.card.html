@@ -1,0 +1,38 @@
+<md-card class="no-select" flex ng-if="$ctrl.data">
+    <md-toolbar>
+        <div class="md-toolbar-tools center">
+			<habbo-icon class="navigator space-right"></habbo-icon><h2 ng-bind="$ctrl.header"></h2>
+		</div>
+    </md-toolbar>
+    <md-card-content class="no-padding">
+        <a ui-sref="room({id: $ctrl.data.id})">
+            <habbo-room-icon class="room-icon no-select">
+                <div class="room-icon"></div>
+            </habbo-room-icon>
+        </a>
+        <table class="table table-striped">
+            <tbody>
+                <tr ng-if="$ctrl.data.name">
+                    <th translate="room.room_name"></th>
+                    <td ng-bind="$ctrl.data.name"></td>
+                </tr>
+                <tr ng-if="$ctrl.data.owner.username">
+                    <th translate="room.room_owner"></th>
+                    <td ng-bind="$ctrl.data.owner.username"></td>
+                </tr>
+                <tr ng-if="$ctrl.data.score">
+                    <th translate="room.room_score"></th>
+                    <td ng-bind="$ctrl.data.score"></td>
+                </tr>
+                <tr ng-if="$ctrl.data.users || $ctrl.data.users_max">
+                    <th translate="room.room_users"></th>
+                    <td>{{$ctrl.data.users}} / {{$ctrl.data.users_max}}</td>
+                </tr>
+                <tr ng-if="$root.current_user.login_status && $root.current_user.user_info.online == 1">
+                    <th translate="room.enter_room"></th>
+                    <td><habbo-icon class="enter-room" ng-click="enter_room($ctrl.data.id);"></habbo-icon></td>
+                </tr>
+            </tbody>
+        </table>
+    </md-card-content>
+</md-card>
