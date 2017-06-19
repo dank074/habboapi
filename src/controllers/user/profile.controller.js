@@ -13,7 +13,7 @@ class ProfileController
 
         this._$scope.profile_username = (this._$stateParams.username == undefined || null) ? null : this._$stateParams.username;
 
-        this._$http.post(this._AppConstants.api + '/hotel/profile/profile_info', {user_name: this._$scope.profile_username})
+        this._$http.post(this._AppConstants.api + '/services/user/profile/profile_info', {user_name: this._$scope.profile_username})
         
         .then((res) =>
         {
