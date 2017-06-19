@@ -1,6 +1,6 @@
-import Session from '../authentication/session';
-import Permission from '../authentication/permission';
-import User from '../hotel/user';
+import Session from '../services/authentication/session';
+import Permission from '../services/authentication/permission';
+import User from '../services/user/user';
 
 class HttpMiddleware
 {

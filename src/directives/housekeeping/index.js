@@ -1,7 +1,7 @@
-import HKNavigationDirective from './navigation.directive';
+import NavigationDirective from './navigation.directive';
 
-let HKDirectivesModule = angular.module('habboapi.directives.housekeeping', []);
+let directivesModule = angular.module('habboapi.directives.housekeeping', []);
 
-HKDirectivesModule.directive('appHknavigation', () => new HKNavigationDirective);
+directivesModule.directive('appHknavigation', () => new NavigationDirective);
 
-export default HKDirectivesModule;
+export default directivesModule;

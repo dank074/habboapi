@@ -69,17 +69,24 @@
     "news": {
         "news": "News"
     },
-    "community": {
-        "statistic_users": "Total Users",
-        "statistic_rooms": "Total Rooms",
-        "statistic_groups": "Total Groups",
-        "statistic_furniture": "Total Furniture",
+    "statistics": {
+        "total_users": "Total Users",
+        "total_rooms": "Total Rooms",
+        "total_groups": "Total Groups",
+        "total_furniture": "Total Furniture",
         "latest_user": "Latest User",
-        "latest_room": "Latest Room",
+        "latest_room": "Latest Room"
+    },
+    "community": {
         "random_users": "Random Users",
         "random_rooms": "Random Rooms",
         "random_groups": "Random Groups",
         "active_rooms": "Active Rooms"
+    },
+    "leaderboards": {
+        "most_credits": "Most Credits",
+        "most_online": "Most Online",
+        "most_respected": "Most Respected"
     },
     "staff": {
         "about_staff": "Our Staff",

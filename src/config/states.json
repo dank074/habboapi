@@ -47,6 +47,14 @@
 			"controller": "CommunityController"
 		},
 
+		"leaderboards":
+		{
+			"name": "leaderboards",
+			"url": "/leaderboards",
+			"templateUrl": "views/leaderboards.html",
+			"controller": "LeaderboardsController"
+		},
+
         "staff":
 		{
 			"name": "staff",

@@ -30,6 +30,7 @@
         "user_info": ["mail", "account_created", "last_online", "motto", "look", "rank", "credits", "online"],
 		"user_settings": ["block_following", "block_friendrequests", "block_roominvites", "old_chat", "ignore_bots", "ignore_pets"],
 		"new_user": {
+            "max_accounts": 3,
 			"rank": 1,
 			"figure": "hr-115-42.hd-190-1.ch-215-62.lg-285-91.sh-290-62",
 			"gender": "M",

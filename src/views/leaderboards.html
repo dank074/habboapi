@@ -1,0 +1,11 @@
+<div layout="row">
+	<div layout="column" flex ng-if="leaderboards_info.most_credits.length > 0">
+		<user-list flex header="'leaderboards.most_credits' | translate" type="mostCredits" data="leaderboards_info.most_credits"></user-list>
+	</div>
+	<div layout="column" flex ng-if="leaderboards_info.most_online.length > 0">
+		<user-list flex header="'leaderboards.most_online' | translate" type="mostOnline" data="leaderboards_info.most_online"></user-list>
+	</div>
+	<div layout="column" flex ng-if="leaderboards_info.most_respected.length > 0">
+		<user-list flex header="'leaderboards.most_respected' | translate" type="mostRespected" data="leaderboards_info.most_respected"></user-list>
+	</div>
+</div>

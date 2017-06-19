@@ -1,8 +1,8 @@
 import passport from 'passport';
 import passportLocal from 'passport-local';
-import Authentication from '../authentication/authentication';
-import Permission from '../authentication/permission';
-import User from '../hotel/user';
+import Authentication from '../services/authentication/authentication';
+import Permission from '../services/authentication/permission';
+import User from '../services/user/user';
 
 const LocalStrategy = passportLocal.Strategy;
 

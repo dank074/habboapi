@@ -25,9 +25,15 @@
 			"disabled": false
 		},
 		{
+			"name": "Leaderboards",
+			"state": "leaderboards",
+			"sort": 5,
+			"disabled": false
+		},
+		{
 			"name": "Staff",
 			"state": "staff",
-			"sort": 5,
+			"sort": 6,
 			"disabled": false
 		}
 	],

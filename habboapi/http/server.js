@@ -5,7 +5,6 @@ import session from 'express-session';
 import glob from 'glob';
 import MainRouter from './router';
 import ApiPassport from './api-passport';
-import Authentication from '../authentication/authentication';
 
 class HttpServer
 {

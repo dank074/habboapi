@@ -1,19 +1,15 @@
-import AuthenticationService from './authentication.service';
-import NewsService from './news.service';
-import rCRONService from './rcron.service';
-import SessionService from './session.service';
-import StatisticsService from './statistics.service';
-import UserService from './user.service';
-import UtilityService from './utility.service';
+import './authentication';
+import './community';
+import './system';
+import './user';
 
-let servicesModule = angular.module('habboapi.services', []);
+const requires = [
+    'habboapi.services.authentication',
+    'habboapi.services.community',
+    'habboapi.services.system',
+    'habboapi.services.user'
+];
 
-servicesModule.service('AuthenticationService', AuthenticationService);
-servicesModule.service('NewsService', NewsService);
-servicesModule.service('rCRONService', rCRONService);
-servicesModule.service('SessionService', SessionService);
-servicesModule.service('StatisticsService', StatisticsService);
-servicesModule.service('UserService', UserService);
-servicesModule.service('UtilityService', UtilityService);
+let servicesModule = angular.module('habboapi.services', requires);
 
 export default servicesModule;

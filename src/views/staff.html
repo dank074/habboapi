@@ -1,9 +1,9 @@
 <div layout="row" layout-xs="column">
-    <div class="column" flex="70" flex-xs="100">
+	<div layout="column" flex flex-xs="100">
         <user-list ng-repeat="rank in data" ng-if="rank.users.length > 0" header="rank.rank_name" type="disablePopup" data="rank.users"></user-list>
     </div>
-    <div layout="column" flex="30" flex-xs="100">
-        <md-card no-select flex>
+	<div layout="column" flex="30" flex-xs="100">
+		<md-card no-select>
             <md-toolbar>
                 <div class="md-toolbar-tools center">
                     <habbo-icon class="star-gold space-right"></habbo-icon><h2 class="center" translate="staff.about_staff">
@@ -11,5 +11,5 @@
             </md-toolbar>
             <md-card-content translate="staff.about_desc" translate-values="{site_name: $root.app_config.site_name}"></md-card-content>
         </md-card>
-    </div>
+	</div>
 </div>

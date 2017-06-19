@@ -15,7 +15,6 @@ import Run from './config/run';
 
 import './components';
 import './controllers';
-import './controllers/housekeeping';
 import './directives';
 import './directives/housekeeping';
 import './services';
@@ -35,7 +34,6 @@ const requires = [
     'app.templates',
     'habboapi.components',
     'habboapi.controllers',
-    'habboapi.controllers.housekeeping',
     'habboapi.directives',
     'habboapi.directives.housekeeping',
     'habboapi.services'

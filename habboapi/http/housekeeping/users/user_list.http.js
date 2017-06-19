@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import User from '../../../hotel/user';
+import User from '../../../services/user/user';
 
 class UserListHttp
 {
