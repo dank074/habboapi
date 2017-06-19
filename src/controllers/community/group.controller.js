@@ -13,7 +13,7 @@ class GroupController
 
         this._$scope.group_id = (this._$stateParams.id == undefined || null) ? null : this._$stateParams.id;
 
-        this._$http.post(this._AppConstants.api + '/hotel/group/group_info', {group_id: this._$scope.group_id})
+        this._$http.post(this._AppConstants.api + '/services/community/group/group_info', {group_id: this._$scope.group_id})
         
         .then((res) =>
         {

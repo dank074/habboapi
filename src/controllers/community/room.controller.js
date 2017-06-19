@@ -13,7 +13,7 @@ class RoomController
 
         this._$scope.room_id = (this._$stateParams.id == undefined || null) ? null : this._$stateParams.id;
 
-        this._$http.post(this._AppConstants.api + '/hotel/room/room_info', {room_id: this._$scope.room_id})
+        this._$http.post(this._AppConstants.api + '/services/community/room/room_info', {room_id: this._$scope.room_id})
         
         .then((res) =>
         {

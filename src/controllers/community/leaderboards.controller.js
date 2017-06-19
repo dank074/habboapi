@@ -13,7 +13,6 @@ class LeaderboardsController
 
         .then((leaderboards_info) =>
         {
-            console.log(leaderboards_info);
             return this._$scope.leaderboards_info = leaderboards_info;
         })
 
