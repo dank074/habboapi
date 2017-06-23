@@ -1,9 +1,11 @@
+import ProfileService from './profile.service';
 import rCRONService from './rcron.service';
 import UserService from './user.service';
 
-let servicesModule = angular.module('habboapi.services.user', []);
+let userModule = angular.module('habboapi.services.user', []);
 
-servicesModule.service('rCRONService', rCRONService);
-servicesModule.service('UserService', UserService);
+userModule.service('ProfileService', ProfileService);
+userModule.service('rCRONService', rCRONService);
+userModule.service('UserService', UserService);
 
-export default servicesModule;
+export default userModule;

@@ -1,8 +1,8 @@
 import Adapter from '../../../adapter';
-import HotelRoom from './room';
-import HotelUser from '../user/user';
+import HotelRoomDB from './room';
+import HotelUserDB from '../user/user';
 
-class HotelRoomEnterLog extends Adapter.Model
+class HotelRoomEnterLogDB extends Adapter.Model
 {
 	get tableName()
 	{
@@ -16,13 +16,13 @@ class HotelRoomEnterLog extends Adapter.Model
 
 	room()
 	{
-		return this.belongsTo('HotelRoom', 'room_id');
+		return this.belongsTo('HotelRoomDB', 'room_id');
 	}
 
     user()
     {
-        return this.belongsTo('HotelUser', 'user_id');
+        return this.belongsTo('HotelUserDB', 'user_id');
     }
 }
 
-export default Adapter.model('HotelRoomEnterLog', HotelRoomEnterLog);
+export default Adapter.model('HotelRoomEnterLogDB', HotelRoomEnterLogDB);

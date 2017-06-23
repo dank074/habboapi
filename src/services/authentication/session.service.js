@@ -13,7 +13,7 @@ class SessionService
 
     create_session()
     {
-        return this._$http.get(this._AppConstants.api + '/services/authentication/session/get_session')
+        return this._$http.get(this._AppConstants.api + '/authentication/session/get_session')
 
         .then((res) =>
         {
@@ -40,7 +40,7 @@ class SessionService
     {
         if(this._$localStorage.current_user == undefined || this._$localStorage.current_user.length == 0 || null) return this._$q.reject('invalid_session');
 
-        return this._$http.get(this._AppConstants.api + '/services/authentication/session/get_session')
+        return this._$http.get(this._AppConstants.api + '/authentication/session/get_session')
 
         .then((res) =>
         {
@@ -72,7 +72,7 @@ class SessionService
 
     destroy_session()
     {
-        return this._$http.get(this._AppConstants.api + '/services/authentication/session/destroy_session')
+        return this._$http.get(this._AppConstants.api + '/authentication/session/destroy_session')
 
         .then((res) =>
         {

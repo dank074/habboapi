@@ -1,7 +1,7 @@
 import Adapter from '../../../adapter';
-import HotelUser from './user';
+import HotelUserDB from './user';
 
-class HotelUserBadges extends Adapter.Model
+class HotelUserBadgesDB extends Adapter.Model
 {
 	get tableName()
 	{
@@ -15,8 +15,8 @@ class HotelUserBadges extends Adapter.Model
 
 	user()
 	{
-		return this.belongsTo('HotelUser', 'user_id');
+		return this.belongsTo('HotelUserDB', 'user_id');
 	}
 }
 
-export default Adapter.model('HotelUserBadges', HotelUserBadges);
+export default Adapter.model('HotelUserBadgesDB', HotelUserBadgesDB);

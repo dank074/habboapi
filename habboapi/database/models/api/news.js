@@ -1,9 +1,9 @@
 import Adapter from '../../adapter';
-import HotelUser from '../hotel/user/user';
-import HotelRoom from '../hotel/room/room';
-import HotelGroup from '../hotel/group/group';
+import HotelUserDB from '../hotel/user/user';
+import HotelRoomDB from '../hotel/room/room';
+import HotelGroupDB from '../hotel/group/group';
 
-class ApiNews extends Adapter.Model
+class ApiNewsDB extends Adapter.Model
 {
     get tableName()
     {
@@ -17,19 +17,19 @@ class ApiNews extends Adapter.Model
 
     author()
     {
-        return this.belongsTo('HotelUser', 'user_id');
+        return this.belongsTo('HotelUserDB', 'user_id');
     }
 
     room()
     {
-        return this.hasOne('HotelRoom', 'id', 'room_id');
+        return this.hasOne('HotelRoomDB', 'id', 'room_id');
     }
 
     group()
     {
-        return this.hasOne('HotelGroup', 'id', 'group_id');
+        return this.hasOne('HotelGroupDB', 'id', 'group_id');
     }
 
 }
 
-export default Adapter.model('ApiNews', ApiNews);
+export default Adapter.model('ApiNewsDB', ApiNewsDB);

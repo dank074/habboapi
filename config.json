@@ -1,6 +1,7 @@
 {
     "ip": "localhost",
     "port": 80,
+    "port_https": 443,
     "password_salt": 10,
     "session": {
         "secret": "KcgZogkYj5H2D2o",

@@ -1,17 +1,17 @@
 import Adapter from '../../../adapter';
-import HotelUserAchievements from './user_achievements';
-import HotelUserBadges from './user_badges';
-import HotelUserBan from './user_ban';
-import HotelUserCurrency from './user_currency';
-import HotelUserSettings from './user_settings';
-import HotelFriends from '../messenger/messenger_friendships';
-import HotelRoom from '../room/room';
-import HotelRoomEnterLog from '../room/room_enter_log';
-import HotelGroup from '../group/group';
-import HotelGroupMemberships from '../group/group_members';
-import ApiLoginLog from '../../api/login_log';
+import HotelUserAchievementsDB from './user_achievements';
+import HotelUserBadgesDB from './user_badges';
+import HotelUserBanDB from './user_ban';
+import HotelUserCurrencyDB from './user_currency';
+import HotelUserSettingsDB from './user_settings';
+import HotelFriendsDB from '../messenger/messenger_friendships';
+import HotelRoomDB from '../room/room';
+import HotelRoomEnterLogDB from '../room/room_enter_log';
+import HotelGroupDB from '../group/group';
+import HotelGroupMembershipsDB from '../group/group_members';
+import ApiLoginLogDB from '../../api/login_log';
 
-class HotelUser extends Adapter.Model
+class HotelUserDB extends Adapter.Model
 {
 	get tableName()
 	{
@@ -25,66 +25,66 @@ class HotelUser extends Adapter.Model
 
 	achievements()
 	{
-		return this.hasMany('HotelUserAchievements', 'user_id', 'id');
+		return this.hasMany('HotelUserAchievementsDB', 'user_id', 'id');
 	}
 
 	badges()
 	{
-		return this.hasMany('HotelUserBadges', 'user_id', 'id');
+		return this.hasMany('HotelUserBadgesDB', 'user_id', 'id');
 	}
 
 	bans()
 	{
-		return this.hasMany('HotelUserBan', 'user_id', 'id');
+		return this.hasMany('HotelUserBanDB', 'user_id', 'id');
 	}
 
 	currency()
 	{
-		return this.hasMany('HotelUserCurrency', 'user_id', 'id');
+		return this.hasMany('HotelUserCurrencyDB', 'user_id', 'id');
 	}
 
 	settings()
 	{
-		return this.hasOne('HotelUserSettings', 'user_id', 'id');
+		return this.hasOne('HotelUserSettingsDB', 'user_id', 'id');
 	}
 
 	friends()
 	{
-		return this.hasMany('HotelMessengerFriendships', 'user_one_id', 'id');
+		return this.hasMany('HotelMessengerFriendshipsDB', 'user_one_id', 'id');
 	}
 
 	rooms()
 	{
-		return this.hasMany('HotelRoom', 'owner_id', 'id');
+		return this.hasMany('HotelRoomDB', 'owner_id', 'id');
 	}
 
 	room_entries()
 	{
-		return this.hasMany('HotelRoomEnterLog', 'user_id', 'id');
+		return this.hasMany('HotelRoomEnterLogDB', 'user_id', 'id');
 	}
 
 	groups()
 	{
-		return this.hasMany('HotelGroup', 'user_id', 'id');
+		return this.hasMany('HotelGroupDB', 'user_id', 'id');
 	}
 
 	group_memberships()
 	{
-		return this.hasMany('HotelGroupMembers', 'user_id', 'id');
+		return this.hasMany('HotelGroupMembersDB', 'user_id', 'id');
 	}
 
 	logins()
     {
-        return this.hasMany('ApiLoginLog', 'user_id', 'id');
+        return this.hasMany('ApiLoginLogDB', 'user_id', 'id');
     }
 
     last_login()
     {
         return this.logins().query((qb) =>
         {
-            qb.column('user_id', 'created_at').where('login_status', '1').orderBy('id', 'DESC').offset(1).limit(1);
+            qb.column('user_id', 'created_at').where('login_status', '1').andWhere('login_type', 'site').orderBy('id', 'DESC').offset(1).limit(1);
         });
     }
 }
 
-export default Adapter.model('HotelUser', HotelUser);
+export default Adapter.model('HotelUserDB', HotelUserDB);

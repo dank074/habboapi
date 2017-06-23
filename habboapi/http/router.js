@@ -1,7 +1,10 @@
 import { Router } from 'express';
 import HttpMiddleware from './middleware';
-import HttpHousekeeping from './housekeeping';
-import HttpServices from './services';
+import HttpAuthentication from './authentication';
+import HttpCommunity from './community';
+import HttpGroup from './group';
+import HttpRoom from './room';
+import HttpUser from './user';
 
 class MainRouter
 {
@@ -9,8 +12,11 @@ class MainRouter
     {
         let router = Router();
 
-        router.use('/housekeeping', HttpMiddleware.is_authenticated, HttpMiddleware.has_permission('hk_login'), new HttpHousekeeping);
-        router.use('/services', new HttpServices);
+        router.use('/authentication', new HttpAuthentication);
+        router.use('/community', new HttpCommunity);
+        router.use('/group', new HttpGroup);
+        router.use('/room', new HttpRoom);
+        router.use('/user', new HttpUser);
 
         return router;
     }

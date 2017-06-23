@@ -1,6 +1,6 @@
 import Adapter from '../../../adapter';
 
-class HotelItemBase extends Adapter.Model
+class HotelItemBaseDB extends Adapter.Model
 {
 	get tableName()
 	{
@@ -13,4 +13,4 @@ class HotelItemBase extends Adapter.Model
 	}
 }
 
-export default Adapter.model('HotelItemBase', HotelItemBase);
+export default Adapter.model('HotelItemBase', HotelItemBaseDB);

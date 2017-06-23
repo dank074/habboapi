@@ -12,11 +12,6 @@
     margin-top: 0 !important;
 }
 
-.app .main-content.show-hkmenu {
-    height: calc(100% - 269px);
-    margin-top: 269px;
-}
-
 .app .main-content .content-container {
     width: 100%;
     max-width: 960px;

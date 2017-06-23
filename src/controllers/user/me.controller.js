@@ -1,15 +1,19 @@
 class MeController
 {
-    constructor(UtilityService, NewsService, $state, $scope)
+    constructor(UtilityService, NewsService, $scope)
     {
         'ngInject';
         
         this._UtilityService    = UtilityService;
         this._NewsService       = NewsService;
-        this._$state 	        = $state;
         this._$scope            = $scope;
 
-        this._NewsService.news_list()
+        this.news_list();
+    }
+
+    news_list()
+    {
+        return this._NewsService.news_list()
 
         .then((news_list) =>
         {

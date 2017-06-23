@@ -27,8 +27,7 @@
         <div class="cloud x5"></div>
     </div>
     <app-navigation></app-navigation>
-    <app-hknavigation></app-hknavigation>
-    <div class="main-content" ng-class="{'show-hkmenu': $root.current_user.login_status && $root.current_user.user_permissions.hk_login == 1}">
+    <div class="main-content">
         <div class="content-container" ui-view></div>
         <div class="client-container" ui-view="client"></div>
         <div class="content-footer no-select">&copy; 2017 {{$root.app_config.site_name}} Hotel</div>

@@ -1,8 +1,8 @@
 import Adapter from '../../../adapter';
-import HotelGroup from './group';
-import HotelUser from '../user/user';
+import HotelGroupDB from './group';
+import HotelUserDB from '../user/user';
 
-class HotelGroupForum extends Adapter.Model
+class HotelGroupForumDB extends Adapter.Model
 {
 	get tableName()
 	{
@@ -16,13 +16,13 @@ class HotelGroupForum extends Adapter.Model
 
 	group()
 	{
-		return this.belongsTo('HotelGroup', 'guild_id');
+		return this.belongsTo('HotelGroupDB', 'guild_id');
 	}
 
 	owner()
 	{
-		return this.belongsTo('HotelUser', 'user_id');
+		return this.belongsTo('HotelUserDB', 'user_id');
 	}
 }
 
-export default Adapter.model('HotelGroupForum', HotelGroupForum);
+export default Adapter.model('HotelGroupForumDB', HotelGroupForumDB);

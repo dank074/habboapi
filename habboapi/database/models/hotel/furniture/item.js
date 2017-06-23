@@ -1,9 +1,9 @@
 import Adapter from '../../../adapter';
-import HotelUser from '../user/user';
-import HotelRoom from '../room/room';
-import HotelItemBase from './item_base';
+import HotelUserDB from '../user/user';
+import HotelRoomDB from '../room/room';
+import HotelItemBaseDB from './item_base';
 
-class HotelItem extends Adapter.Model
+class HotelItemDB extends Adapter.Model
 {
 	get tableName()
 	{
@@ -17,18 +17,18 @@ class HotelItem extends Adapter.Model
 
 	owner()
 	{
-		return this.belongsTo('HotelUser', 'user_id');
+		return this.belongsTo('HotelUserDB', 'user_id');
 	}
 
 	room()
 	{
-		return this.belongsTo('HotelRoom', 'room_id');
+		return this.belongsTo('HotelRoomDB', 'room_id');
 	}
 
 	item_base()
 	{
-		return this.hasOne('HotelItemBase', 'id', 'item_id');
+		return this.hasOne('HotelItemBaseDB', 'id', 'item_id');
 	}
 }
 
-export default Adapter.model('HotelItem', HotelItem);
+export default Adapter.model('HotelItemDB', HotelItemDB);

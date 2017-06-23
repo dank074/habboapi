@@ -14,7 +14,7 @@ class AuthenticationService
     {
         if(user_name == '' || null || user_pass == '' || null) return this._$q.reject('invalid_parameters');
 
-        return this._$http.post(this._AppConstants.api + '/services/authentication/authenticate/login', {user_name: user_name, user_pass: user_pass})
+        return this._$http.post(this._AppConstants.api + '/authentication/login', {user_name: user_name, user_pass: user_pass})
 
         .then((res) =>
         {

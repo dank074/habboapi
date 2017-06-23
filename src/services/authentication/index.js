@@ -1,9 +1,9 @@
 import AuthenticationService from './authentication.service';
 import SessionService from './session.service';
 
-let servicesModule = angular.module('habboapi.services.authentication', []);
+let authenticationModule = angular.module('habboapi.services.authentication', []);
 
-servicesModule.service('AuthenticationService', AuthenticationService);
-servicesModule.service('SessionService', SessionService);
+authenticationModule.service('AuthenticationService', AuthenticationService);
+authenticationModule.service('SessionService', SessionService);
 
-export default servicesModule;
+export default authenticationModule;

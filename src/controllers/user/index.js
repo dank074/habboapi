@@ -4,12 +4,12 @@ import MeController from './me.controller';
 import ProfileController from './profile.controller';
 import SettingsController from './settings.controller';
 
-let controllersModule = angular.module('habboapi.controllers.user', []);
+let userModule = angular.module('habboapi.controllers.user', []);
 
-controllersModule.controller('BannedController', BannedController);
-controllersModule.controller('ClientController', ClientController);
-controllersModule.controller('MeController', MeController);
-controllersModule.controller('ProfileController', ProfileController);
-controllersModule.controller('SettingsController', SettingsController);
+userModule.controller('BannedController', BannedController);
+userModule.controller('ClientController', ClientController);
+userModule.controller('MeController', MeController);
+userModule.controller('ProfileController', ProfileController);
+userModule.controller('SettingsController', SettingsController);
 
-export default controllersModule;
+export default userModule;

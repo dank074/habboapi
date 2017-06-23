@@ -1,9 +1,9 @@
 import Adapter from '../../../adapter';
-import HotelGroup from './group';
-import HotelGroupForum from './group_forums';
-import HotelUser from '../user/user';
+import HotelGroupDB from './group';
+import HotelGroupForumDB from './group_forums';
+import HotelUserDB from '../user/user';
 
-class HotelGroupForumComment extends Adapter.Model
+class HotelGroupForumCommentDB extends Adapter.Model
 {
 	get tableName()
 	{
@@ -17,13 +17,13 @@ class HotelGroupForumComment extends Adapter.Model
 
 	forum()
 	{
-		return this.belongsTo('HotelGroupForum', 'thread_id');
+		return this.belongsTo('HotelGroupForumDB', 'thread_id');
 	}
 
 	user()
 	{
-		return this.belongsTo('HotelUser', 'user_id');
+		return this.belongsTo('HotelUserDB', 'user_id');
 	}
 }
 
-export default Adapter.model('HotelGroupForumComment', HotelGroupForumComment);
+export default Adapter.model('HotelGroupForumCommentDB', HotelGroupForumCommentDB);

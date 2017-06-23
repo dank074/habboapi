@@ -1,7 +1,7 @@
 import Adapter from '../../adapter';
-import HotelUser from '../hotel/user/user';
+import HotelUserDB from '../hotel/user/user';
 
-class ApiLoginLog extends Adapter.Model
+class ApiLoginLogDB extends Adapter.Model
 {
     get tableName()
     {
@@ -15,8 +15,8 @@ class ApiLoginLog extends Adapter.Model
 
     user()
     {
-        return this.belongsTo('HotelUser', 'user_id');
+        return this.belongsTo('HotelUserDB', 'user_id');
     }
 }
 
-export default Adapter.model('ApiLoginLog', ApiLoginLog);
+export default Adapter.model('ApiLoginLogDB', ApiLoginLogDB);

@@ -5,7 +5,7 @@
         {
             "name": "login",
 			"url": "/login",
-			"templateUrl": "views/login.html",
+			"templateUrl": "views/guest/login.html",
             "controller": "LoginController",
 			"guest_only": true
         },
@@ -14,7 +14,7 @@
 		{
 			"name": "register",
 			"url": "/register",
-			"templateUrl": "views/register.html",
+			"templateUrl": "views/guest/register.html",
 			"controller": "RegisterController",
 			"guest_only": true
 		},
@@ -23,7 +23,7 @@
 		{
 			"name": "banned",
 			"url": "/banned",
-			"templateUrl": "views/banned.html",
+			"templateUrl": "views/user/banned.html",
 			"controller": "BannedController",
 			"params": {
 				"ban": null
@@ -34,7 +34,7 @@
 		{
 			"name": "me",
 			"url": "/me",
-			"templateUrl": "views/me.html",
+			"templateUrl": "views/user/me.html",
             "controller": "MeController",
 			"login_required": true
 		},
@@ -43,7 +43,7 @@
 		{
 			"name": "community",
 			"url": "/community",
-			"templateUrl": "views/community.html",
+			"templateUrl": "views/community/community.html",
 			"controller": "CommunityController"
 		},
 
@@ -51,7 +51,7 @@
 		{
 			"name": "leaderboards",
 			"url": "/leaderboards",
-			"templateUrl": "views/leaderboards.html",
+			"templateUrl": "views/community/leaderboards.html",
 			"controller": "LeaderboardsController"
 		},
 
@@ -59,7 +59,7 @@
 		{
 			"name": "staff",
 			"url": "/staff",
-			"templateUrl": "views/staff.html",
+			"templateUrl": "views/community/staff.html",
 			"controller": "StaffController"
 		},
 
@@ -67,7 +67,7 @@
 		{
 			"name": "profile",
 			"url": "/profile/:username",
-			"templateUrl": "views/profile.html",
+			"templateUrl": "views/user/profile.html",
 			"controller": "ProfileController"
 		},
 
@@ -75,7 +75,7 @@
 		{
 			"name": "room",
 			"url": "/room/:id",
-			"templateUrl": "views/room.html",
+			"templateUrl": "views/community/room.html",
 			"controller": "RoomController"
 		},
 
@@ -83,7 +83,7 @@
 		{
 			"name": "group",
 			"url": "/group/:id",
-			"templateUrl": "views/group.html",
+			"templateUrl": "views/community/group.html",
 			"controller": "GroupController"
 		},
 
@@ -96,7 +96,7 @@
 			"views": {
 				"client": {
 					"controller": "ClientController",
-					"templateUrl": "views/client.html"
+					"templateUrl": "views/user/client.html"
 				}
 			}
 		},
@@ -105,50 +105,9 @@
 		{
 			"name": "settings",
 			"url": "/settings",
-			"templateUrl": "views/settings.html",
+			"templateUrl": "views/user/settings.html",
 			"controller": "SettingsController",
 			"login_required": true
 		}
-	},
-
-    "housekeeping":
-    {
-        "housekeeping":
-        {
-			"abstract": true,
-            "name": "housekeeping",
-			"url": "/housekeeping",
-			"template": "<div ui-view></div>",
-            "login_required": true,
-            "permission": "hk_login"
-        },
-
-        "housekeeping.dashboard":
-        {
-            "name": "housekeeping.dashboard",
-			"url": "/dashboard",
-			"templateUrl": "views/housekeeping/dashboard.html",
-            "login_required": true,
-            "permission": "hk_dashboard"
-        },
-
-		"housekeeping.users":
-        {
-			"abstract": true,
-            "name": "housekeeping.users",
-			"url": "/users",
-			"template": "<div ui-view></div>",
-            "login_required": true,
-            "permission": "hk_users"
-        },
-
-		"housekeeping.users.user_list":
-        {
-            "name": "housekeeping.users.user_list",
-			"url": "/user_list",
-			"templateUrl": "views/housekeeping/users/user_list.html",
-            "login_required": true,
-            "permission": "hk_users_list"
-        }
-    }
+	}
 }

@@ -25,14 +25,6 @@ function Config($locationProvider, $translateProvider, $mdThemingProvider, $urlR
 		});
 	}
 
-    if(states.housekeeping != null || states.housekeeping.length != 0)
-	{
-		angular.forEach(states.housekeeping, (value, key) =>
-		{
-			$stateProvider.state(value.name, value);
-		});
-	}
-
     $mdAriaProvider.disableWarnings();
 }
 

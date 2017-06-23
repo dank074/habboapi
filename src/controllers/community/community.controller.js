@@ -10,7 +10,13 @@ class CommunityController
         this._$rootScope            = $rootScope;
         this._$scope                = $scope;
 
-        this._CommunityService.community_info()
+        this.community_info();
+        this.statistics_info();
+    }
+
+    community_info()
+    {
+        return this._CommunityService.community_info()
 
         .then((community_info) =>
         {
@@ -21,8 +27,11 @@ class CommunityController
         {
             return this._$rootScope.go_back();
         });
+    }
 
-        this._StatisticsService.statistics_info()
+    statistics_info()
+    {
+        return this._StatisticsService.statistics_info()
 
         .then((statistics_info) =>
         {
@@ -32,7 +41,7 @@ class CommunityController
         .catch((err) =>
         {
             this._$scope.statistics_info = null;
-        })
+        });
     }
 }
 

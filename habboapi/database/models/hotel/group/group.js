@@ -1,10 +1,10 @@
 import Adapter from '../../../adapter';
-import HotelUser from '../user/user';
-import HotelGroupForum from './group_forum';
-import HotelGroupMembers from './group_members';
-import HotelRoom from '../room/room';
+import HotelUserDB from '../user/user';
+import HotelGroupForumDB from './group_forum';
+import HotelGroupMembersDB from './group_members';
+import HotelRoomDB from '../room/room';
 
-class HotelGroup extends Adapter.Model
+class HotelGroupDB extends Adapter.Model
 {
 	get tableName()
 	{
@@ -18,12 +18,12 @@ class HotelGroup extends Adapter.Model
 
 	owner()
 	{
-		return this.belongsTo('HotelUser', 'user_id');
+		return this.belongsTo('HotelUserDB', 'user_id');
 	}
 
 	members()
 	{
-		return this.hasMany('HotelGroupMembers', 'guild_id', 'id');
+		return this.hasMany('HotelGroupMembersDB', 'guild_id', 'id');
 	}
 
 	members_count()
@@ -33,13 +33,13 @@ class HotelGroup extends Adapter.Model
 
 	room()
 	{
-		return this.hasOne('HotelRoom', 'id', 'room_id');
+		return this.hasOne('HotelRoomDB', 'id', 'room_id');
 	}
 
 	forums()
 	{
-		return this.hasMany('HotelGroupForum', 'guild_id', 'id')
+		return this.hasMany('HotelGroupForumDB', 'guild_id', 'id')
 	}
 }
 
-export default Adapter.model('HotelGroup', HotelGroup);
+export default Adapter.model('HotelGroupDB', HotelGroupDB);

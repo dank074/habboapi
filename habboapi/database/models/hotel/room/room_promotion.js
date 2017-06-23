@@ -1,7 +1,7 @@
 import Adapter from '../../../adapter';
-import HotelRoom from './room';
+import HotelRoomDB from './room';
 
-class HotelRoomPromotion extends Adapter.Model
+class HotelRoomPromotionDB extends Adapter.Model
 {
 	get tableName()
 	{
@@ -15,8 +15,8 @@ class HotelRoomPromotion extends Adapter.Model
 
 	room()
 	{
-		return this.belongsTo('HotelRoom', 'room_id');
+		return this.belongsTo('HotelRoomDB', 'room_id');
 	}
 }
 
-export default Adapter.model('HotelRoomPromotion', HotelRoomPromotion);
+export default Adapter.model('HotelRoomPromotionDB', HotelRoomPromotionDB);

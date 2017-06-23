@@ -1,4 +1,6 @@
 import http from 'http';
+import https from 'https';
+import fs from 'fs';
 import Server from './http/server';
 
 class HabboAPI
@@ -19,8 +21,22 @@ class HabboAPI
 
         web.listen(port, ip, () =>
         {
-            console.log('[HABBOAPI] Started ' + ip + ':' + port);
+            console.log('[HABBOAPI] HTTP Server Started ' + ip + ':' + port);
         });
+
+        /* SSL
+        const options = {
+            key: fs.readFileSync('./ssl/private.pem'),
+            cert: fs.readFileSync('./ssl/certificate.pem')
+        };
+        
+        const webhttps = https.Server(app);
+
+        webhttps.listen(port_https, ip, () =>
+        {
+            console.log('[HABBOAPI] HTTPS Server Started ' + ip + ':' + port_https);
+        });
+        */
     }
 }
 

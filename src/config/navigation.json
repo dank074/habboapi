@@ -36,36 +36,5 @@
 			"sort": 6,
 			"disabled": false
 		}
-	],
-
-	"housekeeping": [
-		{
-			"name": "Housekeeping",
-			"state": "housekeeping",
-			"sort": 1,
-			"disabled": false,
-			"sub_items": [
-				{
-					"name": "Dashboard",
-					"state": "housekeeping.dashboard",
-					"sort": 1,
-					"disabled": false
-				}
-			]
-		},
-		{
-			"name": "Users",
-			"state": "housekeeping.users",
-			"sort": 1,
-			"disabled": false,
-			"sub_items": [
-				{
-					"name": "User List",
-					"state": "housekeeping.users.user_list",
-					"sort": 1,
-					"disabled": false
-				}
-			]
-		}
 	]
 }

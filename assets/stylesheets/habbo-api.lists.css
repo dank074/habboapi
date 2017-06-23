@@ -60,6 +60,11 @@ md-list md-list-item span.date-posted {
     font-weight: 400;
 }
 
+md-list md-list-item .md-secondary-container button {
+    min-width: auto;
+    margin-right: auto;
+}
+
 ul {
     list-style: none;
 }

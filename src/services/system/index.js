@@ -1,7 +1,7 @@
 import UtilityService from './utility.service';
 
-let servicesModule = angular.module('habboapi.services.system', []);
+let systemModule = angular.module('habboapi.services.system', []);
 
-servicesModule.service('UtilityService', UtilityService);
+systemModule.service('UtilityService', UtilityService);
 
-export default servicesModule;
+export default systemModule;

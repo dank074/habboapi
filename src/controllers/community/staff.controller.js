@@ -1,21 +1,24 @@
 class StaffController
 {
-    constructor(AppConstants, CommunityService, $http, $q, $rootScope, $scope)
+    constructor(AppConstants, StaffService, $rootScope, $scope)
     {
         'ngInject';
 
         this._AppConstants      = AppConstants;
-        this._CommunityService  = CommunityService;
-        this._$http             = $http;
-        this._$q                = $q;
+        this._StaffService      = StaffService;
         this._$rootScope        = $rootScope;
         this._$scope            = $scope;
 
-        this._CommunityService.staff_users()
+        this.staff_list();
+    }
 
-        .then((staff_users) =>
+    staff_list()
+    {
+        return this._StaffService.staff_list()
+
+        .then((staff_list) =>
         {
-            return this._$scope.data = staff_users;
+            return this._$scope.data = staff_list;
         })
 
         .catch((err) =>
@@ -23,6 +26,8 @@ class StaffController
             return this._$rootScope.go_back();
         });
     }
+
+
 }
 
 export default StaffController;

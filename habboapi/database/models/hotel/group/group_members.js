@@ -1,8 +1,8 @@
 import Adapter from '../../../adapter';
-import HotelGroup from './group';
-import HotelUser from '../user/user';
+import HotelGroupDB from './group';
+import HotelUserDB from '../user/user';
 
-class HotelGroupMembers extends Adapter.Model
+class HotelGroupMembersDB extends Adapter.Model
 {
 	get tableName()
 	{
@@ -16,13 +16,13 @@ class HotelGroupMembers extends Adapter.Model
 
 	group()
 	{
-		return this.belongsTo('HotelGroup', 'guild_id');
+		return this.belongsTo('HotelGroupDB', 'guild_id');
 	}
 
 	user()
 	{
-		return this.belongsTo('HotelUser', 'user_id');
+		return this.belongsTo('HotelUserDB', 'user_id');
 	}
 }
 
-export default Adapter.model('HotelGroupMembers', HotelGroupMembers);
+export default Adapter.model('HotelGroupMembersDB', HotelGroupMembersDB);

@@ -9,7 +9,12 @@ class LeaderboardsController
         this._$rootScope            = $rootScope;
         this._$scope                = $scope;
 
-        this._LeaderboardsService.leaderboards_info()
+        this.leaderboards_info();
+    }
+
+    leaderboards_info()
+    {
+        return this._LeaderboardsService.leaderboards_info()
 
         .then((leaderboards_info) =>
         {

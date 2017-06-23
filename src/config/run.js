@@ -30,12 +30,6 @@ function Run(AppConstants, SessionService, StatisticsService, $localStorage, $st
                 event.preventDefault();
                 return $state.go('me');
             }
-
-            if(next.permission && $localStorage.current_user.user_permissions[next.permission] == 0)
-            {
-                event.preventDefault();
-                return $state.go('me');
-            }
             
             return next;
         })

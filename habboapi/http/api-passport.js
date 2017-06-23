@@ -1,8 +1,7 @@
 import passport from 'passport';
 import passportLocal from 'passport-local';
-import Authentication from '../services/authentication/authentication';
-import Permission from '../services/authentication/permission';
-import User from '../services/user/user';
+import HotelUser from '../hotel/user/user';
+import Authentication from '../hotel/authentication/authentication';
 
 const LocalStrategy = passportLocal.Strategy;
 
@@ -13,19 +12,12 @@ passport.serializeUser((user, done) =>
 
 passport.deserializeUser((user, done) =>
 {
-    return User.user_info(user.user_id)
+    return HotelUser.user_info(user.user_id)
 
     .then((user_info) =>
     {
         user.user_info = user_info;
 
-        return Permission.permission_list(user_info.rank);
-    })
-
-    .then((permission_list) =>
-    {
-        user.user_permissions = permission_list;
-        
         return done(null, user);
     })
 
@@ -53,7 +45,7 @@ passport.use('login', new LocalStrategy({
             login_status: true,
             user_id: session.user_id,
             user_name: session.user_name,
-            user_session: session.user_session
+            user_session: session.user_session,
         });
     })
 

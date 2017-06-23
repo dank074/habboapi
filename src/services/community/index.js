@@ -1,13 +1,15 @@
 import CommunityService from './community.service';
 import LeaderboardsService from './leaderboards.service';
 import NewsService from './news.service';
+import StaffService from './staff.service';
 import StatisticsService from './statistics.service';
 
-let servicesModule = angular.module('habboapi.services.community', []);
+let communityModule = angular.module('habboapi.services.community', []);
 
-servicesModule.service('CommunityService', CommunityService);
-servicesModule.service('LeaderboardsService', LeaderboardsService);
-servicesModule.service('NewsService', NewsService);
-servicesModule.service('StatisticsService', StatisticsService);
+communityModule.service('CommunityService', CommunityService);
+communityModule.service('LeaderboardsService', LeaderboardsService);
+communityModule.service('NewsService', NewsService);
+communityModule.service('StaffService', StaffService);
+communityModule.service('StatisticsService', StatisticsService);
 
-export default servicesModule;
+export default communityModule;
