@@ -4,6 +4,7 @@
     "port_https": 443,
     "password_salt": 10,
     "session": {
+        "name": "site",
         "secret": "KcgZogkYj5H2D2o",
         "resave": "false",
         "saveUninitialized": "false",

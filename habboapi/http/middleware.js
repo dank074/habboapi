@@ -1,4 +1,4 @@
-import HotelUser from '../hotel/user/user';
+import User from '../hotel/user/user';
 import Session from '../hotel/authentication/session';
 
 class HttpMiddleware
@@ -11,7 +11,7 @@ class HttpMiddleware
         
         .then((session) =>
         {
-            return HotelUser.check_ban(req.user.user_id)
+            return User.check_ban(req.user.user_id)
             
             .then((ban) =>
             {
@@ -36,4 +36,4 @@ class HttpMiddleware
     }
 }
 
-export default HttpMiddleware
+export default HttpMiddleware;

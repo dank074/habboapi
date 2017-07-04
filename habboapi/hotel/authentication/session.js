@@ -46,7 +46,7 @@ class Session
             
             if(user_id == null || user_name == null || user_session == null || user_ip == null || user_agent == null) return reject(new Error('invalid_session'));
             
-            return new ApiSessionDB({user_session: user_session, session_type: 'site'}).fetch({
+            return new ApiSessionDB().where({user_session: user_session, session_type: 'site'}).fetch({
                 columns: ['user_id', 'user_name', 'user_session', 'user_ip', 'user_agent', 'session_type']
             })
             
@@ -79,7 +79,7 @@ class Session
 
         if(user_id == null) return false;
 
-        return new ApiSessionDB({user_id: user_id, session_type: 'site'}).fetchAll()
+        return new ApiSessionDB().where({user_id: user_id, session_type: 'site'}).fetchAll()
 
         .then((result) =>
         {

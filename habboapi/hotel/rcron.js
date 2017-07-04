@@ -25,6 +25,38 @@ class rCRON
         });
     }
 
+    static alert_user(user_id, message)
+    {
+        return new Promise((resolve, reject) =>
+        {
+            if(user_id == null || message == null) return reject(new Error('invalid_paramemters'));
+
+            return this.send_message({
+                "key": "alertuser",
+                "data": {
+                    "user_id": user_id,
+                    "message": message
+                }
+            });
+        });
+    }
+
+    static disconnect_user(user_id, user_name)
+    {
+        return new Promise((resolve, reject) =>
+        {
+            if(user_id == null || user_name == null) return reject(new Error('invalid_paramemters'));
+
+            return this.send_message({
+                "key": "disconnect",
+                "data": {
+                    "user_id": user_id,
+                    "username": user_name
+                }
+            });
+        });
+    }
+
     static forward_user(user_id, room_id)
     {
         return new Promise((resolve, reject) =>
@@ -57,16 +89,97 @@ class rCRON
         });
     }
 
-    static disconnect(user_id)
+    static friend_request(user_id, to_id)
     {
         return new Promise((resolve, reject) =>
         {
-            if(user_id == null) return reject(new Error('invalid_paramemters'));
+            if(user_id == null || to_id == null) return reject(new Error('invalid_paramemters'));
 
             return this.send_message({
-                "key": "disconnect",
+                "key": "friendrequest",
                 "data": {
-                    "id": user_id
+                    "user_id": user_id,
+                    "target_id": to_id
+                }
+            });
+        });
+    }
+
+    static give_badge(user_id, badge_code)
+    {
+        return new Promise((resolve, reject) =>
+        {
+            if(user_id == null || badge_code == null) return reject(new Error('invalid_paramemters'));
+
+            return this.send_message({
+                "key": "givebadge",
+                "data": {
+                    "user_id": user_id,
+                    "badge_code": badge_code
+                }
+            });
+        });
+    }
+
+    static give_credits(user_id, credits)
+    {
+        return new Promise((resolve, reject) =>
+        {
+            if(user_id == null || badge_code == null) return reject(new Error('invalid_paramemters'));
+
+            return this.send_message({
+                "key": "givecredits",
+                "data": {
+                    "user_id": user_id,
+                    "credits": credits
+                }
+            });
+        });
+    }
+
+    static give_pixels(user_id, pixels)
+    {
+        return new Promise((resolve, reject) =>
+        {
+            if(user_id == null || badge_code == null) return reject(new Error('invalid_paramemters'));
+
+            return this.send_message({
+                "key": "givepixels",
+                "data": {
+                    "user_id": user_id,
+                    "pixels": pixels
+                }
+            });
+        });
+    }
+
+    static give_points(user_id, points, type)
+    {
+        return new Promise((resolve, reject) =>
+        {
+            if(user_id == null || badge_code == null) return reject(new Error('invalid_paramemters'));
+
+            return this.send_message({
+                "key": "givepoints",
+                "data": {
+                    "user_id": user_id,
+                    "points": points,
+                    "tyoe": type
+                }
+            });
+        });
+    }
+
+    static hotel_alert(message)
+    {
+        return new Promise((resolve, reject) =>
+        {
+            if(user_id == null || badge_code == null) return reject(new Error('invalid_paramemters'));
+
+            return this.send_message({
+                "key": "hotelalert",
+                "data": {
+                    "message": message
                 }
             });
         });
