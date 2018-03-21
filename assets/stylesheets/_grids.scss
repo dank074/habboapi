@@ -1,0 +1,49 @@
+grid-list {
+    display: grid;
+    grid-row-gap: 10px;
+
+    &.across-3 {
+        grid-auto-columns: 33.3%;
+        grid-template-columns: repeat(3, 33.3%);
+    }
+
+    &.across-4 {
+        grid-auto-columns: 25%;
+        grid-template-columns: repeat(4, 25%);
+    }
+
+    &.badge-grid,
+    &.avatar-grid,
+    &.room-grid,
+    &.group-grid {
+
+        > badge,
+        > avatar,
+        > room,
+        > group {
+            //padding-bottom: 10px;
+
+            grid-image {
+                display: block;
+                margin: 0 auto;
+                width: 60px;
+                height: 60px;
+                background-color: rgb(229, 229, 229);
+                background-position: center;
+                background-repeat: no-repeat;
+                border: 1px solid rgb(0, 0, 0);
+                border-radius: 50%;
+                image-rendering: pixelated;
+            }
+
+            grid-text {
+                display: block;
+                margin: 5px 0 0;
+                overflow: hidden;
+                text-align: center;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+}

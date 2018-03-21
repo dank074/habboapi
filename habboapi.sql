@@ -1,87 +1,57 @@
-DROP TABLE IF EXISTS `api_loginlog`;
-
--- Create syntax for TABLE 'api_loginlog'
-CREATE TABLE `api_loginlog` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `user_name` varchar(100) NOT NULL,
-  `user_ip` varchar(100) NOT NULL,
-  `user_agent` text NOT NULL,
-  `login_status` enum('0','1') NOT NULL,
-  `login_type` enum('site','hk') DEFAULT 'site',
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-DROP TABLE IF EXISTS `api_logs`;
-
--- Create syntax for TABLE 'api_logs'
-CREATE TABLE `api_logs` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `action` varchar(100) NOT NULL DEFAULT '',
-  `parameters` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-DROP TABLE IF EXISTS `api_news`;
-
 -- Create syntax for TABLE 'api_news'
 CREATE TABLE `api_news` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
-  `title` text,
-  `description` text,
-  `content` text,
+  `news_title` text NOT NULL,
+  `news_content` text NOT NULL,
+  `news_image` text,
   `room_id` int(11) DEFAULT NULL,
   `group_id` int(11) DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
+  `news_hidden` enum('0','1') NOT NULL DEFAULT '0',
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-DROP TABLE IF EXISTS `api_permissions`;
+-- Create syntax for TABLE 'api_news_comments'
+CREATE TABLE `api_news_comments` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `article_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `message` text NOT NULL,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Create syntax for TABLE 'api_permissions'
-CREATE TABLE `api_permissions` (
-  `rank_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `rank_name` varchar(100) NOT NULL DEFAULT '',
-  `hk_login` enum('0','1') NOT NULL DEFAULT '0',
-  `hk_dashboard` enum('0','1') NOT NULL DEFAULT '0',
-  PRIMARY KEY (`rank_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+-- Create syntax for TABLE 'api_profile_comments'
+CREATE TABLE `api_profile_comments` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `profile_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `message` text NOT NULL,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS `api_sessions`;
+-- Create syntax for TABLE 'api_room_comments'
+CREATE TABLE `api_room_comments` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `room_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `message` text NOT NULL,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Create syntax for TABLE 'api_sessions'
 CREATE TABLE `api_sessions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `user_name` varchar(100) NOT NULL,
-  `user_session` varchar(100) NOT NULL DEFAULT '',
-  `user_ip` varchar(100) NOT NULL DEFAULT '',
-  `user_agent` text NOT NULL,
-  `session_type` enum('site','hk') NOT NULL DEFAULT 'site',
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-DROP TABLE IF EXISTS `api_users`;
-
--- Create syntax for TABLE 'api_users'
-CREATE TABLE `api_users` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `hotel_id` int(11) NOT NULL,
-  `user_name` varchar(100) NOT NULL DEFAULT '',
-  `user_pass` text NOT NULL,
-  `user_email` text NOT NULL,
-  `user_rank` int(11) NOT NULL,
-  `user_disabled` enum('0','1') NOT NULL DEFAULT '0',
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
+  `session` varchar(100) NOT NULL DEFAULT '',
+  `expires` int(11) NOT NULL DEFAULT '0',
+  `data` text NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `hotel_id` (`hotel_id`),
-  UNIQUE KEY `user_name` (`user_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  UNIQUE KEY `user_session` (`session`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;

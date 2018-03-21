@@ -1,0 +1,145 @@
+md-input-container {
+    display: block;
+    color: rgb(0, 0, 0);
+    border-color: rgb(0, 0, 0);
+
+    input::placeholder {
+        color: rgb(0, 0, 0);
+    }
+
+    .md-input {
+        color: rgb(0, 0, 0);
+        border-color: rgb(0, 0, 0);
+        transition: all 0.2s;
+
+        label,
+        .md-placeholder,
+        &::placeholder,
+        &:-moz-placeholder,
+        &::-moz-placeholder,
+        &:-ms-input-placeholder,
+        &::-webkit-input-placeholder {
+            color: rgb(0, 0, 0);
+        }
+    }
+
+    md-icon {
+        color: rgb(0, 0, 0);
+    }
+
+    :not(.md-input-focused):not(.md-input-invalid) label.md-required:after {
+        color: rgb(0, 0, 0);
+    }
+
+    &.md-input-focused {
+
+        .md-input {
+            label,
+            .md-placeholder,
+            &::placeholder,
+            &:-moz-placeholder,
+            &::-moz-placeholder,
+            &:-ms-input-placeholder,
+            &::-webkit-input-placeholder {
+                color: rgb(0, 0, 0);
+            }
+        }
+    }
+
+    .md-input-message-animation .md-char-counter,
+    .md-input-messages-animation .md-char-counter {
+        color: rgb(0, 0, 0);
+    }
+
+    .input-avatar {
+        width: 64px;
+        height: 96px;
+        margin-top: -97px;
+        position: relative;
+        float: right;
+        background-image: url(/assets/img/ghost.png);
+        overflow: hidden;
+    }
+}
+
+md-input-container:not(.md-input-invalid).md-input-focused .md-input,
+md-input-container:not(.md-input-invalid).md-input-resized .md-input
+{
+    border-color: rgb(0, 0, 0);
+}
+
+md-input-container:not(.md-input-invalid).md-input-focused label,
+md-input-container:not(.md-input-invalid).md-input-focused md-icon
+{
+    color: rgb(0, 0, 0);
+}
+
+md-input-container:not(.md-input-focused):not(.md-input-invalid) md-select .md-select-value span:first-child:after
+{
+    color: rgb(0, 0, 0);
+}
+
+md-input-container.md-input-focused:not(.md-input-has-value) md-select .md-select-value,
+md-input-container.md-input-focused:not(.md-input-has-value) md-select .md-select-value.md-select-placeholder
+{
+    color: rgb(0, 0, 0);
+}
+
+md-input-container.md-input-invalid md-select.md-no-underline .md-select-value
+{
+    border-bottom-color: transparent !important;
+}
+
+md-input-container label.md-required:after
+{
+    color: rgb(0, 0, 0);
+}
+
+md-input-container .md-input-message-animation,
+md-input-container .md-input-messages-animation
+{
+    color: rgb(0, 0, 0);
+}
+
+md-input-container:not(.md-input-invalid).md-input-focused.md-warn .md-input
+{
+    border-color: rgb(0, 0, 0);
+}
+
+md-input-container:not(.md-input-invalid).md-input-focused.md-warn label,
+md-input-container:not(.md-input-invalid).md-input-focused.md-warn md-icon
+{
+    color: rgb(0, 0, 0);
+}
+
+md-input-container.md-input-invalid .md-input
+{
+    border-color: rgb(0, 0, 0);
+}
+
+md-input-container.md-input-invalid .md-char-counter,
+md-input-container.md-input-invalid .md-input-message-animation,
+md-input-container.md-input-invalid label
+{
+    color: rgb(0, 0, 0);
+}
+
+md-input-container md-select .md-select-value span:first-child:after
+{
+    color: rgb(0, 0, 0);
+}
+
+md-input-container.md-input-invalid md-select .md-select-value
+{
+    color: rgb(0, 0, 0) !important;
+    border-bottom-color: rgb(0, 0, 0) !important;
+}
+
+[disabled] md-input-container .md-input,
+md-input-container .md-input[disabled]
+{
+    color: rgb(0, 0, 0);
+    border-bottom-color: transparent;
+    background-image:     linear-gradient(90deg, rgba(0, 0, 0, .38) 0, rgba(0, 0, 0, .38) 33%, transparent 0);
+    background-image: -ms-linear-gradient(left, transparent 0, rgba(0, 0, 0, .38) 100%);
+}

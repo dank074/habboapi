@@ -1,0 +1,42 @@
+<div layout="row" ng-if="articleInfo.length == 0">
+    <md-card flex class="no-select">
+        <md-toolbar>
+            <div class="md-toolbar-tools center">
+                <h2 translate="generic.headers.notFound"></h2>
+            </div>
+        </md-toolbar>
+        <md-card-content class="center">
+            <p>
+                <span translate="generic.messages.articleNotFound"></span>
+            </p>
+            <img class="pixel-image" src="assets/images/habbo/error.png"></img>
+        </md-card-content>
+    </md-card>
+</div>
+<div layout="row" layout-xs="column" ng-if="articleInfo.length != 0">
+    <md-card flex class="no-select">
+        <md-toolbar>
+            <div class="md-toolbar-tools center">
+                <h2 ng-bind="articleInfo.news_title"></h2>
+            </div>
+        </md-toolbar>
+        <md-card-content class="md-padding">
+            <div class="trix-content md-padding" ng-bind-html="articleInfo.news_content"></div>
+            <md-list ng-if="articleInfo.author">
+                <md-list-item class="md-3-line" ng-class="{'has-secondary': articleInfo.author.online == 0 || articleInfo.author.online == 1}" ui-sref="profile({username: articleInfo.author.username})">
+                    <avatar-icon ng-style="{'background-image': 'url({{$root.appConfig.siteImages.avatars}}{{articleInfo.author.look}}&action=std&gesture=sml&direction=4&head_direction=4&size=n&img_format=png)'}"></avatar-icon>
+                    <div class="md-list-item-text" layout="column">
+                        <h3 ng-if="articleInfo.author.username" ng-bind="articleInfo.author.username"></h3>
+                        <h4 ng-if="articleInfo.author.motto" ng-bind="articleInfo.author.motto"></h4>
+                        <p ng-if="articleInfo.created_at">{{'generic.lists.posted' | translate}}: {{articleInfo.created_at | date: 'MMM d, yyyy'}}</p>
+                    </div>
+                    <habbo-icon class="md-secondary center" ng-if="articleInfo.author.online == 0 || articleInfo.author.online == 1" ng-class="{'online': articleInfo.author.online == 1, 'offline': articleInfo.author.online == 0}"></habbo-icon>
+                    <md-button class="md-icon-button md-secondary center" ng-if="$root.clientLoaded && articleInfo.author.online == 1 && $root.Session.isFriend(articleInfo.author.online)" target-id="{{articleInfo.author.id}}" follow-user><habbo-icon class="follow-user"></habbo-icon></md-button>
+                </md-list-item>
+            </md-list>
+        </md-card-content>
+    </md-card>
+</div>
+<div layout="row" layout-xs="column">
+    <api-news-comments flex ng-if="articleInfo.id" article-id="articleInfo.id"></api-news-comments>
+</div>

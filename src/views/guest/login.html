@@ -1,35 +1,35 @@
-<div layout="row" layout-xs="column">
-	<md-card class="login-card-left no-select" flex="60" hide-xs>
-		<div class="left-image"></div>
-		<md-card-content>
-			<h2 translate="login.login_header" translate-values="{site_name: $root.app_config.site_name}"></h2>
-			<h3 translate="login.login_description"></h3>
-			<h4 translate="login.login_info" translate-values="{site_name: $root.app_config.site_name}"></h4>
-		</md-card-content>
-	</md-card>
-	<md-card class="login-card-right no-select" flex="40" flex-xs="100">
-		<md-toolbar>
-			<div class="md-toolbar-tools center">
-				<habbo-icon class="key space-right"></habbo-icon><h2 translate="login.login_card_header"></h2>
-			</div>
-		</md-toolbar>
-		<md-card-content>
-            <form name="user_login" ng-submit="login()" novalidate>
-                <md-input-container class="md-block">
-                    <input type="text" name="user_name" ng-model="login_details.user_name" translate translate-attr-placeholder="forms.username" autofocus="true" required />
-                    <div ng-messages="user_login.user_name.$error" md-auto-hide="false" ng-show="user_login.user_name.$touched">
-                        <div ng-messages-include="views/messages.html"></div>
+<div layout="row" layout-xs="column" class="content-login">
+    <div layout="column" flex="40" flex-xs="100" flex-offset="60" flex-offset-xs="0">
+        <md-card class="no-select">
+            <md-toolbar>
+                <div class="md-toolbar-tools center">
+                    <h2 translate="generic.headers.login"></h2>
+                </div>
+            </md-toolbar>
+            <md-card-content class="center">
+                <form name="loginForm" ng-submit="login()">
+                    <md-input-container>
+                        <label translate="generic.forms.username"></label>
+                        <input id="username" type="text" name="username" ng-model="loginFormDetails.username" ng-change="loginForm.username.$setValidity('invalidLogin', true)" autofocus required />
+                        <div ng-messages="loginForm.username.$dirty && loginForm.username.$error" md-auto-hide="false">
+                            <div ng-messages-include="views/messages.html"></div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container>
+                        <label translate="generic.forms.password"></label>
+                        <input id="password" type="password" name="password" ng-model="loginFormDetails.password" required />
+                        <div ng-messages="loginForm.password.$dirty && loginForm.password.$error" md-auto-hide="false">
+                            <div ng-messages-include="views/messages.html"></div>
+                        </div>
+                    </md-input-container>
+                    <div layout="row" class="center">
+                        <md-button type="submit" class="md-silver width-100" ng-disabled="loginForm.$invalid" translate="generic.buttons.login"></md-button>
                     </div>
-                </md-input-container>
-                <md-input-container class="md-block">
-                    <input type="password" name="user_pass" ng-model="login_details.user_pass" translate translate-attr-placeholder="forms.password" required />
-                    <div ng-messages="user_login.user_pass.$error" md-auto-hide="false" ng-show="user_login.user_pass.$touched">
-                        <div ng-messages-include="views/messages.html"></div>
+                    <div layout="row" class="center">
+                        <md-button class="md-silver width-100" ui-sref="register" translate="generic.buttons.register"></md-button>
                     </div>
-                </md-input-container>
-                <md-button type="submit" class="md-raised md-primary login-button" ng-disabled="user_login.$invalid" translate="buttons.login"></md-button><br />
-                <md-button class="md-raised register-button" ui-sref="register" translate="buttons.register"></md-button>
-            </form>
-		</md-card-content>
-	</md-card>
+                </form>
+            </md-card-content>
+        </md-card>
+    </div>
 </div>

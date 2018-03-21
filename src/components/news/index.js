@@ -1,7 +1,7 @@
-import NewsListComponent from './news.list.component';
+import NewsCommentsComponent from './comments';
 
-let componentsModule = angular.module('habboapi.components.news', []);
+let newsModule = angular.module('habboapi.components.news', []);
 
-componentsModule.component('newsList', NewsListComponent);
+newsModule.component('apiNewsComments', NewsCommentsComponent);
 
-export default componentsModule;
+export default newsModule;

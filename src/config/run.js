@@ -1,53 +1,37 @@
-function Run(AppConstants, SessionService, StatisticsService, $localStorage, $state, $stickyState, $interval, $rootScope, $document)
+export default function Run(AppConstants, Session, HotelCommunity, $state, $stickyState, $interval, $rootScope)
 {
     'ngInject';
-    
-    $rootScope.app_config   = AppConstants;
+
+    $rootScope.appConfig    = AppConstants;
+    $rootScope.Session      = Session
     $rootScope.state		= $state;
 
-    $rootScope.get_online_count = () =>
-    {
-        StatisticsService.users_online()
+    HotelCommunity.loadUsersOnline();
 
-        .then((count) =>
-        {
-            $rootScope.users_online = count;
-        });
-    };
-
-    $rootScope.get_online_count();
-
-    $interval(() => { $rootScope.get_online_count(); }, 60000);
+    $interval(() => { HotelCommunity.loadUsersOnline(); }, 60000);
 
     $rootScope.$on('$stateChangeStart', (event, next, current) =>
     {
-        return SessionService.validate_session()
-        
-        .then((session) =>
+        return Session.isAuthenticated()
+
+        .then(() =>
         {
-            if(next.guest_only)
+            $rootScope.currentUser = Session.getSession();
+
+            if(next.guestOnly == true)
             {
                 event.preventDefault();
-                return $state.go('me');
+                return $state.go('home.me');
             }
-            
+
             return next;
         })
-        
-        .catch((err) =>
-        {
-            $rootScope.current_user = null;
 
-            if(err.data != undefined || null)
-            {
-                if(err.data.error == 'user_banned')
-                {
-                    event.preventDefault();
-                    return $state.go('banned', {ban: err.data.ban});
-                }
-            }
-            
-            if(next.login_required == true)
+        .catch(() =>
+        {
+            $rootScope.currentUser = null;
+
+            if(next.loginRequired == true)
             {
                 event.preventDefault();
                 return $state.go('login');
@@ -59,19 +43,17 @@ function Run(AppConstants, SessionService, StatisticsService, $localStorage, $st
 
     $rootScope.$on('$stateChangeSuccess', (event, to, toParams, prev, prevParams) =>
     {
-        document.body.scrollTop = document.documentElement.scrollTop = 0;
+        $rootScope.previousState 	= (prev.name == undefined || null || prev.name == '') ? $state.get('login') : prev;
+        $rootScope.previousParams 	= prevParams;
+        $rootScope.currentState 	= to;
 
-        $rootScope.previous_state 	= (prev.name == undefined || prev.name == '' || null) ? $state.get('login') : prev;
-        $rootScope.previous_params 	= prevParams;
-        $rootScope.current_state 	= to;
-
-        if($rootScope.current_user == undefined || null) $stickyState.reset('client');
-
-        $rootScope.go_back = () =>
+        $rootScope.goBack = () =>
         {
-            return $state.go($rootScope.previous_state.name, $rootScope.previous_params);
+            return $state.go($rootScope.previousState.name, $rootScope.previousParams);
         };
+
+        if($rootScope.currentUser == undefined || null) $stickyState.reset('client');
+
+        $rootScope.clientLoaded = (typeof($stickyState.getInactiveStates()[0]) != 'undefined' && $stickyState.getInactiveStates()[0].includes.client == true && $rootScope.currentUser.habbo.online == 1) ? true : false;
     });
 }
-
-export default Run;

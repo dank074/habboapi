@@ -1,0 +1,33 @@
+<md-card class="no-select">
+    <md-toolbar>
+        <div class="md-toolbar-tools center">
+            <h2 translate="generic.headers.email"></h2>
+        </div>
+    </md-toolbar>
+    <md-card-content style="padding:5px 25px;">
+        <form name="emailForm" ng-submit="updateHotelUserEmail()" validate>
+            <md-input-container class="md-block">
+                <label translate="generic.forms.password"></label>
+                <input id="password" type="password" name="password" ng-model="emailFormDetails.password" ng-change="emailForm.password.$setValidity('invalidPassword', true)" autofocus required />
+                <div ng-messages="emailForm.password.$dirty && emailForm.password.$error" md-auto-hide="false">
+                    <div ng-messages-include="views/messages.html"></div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label translate="generic.forms.emailNew"></label>
+                <input id="emailNew" type="email" name="emailNew" ng-model="emailFormDetails.emailNew" ng-change="emailForm.emailNew.$setValidity('invalidEmailAvailability2', true)" validate-email required />
+                <div ng-messages="emailForm.emailNew.$dirty && emailForm.emailNew.$error" md-auto-hide="false">
+                    <div ng-messages-include="views/messages.html"></div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label translate="generic.forms.emailConfirm"></label>
+                <input id="emailConfirm" type="email" name="emailConfirm" ng-model="emailFormDetails.emailConfirm" required />
+                <div ng-messages="emailForm.emailConfirm.$dirty && emailForm.emailConfirm.$error" md-auto-hide="false">
+                    <div ng-messages-include="views/messages.html"></div>
+                </div>
+            </md-input-container>
+            <md-button type="submit" class="md-silver" ng-disabled="(emailForm.$invalid) || (emailFormDetails.emailNew != emailFormDetails.emailConfirm)" translate="generic.buttons.save"></md-button>
+        </form>
+    </md-card-content>
+</md-card>

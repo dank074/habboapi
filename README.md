@@ -1,45 +1,75 @@
+![alt text](https://habboapi.com/assets/images/habbo/logo.png "HabboAPI")
+
 ## HabboAPI CMS
-a content management system written in node & angular using es6
+a content management system written in NodeJS & AngularJS
 
-#### about
-HabboAPI is a powerful open source content management system for Arcturus Emulator. The system is created on top of NodeJS & AngularJS. The backend "HabboAPI Server" handles various REST calls to return JSON data. This server handles all server side functions including authentication, session management, hotel services for groups, profiles, rooms, statistics, & users. Included is also compatibility with Arcturus Emulators rCRON system. With this we can include features like friend request, follow user, enter room, and various other tasks. The frontend "HabboAPI CMS" is built on top of AngularJS. Angular is the template engine for this system and no HTML is handled on the server. Everything is compiled and bundled for the CMS into two files (habbo-api.css & bundle.js) which we get from using gulp. HabboAPI CMS has tons of unique features. Most notably being the ability to run the client right within the CMS. The client will continue to run in the same browser window even while navigating to other pages throughout the CMS. HabboAPI is the next generation in Habbo CMS.
+## About
+HabboAPI is an open source content management system for Arcturus Emulator. This system is built upon NodeJS & AngularJS. The API uses Knex & BookshelfJS for database management, ExpressJS for routing, PassportJS for authentication & session management, Babel for ES6 functionality, and finally Gulp for compiling our frontend code.
 
-#### requirements
-* Nodejs v7.x
+## Features
+* Login
+* Register (reCAPTCHA support)
+* Account Settings (client, email, & password)
+* Community (latest user & room, random users, rooms & groups)
+* News (list with page scrubbing, search, & news comments)
+* Leaderboards (most credits, online time, & respects)
+* Staff
+* Profiles (badges, friends, rooms, groups, general info, profile comments)
+* Room page (room owner, general info, room comments, link to open room in client automatically)
+* Group page (group owner, group room, general info)
+* Client (full support for FlashInterface)
+
+### Backend Features
+* HTTPS support
+* Limit accounts per ip
+* Prevent usernames from containing certain prefixes (ADM-, MOD- etc)
+* Maintenance system (allow certain ips access during maintenance)
+* Ban system (ip & account)
+* Arcturus rCRON
+* Ability to hide certain users / ranks from leaderboards, staff list etc
+
+## Requirements
+* Nodejs v8.x.x (tested with v8.9.4)
 * NPM
 * MySQL Server
 
-#### installation
-* [download](https://github.com/billsonnn/habboapi/archive/master.zip) the latest zip
-* create a new folder and extract the zip to it
-* Open `config.json` & `constants.js` and modify the keys to your desired settings.
-* open command prompt / terminal in root / sudo mode and navigate to the folder you extracted the zip to
-* run `npm install -g babel-cli@6.24.0 gulp@3.9.1` 
-* run `npm install`
-* import `habboapi.sql` to your mysql database
-* run `gulp build`
-* finally to start the server, run `npm start`
+## Installation
+* [Download](https://github.com/billsonnn/habboapi/archive/master.zip) the latest zip
+* Create a new folder and extract the zip to it
+* Open `config.json` and modify the keys to your desired settings
+* Import `habboapi.sql` to your MySQL database
 
-#### demo
-* You can view a demo by visiting [habboapi.com](http://habboapi.com)
+ ### Windows
+ * Open command prompt in Administrator mode, run `npm install -g babel-cli@6.26.0 gulp@3.9.1`
+ * After that run `npm install`
+ * You may recieve warnings for any of the above installations, this is normal, unless there's an error you can ignore it
+ * Now run `start.bat`
+ * If you have configured everything correctly you should see HabboAPI running. You'll want to keep this window open, closing it will stop HabboAPI.
+ * Finally, run `build-complete.bat` This could take awhile...
+ * HabboAPI should now be ready
+
+## Additional Setup
+
+ ### reCAPTCHA
+ To enable reCAPTCHA support you must register your website with [reCAPTCHA](https://www.google.com/recaptcha)
+
+ * After logging in look for "Register a new site"
+ * You'll want to select "reCAPTCHA V2"
+ * For domains you'll want to type just your website link, look at the examples.
+ * After registering your domain you'll want to find the public and private keys under "Keys" and put these into your `config.json`
+ * You may also elect to disable reCAPTCHA, you'll find that in `config.json` as well.
+
+## Demo
+* You can view a demo by visiting [habboapi.com](https://habboapi.com)
 * This demo does have a working hotel. Test out all the features!
 
-#### features
-* me page
-* community page
-* staff page
-* settings page
-* profile page
-* group page
-* room page
+## FAQS
+* What emulator does HabboAPI support?
+  * HabboAPI is made for the Arcturus Emulator database. Although with some modifications to the database models this system could be used with other databases.
 
-#### faqs
-* what emulator does HabboAPI CMS support?
-  * habboapi is made for the arcturus emulator database. although with some modifications to the database models this system could be coded for other databases.
+* What type of password encryption does HabboAPI use?
+  * HabboAPI uses bcrypt with salts to hash passwords. Therefore MD5, SHA1 and others are not supported out of the box. If necessary you could install the required packages to enable support for these other encryption methods.
 
-* what password encryption does HabboAPI CMS use?
-  * habboapi uses bcrypt with salts to hash passwords. therefore md5, sha1 etc do not work. modifications to habboapi that change the algorithm is not officially supported, but could easily be done if needed.
-
-* how do I make modifications to angularjs & the templates?
-  * all code for the frontend can be found in the `src` folder. it is not recommended to make any changes to any of the modules contained here. instead, create a new module and require it into the main app module in `app.js`. all templates are located in `src/views`
-  * if you make any changes to the `src` folder you must rebuild the project for your changes to take effect. to do this just open command prompt / terminal and navigate to the folder where habboapi is located and run `gulp build`. also be sure to restart habboapi.
+* How do I make modifications to frontend code?
+  * All code for the frontend can be found in the `src` folder. It is not recommended to make changes to any of the modules contained here. Instead, create a new module and require it into the main app module in `app.js`. All templates are located in `src/views`
+  * If you make changes to the `src` folder you must rebuild the project for your changes to take effect. To do this just open command prompt / terminal and navigate to the folder where habboapi is located and run `gulp build-app`. also be sure to restart habboapi.

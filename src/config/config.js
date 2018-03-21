@@ -1,7 +1,7 @@
 import states from './states.json';
-import translationEnglish from '../../translation-en.json';
+import translationEnglish from '../../translation.json';
 
-function Config($locationProvider, $translateProvider, $mdThemingProvider, $urlRouterProvider, $stateProvider, $mdAriaProvider)
+export default function Config($locationProvider, $urlRouterProvider, $translateProvider, $mdThemingProvider, $stateProvider, $mdAriaProvider)
 {
     'ngInject';
     
@@ -9,17 +9,22 @@ function Config($locationProvider, $translateProvider, $mdThemingProvider, $urlR
     $locationProvider.hashPrefix('');
 
     $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.when('/me', '/home/me');
+    $urlRouterProvider.when('/community', '/community/home');
+    $urlRouterProvider.when('/community/news', '/community/news/latest');
+    $urlRouterProvider.when('/news', '/community/news/latest');
+    $urlRouterProvider.when('/client', '/client/');
 
     $translateProvider.translations('en', translationEnglish);
     $translateProvider.preferredLanguage('en');
     $translateProvider.useSanitizeValueStrategy('escape');
     $translateProvider.usePostCompiling(true);
-    
-    $mdThemingProvider.theme('default').primaryPalette('teal');
 
-    if(states.main != null || states.main.length != 0)
+    $mdThemingProvider.disableTheming();
+
+    if(states != null || states.length != 0)
 	{
-		angular.forEach(states.main, (value, key) =>
+		angular.forEach(states, (value, key) =>
 		{
 			$stateProvider.state(value.name, value);
 		});
@@ -27,5 +32,3 @@ function Config($locationProvider, $translateProvider, $mdThemingProvider, $urlR
 
     $mdAriaProvider.disableWarnings();
 }
-
-export default Config;

@@ -1,0 +1,59 @@
+<md-card class="no-select">
+    <md-toolbar>
+        <div class="md-toolbar-tools center">
+            <h2 ng-bind="$ctrl.header"></h2>
+            <span flex ng-if="$ctrl.identifier != 'disablePopup' && $ctrl.groups.length > 0"></span>
+            <md-button class="md-icon-button" ng-if="$ctrl.identifier != 'disablePopup' && $ctrl.groups.length > 0" ng-click="showAll()"><i class="fas fa-external-link-square-alt"></i></md-button>
+        </div>
+    </md-toolbar>
+    <md-card-content ng-if="$ctrl.groups.length == 0">
+        <p class="center-text" translate="generic.messages.noGroups"></p>
+    </md-card-content>
+    <md-card-content ng-if="$ctrl.type == 'list' && $ctrl.groups.length > 0" class="no-padding">
+        <md-list>
+            <md-list-item class="md-3-line" ng-repeat="group in $ctrl.groups | limitTo: $ctrl.limit" ui-sref="group({id: group.id})">
+                <group-icon ng-style="{'background-image': 'url({{$root.appConfig.siteImages.groupBadges}}/{{group.badge}}.png)'}"></group-icon>
+                <div class="md-list-item-text" layout="column">
+                    <h3 ng-if="group.name" ng-bind="group.name"></h3>
+                    <h4 ng-if="group.description" ng-bind="group.description"></h4>
+                    <p ng-if="group.owner.username">{{'generic.lists.owner' | translate}}: {{group.owner.username}}</p>
+                </div>
+            </md-list-item>
+        </md-list>
+    </md-card-content>
+    <md-card-content ng-if="$ctrl.type != 'list' && $ctrl.groups.length > 0">
+        <grid-list class="group-grid across-3">
+            <group ng-repeat="group in $ctrl.groups | limitTo: $ctrl.limit" ui-sref="group({id: group.id})">
+                <grid-image ng-style="{'background-image': 'url({{$root.appConfig.siteImages.groupBadges}}/{{group.badge}}.png)'}"></grid-image>
+                <grid-text ng-bind="group.name"></grid-text>
+            </room>
+        </grid-list>
+    </md-card-content>
+</md-card>
+<div style="visibility:hidden;" ng-if="$ctrl.groups.length > 0 || $ctrl.identifier != 'disablePopup'">
+    <div class="md-dialog-container" id="{{$ctrl.identifier}}-dialog">
+        <md-dialog class="no-select">
+            <md-toolbar>
+                <div class="md-toolbar-tools center">
+                    <h2 ng-bind="$ctrl.header"></h2>
+                    <span flex></span>
+                    <i class="close-icon" ng-click="hide()"></i>
+                </div>
+            </md-toolbar>
+            <md-dialog-content>
+                <div class="md-dialog-content">
+                    <md-list>
+                        <md-list-item class="md-3-line" ng-repeat="group in $ctrl.groups | limitTo: $ctrl.limit" ui-sref="group({id: group.id})">
+                            <group-icon ng-style="{'background-image': 'url({{$root.appConfig.siteImages.groupBadges}}/{{group.badge}}.png)'}"></group-icon>
+                            <div class="md-list-item-text" layout="column">
+                                <h3 ng-if="group.name" ng-bind="group.name"></h3>
+                                <h4 ng-if="group.description" ng-bind="group.description"></h4>
+                                <p ng-if="group.owner.username">{{'generic.lists.owner' | translate}}: {{group.owner.username}}</p>
+                            </div>
+                        </md-list-item>
+                    </md-list>
+                </div>
+            </md-dialog-content>
+        </md-dialog>
+    </div>
+</div>

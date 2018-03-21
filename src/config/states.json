@@ -1,113 +1,189 @@
 {
-	"main":
-	{
-        "login":
-        {
-            "name": "login",
-			"url": "/login",
-			"templateUrl": "views/guest/login.html",
-            "controller": "LoginController",
-			"guest_only": true
+    "login":
+    {
+        "name": "login",
+        "url": "/login",
+        "guestOnly": true,
+        "templateUrl": "views/guest/login.html",
+        "controller": "GuestLoginController",
+        "params": {
+            "message": null
+        }
+    },
+
+    "register":
+    {
+        "name": "register",
+        "url": "/register",
+        "guestOnly": true,
+        "templateUrl": "views/guest/register.html",
+        "controller": "GuestRegisterController"
+    },
+
+    "banned":
+    {
+        "name": "banned",
+        "url": "/banned",
+        "templateUrl": "views/guest/ban/user.html",
+        "controller": "GuestBannedController",
+        "params": {
+            "reason": null,
+            "expires": null
+        }
+    },
+
+    "client":
+    {
+        "name": "client",
+        "url": "/client/:roomId",
+        "sticky": true,
+        "loginRequired": true,
+        "views": {
+            "client": {
+                "controller": "UserClientController",
+                "templateUrl": "views/user/client.html"
+            }
         },
+        "params": {
+            "roomId": null
+        }
+    },
 
-		"register":
-		{
-			"name": "register",
-			"url": "/register",
-			"templateUrl": "views/guest/register.html",
-			"controller": "RegisterController",
-			"guest_only": true
-		},
+    "home":
+    {
+        "abstract": true,
+        "name": "home",
+        "url": "/home",
+        "loginRequired": true,
+        "template": "<div ui-view></div>"
+    },
 
-		"banned":
-		{
-			"name": "banned",
-			"url": "/banned",
-			"templateUrl": "views/user/banned.html",
-			"controller": "BannedController",
-			"params": {
-				"ban": null
-			}
-		},
+    "home.me":
+    {
+        "name": "home.me",
+        "url": "/me",
+        "loginRequired": true,
+        "templateUrl": "views/user/me.html",
+        "controller": "UserMeController"
+        
+    },
 
-		"me":
-		{
-			"name": "me",
-			"url": "/me",
-			"templateUrl": "views/user/me.html",
-            "controller": "MeController",
-			"login_required": true
-		},
+    "home.settings":
+    {
+        "abstract": true,
+        "name": "home.settings",
+        "url": "/settings",
+        "loginRequired": true,
+        "templateUrl": "views/user/settings/settings.html"
+    },
 
-        "community":
-		{
-			"name": "community",
-			"url": "/community",
-			"templateUrl": "views/community/community.html",
-			"controller": "CommunityController"
-		},
+    "home.settings.general":
+    {
+        "name": "home.settings.general",
+        "url": "/general",
+        "loginRequired": true,
+        "templateUrl": "views/user/settings/general.html",
+        "controller": "UserSettingsGeneralController"
+    },
 
-		"leaderboards":
-		{
-			"name": "leaderboards",
-			"url": "/leaderboards",
-			"templateUrl": "views/community/leaderboards.html",
-			"controller": "LeaderboardsController"
-		},
+    "home.settings.password":
+    {
+        "name": "home.settings.password",
+        "url": "/password",
+        "loginRequired": true,
+        "templateUrl": "views/user/settings/password.html",
+        "controller": "UserSettingsPasswordController"
+    },
 
-        "staff":
-		{
-			"name": "staff",
-			"url": "/staff",
-			"templateUrl": "views/community/staff.html",
-			"controller": "StaffController"
-		},
+    "home.settings.email":
+    {
+        "name": "home.settings.email",
+        "url": "/email",
+        "loginRequired": true,
+        "templateUrl": "views/user/settings/email.html",
+        "controller": "UserSettingsEmailController"
+    },
 
-		"profile":
-		{
-			"name": "profile",
-			"url": "/profile/:username",
-			"templateUrl": "views/user/profile.html",
-			"controller": "ProfileController"
-		},
+    "community":
+    {
+        "abstract": true,
+        "name": "community",
+        "url": "/community",
+        "template": "<div ui-view></div>"
+    },
 
-		"room":
-		{
-			"name": "room",
-			"url": "/room/:id",
-			"templateUrl": "views/community/room.html",
-			"controller": "RoomController"
-		},
+    "community.home":
+    {
+        "name": "community.home",
+        "url": "/home",
+        "templateUrl": "views/community/home.html",
+        "controller": "CommunityHomeController"
+    },
 
-		"group":
-		{
-			"name": "group",
-			"url": "/group/:id",
-			"templateUrl": "views/community/group.html",
-			"controller": "GroupController"
-		},
+    "community.news":
+    {
+        "abstract": true,
+        "name": "community.news",
+        "url": "/news",
+        "templateUrl": "views/news/list.html",
+        "controller": "NewsListController"
+    },
 
-		"client":
-		{
-			"name": "client",
-			"url": "/client",
-			"sticky": true,
-			"login_required": true,
-			"views": {
-				"client": {
-					"controller": "ClientController",
-					"templateUrl": "views/user/client.html"
-				}
-			}
-		},
+    "community.news.info":
+    {
+        "name": "community.news.info",
+        "url": "/:id",
+        "templateUrl": "views/news/info.html",
+        "controller": "NewsInfoController",
+        "params": {
+            "id": "latest"
+        }
+    },
 
-		"settings":
-		{
-			"name": "settings",
-			"url": "/settings",
-			"templateUrl": "views/user/settings.html",
-			"controller": "SettingsController",
-			"login_required": true
-		}
-	}
+    "community.leaderboards":
+    {
+        "name": "community.leaderboards",
+        "url": "/leaderboards",
+        "templateUrl": "views/community/leaderboards.html",
+        "controller": "CommunityLeaderboardsController"
+    },
+
+    "community.staff":
+    {
+        "name": "community.staff",
+        "url": "/staff",
+        "templateUrl": "views/community/staff.html",
+        "controller": "CommunityStaffController"
+    },
+
+    "profile":
+    {
+        "name": "profile",
+        "url": "/profile/:username",
+        "displayAsChild": "community",
+        "templateUrl": "views/user/profile/info.html",
+        "controller": "UserProfileController"
+    },
+
+    "room":
+    {
+        "name": "room",
+        "url": "/room/:id",
+        "displayAsChild": "community",
+        "templateUrl": "views/room/info.html",
+        "controller": "RoomInfoController",
+        "params": {
+            "id": null
+        }
+    },
+
+    "group":
+    {
+        "name": "group",
+        "url": "/group/:id",
+        "displayAsChild": "community",
+        "templateUrl": "views/group/info.html",
+        "controller": "GroupInfoController",
+        "permission": "hk_groups"
+    }
 }

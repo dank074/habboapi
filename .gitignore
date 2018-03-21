@@ -6,9 +6,8 @@ assets/dcr
 assets/gamedata
 assets/games
 assets/gordon
-assets/habbo-imaging
-assets/web-gallery
-src/config/template-cache.js
+src/config/templateCache.js
+src/config/constants.json
 build
 dist
 node_modules

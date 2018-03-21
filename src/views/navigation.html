@@ -1,19 +1,18 @@
-<div class="app-menu">
-    <div class="menu-container">
-        <ul class="menu-list left" ng-if="main_navigation.length > 0" flex>
-            <li class="list-item no-select" ng-repeat="item in main_navigation | orderBy: 'sort'" ng-hide="item.state.guest_only && $root.current_user.login_status || item.state.login_required && $root.current_user == undefined || null" ng-class="{active: $root.state.includes(item.state.name)}" ui-sref="{{item.state.name}}" ng-bind="item.name"></li>
-        </ul>
-        <ul class="menu-list right" flex>
-            <li class="list-item-no-hover users-online no-select" ng-if="$root.users_online == 1">1 {{'navigation.user_online' | translate}}</li>
-            <li class="list-item-no-hover users-online no-select" ng-hide="$root.users_online == 1">{{$root.users_online}} {{'navigation.users_online' | translate}}</li>
-            <md-menu ng-if="$root.current_user.login_status" md-position-mode="target-right target">
-                <li class="list-item avatar-image no-select" ng-click="$mdMenu.open($event)" style="background-image: url('{{$root.app_config.site_images.avatars}}{{$root.current_user.user_info.look}}&action=std&gesture=std&direction=2&head_direction=4&size=n&headonly=1&img_format=png');" ng-bind="$root.current_user.user_name"></li>
-                <md-menu-content width="3">
-                    <md-menu-item><md-button ui-sref="profile({username: $root.current_user.user_name})" translate="navigation.view_profile"></md-button></md-menu-item>
-                    <md-menu-item><md-button ui-sref="settings" translate="navigation.account_settings"></md-button></md-menu-item>
-                    <md-menu-item><md-button app-logout translate="buttons.logout"></md-button></md-menu-item>
-                </md-menu-content>
-            </md-menu>
-        </ul>
+<div class="content-navigation no-select">
+    <div class="menu-upper">
+        <div class="menu-container" ng-if="navigationList.length > 0">
+            <ul class="no-padding" flex style="margin-left:-6px;">
+                <li ng-repeat="item in navigationList" ng-class="{'active': $root.state.includes(item.state.name) || $root.state.current.displayAsChild == item.state.name, 'blue-item': item.color == 'blue', 'green-item': item.color == 'green'}" ng-hide="item.state.guestOnly == true && $root.currentUser != undefined || null || item.state.loginRequired == true && $root.currentUser == undefined || null" ui-sref="{{(item.url == null) ? item.state.name : item.url}}" ng-bind="(item.name == 'current_username') ? $root.currentUser.username : item.name"></li>
+            </ul>
+        </div>
+    </div>
+    <div class="menu-lower">
+        <div class="menu-container">
+            <div class="menu-inner">
+                <ul class="sub-list no-padding" ng-repeat="item in navigationList" ng-if="$root.state.includes(item.state.name) || $root.state.current.displayAsChild == item.state.name" ng-hide="item.state.guestOnly == true && $root.currentUser != undefined || null || item.state.loginRequired == true && $root.currentUser == undefined || null">
+                    <li ng-repeat="child in item.children" ng-class="{'active': $root.state.includes(child.state.name)}" ng-hide="child.state.guestOnly == true && $root.currentUser != undefined || null || child.state.loginRequired == true && $root.currentUser == undefined || null" ui-sref="{{(child.url == null) ? child.state.name : child.url}}" ng-bind="(child.name == 'current_username') ? $root.currentUser.username : child.name"></li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>

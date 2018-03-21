@@ -1,0 +1,41 @@
+<md-card class="no-select">
+    <md-toolbar>
+        <div class="md-toolbar-tools center">
+            <h2 ng-bind="$ctrl.header"></h2>
+            <span flex ng-if="$ctrl.identifier != 'disablePopup' && $ctrl.badges.length > 0"></span>
+            <md-button class="md-icon-button" ng-if="$ctrl.identifier != 'disablePopup' && $ctrl.badges.length > 0" ng-click="showAll()"><i class="fas fa-external-link-square-alt"></i></md-button>
+        </div>
+    </md-toolbar>
+    <md-card-content ng-if="$ctrl.badges.length == 0">
+        <p class="center-text" translate="generic.messages.noBadges"></p>
+    </md-card-content>
+    <md-card-content ng-if="$ctrl.badges.length > 0">
+        <grid-list class="badge-grid across-3">
+            <badge ng-repeat="badge in $ctrl.badges | limitTo: $ctrl.limit">
+                <grid-image ng-style="{'background-image': 'url({{$root.appConfig.siteImages.badges}}/{{badge.badge_code}}.gif)'}"></grid-image>
+            </badge>
+        </grid-list>
+    </md-card-content>
+</md-card>
+<div style="visibility:hidden;" ng-if="$ctrl.badges.length > 0 || $ctrl.identifier != 'disablePopup'">
+    <div class="md-dialog-container" id="{{$ctrl.identifier}}-dialog">
+        <md-dialog class="no-select">
+            <md-toolbar>
+                <div class="md-toolbar-tools center">
+                    <h2 ng-bind="$ctrl.header"></h2>
+                    <span flex></span>
+                    <i class="close-icon" ng-click="hide()"></i>
+                </div>
+            </md-toolbar>
+            <md-dialog-content>
+                <div class="md-dialog-content md-padding">
+                    <grid-list class="badge-grid across-4">
+                        <badge ng-repeat="badge in $ctrl.badges | limitTo: $ctrl.limit">
+                            <grid-image ng-style="{'background-image': 'url({{$root.appConfig.siteImages.badges}}/{{badge.badge_code}}.gif)'}"></grid-image>
+                        </badge>
+                    </grid-list>
+                </div>
+            </md-dialog-content>
+        </md-dialog>
+    </div>
+</div>

@@ -1,14 +1,14 @@
-import ClientDirective from './client.directive';
-import LogoutDirective from './logout.directive';
-import NavigationDirective from './navigation.directive';
-import ValidateUsernameDirective from './validate_username.directive';
-import ValidateEmailDirective from './validate_email.directive';
+import FollowUserDirective from './followUser';
+import LogoutDirective from './logout';
+import OpenRoomDirective from './openRoom';
+import ValidateUsernameDirective from './validateUsername';
+import ValidateEmailDirective from './validateEmail';
 
 let directivesModule = angular.module('habboapi.directives', []);
 
-directivesModule.directive('habboClient', () => new ClientDirective);
+directivesModule.directive('followUser', () => new FollowUserDirective);
 directivesModule.directive('appLogout', () => new LogoutDirective);
-directivesModule.directive('appNavigation', () => new NavigationDirective);
+directivesModule.directive('openRoom', () => new OpenRoomDirective);
 directivesModule.directive('validateUsername', () => new ValidateUsernameDirective);
 directivesModule.directive('validateEmail', () => new ValidateEmailDirective);
 

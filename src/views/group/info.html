@@ -1,0 +1,32 @@
+<div layout="row" layout-align="center center" ng-if="groupInfo.length == 0">
+	<md-card flex="40" class="no-select">
+		<md-toolbar>
+			<div class="md-toolbar-tools center">
+				<h2 translate="generic.headers.notFound"></h2>
+			</div>
+		</md-toolbar>
+		<md-card-content class="center">
+			<p>
+				<span translate="generic.messages.groupNotFound"></span>
+			</p>
+			<img class="pixel-image" src="assets/images/habbo/error.png"></img>
+		</md-card-content>
+	</md-card>
+</div>
+<div layout="row" layout-xs="column" ng-if="groupInfo.length != 0">
+	<div layout="column" flex="70" flex-xs="100">
+		<md-card class="no-select">
+			<md-toolbar>
+				<div class="md-toolbar-tools center">
+					<h2 translate="generic.headers.groupOwner"></h2>
+				</div>
+			</md-toolbar>
+			<md-card-content class="no-padding no-margin">
+				<api-user-card user="groupInfo.owner"></api-user-card>
+			</md-card-content>
+		</md-card>
+	</div>
+	<div layout="column" flex flex-xs="100">
+		<api-group-card header="{{'generic.headers.groupDetails' | translate}}" group="groupInfo"></api-group-card>
+	</div>
+</div>

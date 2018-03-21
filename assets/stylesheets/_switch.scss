@@ -1,0 +1,46 @@
+md-switch {
+
+    &.md-checked {
+
+        .md-ink-ripple {
+            color: rgb(0, 0, 0);
+        }
+
+        .md-thumb {
+            background-color: rgb(250, 250, 250);
+        }
+
+        .md-bar {
+            -webkit-box-shadow:inset 0 0 0 18px rgba(19,191,17,1),0 0 0 2px rgba(19,191,17,1);
+            -moz-box-shadow:inset 0 0 0 18px rgba(19,191,17,1),0 0 0 2px rgba(19,191,17,1);
+                 box-shadow:inset 0 0 0 18px rgba(19,191,17,1),0 0 0 2px rgba(19,191,17,1);
+        }
+    }
+
+    .md-ink-ripple {
+        color: rgb(158, 158, 158);
+    }
+
+    .md-thumb {
+        width: 22px;
+        height: 22px;
+        background-color: rgb(250, 250, 250);
+    }
+
+    .md-bar {
+        height: 16px;
+        background-color: rgb(158, 158, 158);
+    }
+
+    &[disabled] {
+        
+        .md-thumb {
+            background-color: rgb(189, 189, 189);
+        }
+
+        .md-bar {
+            background-color: rgba(0, 0, 0, .12);
+            box-shadow: none;
+        }
+    }
+}

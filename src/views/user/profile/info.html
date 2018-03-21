@@ -1,0 +1,27 @@
+<div layout="row" layout-align="center center" ng-if="profileInfo.length == 0">
+	<md-card flex="40" class="no-select">
+		<md-toolbar>
+			<div class="md-toolbar-tools center">
+				<h2 translate="generic.headers.notFound"></h2>
+			</div>
+		</md-toolbar>
+		<md-card-content class="center">
+			<p>
+				<span translate="generic.messages.profileNotFound"></span>
+			</p>
+			<img class="pixel-image" src="assets/images/habbo/error.png"></img>
+		</md-card-content>
+	</md-card>
+</div>
+<div layout="row" ng-if="profileInfo.length != 0">
+	<div layout="column" flex="30">
+		<api-badge-list identifier="profileBadges" type="grid" header="{{'generic.headers.badges' | translate}}" limit="9" badges="profileInfo.badges"></api-badge-list>
+		<api-user-list identifier="profileFriends" type="grid" header="{{'generic.headers.friends' | translate}}" limit="9" users="profileInfo.friends"></api-user-list>
+		<api-room-list identifier="profileRooms" type="grid" header="{{'generic.headers.rooms' | translate}}" limit="9" rooms="profileInfo.rooms"></api-room-list>
+		<api-group-list identifier="profileGroups" type="grid" header="{{'generic.headers.groups' | translate}}" limit="9" groups="profileInfo.groups"></api-group-list>	
+	</div>
+	<div layout="column" flex>
+		<api-user-card user="profileInfo"></api-user-card>
+		<api-user-profile-comments ng-if="profileInfo.id" profile-id="profileInfo.id"></api-user-profile-comments>
+	</div>
+</div>

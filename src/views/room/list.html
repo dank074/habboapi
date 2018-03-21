@@ -1,0 +1,61 @@
+<md-card class="no-select">
+    <md-toolbar>
+        <div class="md-toolbar-tools center">
+            <h2 ng-bind="$ctrl.header"></h2>
+            <span flex ng-if="$ctrl.identifier != 'disablePopup' && $ctrl.rooms.length > 0"></span>
+            <md-button class="md-icon-button" ng-if="$ctrl.identifier != 'disablePopup' && $ctrl.rooms.length > 0" ng-click="showAll()"><i class="fas fa-external-link-square-alt"></i></md-button>
+        </div>
+    </md-toolbar>
+    <md-card-content ng-if="$ctrl.rooms.length == 0">
+        <p class="center-text" translate="generic.messages.noRooms"></p>
+    </md-card-content>
+    <md-card-content ng-if="$ctrl.type == 'list' && $ctrl.rooms.length > 0" class="no-padding">
+        <md-list>
+            <md-list-item class="md-3-line" ng-class="{'has-secondary': $root.clientLoaded}" ng-repeat="room in $ctrl.rooms | limitTo: $ctrl.limit" ui-sref="room({id: room.id})">
+                <room-icon ng-style="{'background-image': 'url({{$root.appConfig.siteImages.images}}/icons/room.png)'}"></room-icon>
+                <div class="md-list-item-text" layout="column">
+                    <h3 ng-if="room.name" ng-bind="room.name"></h3>
+                    <h4 ng-if="room.description" ng-bind="room.description"></h4>
+                    <p ng-if="room.owner.username">{{'generic.lists.owner' | translate}}: {{room.owner.username}}</p>
+                </div>
+                <habbo-icon class="md-secondary center enter-room" ng-if="$root.clientLoaded" room-id="{{room.id}}" open-room></habbo-icon>
+            </md-list-item>
+        </md-list>
+    </md-card-content>
+    <md-card-content ng-if="$ctrl.type != 'list' && $ctrl.rooms.length > 0">
+        <grid-list class="room-grid across-3">
+            <room ng-repeat="room in $ctrl.rooms | limitTo: $ctrl.limit" ui-sref="room({id: room.id})">
+                <grid-image ng-style="{'background-image': 'url({{$root.appConfig.siteImages.images}}/icons/room.png)'}"></grid-image>
+                <grid-text ng-bind="room.name"></grid-text>
+            </room>
+        </grid-list>
+    </md-card-content>
+</md-card>
+<div style="visibility:hidden;" ng-if="$ctrl.rooms.length > 0 || $ctrl.identifier != 'disablePopup'">
+    <div class="md-dialog-container" id="{{$ctrl.identifier}}-dialog">
+        <md-dialog class="no-select">
+            <md-toolbar>
+                <div class="md-toolbar-tools center">
+                    <h2 ng-bind="$ctrl.header"></h2>
+                    <span flex></span>
+                    <i class="close-icon" ng-click="hide()"></i>
+                </div>
+            </md-toolbar>
+            <md-dialog-content>
+                <div class="md-dialog-content">
+                    <md-list>
+                        <md-list-item class="md-3-line" ng-class="{'has-secondary': $root.clientLoaded}" ng-repeat="room in $ctrl.rooms | limitTo: $ctrl.limit" ui-sref="room({id: room.id})">
+                            <room-icon ng-style="{'background-image': 'url({{$root.appConfig.siteImages.images}}/icons/room.png)'}"></room-icon>
+                            <div class="md-list-item-text" layout="column">
+                                <h3 ng-if="room.name" ng-bind="room.name"></h3>
+                                <h4 ng-if="room.description" ng-bind="room.description"></h4>
+                                <p ng-if="room.owner.username">{{'generic.lists.owner' | translate}}: {{room.owner.username}}</p>
+                            </div>
+                            <md-button class="md-icon-button md-secondary" ng-if="$root.clientLoaded" room-id="{{room.id}}" open-room><habbo-icon class="enter-room center"></habbo-icon></md-button>
+                        </md-list-item>
+                    </md-list>
+                </div>
+            </md-dialog-content>
+        </md-dialog>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<md-card class="no-select">
+    <md-toolbar class="md-table-toolbar md-default">
+        <div class="md-toolbar-tools center">
+            <h2 translate="generic.headers.newsComments"></h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="addComment()" ng-if="$root.currentUser.status"><i class="fas fa-plus"></i></md-button>
+        </div>
+    </md-toolbar>
+    <md-card-content ng-if="commentList.totalComments == 0">
+        <p class="center-text" translate="generic.messages.noComments"></p>
+    </md-card-content>
+    <md-card-content class="no-padding" ng-if="commentList.totalComments > 0">
+        <md-list>
+            <md-list-item class="md-3-line" ng-class="{'has-secondary': comment.user.online == 0 || comment.user.online == 1}" ng-repeat="comment in commentList.comments" ui-sref="profile({username: comment.user.username})">
+                <avatar-icon ng-style="{'background-image': 'url({{$root.appConfig.siteImages.avatars}}{{comment.user.look}}&action=std&gesture=sml&direction=4&head_direction=4&size=n&img_format=png)'}"></avatar-icon>
+                <div class="md-list-item-text" layout="column">
+                    <h3 ng-if="comment.user.username" ng-bind="comment.user.username"></h3>
+                    <h4 ng-if="comment.user.motto" ng-bind="comment.user.motto"></h4>
+                    <p ng-if="comment.message" ng-bind-html="comment.message"></p>
+                </div>
+                <habbo-icon class="md-secondary center" ng-if="comment.user.online == 0 || comment.user.online == 1" ng-class="{'online': comment.user.online == 1, 'offline': comment.user.online == 0}"></habbo-icon>
+                <md-button class="md-icon-button md-secondary center" ng-if="$root.clientLoaded && comment.user.online == 1 && $root.Session.isFriend(comment.user.id)" target-id="{{comment.user.id}}" follow-user><habbo-icon class="follow-user"></habbo-icon></md-button>
+            </md-list-item>
+        </md-list>
+    </md-card-content>
+    <data-md-table-pagination ng-if="commentList.totalComments > 0" md-label="{of: '{{'generic.tables.of' | translate}}', page: '{{'generic.tables.page' | translate}}', rowsPerPage: '{{'generic.tables.rowsPerPage' | translate}}'}" md-limit="5" md-limit-options="null" md-page="listQuery.page" md-total="{{commentList.totalComments}}" md-on-paginate="loadList" md-page-select="false"></data-md-table-pagination>
+</md-card>

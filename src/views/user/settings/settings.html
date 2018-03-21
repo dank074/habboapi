@@ -1,0 +1,60 @@
+<div layout="row" layout-xs="column">
+	<div layout="column" flex="auto" flex-xs="100">
+		<md-card class="no-select">
+			<md-toolbar>
+				<div class="md-toolbar-tools center">
+					<h2 translate="generic.headers.accountSettings"></h2>
+				</div>
+			</md-toolbar>
+			<md-card-content class="no-padding">
+				<ul>
+					<li ui-sref="home.settings.general" ui-sref-active="active" translate="generic.headers.general"></li>
+					<li ui-sref="home.settings.email" ui-sref-active="active" translate="generic.headers.email"></li>
+					<li ui-sref="home.settings.password" ui-sref-active="active" translate="generic.headers.password"></li>
+				</ul>
+				</table>
+			</md-card-content>
+		</md-card>
+        <md-card class="no-select">
+			<md-toolbar>
+				<div class="md-toolbar-tools center">
+					<h2 translate="generic.headers.userDetails"></h2>
+				</div>
+			</md-toolbar>
+			<md-card-content class="no-padding">
+				<table class="table table-striped stripes-even">
+					<tbody>
+						<tr ng-if="$root.currentUser.habbo.username" ui-sref="profile({username: $root.currentUser.habbo.username})">
+							<th><avatar-icon ng-style="{'background-image': 'url(' + $root.appConfig.siteImages.avatars + $root.currentUser.habbo.look + '&action=std&gesture=sml&direction=4&head_direction=4&size=n&img_format=png)'}" style="float:right;"></avatar-icon></th>
+							<td>
+								<span class="user-name" ng-bind="$root.currentUser.habbo.username"></span>
+								<span class="user-motto" ng-if="$root.currentUser.habbo.motto"><br />{{$root.currentUser.habbo.motto}}</span>
+							</td>
+						</tr>
+						<tr>
+							<th translate="generic.tables.created"></th>
+							<td ng-bind="$root.currentUser.habbo.account_created * 1000 | date:'MMM d, yyyy'"></td>
+						</tr>
+                        <tr>
+							<th translate="generic.tables.email"></th>
+							<td ng-bind="$root.currentUser.habbo.mail"></td>
+						</tr>
+						<tr>
+							<th translate="generic.tables.credits"></th>
+							<td ng-bind="$root.currentUser.habbo.credits | number:0"></td>
+						</tr>
+						<tr>
+							<th translate="generic.tables.duckets"></th>
+							<td ng-bind="$root.currentUser.habbo.duckets | number:0"></td>
+						</tr>
+						<tr>
+							<th translate="generic.tables.diamonds"></th>
+							<td ng-bind="$root.currentUser.habbo.diamonds | number:0"></td>
+						</tr>
+					</tbody>
+				</table>
+			</md-card-content>
+		</md-card>
+	</div>
+	<div layout="column" flex="70" flex-xs="100" ui-view></div>
+</div>

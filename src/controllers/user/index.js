@@ -1,15 +1,17 @@
-import BannedController from './banned.controller';
-import ClientController from './client.controller';
-import MeController from './me.controller';
-import ProfileController from './profile.controller';
-import SettingsController from './settings.controller';
+import './settings';
 
-let userModule = angular.module('habboapi.controllers.user', []);
+import UserClientController from './client';
+import UserMeController from './me';
+import UserProfileController from './profile';
 
-userModule.controller('BannedController', BannedController);
-userModule.controller('ClientController', ClientController);
-userModule.controller('MeController', MeController);
-userModule.controller('ProfileController', ProfileController);
-userModule.controller('SettingsController', SettingsController);
+const requires = [
+    'habboapi.controllers.user.settings'
+];
+
+let userModule = angular.module('habboapi.controllers.user', requires);
+
+userModule.controller('UserClientController', UserClientController);
+userModule.controller('UserMeController', UserMeController);
+userModule.controller('UserProfileController', UserProfileController);
 
 export default userModule;

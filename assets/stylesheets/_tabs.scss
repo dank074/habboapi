@@ -1,0 +1,81 @@
+md-tabs {
+    
+    .md-paginator {
+        
+        md-icon {
+            color: rgb(0, 0, 0);
+        }
+    }
+    
+    .md-tab {
+        color: rgb(0, 0, 0);
+    }
+
+    .md-tab[disabled],
+    .md-tab[disabled] md-icon {
+        color: rgba(0, 0, 0, .38);
+    }
+
+    .md-tab.md-active,
+    .md-tab.md-active md-icon,
+    .md-tab.md-focused,
+    .md-tab.md-focused md-icon {
+        color: rgb(0, 0, 0);
+    }
+
+    .md-tab {
+
+        .md-focused {
+            background: rgba(0, 150, 136, .1);
+        }
+    }
+
+    &.md-primary {
+        
+        md-tabs-wrapper {
+            background-color: rgb(0, 0, 0);
+
+            md-tabs-canvas {
+
+                md-pagination-wrapper {
+
+                    md-tab-item {
+
+                        &:not([disabled]),
+                        &:not([disabled]) md-icon {
+                            color: rgb(178, 223, 219);
+                        }
+
+                        &:not([disabled]) {
+
+                            &.md-active,
+                            &.md-active md-icon,
+                            &.md-focused,
+                            &.md-focused md-icon {
+                                color: rgb(255, 255, 255);
+                            }
+
+                            &.md-focused {
+                                background: rgba(255, 255, 255, .1);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    md-ink-bar {
+        color: rgb(0, 0, 0);
+        background: rgb(0, 0, 0);
+    }
+
+    .md-tab .md-ripple-container {
+        color: rgb(0, 0, 0);
+    }
+
+    md-tabs-wrapper {
+        border-color: rgba(0, 0, 0, .12);
+        background-color: transparent;
+    }
+}

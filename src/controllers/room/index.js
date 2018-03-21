@@ -1,7 +1,7 @@
-import RoomController from './room.controller';
+import RoomInfoController from './info';
 
 let roomModule = angular.module('habboapi.controllers.room', []);
 
-roomModule.controller('RoomController', RoomController);
+roomModule.controller('RoomInfoController', RoomInfoController);
 
 export default roomModule;

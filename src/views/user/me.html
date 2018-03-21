@@ -1,14 +1,18 @@
+<api-user-card user="$root.currentUser.habbo"></api-user-card>
 <div layout="row" layout-xs="column">
-	<div layout="column" flex flex-xs="100">
-		<user-card userinfo="$root.current_user.user_info"></user-card>
-		<div layout="row" layout-xs="column">
-			<div layout="column" flex ng-if="$root.current_user.user_info.room_entries.length > 0">
-				<room-list header="'me.room_visits' | translate" type="roomEntries" data="$root.current_user.user_info.room_entries" ng-if="$root.current_user.user_info.room_entries.length > 0"></room-list>
-			</div>
-			<div layout="column" flex></div>
-		</div>
-	</div>
-    <div layout="column" flex="30" flex-xs="100">
-		<news-list header="'news.news' | translate" type="newsList" data="news_list" ng-if="news_list.length > 0"></news-list>
-	</div>
+    <div layout="column" flex>
+        <md-card class="no-select" flex flex-xs="100" ng-if="$root.currentUser.user_info.room_entries">
+            <md-toolbar>
+                <div class="md-toolbar-tools center">
+                    <h2 translate="generic.headers.randomRooms"></h2>
+                </div>
+            </md-toolbar>
+            <md-card-content class="no-padding">
+                <api-room-list data="$root.currentUser.user_info.room_entries"></api-room-list>
+            </md-card-content>
+        </md-card>
+    </div>
+    <div layout="column" flex>
+        <api-user-list flex="33" flex-xs="100" identifier="friendsList" type="grid" header="{{'generic.headers.friends' | translate}}" limit="9" users="$root.currentUser.habbo.friends"></api-user-list>
+    </div>
 </div>

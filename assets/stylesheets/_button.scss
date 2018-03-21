@@ -1,0 +1,99 @@
+.md-button {
+
+    &.width-100 {
+        width: 100%;
+    }
+
+    &.client-button {
+        top: 32px;
+        left: 180px;
+        
+        &.return-web {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 2;
+        }
+
+        &.return-web2 {
+            position: fixed;
+            top: 40px;
+            left: 10px;
+            z-index: 2;
+        }
+    }
+
+    md-icon {
+        height: auto;
+        width: auto;
+        min-height: auto;
+        min-width: auto;
+
+        &.fab {
+            line-height: inherit;
+        }
+    }
+
+    &.md-green {
+        border: 2px solid rgb(0, 0, 0) !important;
+        border-radius: 5px !important;
+        color: rgb(255, 255, 255);
+        background: linear-gradient(rgb(70, 168, 28), rgb(53, 141, 22));
+
+        &:not([disabled]).md-focused,
+        &:not([disabled]):hover {
+            background: linear-gradient(rgba(70, 168, 28, .8), rgba(53, 141, 22, .8));
+        }
+    }
+
+    &.md-blue {
+        border: 2px solid rgb(0, 0, 0) !important;
+        border-radius: 5px !important;
+        color: rgb(255, 255, 255);
+        background: linear-gradient(rgb(31, 148, 228), rgb(23, 127, 195));
+
+        &:not([disabled]).md-focused,
+        &:not([disabled]):hover {
+            filter: brightness(110%);
+        }
+    }
+
+    &.md-silver {
+        border: 2px solid rgb(0, 0, 0) !important;
+        border-radius: 5px !important;
+        color: rgb(0, 0, 0);
+        background: linear-gradient(rgb(243,243,243), rgb(217,217,217));
+
+        &:not([disabled]).md-focused,
+        &:not([disabled]):hover {
+            background: linear-gradient(rgb(255, 255, 255), rgb(234, 234, 234)) !important;
+        }
+    }
+
+    &.md-habbo {
+        border: 2px solid rgb(0, 0, 0) !important;
+        border-radius: 5px !important;
+        color: rgb(0, 0, 0);
+        background: linear-gradient(rgb(255, 234, 0), rgb(255, 185, 0));
+
+        &:not([disabled]).md-focused,
+        &:not([disabled]):hover {
+            filter: brightness(110%);
+        }
+
+    }
+
+    &.md-green[disabled],
+    &.md-dark-green[disabled],
+    &.md-blue[disabled],
+    &.md-silver[disabled],
+    &.md-habbo[disabled],
+    &[disabled] {
+        cursor: default;
+        opacity: .50;
+    }
+
+    :not([disabled]).md-icon-button:hover {
+        background-color: transparent;
+    }
+}

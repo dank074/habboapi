@@ -1,0 +1,37 @@
+<md-card class="no-select">
+    <md-toolbar>
+        <div class="md-toolbar-tools center">
+            <h2 translate="generic.headers.general"></h2>
+        </div>
+    </md-toolbar>
+    <md-card-content style="padding:5px 25px;">
+        <form name="generalForm" validate>
+            <md-list>
+                <md-list-item>
+                    <p translate="generic.forms.blockFollowing"></p>
+                    <md-switch class="md-secondary" name="blockFollowing" ng-model="$root.currentUser.habbo.settings.block_following" ng-change="updateHotelUserSettings()"></md-switch>
+                </md-list-item>
+                <md-list-item>
+                    <p translate="generic.forms.blockFriendRequests"></p>
+                    <md-switch class="md-secondary" name="blockFriendRequests" ng-model="$root.currentUser.habbo.settings.block_friendrequests" ng-change="updateHotelUserSettings()"></md-switch>
+                </md-list-item>
+                <md-list-item>
+                    <p translate="generic.forms.blockRoomInvites"></p>
+                    <md-switch class="md-secondary" name="blcokRoomInvites" ng-model="$root.currentUser.habbo.settings.block_roominvites" ng-change="updateHotelUserSettings()"></md-switch>
+                </md-list-item>
+                <md-list-item>
+                    <p translate="generic.forms.oldChat"></p>
+                    <md-switch class="md-secondary" name="oldChat" ng-model="$root.currentUser.habbo.settings.old_chat" ng-change="updateHotelUserSettings()"></md-switch>
+                </md-list-item>
+                <md-list-item>
+                    <p translate="generic.forms.ignoreBots"></p>
+                    <md-switch class="md-secondary" name="ignoreBots" ng-model="$root.currentUser.habbo.settings.ignore_bots" ng-change="updateHotelUserSettings()"></md-switch>
+                </md-list-item>
+                <md-list-item>
+                    <p translate="generic.forms.ignorePets"></p>
+                    <md-switch class="md-secondary" name="ignorePets" ng-model="$root.currentUser.habbo.settings.ignore_pets" ng-change="updateHotelUserSettings()"></md-switch>
+                </md-list-item>
+            </md-list>
+        </form>
+    </md-card-content>
+</md-card>

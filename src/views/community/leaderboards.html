@@ -1,11 +1,5 @@
-<div layout="row">
-	<div layout="column" flex ng-if="leaderboards_info.most_credits.length > 0">
-		<user-list flex header="'leaderboards.most_credits' | translate" type="mostCredits" data="leaderboards_info.most_credits"></user-list>
-	</div>
-	<div layout="column" flex ng-if="leaderboards_info.most_online.length > 0">
-		<user-list flex header="'leaderboards.most_online' | translate" type="mostOnline" data="leaderboards_info.most_online"></user-list>
-	</div>
-	<div layout="column" flex ng-if="leaderboards_info.most_respected.length > 0">
-		<user-list flex header="'leaderboards.most_respected' | translate" type="mostRespected" data="leaderboards_info.most_respected"></user-list>
-	</div>
+<div layout="row" layout-xs="column">
+    <api-user-list flex flex-xs="100" identifier="mostCreditsList" type="list" header="{{'generic.headers.mostCredits' | translate}}" users="leaderboardsInfo.mostCredits"></api-user-list>
+    <api-user-list flex flex-xs="100" identifier="mostOnlineList" type="list" header="{{'generic.headers.mostOnline' | translate}}" users="leaderboardsInfo.mostOnline"></api-user-list>
+    <api-user-list flex flex-xs="100" identifier="mostRespectedList" type="list" header="{{'generic.headers.mostRespected' | translate}}" users="leaderboardsInfo.mostRespected"></api-user-list>
 </div>

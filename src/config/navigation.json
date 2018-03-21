@@ -1,40 +1,56 @@
 {
     "navigation": [
-		{
-			"name": "Login",
-			"state": "login",
-			"sort": 1,
-			"disabled": false
-		},
-		{
-			"name": "Register",
-			"state": "register",
-			"sort": 2,
-			"disabled": false
-		},
-		{
-			"name": "Me",
-			"state": "me",
-			"sort": 3,
-			"disabled": false
-		},
-		{
-			"name": "Community",
-			"state": "community",
-			"sort": 4,
-			"disabled": false
-		},
-		{
-			"name": "Leaderboards",
-			"state": "leaderboards",
-			"sort": 5,
-			"disabled": false
-		},
-		{
-			"name": "Staff",
-			"state": "staff",
-			"sort": 6,
-			"disabled": false
-		}
-	]
+        {
+            "name": "Login",
+            "state": "login",
+            "color": "blue"
+        },
+        {
+            "name": "Register",
+            "state": "register",
+            "color": "blue"
+        },
+        {
+            "name": "current_username",
+            "state": "home",
+            "url": "home.me",
+            "color": "blue",
+            "subItems": [
+                {
+                    "name": "Me",
+                    "state": "home.me"
+                },
+                {
+                    "name": "Account Settings",
+                    "state": "home.settings",
+                    "url": "home.settings.general"
+                }
+            ]
+        },
+        {
+            "name": "Community",
+            "state": "community",
+            "url": "community.home",
+            "color": "green",
+            "subItems": [
+                {
+                    "name": "Community",
+                    "state": "community.home"
+                },
+                {
+                    "name": "News",
+                    "state": "community.news",
+                    "url": "community.news.info"
+                },
+                {
+                    "name": "Leaderboards",
+                    "state": "community.leaderboards"
+                },
+                {
+                    "name": "Staff",
+                    "state": "community.staff"
+                }
+            ]
+        }
+    ]
 }

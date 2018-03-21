@@ -1,46 +1,91 @@
 {
-    "ip": "localhost",
-    "port": 80,
-    "port_https": 443,
-    "password_salt": 10,
+    "ip": "",
+    "portHttp": 80,
+    "portHttps": 443,
+    "httpsEnabled": false,
+    "passwordSalt": 10,
     "session": {
-        "name": "site",
-        "secret": "KcgZogkYj5H2D2o",
-        "resave": "false",
-        "saveUninitialized": "false",
-        "cookie": {
-            "maxAge": 604800000
+        "key": "habboapi",
+        "secret": "LDDWK8Mo4AmDYBn",
+        "resave": false,
+        "saveUninitialized": false,
+        "store": {
+            "tableName": "api_sessions",
+            "sessionId": "session",
+            "expiers": "expires",
+            "data": "data"
         }
     },
     "database": {
         "client": "mysql",
         "connection": {
+            "timezone" : "+00:00",
             "host": "localhost",
             "port": 3306,
             "user": "root",
             "password": "",
-            "database": "arcturus"
+            "database": ""
+        },
+        "hides": {
+            "randomUsersHideUser": [],
+            "randomRoomsHideRoom": [],
+            "randomGroupsHideGroup": [],
+            "activeRoomsHideRoom": [],
+            "mostCreditsHideUser": [],
+            "mostOnlineHideUser": [],
+            "mostRespectedHideUser": [],
+            "staffListHideRank": [1, 2]
         }
     },
-    "rCRON": {
-        "socket_ip": "127.0.0.1",
-        "socket_port": "12422"
+    "emulatorSettings": {
+        "emulatorType": "arcturus",
+        "ip": "",
+        "port": 1242,
+        "rCRON": {
+            "ip": "",
+            "port": 12422
+        }
     },
-    "staff_page_ranks": [7, 6, 5],
-    "hotel": {
-        "prohibited_usernames": ["ADMIN-", "MOD-", "TRIAL-", "OWNER-", "ADM-"],
-        "user_info": ["mail", "account_created", "last_online", "motto", "look", "rank", "credits", "online"],
-		"user_settings": ["block_following", "block_friendrequests", "block_roominvites", "old_chat", "ignore_bots", "ignore_pets"],
-		"new_user": {
-            "max_accounts": 3,
-			"rank": 1,
-			"figure": "hr-115-42.hd-190-1.ch-215-62.lg-285-91.sh-290-62",
-			"gender": "M",
-			"motto": "Welcome to HabboAPI",
-			"credits": 2000,
-			"duckets": 1000,
-			"diamonds": 3,
-			"home_room": 1
-		}
-	}
+    "userSettings": {
+        "userProhibitedUsernames": ["ADMIN-", "MOD-", "TRIAL-", "OWNER-", "ADM-"],
+        "userNew": {
+            "maxAccountsPerIp": 3,
+            "rank": 1,
+            "figure": "hr-115-42.hd-190-1.ch-215-62.lg-285-91.sh-290-62",
+            "gender": "M",
+            "motto": "Welcome to HabboAPI",
+            "credits": 2000,
+            "duckets": 1000,
+            "diamonds": 3,
+            "homeRoom": 1
+        }
+    },
+    "reCAPTCHASettings": {
+        "captchaEnabled": false,
+        "siteKey": "",
+        "secretKey": ""
+    },
+    "maintenanceAllowedIps": [""],
+    "webSettings": {
+        "api": "https://habboapi.com/api",
+        "siteName": "HabboAPI",
+        "siteLink": "https://habboapi.com",
+        "maintenanceEnabled": false,
+        "siteImages": {
+            "images": "https://habboapi.com/assets/images",
+            "badges": "https://habboapi.com/assets/c_images/album1584",
+            "groupBadges": "https://habboapi.com/assets/c_images/Badgeparts/generated",
+            "avatars": "http://avatar-retro.com/habbo-imaging/avatarimage?figure="
+        },
+        "client": {
+            "clientVariables": "https://habboapi.com/assets/gamedata/external_variables.txt",
+            "clientTexts": "https://habboapi.com/assets/gamedata/external_flash_texts.txt",
+            "clientProductData": "https://habboapi.com/assets/gamedata/productdata.txt",
+            "clientFurniData": "https://habboapi.com/assets/gamedata/furnidata.xml",
+            "clientFigureList": "https://habboapi.com/assets/gamedata/figuredata.xml",
+            "clientPromoHabbos": "https://habboapi.com/assets/gamedata/habblet/xml/promo_habbos.xml",
+            "clientBase": "https://habboapi.com/assets/gordon/game/",
+            "clientSwf": "https://habboapi.com/assets/gordon/PRODUCTION-201611291003-338511768/Habbo.swf"
+        }
+    }
 }

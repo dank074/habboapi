@@ -1,0 +1,33 @@
+<div layout="row" layout-align="center center" ng-if="roomInfo.length == 0">
+	<md-card flex="40" class="no-select">
+		<md-toolbar>
+			<div class="md-toolbar-tools center">
+				<h2 translate="generic.headers.notFound"></h2>
+			</div>
+		</md-toolbar>
+		<md-card-content class="center">
+			<p>
+				<span translate="generic.messages.roomNotFound"></span>
+			</p>
+			<img class="pixel-image" src="assets/images/habbo/error.png"></img>
+		</md-card-content>
+	</md-card>
+</div>
+<div layout="row" layout-xs="column" ng-if="roomInfo.length != 0">
+	<div layout="column" flex="70" flex-xs="100">
+		<md-card class="no-select">
+			<md-toolbar>
+				<div class="md-toolbar-tools center">
+					<h2 translate="generic.headers.roomOwner"></h2>
+				</div>
+			</md-toolbar>
+			<md-card-content class="no-padding no-margin">
+				<api-user-card user="roomInfo.owner"></api-user-card>
+			</md-card-content>
+		</md-card>
+		<api-room-comments flex ng-if="roomInfo.id" room-id="roomInfo.id"></api-room-comments>
+	</div>
+	<div layout="column" flex flex-xs="100">
+		<api-room-card header="{{'generic.headers.roomDetails' | translate}}" room="roomInfo"></api-room-card>
+	</div>
+</div>

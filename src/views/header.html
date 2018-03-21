@@ -1,0 +1,14 @@
+<div class="content-header">
+    <div class="header-logo" ui-sref="login"></div>
+        <div class="sub-navigation">
+            <ul class="no-padding no-select">
+                <li class="list-item" style="cursor:default;" ng-if="$root.usersOnline == 1">1 {{'generic.navigation.userOnline' | translate}}</li>
+                <li class="list-item" style="cursor:default;" ng-hide="$root.usersOnline == 1">{{$root.usersOnline}} {{'generic.navigation.usersOnline' | translate}}</li>
+                <li class="list-item float-right" ng-if="$root.currentUser.status" app-logout>Logout</li>
+            </ul>
+        </div>
+        <md-button class="md-raised client-button md-green float-right" ng-if="$root.currentUser.status && $root.clientLoaded == false" ui-sref="client" translate="generic.buttons.enterClient"></md-button>
+        <md-button class="md-raised client-button md-green float-right" ng-if="$root.currentUser.status && $root.clientLoaded == true" ui-sref="client" translate="generic.buttons.returnClient"></md-button>
+    </div>
+</div>
+<api-navigation ng-hide="$root.state.includes('login') || $root.state.includes('register') || $root.state.includes('banned')"></api-navigation>

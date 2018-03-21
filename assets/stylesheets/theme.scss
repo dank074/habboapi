@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:500,400,300');
+
+@import 'fontawesome';
+@import 'material';
+@import 'animate';
+@import 'trix';
+@import 'datatable';
+
+@import 'variables';
+@import 'button';
+@import 'content';
+@import 'dialog';
+@import 'forum';
+@import 'grids';
+@import 'icons';
+@import 'input';
+@import 'list';
+@import 'switch';
+@import 'table';
+@import 'tabs';
+
+html {
+    font-family: $font;
+    color: $color;
+
+    body {
+        background: $background;
+        image-rendering: pixelated;
+        overflow: hidden;
+        max-width: 100%;
+        max-height: 100%;
+
+        > div {
+            overflow: auto;
+            max-height: 100%;
+        }
+    }
+}
+
+.app {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.no-select {
+    -webkit-touch-callout: none;
+      -webkit-user-select: none;
+       -khtml-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+}
+
+.no-margin {
+    margin: 0 !important;
+}
+
+.no-padding {
+    padding: 0 !important;
+}
+
+.float-right {
+    float: right;
+}
+
+.center {
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.pixel-image {
+    image-rendering: pixelated;
+
+    &.padding {
+        padding: 10px;
+    }
+
+    &.space-right {
+        padding-right: 10px;
+    }
+
+    &.outline {
+        -webkit-filter: drop-shadow(0 1px 0 #FFF) drop-shadow(0 -1px 0 #FFF) drop-shadow(1px 0 0 #FFF) drop-shadow(-1px 0 0 #FFF) drop-shadow(0 0 10px transparent);
+        filter: drop-shadow(0 1px 0 #FFF) drop-shadow(0 -1px 0 #FFF) drop-shadow(1px 0 0 #FFF) drop-shadow(-1px 0 0 #FFF) drop-shadow(0 0 10px transparent);
+    }
+}
+
+[ui-sref] {
+    cursor: pointer;
+}
+
+md-backdrop {
+    background-color: rgba(33, 33, 33, 0.0);
+
+    &.md-opaque {
+        background-color: rgba(33, 33, 33, 1.0);
+    }
+
+    &.md-menu-backdrop {
+        z-index: 2 !important;
+    }
+}
+
+.md-scroll-mask {
+    z-index: 1 !important;
+}
+
+.md-contact-suggestion span.md-contact-email
+{
+    color: rgb(189, 189, 189);
+}
+
+._md-panel-backdrop
+{
+    background-color: rgba(33, 33, 33, 1.0);
+}
+
+.md-panel.md-tooltip
+{
+    color: rgba(255, 255, 255, .87);
+    background-color: rgb(97, 97, 97);
+}
+
+span.helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+md-select-menu {
+    background: rgb(255, 255, 255);
+}
+
+.md-open-menu-container {
+    background: rgb(255, 255, 255);
+}
+
+.md-select-menu-container {
+    overflow: visible;
+}

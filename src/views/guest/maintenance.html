@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en_US" lang="en_US">
+<head>
+    <base href="/">
+    <title><%= siteName %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    
+    <link type="image/vnd.microsoft.icon" rel="shortcut icon" href="assets/images/icons/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="theme.css" />
+</head>
+<body class="app">
+    <div class="main-container">
+        <div class="container-content">
+            <div class="content-inner login-background">
+                <div class="content-header">
+                    <div class="header-logo"></div>
+                </div>
+                <div class="content-main">
+                    <div class="layout-row layout-xs-column content-maintenance">
+                        <div class="layout-column flex-40 flex-xs-100 flex-offset-60 flex-offset-xs-0">
+                            <md-card class="no-select">
+                                <md-toolbar>
+                                    <div class="md-toolbar-tools center">
+                                        <h2><%= maintenanceHeader %></h2>
+                                    </div>
+                                </md-toolbar>
+                                <md-card-content class="md-padding center">
+                                    <p><%= maintenanceMessage %></p>
+                                    <img src="assets/images/habbo/maintenance.png"></img>
+                                </md-card-content>
+                            </md-card>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-footer no-select">
+                    &copy; 2018 <%= siteName %> Hotel
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

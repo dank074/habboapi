@@ -1,11 +1,11 @@
-import CommunityController from './community.controller';
-import LeaderboardsController from './leaderboards.controller';
-import StaffController from './staff.controller';
+import CommunityHomeController from './home';
+import CommunityLeaderboardsController from './leaderboards';
+import CommunityStaffController from './staff';
 
 let communityModule = angular.module('habboapi.controllers.community', []);
 
-communityModule.controller('CommunityController', CommunityController);
-communityModule.controller('LeaderboardsController', LeaderboardsController);
-communityModule.controller('StaffController', StaffController);
+communityModule.controller('CommunityHomeController', CommunityHomeController);
+communityModule.controller('CommunityLeaderboardsController', CommunityLeaderboardsController);
+communityModule.controller('CommunityStaffController', CommunityStaffController);
 
 export default communityModule;

@@ -1,0 +1,110 @@
+habbo-icon {
+    display: inline-block;
+    image-rendering: pixelated;
+    outline: 0;
+    width: 20px;
+    height: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    &.space-right {
+        margin-right: 4px;
+    }
+
+    &.center {
+        margin: 0 auto;
+    }
+
+    &.achievement {
+        background-image: url("/assets/images/icons/achievement.png");
+    }
+
+    &.clock {
+        background-image: url("/assets/images/icons/clock.png");
+    }
+
+    &.conversation {
+        background-image: url("/assets/images/icons/conversation.png");
+    }
+
+    &.credit {
+        background-image: url("/assets/images/icons/credit.png");
+    }
+
+    &.enter-room {
+        background-image: url("/assets/images/icons/enter-room.png");
+    }
+
+    &.enter {
+        width: 24px !important;
+        height: 24px !important;
+        background-image: url("/assets/images/icons/enter.png");
+    }
+
+    &.follow-user {
+        background-image: url("/assets/images/icons/follow-user.png");
+    }
+
+    &.groups {
+        background-image: url("/assets/images/icons/groups.png");
+    }
+
+    &.heart {
+        background-image: url("/assets/images/icons/heart.png");
+    }
+
+    &.motto {
+        background-image: url("/assets/images/icons/motto.png");
+    }
+
+    &.offline {
+        width: 50px !important;
+        height: 16px !important;
+        background-image: url("/assets/images/icons/offline.png");
+    }
+
+    &.online {
+        width: 50px !important;
+        height: 16px !important;
+        background-image: url("/assets/images/icons/online.png");
+    }
+
+    &.room {
+        width: 72px !important;
+        height: 67px !important;
+        background-image: url("/assets/images/icons/room.png");
+    }
+
+    &.star-gold {
+        background-image: url("/assets/images/icons/star-gold.png");
+    }
+
+    &.tick {
+        background-image: url("/assets/images/icons/tick.png");
+    }
+
+    &.user {
+        background-image: url("/assets/images/icons/user.png");
+    }
+
+    &.users {
+        background-image: url("/assets/images/icons/users.png");
+    }
+}
+
+badge-icon,
+avatar-icon,
+room-icon,
+group-icon,
+furni-icon,
+news-icon {
+    display: block;
+    width: 60px;
+    height: 60px;
+    background-color: rgb(229, 229, 229);
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 50%;
+    image-rendering: pixelated;
+}

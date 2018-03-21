@@ -1,0 +1,22 @@
+<div layout="row" layout-xs="column">
+    <div layout="column" flex="70" flex-xs="100" ng-if="communityInfo.latestUser">
+        <md-card class="no-select">
+            <md-toolbar>
+                <div class="md-toolbar-tools center">
+                    <h2 translate="generic.headers.latestUser"></h2>
+                </div>
+            </md-toolbar>
+            <md-card-content class="no-padding no-margin">
+                <api-user-card user="communityInfo.latestUser"></api-user-card>
+            </md-card-content>
+        </md-card>
+    </div>
+    <div layout="column" flex flex-xs="100" ng-if="communityInfo.latestRoom">
+        <api-room-card header="{{'generic.headers.latestRoom' | translate}}" room="communityInfo.latestRoom"></api-room-card>
+    </div>
+</div>
+<div layout="row" layout-xs="column">
+    <api-user-list flex="33" flex-xs="100" identifier="randomUsers" type="grid" header="{{'generic.headers.randomUsers' | translate}}" users="communityInfo.randomUsers"></api-user-list>
+    <api-room-list flex="33" flex-xs="100" identifier="randomRooms" type="grid" header="{{'generic.headers.randomRooms' | translate}}" rooms="communityInfo.randomRooms"></api-room-list>
+    <api-group-list flex="33" flex-xs="100" identifier="randomGroups" type="grid" header="{{'generic.headers.randomGroups' | translate}}" groups="communityInfo.randomGroups"></api-group-list>
+</div>

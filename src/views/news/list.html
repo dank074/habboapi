@@ -1,0 +1,34 @@
+<div layout="row" layout-xs="column">
+    <div layout="column" flex flex-xs="100">
+        <md-card class="no-select">
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h2 ng-if="listFilter.show == false" translate="generic.headers.news"></h2>
+                    <span ng-if="listFilter.show == false" flex></span>
+                    <form ng-if="listFilter.show == true" flex name="listFilter.form">
+                        <input ng-if="listFilter.show" type="text" ng-model="listQuery.filter" ng-model-options="listFilter.options" translate translate-attr-placeholder="generic.forms.search" autofocus="true">
+                    </form>
+                    <md-button class="md-icon-button" ng-if="listFilter.show == true" ng-click="listReset()"><i class="fas fa-times"></i></md-button>
+                    <md-button class="md-icon-button" ng-if="listFilter.show == false" ng-click="listFilter.show = true"><i class="fas fa-search"></i></md-button>
+                </div>
+            </md-toolbar>
+            <md-card-content ng-if="newsList.totalNews == 0">
+                <p class="center-text" translate="generic.messages.noNews"></p>
+            </md-card-content>
+            <md-card-content class="no-padding" ng-if="newsList.totalNews > 0">
+                <md-list>
+                    <md-list-item class="md-2-line" ng-repeat="article in newsList.news" ui-sref="community.news.info({id: createNewsLink(article)})">
+                        <div class="md-list-item-text" layout="column">
+                            <h3 ng-if="article.news_title" ng-bind="article.news_title"></h3>
+                            <p ng-if="article.created_at" ng-bind="article.created_at | date: 'MMM d, yyyy'"></p>
+                        </div>
+                    </md-list-item>
+                </md-list>
+            </md-card-content>
+            <data-md-table-pagination ng-if="newsList.totalNews > 0" md-label="{of: '{{'generic.tables.of' | translate}}', page: '{{'generic.tables.page' | translate}}', rowsPerPage: '{{'generic.tables.rowsPerPage' | translate}}'}" md-limit="5" md-limit-options="null" md-page="listQuery.page" md-total="{{newsList.totalNews}}" md-on-paginate="loadList" md-page-select="false"></data-md-table-pagination>            
+        </md-card>
+    </div>
+    <div layout="column" flex="70" flex-xs="100">
+        <div ui-view></div>
+    </div>
+</div>

@@ -1,2 +1,10 @@
-<habbo-client habboswf="$root.app_config.client.client_swf" habbobase="$root.app_config.client.client_base" flashvars="flashvars_string" ng-cloak></habbo-client>
-<md-button class="return-web hotel-button md-raised" ng-click="go_back()" translate="buttons.return_web"></md-button>
+<div id="client">
+    <h3 translate="generic.messages.flashNotDetected"></h3>
+    <img class="pixel-image center" ng-src="{{$root.appConfig.siteImages.images}}/habbo/maintenance.png" style="display:block;"></img>
+    <h4 translate-compile translate="generic.messages.flashNotDetectedDescription" translate-values="{siteName: $root.appConfig.siteName}"></h4>
+    <a id="getFlash" href="http://www.adobe.com/go/getflashplayer" target="_blank">
+        <div class="get-flash"></div>
+    </a>
+</div>
+<md-button class="md-raised client-button return-web md-habbo" ng-if="$root.state.includes('client')" ng-click="goBack()" translate="generic.buttons.returnWeb"></md-button>
+<button id="clientLogout" type="hidden" style="display:none;" app-logout></button>

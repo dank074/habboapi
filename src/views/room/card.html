@@ -1,0 +1,41 @@
+<md-card class="no-select" ng-if="$ctrl.room != null">
+    <md-toolbar>
+        <div class="md-toolbar-tools center">
+            <h2 ng-bind="$ctrl.header"></h2>
+        </div>
+    </md-toolbar>
+    <md-card-content class="no-padding">
+        <table class="table table-striped stripes-even">
+            <tbody>
+                <tr ng-if="$ctrl.room.name" ui-sref="room({id: $ctrl.room.id})">
+                    <th><room-icon ng-style="{'background-image': 'url({{$root.appConfig.siteImages.images}}/icons/room.png)', 'float': 'right'}"></room-icon></th>
+                    <td>
+                        <span class="room-name" ng-bind="$ctrl.room.name"></span>
+                        <span class="room-description" ng-if="$ctrl.room.description"><br />{{$ctrl.room.description}}</span>
+                    </td>
+                </tr>
+                <tr ng-if="$ctrl.room.owner.username">
+                    <th translate="generic.tables.owner"></th>
+                    <td>
+                        <span ui-sref="profile({username: $ctrl.room.owner.username})" ng-bind="$ctrl.room.owner.username" style="border-bottom: 1px dashed rgb(0, 0, 0);outline:0;cursor:pointer;"></span>
+                    </td>
+                </tr>
+                <tr ng-if="$ctrl.room.guild_id">
+                    <th translate="generic.tables.group"></th>
+                    <td>
+                        <span ui-sref="group({id: $ctrl.room.group.id})" ng-bind="$ctrl.room.group.name" style="border-bottom: 1px dashed rgb(0, 0, 0);outline:0;cursor:pointer;"></span>
+                    </td>
+                </tr>
+                <tr ng-if="$ctrl.room.users || $ctrl.room.users_max">
+                    <th translate="generic.tables.users"></th>
+                    <td>{{$ctrl.room.users}} / {{$ctrl.room.users_max}}</td>
+                </tr>
+                <tr ng-if="$ctrl.room.score">
+                    <th translate="generic.tables.likes"></th>
+                    <td ng-bind="$ctrl.room.score"></td>
+                </tr>
+            </tbody>
+        </table>
+        <md-button ng-if="$root.clientLoaded" class="md-rasied md-green center" style="margin:8px auto;" room-id="{{$ctrl.room.id}}" open-room translate="generic.buttons.enterRoom"></md-button>
+    </md-card-content>
+</md-card>

@@ -1,0 +1,71 @@
+<md-card class="no-select">
+    <md-toolbar>
+        <div class="md-toolbar-tools center">
+            <h2 ng-bind="$ctrl.header"></h2>
+            <span flex ng-if="$ctrl.identifier != 'disablePopup' && $ctrl.users.length > 0"></span>
+            <md-button class="md-icon-button" ng-if="$ctrl.identifier != 'disablePopup' && $ctrl.users.length > 0" ng-click="showAll()"><i class="fas fa-external-link-square-alt"></i></md-button>
+        </div>
+    </md-toolbar>
+    <md-card-content ng-if="$ctrl.users.length == 0">
+        <p class="center-text" translate="generic.messages.noUsers"></p>
+    </md-card-content>
+    <md-card-content ng-if="$ctrl.type == 'list' && $ctrl.users.length > 0" class="no-padding">
+        <md-list>
+            <md-list-item class="md-3-line" ng-class="{'has-secondary': user.online == 0 || user.online == 1}" ng-repeat="user in $ctrl.users | limitTo: $ctrl.limit" ui-sref="profile({username: user.username})">
+                <avatar-icon ng-style="{'background-image': 'url({{$root.appConfig.siteImages.avatars}}{{user.look}}&action=std&gesture=sml&direction=4&head_direction=4&size=n&img_format=png)'}"></avatar-icon>
+                <div class="md-list-item-text" layout="column">
+                    <h3 ng-if="user.username" ng-bind="user.username"></h3>
+                    <h4 ng-if="user.motto" ng-bind="user.motto"></h4>
+                    <p ng-if="user.last_online">{{'generic.lists.lastOnline' | translate}}: {{user.last_online * 1000 | date: 'MMM d, yyyy'}}</p>
+                    <p ng-if="user.credits">{{'generic.lists.credits' | translate}}: {{user.credits | number: 0}}</p>
+                    <p ng-if="user.online_time">{{'generic.lists.onlineTime' | translate}}: {{user.online_time | secondsToTime}}</p>
+                    <p ng-if="user.respects_received">{{'generic.lists.respects' | translate}}: {{user.respects_received | number: 0}}</p>
+                    <p ng-if="user.member_since">{{'generic.lists.memberSince' | translate}}: {{user.memberSince * 1000 | date: 'MMM d, yyyy'}}</p>
+                </div>
+                <habbo-icon class="md-secondary center" ng-if="user.online == 0 || user.online == 1" ng-class="{'online': user.online == 1, 'offline': user.online == 0}"></habbo-icon>
+                <md-button class="md-icon-button md-secondary center" ng-if="$root.clientLoaded && user.online == 1 && $root.Session.isFriend(user.id)" target-id="{{user.id}}" follow-user><habbo-icon class="follow-user"></habbo-icon></md-button>
+            </md-list-item>
+        </md-list>
+    </md-card-content>
+    <md-card-content ng-if="$ctrl.type != 'list' && $ctrl.users.length > 0">
+        <grid-list class="avatar-grid across-3">
+            <avatar ng-repeat="user in $ctrl.users | limitTo: $ctrl.limit" ui-sref="profile({username: user.username})">
+                <grid-image ng-style="{'background-image': 'url({{$root.appConfig.siteImages.avatars}}{{user.look}}&action=std&gesture=sml&direction=4&head_direction=4&size=n&img_format=png)'}"></grid-image>
+                <grid-text ng-bind="user.username"></grid-text>
+            </avatar>
+        </grid-list>
+    </md-card-content>
+</md-card>
+<div style="visibility:hidden;" ng-if="$ctrl.users.length > 0 || $ctrl.identifier != 'disablePopup'">
+    <div class="md-dialog-container" id="{{$ctrl.identifier}}-dialog">
+        <md-dialog class="no-select">
+            <md-toolbar>
+                <div class="md-toolbar-tools center">
+                    <h2 ng-bind="$ctrl.header"></h2>
+                    <span flex></span>
+                    <i class="close-icon" ng-click="hide()"></i>
+                </div>
+            </md-toolbar>
+            <md-dialog-content>
+                <div class="md-dialog-content">
+                    <md-list>
+                        <md-list-item class="md-3-line" ng-class="{'has-secondary': user.online == 0 || user.online == 1}" ng-repeat="user in $ctrl.users" ui-sref="profile({username: user.username})">
+                            <avatar-icon ng-style="{'background-image': 'url({{$root.appConfig.siteImages.avatars}}{{user.look}}&action=std&gesture=sml&direction=4&head_direction=4&size=n&img_format=png)'}"></avatar-icon>
+                            <div class="md-list-item-text" layout="column">
+                                <h3 ng-if="user.username" ng-bind="user.username"></h3>
+                                <h4 ng-if="user.motto" ng-bind="user.motto"></h4>
+                                <p ng-if="user.last_online">{{'generic.lists.lastOnline' | translate}}: {{user.last_online * 1000 | date: 'MMM d, yyyy'}}</p>
+                                <p ng-if="user.credits">{{'generic.lists.credits' | translate}}: {{user.credits | number: 0}}</p>
+                                <p ng-if="user.online_time">{{'generic.lists.onlineTime' | translate}}: {{user.online_time | secondsToTime}}</p>
+                                <p ng-if="user.respects_received">{{'generic.lists.respects' | translate}}: {{user.respects_received | number: 0}}</p>
+                                <p ng-if="user.member_since">{{'generic.lists.memberSince' | translate}}: {{user.memberSince * 1000 | date: 'MMM d, yyyy'}}</p>
+                            </div>
+                            <habbo-icon class="md-secondary center" ng-if="user.online == 0 || user.online == 1" ng-class="{'online': user.online == 1, 'offline': user.online == 0}"></habbo-icon>
+                            <md-button class="md-icon-button md-secondary center" ng-if="$root.clientLoaded && user.online == 1 && $root.Session.isFriend(user.id)" target-id="{{user.id}}" follow-user><habbo-icon class="follow-user"></habbo-icon></md-button>
+                        </md-list-item>
+                    </md-list>
+                </div>
+            </md-dialog-content>
+        </md-dialog>
+    </div>
+</div>

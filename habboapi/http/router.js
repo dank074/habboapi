@@ -1,25 +1,31 @@
 import { Router } from 'express';
 import HttpMiddleware from './middleware';
-import HttpAuthentication from './authentication';
-import HttpCommunity from './community';
-import HttpGroup from './group';
-import HttpRoom from './room';
-import HttpUser from './user';
+import HttpRoutes from './routes';
 
-class MainRouter
+export default class HttpRouter
 {
     constructor()
     {
-        let router = Router();
+        this.router = Router();
 
-        router.use('/authentication', new HttpAuthentication);
-        router.use('/community', new HttpCommunity);
-        router.use('/group', new HttpGroup);
-        router.use('/room', new HttpRoom);
-        router.use('/user', new HttpUser);
+        this.router.use(HttpMiddleware.checkMaintenance);
+        this.router.use(HttpMiddleware.checkIpBan);
 
-        return router;
+        this.router.use('/api', new HttpRoutes, (req, res, next) =>
+        {
+            res.locals.status   = (res.locals.status == undefined || null) ? 200 : res.locals.status;
+            res.locals.errors   = (res.locals.errors == undefined || null) ? false : res.locals.errors;
+            res.locals.error    = (res.locals.error == undefined || null) ? null : res.locals.error;
+            res.locals.session  = req.user;
+
+            return res.status(res.locals.status).send(res.locals).end();
+        });
+
+        this.router.use((req, res, next) =>
+        {
+            return res.status(200).render(__base + '/src/views/index.html', {siteName: __config.webSettings.siteName});
+        });
+
+        return this.router;
     }
 }
-
-export default MainRouter;

@@ -1,0 +1,20 @@
+<div class="content-banned" layout="row" layout-xs="column">
+	<div layout="column" flex="40" flex-xs="100" flex-offset="60" flex-offset-xs="0">
+		<md-card class="no-select">
+			<md-toolbar>
+				<div class="md-toolbar-tools center">
+					<h2 translate="generic.headers.banned"></h2>
+				</div>
+			</md-toolbar>
+			<md-card-content class="center">
+				<p>
+					<span translate="generic.messages.userBanned" translate-values="{siteName: $root.appConfig.siteName}"></span>
+					<br /><br />
+					{{'generic.forms.banReason' | translate}}: {{banReason}}<br />
+					{{'generic.forms.banExpires' | translate}}: {{banExpires * 1000 | date:'MMM d, yyyy h:mm a'}}
+				</p>
+				<img class="pixel-image" src="assets/images/habbo/banned.png"></img>
+			</md-card-content>
+		</md-card>
+	</div>
+</div>
