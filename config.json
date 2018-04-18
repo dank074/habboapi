@@ -12,7 +12,7 @@
         "store": {
             "tableName": "api_sessions",
             "sessionId": "session",
-            "expiers": "expires",
+            "expires": "expires",
             "data": "data"
         }
     },
