@@ -1,5 +1,3 @@
-<div layout="row" layout-xs="column">
-    <div layout="column" flex flex-xs="100">
-        <api-user-list flex flex-xs="100" ng-if="rank.users.length > 0" ng-repeat="rank in staffList" identifier="rank{{rank.id}}" type="list" header="{{rank.rank_name}}" users="rank.users"></api-user-list>
-    </div>
+<div layout="column" flex flex-xs="100">
+    <api-user-list flex flex-xs="100" ng-if="rank.users.length > 0" ng-repeat="rank in staffList" identifier="rank{{rank.id}}" type="list" header="{{rank.rank_name}}" users="rank.users"></api-user-list>
 </div>
